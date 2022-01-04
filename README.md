@@ -143,9 +143,15 @@ We want to share a structure that works well for us:
 - raw_external:        (private) ingested data from external sources that do not offer data as products on the same platform, otherwise similar to raw; in a perfect world, this is not necessary
 - intermediates:       (private) extracted reusable queries/views, think of materialized Common Table Expressions (CTE); not helpful on their own, only through their multiple usages
 - information_objects: (private) the actual data products that are used by this domain for reports etc.
-- data_products:       (orga-public) the actual data products that are used by other domains/teams
+- data_products:       (orga-public) the actual data products that are used by this domain and other domains/teams
 - queries:             (private) one time queries for ad hoc purposes that are stored for later use and inspection. Should not be used in reports.
 
+
+Types of data:
+- Aggregates (Term is overloaded!)
+- Domain Events
+- Streams (z. B. Clickstreams, Logfiles, Sensordata)
+- Manually maintained tables
 
 Meta-Data:
 - Added Timestamp
