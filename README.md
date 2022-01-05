@@ -17,12 +17,14 @@ Transformation from central monolith to decentralised systems has already happen
 
 Unhappy with:
 
-- Some other (data) team wants access to prod database
-  - No SELECT * with REST APIs
-- Very little insights on what's going on based on own data
+- Central data team wants access to prod database
+  - Information hiding principle is violated 
+    - Internal data structure becomes public API
+    - Data team build ACL, but needs to maintain it most of their time -> frustration -> domain team will feel data team frustration
+  - No SELECT * with REST APIs -> requires extract and load
+- Team has little insights on what's going on based on own data
   - Queries on data per production database (disadvantage: performance impact, index optimization for analytics, PII)
-- Data warehouse are doing something to create reports for management
-- Combine your own data with the data of other teams
+- Data warehouse are doing something to create reports for management, but it is not clear how KPIs are calculated
 
 Consequences:
 
@@ -52,6 +54,7 @@ Consequences:
 
 Consequences:
 - cycle: hypothesis (could be exploratively created) -> verify with data -> improvements
+  - Requires autonomous product teams
 - which pain posts have been solved now? "No data driven decisions"
 - analytics enabled combining data from multiple microservices
 
@@ -75,7 +78,12 @@ _Example: BigQuery_
 
 - good: no performance issues, no storage costs
 
-## Use Data from Other Teams: Bootstrap
+Innovation Driver: 
+- Data Platform is accessible through cloud providers
+- Self-Service by cloud providers
+- Product teams have shifted from feature development to product optimization 
+
+## Use Data from Other Teams: Bootstrap/Importing
 
 - team used up all insights generated with own data -> data from upstream teams now necessary
 - why? want to combine data to get even better insights
