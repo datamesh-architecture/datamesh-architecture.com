@@ -32,6 +32,7 @@ Consequences:
 - Slow creation of new reports
 - Wrong reports because of lack of domain knowledge
 - Broken reports because of data or schema changes
+- No awareness for analytical data within a domain team
 
 ## Making Everybody Happy: Journey towards a Data Mesh
 
