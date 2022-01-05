@@ -90,7 +90,7 @@ Purchase
 - Fraud
 
 Fulfillment
-- Stock https://shopify.dev/api/admin-rest/2021-10/resources/fulfillmentevent#[get]/admin/api/2021-10/orders/{order_id}/fulfillments/{fulfillment_id}/events.json
+- Stock/Inventory https://shopify.dev/api/admin-rest/2021-10/resources/fulfillmentevent#[get]/admin/api/2021-10/orders/{order_id}/fulfillments/{fulfillment_id}/events.json
     - {organization}-fulfillment.data_products.stock
     - {organization}-fulfillment.data_products.stock_historical
 - Shipments
