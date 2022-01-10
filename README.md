@@ -141,3 +141,14 @@ Advantages:
 
 
 
+
+
+
+Data APIs
+---
+- central, logical separated SQL-like Database
+- federated SQL-like Database
+  - Presto
+- GraphQL
+- Feeds
+
