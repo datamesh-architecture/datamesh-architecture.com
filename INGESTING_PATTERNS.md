@@ -32,8 +32,26 @@ New events just for analysis purposes, app must be extended (e.g. with library/s
 Make database table changes to events.
 
 - 1 topic per database table
+- A tranformation to desired data model is usually required.
 - May require initial snapshots?
 - TBD: what happens when service is down?
 
 
-Not recommended: File exports
+## File export and import
+
+Not recommended, as not streamed.
+
+
+# PII processing
+
+- Data Removal: Allow-List or Excluded field-lists.
+- Masking: *****
+- Hashing
+
+Where?
+- Ingester
+- Data Platform
+  - Raw/Data pool is always restricted
+  - Labeling: Auto Processing by data platform
+  - Lambda
+
