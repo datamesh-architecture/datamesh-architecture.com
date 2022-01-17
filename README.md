@@ -78,8 +78,9 @@ _Example: MongoDB Charts_
 _Example: Postgres_
 
 Build a separate database with read model for analytics.
+Visualization with Metabase.
 
-- good: easy
+- good: easy, familiar technology for product teams, easily available
 - bad: index optimization necessary, integration issues later on
 
 _Example: BigQuery_
