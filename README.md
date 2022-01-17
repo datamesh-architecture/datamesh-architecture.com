@@ -36,10 +36,13 @@ Consequences:
 - Broken reports because of data or schema changes
 - No awareness for analytical data within a domain team
 
-## Making Everybody Happy: Journey towards a Data Mesh
+## Journey towards a Data Mesh
 
 - Where we want to go: decentralization, applying same principles that made us successful and scalable on the operation part to the analytical part
-- domain ownership for their own data: Before: UI+API After: UI+API+DATA
+- domain ownership for their own data
+- Ownernship
+  - Before: UI+API 
+  - After: UI+API+DATA
 
 ## Use Data from Yourself (Empowering Teams to do their own Data Analysis)
 
