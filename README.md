@@ -70,6 +70,8 @@ Maturity:
 
 _Example: MongoDB Charts_
 
+- Simple Dashboards
+- Visualize (intuitive) KPIs
 - run queries on operational database (on secondary node)
 
 _Example: Postgres_
