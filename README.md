@@ -73,8 +73,11 @@ _Example: MongoDB Charts_
 - Simple Dashboards
 - Visualize (intuitive) KPIs
 - run queries on operational database (on secondary node)
+- Limited JOINs and aggregations with other collections. complex aggregation framework
 
 _Example: Postgres_
+
+Build a separate database with read model for analytics.
 
 - good: easy
 - bad: index optimization necessary, integration issues later on
