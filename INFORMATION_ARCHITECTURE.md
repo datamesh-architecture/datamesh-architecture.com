@@ -13,6 +13,7 @@ We want to share a structure that works well for us:
 └─ {organization}-{domain}[-{stage}]
    ├─ raw
    ├─ raw_external
+   ├─ manual
    ├─ intermediates
    ├─ information_objects
    ├─ data_products
@@ -23,6 +24,7 @@ We want to share a structure that works well for us:
 
 - raw:                 (private) ingested data, typically with full payload in source format. Result of Extracted and Loaded.
 - raw_external:        (private) ingested data from external sources that do not offer data as products on the same platform, otherwise similar to raw; in a perfect world, this is not necessary
+- manual:             (private) manually maintained data
 - intermediates:       (private) extracted reusable queries/views, think of materialized Common Table Expressions (CTE); not helpful on their own, only through their multiple usages
 - information_objects: (private) the actual data products that are used by this domain for reports etc.
 - data_products:       (orga-public) the actual data products that are used by this domain and other domains/teams
