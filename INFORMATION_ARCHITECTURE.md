@@ -16,7 +16,7 @@ We want to share a structure that works well for us:
    ├─ intermediates
    ├─ information_objects
    ├─ data_products
-   ├─ queries 
+   ├─ explorative_data_analysis 
 ```
 
 {stage}: prod (default), dev, test
@@ -26,7 +26,7 @@ We want to share a structure that works well for us:
 - intermediates:       (private) extracted reusable queries/views, think of materialized Common Table Expressions (CTE); not helpful on their own, only through their multiple usages
 - information_objects: (private) the actual data products that are used by this domain for reports etc.
 - data_products:       (orga-public) the actual data products that are used by this domain and other domains/teams
-- queries:             (private) one time queries for ad hoc purposes that are stored for later use and inspection. Should not be used in reports.
+- explorative_data_analysis: (private) one time queries and Jupyter notebooks for ad hoc purposes that are stored for later use and inspection, but not actively maintained. Should not be used in reports.
 
 
 Types of data:
