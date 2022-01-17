@@ -70,7 +70,7 @@ Maturity:
 
 _Example: MongoDB Charts_
 
-- run queries on operational database 
+- run queries on operational database (on secondary node)
 
 _Example: Postgres_
 
