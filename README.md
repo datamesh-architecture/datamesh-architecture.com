@@ -4,14 +4,14 @@ Domain Engineering Team Perspective on Data (from the engine room)
 
 Bottom-up with management support (the hard way, but only the hard way works)
 
-## Status Quo
+## Status Quo:
 
 Happy with:
 
 - Strategy: DDD with bounded contexts
-- Architecture: Microservice Architecture with REST-APIs and messages
+- Architecture: Microservice Architecture with REST-APIs and Messaging
 - Orga: autonomous teams
-- Operations: logging, monitoring
+- Operations: Excellence with monitoring, logging.
 
 Transformation from central monolith to decentralised systems has already happened/is happening
 
