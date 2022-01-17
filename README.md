@@ -56,7 +56,7 @@ Consequences:
   - STRUCTURE
 
 Consequences:
-- cycle: hypothesis (could be exploratively created) -> verify with data -> improvements
+- cycle: Mesure current state/ Identify KPI -> hypothesis (could be exploratively created) -> verify with data -> improvements
   - Requires autonomous product teams
 - which pain posts have been solved now? "No data driven decisions"
 - analytics enabled combining data from multiple microservices
