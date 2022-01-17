@@ -19,6 +19,8 @@ We want to share a structure that works well for us:
    ├─ queries 
 ```
 
+{stage}: prod (default), dev, test
+
 - raw:                 (private) ingested data, typically with full payload in source format. Result of Extracted and Loaded.
 - raw_external:        (private) ingested data from external sources that do not offer data as products on the same platform, otherwise similar to raw; in a perfect world, this is not necessary
 - intermediates:       (private) extracted reusable queries/views, think of materialized Common Table Expressions (CTE); not helpful on their own, only through their multiple usages
