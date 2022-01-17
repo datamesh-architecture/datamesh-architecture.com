@@ -36,11 +36,12 @@ Make database table changes to events.
 - May require initial snapshots?
 - TBD: what happens when service is down?
 
-
 ## File export and import
 
-Not recommended, as not streamed.
+Not recommended, as not streamed. 
 
+- Streaming adapter for legacy systems. 
+- triggered/scheduled import
 
 # PII processing
 
