@@ -2,6 +2,7 @@
 
 Today, data analysis is central to the success of companies, but it's hard to scale.
 Data Mesh adresses the issue of scaling of a central data team in a world of decentralised domain teams.
+
 The goal of this website is to *focus on the engineering perspective of the domain teams* and to give advice and examples how to organize, build, and operate a Data Mesh within your organization.
 
 > **Data Mesh Architecture** is a decentralised architecture that enables domain teams to perform cross-domain data analysis on their own.
@@ -17,15 +18,6 @@ In 2019, the term *Data Mesh* was coined by [Zhamak Dehghani](https://martinfowl
 - status quo 1: Value proposition perspective
  - innovative product development: improve existing products or create new products
 
-
-status quo 2: Engineering perspective
-### Microservices / SCS
-- self-serve data platform
-### Domain-Driven Design
- domain ownership on data, 
- data as a product, 
-### Autonomous Teams 
- computational federated governance
 
 
 ## Data Mesh Principles
