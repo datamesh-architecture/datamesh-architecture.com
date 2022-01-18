@@ -9,7 +9,7 @@ The goal of this website is to *focus on the engineering perspective of the doma
 
 - [ ] TODO: Picture of the Data Mesh Concept.
 
-In 2019, the term *Data Mesh* was coined by [Zhamak Dehghani](https://martinfowler.com/articles/data-monolith-to-mesh.html).
+The term *Data Mesh* was coined by [Zhamak Dehghani](https://martinfowler.com/articles/data-monolith-to-mesh.html).
 
 ## Why
 
@@ -21,12 +21,12 @@ In 2019, the term *Data Mesh* was coined by [Zhamak Dehghani](https://martinfowl
 
 
 ## Data Mesh Principles
-It builds upon four principles: 
+Data Mesh builds upon four principles: 
 
- 1. domain ownership on data, 
- 1. data as a product, 
- 1. self-serve data platform, and 
- 1. computational federated governance.
+1. __Domain Ownership__ TODO...
+1. __Data as a Product__ TODO...
+1. __Self-Serve Data Platform__ TODO...
+1. __Computational Federated Governance__ TODO... 
 
 ## How
 
