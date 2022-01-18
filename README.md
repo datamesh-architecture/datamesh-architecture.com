@@ -35,14 +35,19 @@ Why
 - innovative product development: improve existing products or create new products
 
 ## Data Mesh Principles
-It builds upon four principles: domain ownership on data, data as a product, self-serve data platform, and computational federated governance.
+It builds upon four principles: 
 
-How
+ 1. domain ownership on data, 
+ 1. data as a product, 
+ 1. self-serve data platform, and 
+ 1. computational federated governance.
+
+# How
 
 
-FAQ
+# FAQ
 
-Resources
+# Resources
 
 
 Authors
