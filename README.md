@@ -12,11 +12,6 @@ In software engineering, we shifted from central IT department with a central mo
 
 
 
-
-
-
-
-
 Data Mesh adresses the issue of scaling and data quality of a central data team in a world of decentralised domain teams.
 In 2019, the term *Data Mesh* was coined by [Zhamak Dehghani](https://martinfowler.com/articles/data-monolith-to-mesh.html).
 In our experience, the people curious about data mesh are mostly database administrators, data engineers, data scientists, or data architects. 
@@ -31,7 +26,7 @@ We want to give advice and examples how to organize, build, and operate a *Data 
 - Data Mesh Architecture: Data Mesh from an engineering perspective
 - Definition: Data Mesh Architecture is a decentralised architecture that enables domain teams to perform cross-domain data analysis on their own.
 
-Why
+## Why
 - innovative product development: improve existing products or create new products
 
 ## Data Mesh Principles
@@ -42,7 +37,7 @@ It builds upon four principles:
  1. self-serve data platform, and 
  1. computational federated governance.
 
-# How
+## How
 
 
 # FAQ
@@ -50,4 +45,7 @@ It builds upon four principles:
 # Resources
 
 
-Authors
+# Authors
+Jochen Christ
+Simon Harrer
+Larysa Visengeriyeva
