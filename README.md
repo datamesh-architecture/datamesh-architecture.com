@@ -17,8 +17,6 @@ The term *Data Mesh* was coined by [Zhamak Dehghani](https://martinfowler.com/ar
 - status quo 1: Value proposition perspective
  - innovative product development: improve existing products or create new products
 
-
-
 ## Data Mesh Principles
 Data Mesh builds upon four principles: 
 
@@ -27,10 +25,63 @@ Data Mesh builds upon four principles:
 1. __Self-Serve Data Platform__ TODO...
 1. __Computational Federated Governance__ TODO... 
 
+
 ## How
 
+Case Study
 
-# FAQ
+
+
+
+
+Data Ingesting
+- Operative Systems to Analytical Platform
+- Patterns: ETL vs Streaming
+- External Data
+- Examples:
+  - Cloud Functions
+  - Spring Boot Service 
+  - Dataflow / Apache Beam
+
+Data Storage
+- Cloud
+- Examples:
+  - BigQuery
+
+
+
+Analytics
+
+
+Visualisation
+
+
+Data Quality
+
+Data API/Endpoints/Ports
+- Types: Dataset, Dashboard, Report
+
+Data Catalog
+- Meta data
+- Best Practices
+- Examples: 
+  - Confluence
+  - Git Repo
+  - Google Data Catalog
+
+Security
+- PII
+
+Operational
+
+
+
+
+
+
+## FAQ
+
+- Ab welcher Organisationsgröße lohnt sich Data Mesh?
 
 # Resources
 
@@ -39,3 +90,7 @@ Data Mesh builds upon four principles:
 Jochen Christ
 Simon Harrer
 Larysa Visengeriyeva
+
+
+
+
