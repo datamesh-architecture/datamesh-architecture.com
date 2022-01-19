@@ -26,9 +26,42 @@ Data Mesh builds upon four principles:
 1. __Computational Federated Governance__ TODO... 
 
 
-## How
 
-Case Study
+## Case Study
+
+
+## Architecture Components
+
+- Data Ingesting
+- Data Storage
+- Information Architecture: Raw, ...
+- Pipelines
+- Clean Data
+- Data Access
+- Data Catalog
+- Analysis
+- Visualisation
+- Results: Dataset, ML Models, Report, KPI, Events
+- Feedback Loops: Insights -> Business Value
+- Security
+- Monitoring
+
+
+## Organisation
+
+- Domain-aligned Teams
+- Team Structure / Team Topology
+- More scope, Skillset
+- Role of Data Team
+  - Manage Platform
+  - Enabling (Templates, ...)
+  - Consulting
+  - Form new domain teams
+- Governance
+  - Guilds
+  - Define Global Policies
+- Requirements -> Data Product
+
 
 
 
@@ -45,6 +78,7 @@ Data Ingesting
 
 Data Storage
 - Cloud
+- Streaming?
 - Examples:
   - BigQuery
 
@@ -60,6 +94,7 @@ Data Quality
 
 Data API/Endpoints/Ports
 - Types: Dataset, Dashboard, Report
+- Feedback back to operative Systems
 
 Data Catalog
 - Meta data
