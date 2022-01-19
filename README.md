@@ -67,6 +67,10 @@ Data Mesh builds upon four principles:
 
 
 
+
+
+## Backup
+
 Data Ingesting
 - Operative Systems to Analytical Platform
 - Patterns: ETL vs Streaming
@@ -83,15 +87,6 @@ Data Storage
   - BigQuery
 
 
-
-Analytics
-
-
-Visualisation
-
-
-Data Quality
-
 Data API/Endpoints/Ports
 - Types: Dataset, Dashboard, Report
 - Feedback back to operative Systems
@@ -106,8 +101,6 @@ Data Catalog
 
 Security
 - PII
-
-Operational
 
 
 
