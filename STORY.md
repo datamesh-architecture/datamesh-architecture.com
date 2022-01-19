@@ -61,13 +61,6 @@ Consequences:
 - which pain posts have been solved now? "No data driven decisions"
 - analytics enabled combining data from multiple microservices
 
-Maturity:
-1. no data analysis
-2. run queries on operational database
-3. run queries on secondary node of operational database
-4. build read model for data analysis
-5. use big data technology
-
 _Example: MongoDB Charts_
 
 - Simple Dashboards
