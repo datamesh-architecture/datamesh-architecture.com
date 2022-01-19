@@ -32,6 +32,8 @@ Data Mesh builds upon four principles:
 
 ## Data Mesh Maturity Model
 
+TODO: schöne Grafik
+
 This maturity model describes the evolution of a domain team in a data mesh architecture.
 
 Level 0: No data analysis.
