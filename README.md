@@ -41,6 +41,7 @@ Level 1: Operational database queries.
 
 Level 2: Analyze own data on self-serve data platform.
 - Includes ingesting, storage, analysis, visualization.
+- Variant: custom analytical postgres DB
 
 Level 3: Combine own with data from other domains.
 - Includes discoverability and access
