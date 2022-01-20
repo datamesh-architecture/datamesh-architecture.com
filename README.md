@@ -107,8 +107,6 @@ __Optional: _Streaming___
 For high-volume realtime data, it might be inappropriate to store all events permanently.
 A _streaming_ platform with short-time rentetion can be the suitably technology to perform realtime analytics.
 
-_Examples: _
-
 _Cloud Services: Confluent Kafka, AWS MSK, AWS Kinesis (Note: there is no real alternative on Google Cloud)_  
 _On-Premise Alternative: Apache Kafka_
 
