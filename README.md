@@ -72,6 +72,41 @@ Level 4: Publish data as a product.
 - Security
 - Monitoring
 
+### Storage
+
+Storing data is a primary purpose of any data platform.
+As hundreds of terabytes and more may be stored on the platform, storage should be cost-efficient.
+It should also provide good performance for analytical queries.
+
+There are different types of storage options that optimize for the origin of data and the analytical use cases.
+
+_SQL-like databases_
+
+Most common are _SQL-like databases_ that store data in tables that have a structured schema.
+These databases use columnar data stores to retrieve and search large datasets efficiently,
+hence there is no support for indexes.
+For smaller datasets is also possible to use traditional relational databases, but these will require more storage management efforts and index optimizations to build efficient queries.
+Data is often ingested in a semi-structurted format into a clob field, mostly in JSON format. 
+Hence, the database should be capable to parse JSON and to support array structures.
+
+Examples: Google BigQuery, AWS Redshift, Snowflake Data, PostgreSQL/Greenplum
+
+
+Optional: _Object Storage_
+In some use cases, data needs to be exported from operative or third party systems as files, such as CSV, JSON or XML. The data platform should support to store file-oriented data, that can be further processed or analyzed.
+
+Examples: Google Object Store, AWS S3, MinIO, Ceph
+
+
+Optional: _Streaming_
+
+For high-volume realtime data, it might be inappropriate to store all events permanently.
+A _streaming_ platform with short-time rentetion can be the suitably technology to perform realtime analytics.
+
+Examples: Apache Kafka, AWS MSK, AWS Kinesis (Note: there is no real alternative on Google Cloud)
+
+As we need to handle large datasets and typically need processing power power for a few seconds to run analytical queries, cloud-based services fit very well to storage requirements, but there are on-premise and open-source alternatives (TODO: link) as well.
+
 
 ## Organisation
 
@@ -87,7 +122,6 @@ Level 4: Publish data as a product.
   - Guilds
   - Define Global Policies
 - Requirements -> Data Product
-
 
 
 
