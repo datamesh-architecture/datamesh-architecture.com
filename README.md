@@ -77,10 +77,11 @@ Level 4: Publish data as a product.
 Storing data is a primary purpose of any data platform.
 As hundreds of terabytes and more may be stored on the platform, storage should be cost-efficient.
 It should also provide good performance for analytical queries.
+As we need to handle large datasets and typically need processing power only for a few seconds to run analytical queries, cloud-based services fit very well to storage requirements, but there are on-premise and open-source alternatives (TODO: link) as well.
 
-There are different types of storage options that optimize for the origin of data and the analytical use cases.
+There are different types of storage options that optimize for the origin of data and the analytical use cases:
 
-_SQL-like databases_
+__SQL-like databases__
 
 Most common are _SQL-like databases_ that store data in tables that have a structured schema.
 These databases use columnar data stores to retrieve and search large datasets efficiently,
@@ -89,23 +90,28 @@ For smaller datasets is also possible to use traditional relational databases, b
 Data is often ingested in a semi-structurted format into a clob field, mostly in JSON format. 
 Hence, the database should be capable to parse JSON and to support array structures.
 
-Examples: Google BigQuery, AWS Redshift, Snowflake Data, PostgreSQL/Greenplum
+_Cloud Services: Google BigQuery, AWS Redshift, Snowflake Data_  
+_On-Premise Alternative: PostgreSQL/Greenplum_
 
 
-Optional: _Object Storage_
+__Optional: _Object Storage___
+
 In some use cases, data needs to be exported from operative or third party systems as files, such as CSV, JSON or XML. The data platform should support to store file-oriented data, that can be further processed or analyzed.
 
-Examples: Google Object Store, AWS S3, MinIO, Ceph
+_Cloud Services: Google Object Store, AWS S3_  
+_On-Premise Alternative: MinIO, Ceph_
 
 
-Optional: _Streaming_
+__Optional: _Streaming___
 
 For high-volume realtime data, it might be inappropriate to store all events permanently.
 A _streaming_ platform with short-time rentetion can be the suitably technology to perform realtime analytics.
 
-Examples: Apache Kafka, AWS MSK, AWS Kinesis (Note: there is no real alternative on Google Cloud)
+_Examples: _
 
-As we need to handle large datasets and typically need processing power power for a few seconds to run analytical queries, cloud-based services fit very well to storage requirements, but there are on-premise and open-source alternatives (TODO: link) as well.
+_Cloud Services: Confluent Kafka, AWS MSK, AWS Kinesis (Note: there is no real alternative on Google Cloud)_  
+_On-Premise Alternative: Apache Kafka_
+
 
 
 ## Organisation
