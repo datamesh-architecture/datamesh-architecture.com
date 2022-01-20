@@ -77,6 +77,7 @@ Level 4: Publish data as a product.
 Storing data is a primary purpose of any data platform.
 As hundreds of terabytes and more may be stored on the platform, storage should be cost-efficient.
 It should also provide good performance for analytical queries.
+
 As we need to handle large datasets and typically need processing power only for a few seconds to run analytical queries, cloud-based services fit very well to storage requirements, but there are on-premise and open-source alternatives (TODO: link) as well.
 
 There are different types of storage options that optimize for the origin of data and the analytical use cases:
@@ -86,7 +87,7 @@ __SQL-like databases__
 Most common are _SQL-like databases_ that store data in tables with a structured schema.
 These databases use columnar data stores to retrieve and search large datasets efficiently, hence there is no need for indexes.
 For smaller datasets is also possible to use traditional relational databases, but these will require more storage management efforts and index optimizations to build efficient queries.
-Data is often ingested in a semi-structurted format into a clob field, mostly in JSON format. 
+Data is often ingested in a semi-structurted format into a CLOB field, mostly in JSON format. 
 Hence, the database should be capable to parse JSON and to support array structures.
 
 _Cloud Services: Google BigQuery, AWS Redshift, Snowflake Data_  
