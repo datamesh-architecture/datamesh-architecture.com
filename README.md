@@ -32,7 +32,9 @@ Data Mesh builds upon four principles:
 
 ## Data Mesh Maturity Model
 
-TODO: schöne Grafik
+![](datamesh-maturity.png)
+
+TODO: schönere Grafik
 
 This maturity model describes the evolution of a domain team in a data mesh architecture.
 
