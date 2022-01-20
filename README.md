@@ -83,9 +83,8 @@ There are different types of storage options that optimize for the origin of dat
 
 __SQL-like databases__
 
-Most common are _SQL-like databases_ that store data in tables that have a structured schema.
-These databases use columnar data stores to retrieve and search large datasets efficiently,
-hence there is no support for indexes.
+Most common are _SQL-like databases_ that store data in tables with a structured schema.
+These databases use columnar data stores to retrieve and search large datasets efficiently, hence there is no need for indexes.
 For smaller datasets is also possible to use traditional relational databases, but these will require more storage management efforts and index optimizations to build efficient queries.
 Data is often ingested in a semi-structurted format into a clob field, mostly in JSON format. 
 Hence, the database should be capable to parse JSON and to support array structures.
