@@ -110,6 +110,16 @@ A _streaming_ platform with short-time rentetion can be the suitably technology 
 _Cloud Services: Confluent Kafka, AWS MSK, AWS Kinesis (Note: there is no real alternative on Google Cloud)_  
 _On-Premise Alternative: Apache Kafka_
 
+### Storage: Shared, Separated, Federated?
+
+Modern software systems are build independently and self-contained for a given bounded context.
+Engineers made great efforts to eliminate shared databases and monolithic structures to enforce loose coupling.
+
+In a Data Mesh environment accessing data from other domains happens through database access.
+
+- Same Database, separated realms by domin
+- Separate Database, federated queries
+  - Presto
 
 
 ## Organisation
