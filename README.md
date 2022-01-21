@@ -103,7 +103,7 @@ In some use cases, data needs to be exported from operative or third party syste
 The data platform may need support to store file-oriented data, that can be further processed or analyzed.
 
 _Cloud Service Examples: Google Object Store, AWS S3_  
-_On-Premise Alternative: MinIO, Ceph_, SMB
+_On-Premise Alternative: MinIO, Ceph, SMB_
 
 
 __Optional: _Topics / Streaming___
