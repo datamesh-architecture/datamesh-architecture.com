@@ -90,7 +90,7 @@ For smaller datasets is also possible to use traditional relational databases, b
 Data is often ingested in a semi-structurted format into a CLOB field, mostly in JSON format. 
 Hence, the database should be capable to parse JSON and to support array structures.
 
-_Cloud Services: Google BigQuery, AWS Redshift, Snowflake Data_  
+_Cloud Service Examples: Google BigQuery, AWS Redshift, Snowflake Data_  
 _On-Premise Alternative: PostgreSQL/Greenplum_
 
 
@@ -98,7 +98,7 @@ __Optional: _Object Storage___
 
 In some use cases, data needs to be exported from operative or third party systems as files, such as CSV, JSON or XML. The data platform should support to store file-oriented data, that can be further processed or analyzed.
 
-_Cloud Services: Google Object Store, AWS S3_  
+_Cloud Service Examples: Google Object Store, AWS S3_  
 _On-Premise Alternative: MinIO, Ceph_
 
 
@@ -107,7 +107,7 @@ __Optional: _Streaming___
 For high-volume realtime data, it might be inappropriate to store all events permanently.
 A _streaming_ platform with short-time rentetion can be the suitably technology to perform realtime analytics.
 
-_Cloud Services: Confluent Kafka, AWS MSK, AWS Kinesis (Note: there is no real alternative on Google Cloud)_  
+_Cloud Service Examples: Confluent Kafka, AWS MSK, AWS Kinesis (Note: there is no real alternative on Google Cloud)_  
 _On-Premise Alternative: Apache Kafka_
 
 ### Storage: Shared, Separated, Federated?
