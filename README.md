@@ -61,9 +61,9 @@ Level 4: Publish data as a product.
 - Data Ingesting
 - Data Storage
 - Information Architecture: Raw, ...
-- Pipelines
+- Data Preparation
 - Clean Data
-- Data Access
+- Data Access / Data as a Product
 - Data Catalog
 - Analysis
 - Visualisation
