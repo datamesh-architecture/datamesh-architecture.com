@@ -58,19 +58,27 @@ Level 4: Publish data as a product.
 
 ## Architecture Components
 
-- Data Ingesting
 - Data Storage
 - Information Architecture: Raw, ...
+- Data Ingesting
+  - Streaming
+  - ELT wenn es sein muss
 - Data Preparation
-- Clean Data
-- Data Access / Data as a Product
+  - Deduplicate
+  - Parsing (JSON -> Columns)
+  - Schema Migrations / Null Fields
+  - Anonymize
+- Analysis & Visualisation
+- Data API
+  - Virtual
+  -  e.g. View
+- Data Access
+  - Access Policy
+  - Authentication
 - Data Catalog
-- Analysis
-- Visualisation
-- Results: Dataset, ML Models, Report, KPI, Events
-- Feedback Loops: Insights -> Business Value
-- Security
 - Monitoring
+- Results: Dataset, ML Models, Report, KPI, Events
+- Feedback Loops: -> Back to operational Systems
 
 
 ### Storage
