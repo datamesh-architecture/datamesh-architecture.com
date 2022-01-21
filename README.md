@@ -72,12 +72,8 @@ Level 4: Publish data as a product.
 - Security
 - Monitoring
 
-### Storage Location
 
-As we need to handle large datasets and typically need processing power only for a few seconds to run analytical queries, cloud-based services fit very well to storage requirements, but there are on-premise and open-source alternatives (TODO: link) as well.
-
-
-### Storage Types
+### Storage
 
 Storing data is a primary purpose of any data platform.
 As hundreds of terabytes and more may be stored on the platform, storage should be cost-efficient.
