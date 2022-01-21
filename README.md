@@ -72,13 +72,16 @@ Level 4: Publish data as a product.
 - Security
 - Monitoring
 
+### Storage Location
+
+As we need to handle large datasets and typically need processing power only for a few seconds to run analytical queries, cloud-based services fit very well to storage requirements, but there are on-premise and open-source alternatives (TODO: link) as well.
+
+
 ### Storage Types
 
 Storing data is a primary purpose of any data platform.
 As hundreds of terabytes and more may be stored on the platform, storage should be cost-efficient.
 It should also provide good performance for analytical queries.
-
-As we need to handle large datasets and typically need processing power only for a few seconds to run analytical queries, cloud-based services fit very well to storage requirements, but there are on-premise and open-source alternatives (TODO: link) as well.
 
 There are different types of storage options that optimize for the origin of data and the analytical use cases:
 
@@ -111,7 +114,7 @@ A _streaming_ platform with short-time rentetion can be the suitably technology 
 _Cloud Service Examples: Confluent Kafka, AWS MSK, AWS Kinesis (Note: there is no real alternative on Google Cloud)_  
 _On-Premise Alternative: Apache Kafka_
 
-### Storage: Shared, Separated, Federated?
+### Storage Topology: Shared, Separated, Federated?
 
 Modern software systems are build independently and self-contained for a given bounded context.
 Engineers made great efforts to eliminate shared databases and monolithic structures to enforce loose coupling.
