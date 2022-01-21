@@ -72,7 +72,7 @@ Level 4: Publish data as a product.
 - Security
 - Monitoring
 
-### Storage
+### Storage Types
 
 Storing data is a primary purpose of any data platform.
 As hundreds of terabytes and more may be stored on the platform, storage should be cost-efficient.
@@ -85,24 +85,25 @@ There are different types of storage options that optimize for the origin of dat
 __SQL-like databases__
 
 Most common are _SQL-like databases_ that store data in tables with a structured schema.
-These databases use columnar data stores to retrieve and search large datasets efficiently, hence there is no need for indexes.
+These databases usually use columnar data stores to retrieve and search large datasets efficiently, hence there is no need for indexes.
 For smaller datasets is also possible to use traditional relational databases, but these will require more storage management efforts and index optimizations to build efficient queries.
 Data is often ingested in a semi-structurted format into a CLOB field, mostly in JSON format. 
 Hence, the database should be capable to parse JSON and to support array structures.
 
-_Cloud Service Examples: Google BigQuery, AWS Redshift, Snowflake Data_  
+_Cloud Service Examples: Google BigQuery, AWS Redshift, Snowflake_  
 _On-Premise Alternative: PostgreSQL/Greenplum_
 
 
 __Optional: _Object Storage___
 
-In some use cases, data needs to be exported from operative or third party systems as files, such as CSV, JSON or XML. The data platform should support to store file-oriented data, that can be further processed or analyzed.
+In some use cases, data needs to be exported from operative or third party systems as files, such as CSV, JSON or XML. 
+The data platform may need support to store file-oriented data, that can be further processed or analyzed.
 
 _Cloud Service Examples: Google Object Store, AWS S3_  
 _On-Premise Alternative: MinIO, Ceph_
 
 
-__Optional: _Streaming___
+__Optional: _Topics / Streaming___
 
 For high-volume realtime data, it might be inappropriate to store all events permanently.
 A _streaming_ platform with short-time rentetion can be the suitably technology to perform realtime analytics.
