@@ -17,7 +17,6 @@ We want to share a structure that works well for us:
    ├─ external
    ├─ manual
    ├─ intermediates
-   ├─ information_objects
    ├─ data_products
    ├─ explorative_data_analysis 
 ```
