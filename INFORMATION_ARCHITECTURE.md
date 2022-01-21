@@ -12,7 +12,9 @@ We want to share a structure that works well for us:
 ```
 └─ {organization}-{domain}[-{stage}]
    ├─ raw
-   ├─ raw_external
+   ├─ events
+   ├─ aggregates
+   ├─ external
    ├─ manual
    ├─ intermediates
    ├─ information_objects
@@ -22,36 +24,18 @@ We want to share a structure that works well for us:
 
 {stage}: prod (default), dev, test
 
-- raw:                 (private) ingested data, typically with full payload in source format. Result of Extracted and Loaded.
-- raw_external:        (private) ingested data from external sources that do not offer data as products on the same platform, otherwise similar to raw; in a perfect world, this is not necessary
-- manual:             (private) manually maintained data
+- raw:                 (private) ingested data, typically with full payload in source format.
+- events:              (private) Cleaned and structured domain events as published by operational system.
+- aggregates:          (private) Cleaned and structured aggregates (business objects) as published by operational system.
+- external:            (private) ingested data from external sources that do not offer data as products on the same platform; in a perfect world, this is not necessary
+- manual:              (private) manually maintained data
 - intermediates:       (private) extracted reusable queries/views, think of materialized Common Table Expressions (CTE); not helpful on their own, only through their multiple usages
-- information_objects: (private) the actual data products that are used by this domain for reports etc.
-- data_products:       (orga-public) the actual data products that are used by this domain and other domains/teams
-- explorative_data_analysis: (private) one time queries and Jupyter notebooks for ad hoc purposes that are stored for later use and inspection, but not actively maintained. Should not be used in reports.
+- data_products:       (orga-public) the actual data products that are published to be used by other domains
+- explorative_data_analysis: (private) one time queries and Jupyter notebooks for ad-hoc purposes that are stored for later use and inspection, but not actively maintained. Should not be used in reports.
 
-
-Types of data:
-- Aggregates (Term is overloaded!)
-- Domain Events
-- Streams (z. B. Clickstreams, Logfiles, Sensordata)
-- Manually maintained tables
 
 Meta-Data:
 - Added Timestamp
 - Type
 - Source System
 
-## Example
-
-```
-└─ yetanotheronlineshop-fulfillment
-   ├─ raw
-      ├─ stock_events
-         ├─ attr: location_id, article_id, available, updated_at, inserted_at
-   ├─ raw_external
-   ├─ intermediates
-   ├─ information_objects
-   ├─ data_products
-   ├─ queries 
-```
