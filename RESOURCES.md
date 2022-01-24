@@ -1,5 +1,9 @@
 # Resources
 
+## Brainstorming
+
+[Brainstorming Miro Board](https://miro.com/app/board/uXjVOXtheaE=/)
+
 ## Books
 
 1. ["Data Mesh in Action" by Jacek Majchrzak, Sven Balnojan, and Marian Siwiak. Manning.  Publication in Summer 2022](https://www.manning.com/books/data-mesh-in-action)
