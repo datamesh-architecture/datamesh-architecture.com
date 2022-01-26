@@ -36,6 +36,8 @@ Make database table changes to events.
 - May require initial snapshots?
 - TBD: what happens when service is down?
 
+Google Service: https://cloud.google.com/data-fusion/docs/concepts/replication (uses https://debezium.io)
+
 ## File export and import
 
 Not recommended, as not streamed. 
