@@ -14,7 +14,7 @@ Many organizations have already made a transformation towards domain-oriented te
 
 Being a decentralized approach for analytical data, a Data Mesh Architecture now gives domain teams capabilities to analyze data on their own and provide it to other domains.
 
-![](4steps-StatusQuo.drawio.svg)
+![](images/4steps.svg)
 
 On this website, we describe integral parts of a Data Mesh Architecture and show how to introduce it in your organization.
 
