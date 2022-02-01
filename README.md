@@ -6,7 +6,7 @@
 
 ## Why Data Mesh?
 
-![](4steps-Status Quo.drawio.svg)
+![](4steps-StatusQuo.drawio.svg)
 
 Data Mesh enables data-driven decisions within our domain.
 
