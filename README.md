@@ -18,4 +18,8 @@ Being a decentralized approach for analytical data, a Data Mesh Architecture now
 
 On this website, we describe integral parts of a Data Mesh Architecture and show how to introduce it in your organization.
 
+## What is Data Mesh?
+
+TBD
+
 
