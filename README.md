@@ -8,18 +8,14 @@
 
 Data Mesh enables data-driven decisions within our domain.
 
-Central data teams failed to scale giving meaningful insights from data due to limited domain knowledge. 
-Also, insufficient data quality led to disappointing results.
+Central data teams failed to scale, giving meaningful insights from data due to limited domain knowledge. 
 
-Many organizations already made a transformation towards domain-oriented teams and systems.
-As a result, domain teams have a deep understanding of their processes and data.
+Many organizations have already made a transformation towards domain-oriented teams and systems. As a result, domain teams have a deep understanding of their processes and data.
 
-A Data Mesh Architecture, as a decentralized approach for analytical data, now gives domain teams capabilities to analyze data on their own and to provide it to other domains.
+Being a decentralized approach for analytical data, a Data Mesh Architecture now gives domain teams capabilities to analyze data on their own and provide it to other domains.
 
 ![](4steps-StatusQuo.drawio.svg)
 
-On this website we aim to give an understanding of integral parts involved in a Data Mesh Architecture and to show how to introduce it in your organization.
-
-
+On this website, we describe integral parts of a Data Mesh Architecture and show how to introduce it in your organization.
 
 
