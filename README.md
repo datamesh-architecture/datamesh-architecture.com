@@ -2,7 +2,7 @@
 
 **Data Mesh Architecture** is a decentralised architecture that enables domain teams to perform cross-domain data analysis on their own.
 
-- [ ] TODO: Picture of the Data Mesh Concept.
+![](images/datamesharchitecture.png)
 
 ## Why Data Mesh?
 
@@ -14,7 +14,7 @@ Many organizations have already made a transformation towards domain-oriented te
 
 Being a decentralized approach for analytical data, a Data Mesh Architecture now gives domain teams capabilities to analyze data on their own and provide it to other domains.
 
-![](images/4steps.svg)
+![](images/4steps.png)
 
 On this website, we describe integral parts of a Data Mesh Architecture and show how to introduce it in your organization.
 
