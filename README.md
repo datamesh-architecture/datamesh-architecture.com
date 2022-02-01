@@ -6,6 +6,8 @@
 
 ## Why Data Mesh?
 
+![](4steps-Status Quo.drawio.svg)
+
 Data Mesh enables data-driven decisions within our domain.
 
 Central data teams failed to scale giving meaningful insights from data due to limited domain knowledge. 
