@@ -1,8 +1,10 @@
 # Data Mesh Architecture: Data Mesh from an Engineering Perspective
 
-**Data Mesh Architecture** is a decentralised architecture that enables domain teams to perform cross-domain data analysis on their own.
+Today, data analysis is central to the success of companies, but it's hard to scale.
+Data Mesh addresses the issue of scaling of a central data team in a world of decentralised domain teams.
+The goal of this website is to *focus on the engineering perspective of the domain teams* and to give advice and examples how to organize, build, and operate a Data Mesh within your organization.
 
-
+> **Data Mesh Architecture** is a decentralised architecture that enables domain teams to perform cross-domain data analysis on their own.
 
 The term *Data Mesh* was coined by [Zhamak Dehghani](https://martinfowler.com/articles/data-monolith-to-mesh.html).
 
