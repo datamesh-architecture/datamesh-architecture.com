@@ -28,32 +28,6 @@ Data Mesh builds upon four principles:
 ## Case Study
 
 
-## Data Mesh Maturity Model
-
-![](datamesh-maturity.png)
-
-TODO: schönere Grafik
-
-This maturity model describes the evolution of a domain team in a data mesh architecture.
-
-Level 0: No data analysis.
-
-Level 1: Operational database queries.
-- Variant: query on secondary nodes
-
-Level 2: Analyze own data on self-serve data platform.
-- Includes ingesting, storage, analysis, visualization.
-- Variant: custom analytical postgres DB
-
-Level 3: Combine own with data from other domains.
-- Includes discoverability and access
-- Use a data catalog
-
-Level 4: Publish data as a product.
-- Build and maintain data product
-- Operational monitoring
-- Describe data product in catalog
-
 ## Architecture Components
 
 - Data Storage
