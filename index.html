@@ -83,6 +83,58 @@
 
 
 
+    <section class="section is-medium">
+
+        <div class="columns is-multiline">
+
+            <div class="column is-half">
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <h4 class="title is-4">Information Architecture</h4>
+                        <p>
+                            This is an example with a big card picture on top.
+                        </p>
+                    </div>
+                    <footer class="card-footer">
+                        <a href="#" class="card-footer-item">Read More</a>
+                    </footer>
+                </div>
+            </div>
+
+            <div class="column is-half">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="media">
+                        <figure class="media-left">
+                            <p class="image is-128x128">
+                                <img src="https://bulma.io/images/placeholders/128x128.png">
+                            </p>
+                        </figure>
+                        <div class="media-content">
+
+                            <h4 class="title is-4">Information Architecture</h4>
+                            <p>
+                                This is an example with a media object on the left.
+                            </p>
+                            <footer>
+                                <a href="#" >Read More</a>
+                            </footer>
+                        </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
 
 
 
@@ -142,9 +194,7 @@
             </div>
         </div>
 
-        <div class="block">&nbsp;</div>
-
-        <div class="columns is-vcentered">
+        <div class="columns is-vcentered mt-6">
             <div class="column content">
                 <p class="title is-3"><span class="tag">Level 0</span> No Data Analytics</p>
             </div>
@@ -160,11 +210,10 @@
                     It was quite an effort to reach this level and you were highly focussed on delivery excellence.
                     So, you didn't have capacity to do data analytics during that transformation as well.
                     Others, like a central data team, however, may export your production database to a central data lake for data analysis and management reports.
-                    You might feel uncomfortable that others had direct access to your production databases, violating the principle of information hiding that so worked so hard to achieve in your self-contained systems.
+                    You might feel uncomfortable that others had direct access to your production databases, violating the principle of information hiding that so worked so hard to achieve in your microservices.
                     Some management reports may include insights on your domain, but you don't really understand how the numbers were calculated and nobody can validate if these were correct.
                 </p>
             </div>
-
             <div class="column">
                 <figure class="image">
                     <img src="images/domainteamjourney_level0.svg" alt="">
@@ -172,9 +221,7 @@
             </div>
         </div>
 
-        <div class="block">&nbsp;</div>
-
-        <div class="columns is-vcentered">
+        <div class="columns is-vcentered mt-6">
             <div class="column content">
                 <p class="title is-3"><span class="tag">Level 1</span> Operational Database Queries</p>
             </div>
@@ -183,16 +230,17 @@
         <div class="columns is-vcentered">
             <div class="column content">
                 <p>
-                    Your team gathers insights on their own operational data.
-                    You query your production database to answer your initial questions on your data, do some explorative analytics to get a deeper understanding of your data in general, or to investigate a production incident.
+                    Your team starts to send queries to your operational database.
+                    You probably have to investigate a production incident and need to analyze how many customers are affected.
+                    You also might query your database to answer someone's questions regarding your data, or you do some explorative analytics to get a deeper understanding of your system's behaviour.
                 </p>
                 <p>
                     This increases load on your production database, and you might be tempted to change the production database to better support your analytical queries, like creating additional indices.
+                    And that feels very wrong.
                     Although you might offload the additional load to a secondary database node, it doesn't solve the performance issues.
                 </p>
-                <p>In summary, the great insights of your analytical efforts are shaded by performance optimization trade-offs.</p>
+                <p>In summary, the valuable insights of your analytical efforts are shaded by performance optimization trade-offs.</p>
             </div>
-
             <div class="column">
                 <figure class="image">
                     <img src="images/domainteamjourney_level1.svg" alt="">
@@ -200,19 +248,17 @@
             </div>
         </div>
 
-        <div class="block">&nbsp;</div>
 
-        <div class="columns is-vcentered">
+        <div class="columns is-vcentered mt-6">
             <div class="column content">
                 <p class="title is-3"><span class="tag">Level 2</span> Analyze Own Data</p>
             </div>
         </div>
-
         <div class="columns is-vcentered">
             <div class="column content">
                 <p>
                     The team starts to build an analytical data model from their production databases while keeping them untouched.
-                    This allows them to analyze data covering their own self-contained systems performantly.
+                    This allows them to analyze data covering their own systems performantly.
                 </p>
                 <p>
                     In a simple approach, this might be a separate SQL database with hand-managed indices.
@@ -222,7 +268,6 @@
                 </p>
                 <p>Because questions on their own data can now be answered quickly, the team now enters the cycle of making data-driven decisions: define hypotheses and verify with data.</p>
             </div>
-
             <div class="column">
                 <figure class="image">
                     <img src="images/domainteamjourney_level2.svg" alt="">
@@ -230,9 +275,7 @@
             </div>
         </div>
 
-        <div class="block">&nbsp;</div>
-
-        <div class="columns is-vcentered">
+        <div class="columns is-vcentered mt-6">
             <div class="column content">
                 <p class="title is-3"><span class="tag">Level 3</span> Analyze Cross-domain Data</p>
             </div>
@@ -256,7 +299,6 @@
                     You may have to skip this step for now and move on to level 4 and be the first to provide data.
                 </p>
             </div>
-
             <div class="column">
                 <figure class="image">
                     <img src="images/domainteamjourney_level3.svg" alt="">
@@ -264,15 +306,12 @@
             </div>
         </div>
 
-        <div class="block">&nbsp;</div>
 
-        <div class="columns is-vcentered">
+        <div class="columns is-vcentered mt-6">
             <div class="column content">
                 <p class="title is-3"><span class="tag">Level 4</span> Publish Data as a Product</p>
             </div>
-
         </div>
-
         <div class="columns is-vcentered">
             <div class="column content">
                 <p>
@@ -287,7 +326,6 @@
                     The team needs to know the global policies.
                 </p>
             </div>
-
             <div class="column">
                 <figure class="image">
                     <img src="images/domainteamjourney_level4.svg" alt="">
@@ -298,50 +336,32 @@
 
     <section class="section is-medium">
 
-        <div class="columns is-vcentered">
-<!--            <div class="column content">-->
-<!--            </div>-->
+        <h1 class="title is-1">Data Team's Journey</h1>
 
-            <div class="column content">
-                <p class="title is-1">Data Team's Journey</p>
-            </div>
-        </div>
+        <img src="images/datateamjourney.svg" alt="">
 
-        <div class="columns">
-            <div class="column">
-                <figure class="image">
-                    <img src="images/datateamjourney.svg" alt="">
-                </figure>
-            </div>
-        </div>
-
-        <div class="columns">
-
-            <div class="column content">
-                <p>
-                    Data Mesh is primarily an organizational construct.
-                    It relies on the principles of team topologies and shifts the responsibilities for data from a central data team towards domain teams.
-                    In addition, a data platform team and a data enablement team supports the domain teams.
-                    In a federated governance guild representatives of all teams come together to define the common standards.
-                </p>
-                <p>
-                    Today, in many organizations a central data team is responsible for wide-ranging analytical tasks, from data-engineering to managing data infrastructure to creating C-level reports.
-                    Data Mesh mitigates domain knowledge related cognitive overload.
-                    Data Mesh offers new perspectives for members of the central data team as their analytical and data engineering skills remain highly necessary.
-                    For example, they are a perfect fit to establish the data platform for people that prefer to work on the infrastructure.
-                    Some of them can form a data enablement team to act as internal consultants, helping domain teams on their journey.
-                    Despite their new roles, they are also destined to contribute in the Data Mesh federated governance guild, which is responsible to agree on the interoperability of data products and enforcing regulations.
-                </p>
-                <p>
-                    The real mind shift however happens when founding new data-centric domains.
-                    This allows them to focus on one stakeholder and provide their data as an actual product.
-                    TBD... (examples, join existing teams (but not being "the data guy"), product thinking, OpEx, Results to operational systems, )
-                </p>
-                <p>
-                    ML/Data Science -> domain team / enablement team
-                </p>
-            </div>
-        </div>
+        <p class="mt-5">
+            Data Mesh is primarily an organizational construct.
+            It relies on the principles of team topologies and shifts the responsibilities for data from a central data team towards domain teams.
+            In addition, a data platform team and a data enablement team supports the domain teams.
+            In a federated governance guild representatives of all teams come together to define the common standards.
+        </p>
+        <p>
+            Today, in many organizations a central data team is responsible for wide-ranging analytical tasks, from data-engineering to managing data infrastructure to creating C-level reports.
+            Data Mesh mitigates domain knowledge related cognitive overload.
+            Data Mesh offers new perspectives for members of the central data team as their analytical and data engineering skills remain highly necessary.
+            For example, they are a perfect fit to establish the data platform for people that prefer to work on the infrastructure.
+            Some of them can form a data enablement team to act as internal consultants, helping domain teams on their journey.
+            Despite their new roles, they are also destined to contribute in the Data Mesh federated governance guild, which is responsible to agree on the interoperability of data products and enforcing regulations.
+        </p>
+        <p>
+            The real mind shift however happens when founding new data-centric domains.
+            This allows them to focus on one stakeholder and provide their data as an actual product.
+            TBD... (examples, join existing teams (but not being "the data guy"), product thinking, OpEx, Results to operational systems, )
+        </p>
+        <p>
+            ML/Data Science -> domain team / enablement team
+        </p>
 
     </section>
 
