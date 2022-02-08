@@ -63,8 +63,8 @@
                 <div class="content">
                     <p>Data Mesh as a concept relies on the following four fundamental principles:</p>
                     
-                    <p>The <strong>Domain Ownership</strong> principle mandates the domain teams to take responsibility for their data. According to this principle, monolithic analytical data should be decomposed around domains, similar to the team boundaries aligning with the system's bounded context. Following the domain-driven distributed architecture, analytical and operational data ownership is moved to the domain teams, away from the central data team.</p>
-                    <p>The <strong>Data as a Product</strong> principle projects a "product thinking" philosophy on the domain-driven analytical data. This principle means that there are consumers for the data beyond the domain. The bounded context's team is responsible for satisfying the data needs from other domains. Like software services, domain data should be treated as any public API.</p>
+                    <p>The <strong>Domain Ownership</strong> principle mandates the domain teams to take responsibility for their data. According to this principle, analytical data should be composed around domains, similar to the team boundaries aligning with the system's bounded context. Following the domain-driven distributed architecture, analytical and operational data ownership is moved to the domain teams, away from the central data team.</p>
+                    <p>The <strong>Data as a Product</strong> principle projects a "product thinking" philosophy on the domain-driven analytical data. This principle means that there are consumers for the data beyond the domain. The bounded context's team is responsible for satisfying the data needs from other domains. Basically, domain data should be treated as any public API.</p>
                     <p>A <strong>Self-serve Platform</strong> ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
                     <p>Lorem <strong>Federated Governance</strong> ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
                 </div>
@@ -79,16 +79,24 @@
 
 
     <section class="section is-medium">
-        <div class="title is-1">Data Mesh Architecture</div>
+        <div class="title">Data Mesh Architecture</div>
         <div class="subtitle is-4">A Socio-technical Perspective</div>
         <div class="content">
             <img src="images/datamesharchitecture.svg" alt="Data Mesh Architecture">
+            <p class="mt-5">
+                At the core of Data Mesh Architecture is the domain with its responsible team and its operational and analytical data.
+                Based on the requirements for data, coming from other domains, teams build data products.
+                Based on their own information needs team perform data analysis.
+                Both have in common that they rely on analytical data, which are derived from ingested operational data,
+                and optionally data products from other domains.
+            </p>
             <p>
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-                Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet,
+                The domain team agrees with others on interoperability, security, and documentation standards in a Federated Computational Governance guild, so that domain teams know how to discover, understand and use data products available in the Data Mesh.
+                The self-serving domain-agnostic data platform, provided by the data platform team, enables domain teams to easily build their own data products and do their own analysis effectively.
+                An enablement team guides domain teams how to model analytical data, use the data platform, build, and maintain interoperable data products.
             </p>
         </div>
-        <div class="card mt-4">
+        <div class="card mt-5">
             <div class="card-content">
                 <div class="media">
                     <div class="media-content content">
