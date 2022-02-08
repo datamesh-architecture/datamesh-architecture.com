@@ -331,8 +331,8 @@
                     You also might query your database to answer someone's questions regarding your data, or you do some explorative analytics to get a deeper understanding of your system's behaviour.
                 </p>
                 <p>
-                    This increases load on your production database, and you might be tempted to change the production database to better support your analytical queries, like creating additional indices.
-                    And that feels very wrong.
+                    This increases load on your production database, so you might be tempted to change the production database to better support your analytical queries, like creating additional indices.
+                    And this feels very wrong.
                     Although you might offload the additional load to a secondary database node, it doesn't solve the performance issues.
                 </p>
                 <p>In summary, the valuable insights of your analytical efforts are shaded by performance optimization trade-offs.</p>
@@ -353,16 +353,17 @@
         <div class="columns is-vcentered">
             <div class="column content">
                 <p>
-                    The team starts to build an analytical data model from their production databases while keeping them untouched.
-                    This allows them to analyze data covering their own systems performantly.
+                    You have heard that some data platform team is providing a new data platform for every team to use, called _Data Mesh_.
+                    You give it a try.
+                    You build an analytical data model from your Kafka messages while keeping all operational databases untouched.
+                    This allows you to analyze data covering all your own systems performantly.
                 </p>
                 <p>
-                    In a simple approach, this might be a separate SQL database with hand-managed indices.
-                    With more and more data analysis, the team will move to use a high performance data platform such as Google BigQuery.
-                    Regardless of the approach, the team needs to ingest operational data into an analytical data storage.
-                    It needs to learn how to structure, preprocess, clean, analyze, and visualize analytical data&mdash;that's a lot to learn even though most is SQL which most engineers are already familiar with.
+                    You learn how to structure, preprocess, clean, analyze, and visualize analytical data&mdash;that's a lot to learn even though most is SQL which most engineers of your team are already familiar with.
+                    Fortunately, there are a number of templates for typical use cases that you can copy and adopt for your needs.
+                    An enablement team helps you, how to build more complex queries.
                 </p>
-                <p>Because questions on their own data can now be answered quickly, the team now enters the cycle of making data-driven decisions: define hypotheses and verify with data.</p>
+                <p>Because questions regarding your own data can now be answered quickly, you now enter the cycle of making data-driven decisions: define hypotheses and verify with data.</p>
             </div>
             <div class="column">
                 <figure class="image">
@@ -387,12 +388,11 @@
                     This is when the mesh begins to form itself.
                 </p>
                 <p>
-                    When the team becomes a consuming member of the data mesh, it starts to gain interest in the interoperability and governance of the data mesh.
+                    When a team becomes a consuming member of the data mesh, it starts to gain interest in the interoperability and governance of the data mesh.
                     Ideally, the team will send a representative to the data mesh governance body.
                 </p>
                 <p>
-                    In case you are the first team, you run into the-chicken-or-the-egg dilemma.
-                    You may have to skip this step for now and move on to level 4 and be the first to provide data.
+                    In case you are the first team, you may have to skip this step for now and move on to level 4 and be the first to provide data for others.
                 </p>
             </div>
             <div class="column">
@@ -411,11 +411,10 @@
         <div class="columns is-vcentered">
             <div class="column content">
                 <p>
-                    Based on other teams need, the domain team shares data with others as products.
-                    Instead of just being a consumer of data products, the domain teams becomes a
-                    producer of data products.
-                    The team generates value for other teams with its data.
-                    But at the same time, it increases the responsibility and operational duties of the domain team.
+                    Based on other teams need, you share your data with others as products.
+                    Instead of just being a consumer of data products, the domain teams becomes a producer of data products.
+                    You generate value for other teams.
+                    But at the same time, it increases your responsibility and operational duties.
                 </p>
                 <p>
                     TBD.
