@@ -120,10 +120,8 @@
             <img src="images/datamesharchitecture.svg" alt="Data Mesh Architecture">
             <p class="mt-5">
                 At the core of any Data Mesh Architecture is the domain with its responsible team and its operational and analytical data.
-                Based on the requirements for data, coming from other domains, teams build data products.
-                Based on their own information needs teams perform data analysis.
-                Both, the analysis and the data products rely on analytical data, which are derived from ingested operational data,
-                and optionally data products from other domains.
+                The domain team ingests operational data and builds analytical data models to perform their own analysis.
+                It uses analytical data to build data products based on other domains' needs.
             </p>
             <p>
                 The domain team agrees with others on interoperability, security, and documentation standards in a Federated Computational Governance guild, so that domain teams know how to discover, understand and use data products available in the Data Mesh.
@@ -137,12 +135,32 @@
                     <div class="media-content content">
                         <h4 class="title is-4">Storage</h4>
                         <p>
-                            DB, File, Streaming
+                            Storing data is a primary purpose of any data platform.
+                            As hundreds of terabytes and more may be stored on the platform, storage should be cost-efficient.
+                            It should also provide good performance for analytical queries.
                         </p>
-                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-                        <footer>
-                            <a href="#" >Learn More</a>
-                        </footer>
+                        <p>
+                            Most common are <strong>SQL-like databases</strong> that store data in tables with a structured schema.
+                            These databases usually use columnar data stores to retrieve and search large datasets efficiently, hence there is no need for indexes.
+                            For smaller datasets is also possible to use traditional relational databases, but these will require more storage management efforts and index optimizations to build efficient queries.
+<!--                            Data is often ingested in a semi-structurted format into a CLOB field, mostly in JSON format.-->
+<!--                            Hence, the database should be capable to parse JSON and to support array structures.-->
+                            <br>
+                            <em>Examples for SQL-like databases: Google BigQuery, AWS Redshift, Azure Synapse Analytics, Snowflake, PostgreSQL</em>
+                        </p>
+                        <p>
+                            In some use cases, data needs to be exported from operative or third party systems as files, such as CSV, JSON or XML.
+                            The data platform may need support to store files in an <strong>object storage</strong>, that can be further processed or analyzed.
+                            We recommend not to use file-based datasets, but in some cases this is the most pragmatic option.
+                            <br>
+                            <em>Examples for object storage: Google Object Store, AWS S3, Git</em>
+                        </p>
+                        <p>
+                            For high-volume realtime data, it might be inappropriate to store all events permanently.
+                            A <strong>streaming platform</strong> with short-time retention can be the suitable technology to perform realtime analytics.
+                            <br>
+                            <em>Examples for streaming platforms: Kafka, AWS Kinesis</em>
+                        </p>
                     </div>
                     <figure class="media-right">
                         <p class="image is-128x128">
@@ -539,7 +557,7 @@
         <div class="content has-text-centered">
             <p>
                 <a href="https://www.innoq.com">
-                    <img src="/images/supported-by-innoq--petrol-apricot.svg" class="footer-logo" />
+                    <img src="/images/supported-by-innoq--petrol-apricot.svg" alt="Supported by INNOQ" class="footer-logo" />
                 </a>
             </p>
             <p>
