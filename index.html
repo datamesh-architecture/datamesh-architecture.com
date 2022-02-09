@@ -49,11 +49,16 @@
     <section class="section is-medium">
         <div class="columns is-vcentered">
             <div class="column content">
-                <h1 class="title">Why?</h1>
-                <p>Data Mesh enables data-driven decisions within our domain.</p>
-                <p>Central data teams failed to scale, giving meaningful insights from data due to limited domain knowledge.</p>
-                <p>Many organizations have already made a transformation towards domain-oriented teams and systems. As a result, domain teams have a deep understanding of their processes and data.</p>
-                <p>Data Mesh adopts the idea of domain-oriented decentralization for analytical data. A Data Mesh Architecture gives domain teams the capabilities to analyze data on their own and to provide curated data to other domains.</p>
+                <h1 class="title">Why is Data Mesh the next Big Thing?</h1>
+                <p>
+                    To tackle scaling issues, many organizations made a transformation towards domain-oriented teams and systems.
+                    Domain teams have a deep understanding of their processes and data.
+                    Central data teams, however, failed to scale giving meaningful insights from data.
+                    They suffered from limited domain knowledge and insufficient data quality.
+                </p>
+                <p>
+                    Data Mesh adopts the idea of domain-oriented decentralization for analytical data. A Data Mesh Architecture gives domain teams the capabilities to analyze data on their own and to provide data as products to other domains.
+                </p>
             </div>
             <div class="column">
                 <figure class="image">
@@ -74,12 +79,27 @@
             <div class="column">
                 <h1 class="title">What is Data Mesh?</h1>
                 <div class="content">
-                    <p>Data Mesh, coined by <a href="https://martinfowler.com/articles/data-mesh-principles.html">Zhamak Dehghani</a>, is based on the following four fundamental principles:</p>
+                    <p>The term <em>Data Mesh</em> was coined by <a href="https://martinfowler.com/articles/data-mesh-principles.html">Zhamak Dehghani</a> and is based on four fundamental principles:</p>
                     
-                    <p>The <strong>Domain Ownership</strong> principle mandates the domain teams to take responsibility for their data. According to this principle, analytical data should be composed around domains, similar to the team boundaries aligning with the system's bounded context. Following the domain-driven distributed architecture, analytical and operational data ownership is moved to the domain teams, away from the central data team.</p>
-                    <p>The <strong>Data as a Product</strong> principle projects a "product thinking" philosophy on the domain-driven analytical data.This principle means that there are consumers for the data beyond the domain. The bounded context's team is responsible for satisfying the needs of other domains by providing high-quality data. Basically, domain data should be treated as any public API.</p>
-                    <p>The idea behind the <strong>Self-serve Data Infrastructure Platform</strong> is to adopt the "platform thinking" to data infrastructure and let a dedicated data team provide domain-agnostic functionality, tools, and systems to build, execute, and maintain interoperable data products for all bounded contexts. The self-serve data platform and the data team enable domain teams to seamlessly create and consume data products from other domains.</p>
-                    <p>The <strong>Federated Computational Governance</strong> principle achieves interoperability of all data products through standardization, which is promoted through the whole data mesh by the governance guild. The main goal of federated governance is to create a data ecosystem with adherence to the organizational rules and industry regulations.
+                    <p>
+                        The <strong>Domain Ownership</strong> principle mandates the domain teams to take responsibility for their data.
+                        According to this principle, analytical data should be composed around domains, similar to the team boundaries aligning with the system's bounded context.
+                        Following the domain-driven distributed architecture, analytical and operational data ownership is moved to the domain teams, away from the central data team.
+                    </p>
+                    <p>
+                        The <strong>Data as a Product</strong> principle projects a "product thinking" philosophy on analytical data.
+                        This principle means that there are consumers for the data beyond the domain.
+                        The domain team is responsible for satisfying the needs of other domains by providing high-quality data.
+                        Basically, domain data should be treated as any other public API.
+                    </p>
+                    <p>
+                        The idea behind the <strong>Self-serve Data Infrastructure Platform</strong> is to adopt "platform thinking" to data infrastructure.
+                        A dedicated data platform team provides domain-agnostic functionality, tools, and systems to build, execute, and maintain interoperable data products for all domains.
+                        With its platform, the data platform team enables domain teams to seamlessly consume and create data products.
+                    </p>
+                    <p>
+                        The <strong>Federated Computational Governance</strong> principle achieves interoperability of all data products through standardization, which is promoted through the whole data mesh by the governance guild.
+                        The main goal of federated governance is to create a data ecosystem with adherence to the organizational rules and industry regulations.
                     </p>
                 </div>
             </div>
@@ -351,13 +371,13 @@
             <div class="column content">
                 <p>
                     Your autonomous team is responsible for a domain and builds and operates self-contained systems including the neccessary infrastructure.
-                    These operational systems now generate domain data.
+                    These operational systems generate domain data.
                 </p>
                 <p>
                     It was quite an effort to reach this level and you were highly focussed on delivery excellence.
                     So, you didn't have capacity to do data analytics during that transformation as well.
                     Others, like a central data team, however, may import your production database into a central data lake for data analysis and management reports.
-                    You might feel uncomfortable that others had direct access to your production databases, violating the principle of information hiding that so worked so hard to achieve in your microservices.
+                    You might feel uncomfortable that others had direct access to your production databases, violating the principle of information hiding that so worked so hard to achieve in your operational systems.
                     Some management reports may include insights on your domain, but you don't really understand how the numbers were calculated and nobody can validate if these were correct.
                 </p>
             </div>
@@ -377,9 +397,10 @@
         <div class="columns is-vcentered">
             <div class="column content">
                 <p>
-                    Your team starts to send analytical queries to your operational database.
                     You probably have to investigate a production incident and need to analyze how many customers are affected.
-                    You also might query your database to answer someone's questions regarding your data, or you do some explorative analytics to get a deeper understanding of your system's behaviour.
+                    Also, some stakeholders might have questions regarding your data.
+                    To answer all these questions, you send analytical queries to your operational database.
+                    Over time, you also do some first explorative analytics to get a deeper understanding of your system's behaviour.
                 </p>
                 <p>
                     This increases load on your production database, so you might be tempted to change the production database to better support your analytical queries, like creating additional indices.
