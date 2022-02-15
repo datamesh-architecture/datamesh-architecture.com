@@ -39,8 +39,7 @@
     </section>
     <section class="section is-large">
                 <div class="title">
-                        <strong>Data Mesh Architecture</strong> is a decentralized architecture
-                        that enables domain teams to perform cross-domain data analysis
+                        A <strong>Data Mesh Architecture</strong> enables domain teams to perform cross-domain data analysis
                         on their own.
                 </div>
     </section>
@@ -116,18 +115,22 @@
             <div class="column content">
                 <h1 class="title">What is a Data Product?</h1>
                 <p>
-                    A data product is mostly a data set, but it can take other forms as well:
+                    A data product is mostly a <strong>data set</strong>.
+                    For example, the history of inventory updates of articles in a Google BigQuery table
+                    or a JSON file per day with purchase orders on an AWS S3 bucket.
+                    But a data product can take other forms as well, including
+                    a sales report containing KPIs and charts as a PDF send to email list or even a
+                    ML model in <a href="https://onnx.ai/">ONNX</a> format to predict shipping dates.
                 </p>
-                <ul>
-                    <li>the history of inventory updates of articles in a Google BigQuery table</li>
-                    <li>a JSON file per day with purchase orders on an AWS S3 bucket</li>
-                    <li>ML model in <a href="https://onnx.ai/">ONNX</a> format to predict shipping dates</li>
-                    <li>a sales report containing KPIs and charts as a PDF send to email list</li>
-                </ul>
                 <p>
-                    - meta data: specification, documentation
-                    - operative "betrieb" SLA, ...
-                    - data products must follow rules of the federated governance guild
+                    To discover, access, and use, the data are described with <strong>metadata</strong>, including
+                    ownership and contact information, data location and access, update frequency,
+                    and a specification of the data model.
+                </p>
+                <p>
+                    The domain team is responsible for the <strong>operations</strong> of the data product during its entire lifecycle.
+                    The team needs to continuously monitor and ensure data quality and availability.
+                    For example, keep the data without duplicates or react on missing entries.
                 </p>
             </div>
             <div class="column">
