@@ -216,6 +216,42 @@
             </div>
         </div>
 
+        <div class="card mt-4">
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-content content">
+                        <h4 class="title is-4">Analytical Data</h4>
+
+                        <div class="columns">
+
+                            <div class="column">
+                                <p>
+                                   Diving into the analytical data, we can see the data flows that lead towards the data products.
+                                    Operational data is often ingested as some kind of <strong>raw</strong> and unstructured data.
+                                    In a preprocessing step, raw data is cleaned and structured into events and entities.
+                                    <strong>Events</strong> are small, immutable, and highly domain oriented, such as <em>OrderPurchased</em> or <em>ShipmentDelivered</em>.
+                                    <strong>Entities</strong> represent business objects such as <em>shipments</em> or <em>articles</em> that change over time. That's why the entities often are represented as a list of snapshots, the history, with the latest snapshot being the current state.
+                                    In practice, we often see <strong>manually</strong> entered data, we've made this explicit here as well.
+                                   The data product is derived by aggregating a subset of the events, entities, manual data, and data products from other teams.
+                                   It is similar with the internal data analysis of the domain team.
+                                </p>
+                            </div>
+
+                            <div class="column">
+                                <figure class="media-right">
+                                    <p class="image">
+                                        <img src="images/analyticaldata.svg" alt="">
+                                    </p>
+                                </figure>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
         <div class="card mt-5">
             <div class="card-content">
                 <div class="media">
@@ -283,7 +319,7 @@
             <div class="card-content">
                 <div class="media">
                     <div class="media-content content">
-                        <h4 class="title is-4">Analytical Data Model</h4>
+                        <h4 class="title is-4">Analytical Data</h4>
                         <p>
                             raw + events/entities + manual + imported
                         </p>
