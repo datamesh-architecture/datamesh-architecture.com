@@ -163,7 +163,7 @@
                 It uses analytical data to build data products based on other domains' needs.
             </p>
             <p>
-                The domain team agrees with others on interoperability, security, and documentation standards in a Federated Computational Governance guild, so that domain teams know how to discover, understand and use data products available in the Data Mesh.
+                The domain team agrees with others on global policies, such as interoperability, security, and documentation standards, in a Federated Governance guild, so that domain teams know how to discover, understand and use data products available in the Data Mesh.
                 The self-serving domain-agnostic data platform, provided by the data platform team, enables domain teams to easily build their own data products and do their own analysis effectively.
                 An enablement team guides domain teams how to model analytical data, use the data platform, build, and maintain interoperable data products.
             </p>
@@ -178,18 +178,15 @@
                             As hundreds of terabytes and more may be stored on the platform, storage should be cost-efficient and provide good performance for complex analytical queries.
                         </p>
                         <p>
-                            Most common are <strong>SQL-like databases</strong> that store data in tables with a structured schema.
+                            Most common are <strong>SQL-like databases</strong> that store data in tables with a structured schema, with the option of semi-structured fields.
                             These databases usually use columnar data stores to retrieve and search large datasets efficiently, hence there is no need for indexes.
-                            For smaller datasets is also possible to use traditional relational databases, but these will require more storage management efforts and index optimizations to build efficient queries.
-<!--                            Data is often ingested in a semi-structured format into a CLOB field, mostly in JSON format.-->
-<!--                            Hence, the database should be capable to parse JSON and to support array structures.-->
+                            For smaller datasets it is also possible to use traditional relational databases, but these will require more storage management efforts and index optimizations to build efficient queries.
                             <br>
                             <em>Examples for SQL-like databases: Google BigQuery, AWS Redshift, Azure Synapse Analytics, Snowflake, PostgreSQL</em>
                         </p>
                         <p>
                             In some use cases, data needs to be exported from operative or third party systems as files, such as CSV, JSON or XML.
                             The data platform may need support to store files in an <strong>object storage</strong>, that can be further processed or analyzed.
-                            We recommend not to use file-based datasets, but in some cases this is the most pragmatic option.
                             <br>
                             <em>Examples for object storage: Google Object Store, AWS S3, Git</em>
                         </p>
@@ -296,20 +293,43 @@
             <div class="card-content">
                 <div class="media">
                     <div class="media-content content">
-                        <h4 class="title is-4">Federated Governance</h4>
-                        <p>
-                            TBD
-                        </p>
-                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-                        <footer>
-                            <a href="#" >Learn More</a>
-                        </footer>
+                        <h4 class="title is-4">Global Policies</h4>
+
+                        <div class="columns">
+
+                            <div class="column">
+                                <p>
+                                    Global policies are rules of play in the Data Mesh.
+                                    They define how the domain teams have to build their data products.
+                                </p>
+                                <p>
+                                    Policies on <strong>interoperability</strong> are the starting point.
+                                    They allow other domain teams to use data products in a consistent way.
+                                    For example, global policies could define that the standard way to provide data is as a CSV file on AWS S3 in a bucket owned by the corresponding domain team.
+                                </p>
+                                <p>
+                                    Next, there has to be some form of <strong>documentation</strong> to discover and understand available data products.
+                                    A simple policy for this could be a wiki page with a predefined set of metadata, such as owner of the data product, location url, and descriptions of the CSV fields.
+                                </p>
+                                <p>
+                                    A uniform way to access the actual data product in a <strong>secure</strong> way could be using a role-based access in AWS IAM, managed by the domain team.
+                                </p>
+                                <p>
+                                    Global policies such as <strong>privacy</strong> and <strong>compliance</strong> are also common. Think about protection of personally identifiable information (PII) or industry-specific legal requirements.
+                                </p>
+                            </div>
+
+                            <div class="column">
+                                <figure class="media-right">
+                                    <p class="image">
+                                        <img src="images/globalpolicies.svg" alt="">
+                                    </p>
+                                </figure>
+                            </div>
+                        </div>
+
                     </div>
-                    <figure class="media-right">
-                        <p class="image is-128x128">
-                            <img src="https://bulma.io/images/placeholders/128x128.png" alt="">
-                        </p>
-                    </figure>
+
                 </div>
             </div>
         </div>
