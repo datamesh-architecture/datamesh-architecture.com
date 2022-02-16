@@ -111,47 +111,8 @@
                     </p>
                 </div>
             </div>
-
-        </div>
-
-    </section>
-
-
-
-    <section class="section is-large">
-        <div class="columns is-vcentered">
-            <div class="column content">
-                <h1 class="title">What is a Data Product?</h1>
-                <p>
-                    A data product usually is a published <strong>data set</strong>, similar to an API.
-                    The data itself is curated for the use by other domains.
-                    For example, the history of inventory updates of articles in a Google BigQuery table
-                    or a JSON file per day with purchase orders on an AWS S3 bucket.
-                    A data product can take other forms as well, including
-                    a sales report containing KPIs and charts as a PDF or even an
-                    ML model in <a href="https://onnx.ai/">ONNX</a> format to predict shipping dates.
-                </p>
-                <p>
-                    To discover, access, and use the data product, it is described with <strong>metadata</strong>, including
-                    ownership and contact information, data location and access, update frequency,
-                    and a specification of the data model.
-                </p>
-                <p>
-                    The domain team is responsible for the <strong>operations</strong> of the data product during its entire lifecycle.
-                    The team needs to continuously monitor and ensure data quality and availability.
-                    For example, keep the data without duplicates or react on missing entries.
-                </p>
-            </div>
-            <div class="column">
-                <figure class="image">
-                    <img src="images/dataproduct.svg" alt="">
-                </figure>
-
-            </div>
         </div>
     </section>
-
-
 
     <section class="section is-medium">
         <div class="title">How to design a Data Mesh?</div>
@@ -168,127 +129,48 @@
                 An enablement team guides domain teams how to model analytical data, use the data platform, build, and maintain interoperable data products.
             </p>
         </div>
+
         <div class="card mt-5">
             <div class="card-content">
                 <div class="media">
                     <div class="media-content content">
-                        <h4 class="title is-4">Storage</h4>
-                        <p>
-                            Storing data is a primary purpose of any data platform.
-                            As hundreds of terabytes and more may be stored on the platform, storage should be cost-efficient and provide good performance for complex analytical queries.
-                        </p>
-                        <p>
-                            Most common are <strong>SQL-like databases</strong> that store data in tables with a structured schema, with the option of semi-structured fields.
-                            These databases usually use columnar data stores to retrieve and search large datasets efficiently, hence there is no need for indexes.
-                            For smaller datasets it is also possible to use traditional relational databases, but these will require more storage management efforts and index optimizations to build efficient queries.
-                            <br>
-                            <em>Examples for SQL-like databases: Google BigQuery, AWS Redshift, Azure Synapse Analytics, Snowflake, PostgreSQL</em>
-                        </p>
-                        <p>
-                            In some use cases, data needs to be exported from operative or third party systems as files, such as CSV, JSON or XML.
-                            The data platform may need support to store files in an <strong>object storage</strong>, that can be further processed or analyzed.
-                            <br>
-                            <em>Examples for object storage: Google Object Store, AWS S3, Git</em>
-                        </p>
-                        <p>
-                            For high-volume realtime data, it might be inappropriate to store all events permanently.
-                            A <strong>streaming platform</strong> with short-time retention can be the suitable technology to perform realtime analytics.
-                            <br>
-                            <em>Examples for streaming platforms: Kafka, AWS Kinesis</em>
-                        </p>
-                    </div>
-                    <figure class="media-right">
-                        <p class="image is-128x128">
-                            <img src="https://bulma.io/images/placeholders/128x128.png" alt="">
-                        </p>
-                    </figure>
-                </div>
-            </div>
-        </div>
-        <div class="card mt-4">
-            <div class="card-content">
-                <div class="media">
-                    <div class="media-content content">
-                        <h4 class="title is-4">Ingest</h4>
-                        <p>
-                            ETL and Streaming
-                        </p>
-                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-                        <footer>
-                            <a href="#" >Learn More</a>
-                        </footer>
-                    </div>
-                    <figure class="media-right">
-                        <p class="image is-128x128">
-                            <img src="https://bulma.io/images/placeholders/128x128.png" alt="">
-                        </p>
-                    </figure>
-                </div>
-            </div>
-        </div>
-        <div class="card mt-4">
-            <div class="card-content">
-                <div class="media">
-                    <div class="media-content content">
-                        <h4 class="title is-4">Analytical Data</h4>
-                        <p>
-                            raw + events/entities + manual + imported
-                        </p>
-                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-                        <footer>
-                            <a href="#" >Learn More</a>
-                        </footer>
-                    </div>
-                    <figure class="media-right">
-                        <p class="image is-128x128">
-                            <img src="https://bulma.io/images/placeholders/128x128.png" alt="">
-                        </p>
-                    </figure>
-                </div>
-            </div>
-        </div>
-        <div class="card mt-4">
-            <div class="card-content">
-                <div class="media">
-                    <div class="media-content content">
-                        <h4 class="title is-4">Analysis</h4>
-                        <p>
-                            Ad-hoc queries, visualization, reports, A/B testing
-                        </p>
-                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-                        <footer>
-                            <a href="#" >Learn More</a>
-                        </footer>
-                    </div>
-                    <figure class="media-right">
-                        <p class="image is-128x128">
-                            <img src="https://bulma.io/images/placeholders/128x128.png" alt="">
-                        </p>
-                    </figure>
-                </div>
-            </div>
-        </div>
-        <div class="card mt-4">
-            <div class="card-content">
-                <div class="media">
-                    <div class="media-content content">
                         <h4 class="title is-4">Data Product</h4>
-                        <p>
-                            TBD
-                        </p>
-                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-                        <footer>
-                            <a href="#" >Learn More</a>
-                        </footer>
+                        <div class="columns">
+                            <div class="column">
+                                <p>
+                                    A data product usually is a published <strong>data set</strong>, similar to an API.
+                                    The data itself is curated for the use by other domains.
+                                    For example, the history of inventory updates of articles in a Google BigQuery table
+                                    or a JSON file per day with purchase orders on an AWS S3 bucket.
+                                    A data product can take other forms as well, including
+                                    a sales report containing KPIs and charts as a PDF or even an
+                                    ML model in <a href="https://onnx.ai/">ONNX</a> format to predict shipping dates.
+                                </p>
+                                <p>
+                                    To discover, access, and use the data product, it is described with <strong>metadata</strong>, including
+                                    ownership and contact information, data location and access, update frequency,
+                                    and a specification of the data model.
+                                </p>
+                                <p>
+                                    The domain team is responsible for the <strong>operations</strong> of the data product during its entire lifecycle.
+                                    The team needs to continuously monitor and ensure data quality and availability.
+                                    For example, keep the data without duplicates or react on missing entries.
+                                </p>
+                            </div>
+                            <div class="column">
+
+                                <figure class="media-right">
+                                <p class="image">
+                                    <img src="images/dataproduct.svg" alt="">
+                                </p>
+                                </figure>
+                            </div>
+                        </div>
                     </div>
-                    <figure class="media-right">
-                        <p class="image is-128x128">
-                            <img src="https://bulma.io/images/placeholders/128x128.png" alt="">
-                        </p>
-                    </figure>
                 </div>
             </div>
         </div>
+
         <div class="card mt-4">
             <div class="card-content">
                 <div class="media">
@@ -333,12 +215,116 @@
                 </div>
             </div>
         </div>
+
+        <div class="card mt-5">
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-content content">
+                        <h4 class="title is-4">Storage</h4>
+                        <p>
+                            Storing data is a primary purpose of any data platform.
+                            As hundreds of terabytes and more may be stored on the platform, storage should be cost-efficient and provide good performance for complex analytical queries.
+                        </p>
+                        <p>
+                            Most common are <strong>SQL-like databases</strong> that store data in tables with a structured schema, with the option of semi-structured fields.
+                            These databases usually use columnar data stores to retrieve and search large datasets efficiently, hence there is no need for indexes.
+                            For smaller datasets it is also possible to use traditional relational databases, but these will require more storage management efforts and index optimizations to build efficient queries.
+                            <br>
+                            <em>Examples for SQL-like databases: Google BigQuery, AWS Redshift, Azure Synapse Analytics, Snowflake, PostgreSQL</em>
+                        </p>
+                        <p>
+                            In some use cases, data needs to be exported from operative or third party systems as files, such as CSV, JSON or XML.
+                            The data platform may need support to store files in an <strong>object storage</strong>, that can be further processed or analyzed.
+                            <br>
+                            <em>Examples for object storage: Google Object Store, AWS S3, Git</em>
+                        </p>
+                        <p>
+                            For high-volume realtime data, it might be inappropriate to store all events permanently.
+                            A <strong>streaming platform</strong> with short-time retention can be the suitable technology to perform realtime analytics.
+                            <br>
+                            <em>Examples for streaming platforms: Kafka, AWS Kinesis</em>
+                        </p>
+                    </div>
+                    <figure class="media-right">
+                        <p class="image is-128x128">
+                            <img src="https://bulma.io/images/placeholders/128x128.png" alt="">
+                        </p>
+                    </figure>
+                </div>
+            </div>
+        </div>
+        <div class="card mt-4">
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-content content">
+                        <h4 class="title is-4">Ingest</h4>
+                        <p>
+                            How to get the operational data into data platform?
+
+                            Streaming
+                            - Real-time
+                            - Events (immutable): Domain Events and Analytical Events
+                            - Mutuable Business Objects
+                            - deduplication, vollständig
+                            - aufbereitet
+
+                        </p>
+                    </div>
+                    <figure class="media-right">
+                        <p class="image is-128x128">
+                            <img src="https://bulma.io/images/placeholders/128x128.png" alt="">
+                        </p>
+                    </figure>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-content content">
+                        <h4 class="title is-4">Analytical Data Model</h4>
+                        <p>
+                            raw + events/entities + manual + imported
+                        </p>
+                    </div>
+                    <figure class="media-right">
+                        <p class="image is-128x128">
+                            <img src="https://bulma.io/images/placeholders/128x128.png" alt="">
+                        </p>
+                    </figure>
+                </div>
+            </div>
+        </div>
+        <div class="card mt-4">
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-content content">
+                        <h4 class="title is-4">Analysis</h4>
+                        <p>
+                            Ad-hoc queries, visualization, reports, A/B testing
+                        </p>
+                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                        <footer>
+                            <a href="#" >Learn More</a>
+                        </footer>
+                    </div>
+                    <figure class="media-right">
+                        <p class="image is-128x128">
+                            <img src="https://bulma.io/images/placeholders/128x128.png" alt="">
+                        </p>
+                    </figure>
+                </div>
+            </div>
+        </div>
+
         <div class="card mt-4">
             <div class="card-content">
                 <div class="media">
                     <div class="media-content content">
                         <h4 class="title is-4">Data Platform</h4>
                         <p>
+                            Define "Platform".
                             TBD
                         </p>
                         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
