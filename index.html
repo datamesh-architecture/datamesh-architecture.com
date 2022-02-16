@@ -60,6 +60,13 @@
                     Data Mesh adopts the idea of domain-oriented decentralization for analytical data.
                     A Data Mesh Architecture gives domain teams the capabilities to analyze data on their own and to provide data as products to other domains.
                 </p>
+                <p>
+                    TBD:
+                    A central data team import your production database into a central data lake for data analysis and management reports.
+                    You might feel uncomfortable that others had direct access to your production databases, violating the principle of information hiding you worked so hard to achieve in your operational systems.
+                    Some management reports may include insights on your domain, but you don't really understand how the numbers were calculated and nobody can validate if these were correct.
+                </p>
+
             </div>
             <div class="column">
                 <figure class="image">
@@ -116,15 +123,16 @@
             <div class="column content">
                 <h1 class="title">What is a Data Product?</h1>
                 <p>
-                    A data product is typically a <strong>data set</strong>.
+                    A data product usually is a published <strong>data set</strong>, similar to an API.
+                    The data itself is curated for the use by other domains.
                     For example, the history of inventory updates of articles in a Google BigQuery table
                     or a JSON file per day with purchase orders on an AWS S3 bucket.
-                    But a data product can take other forms as well, including
+                    A data product can take other forms as well, including
                     a sales report containing KPIs and charts as a PDF or even an
                     ML model in <a href="https://onnx.ai/">ONNX</a> format to predict shipping dates.
                 </p>
                 <p>
-                    To discover, access, and use, the data are described with <strong>metadata</strong>, including
+                    To discover, access, and use the data product, it is described with <strong>metadata</strong>, including
                     ownership and contact information, data location and access, update frequency,
                     and a specification of the data model.
                 </p>
@@ -419,15 +427,12 @@
         <div class="columns is-vcentered">
             <div class="column content">
                 <p>
-                    Your autonomous team is responsible for a domain and builds and operates <a href="https://scs-architecture.org/">self-contained systems</a> including the necessary infrastructure.
-                    These operational systems generate domain data.
+                    Your team is responsible for a domain and builds and operates <a href="https://scs-architecture.org/">self-contained systems</a> including the necessary infrastructure.
+                    It was quite an effort to build these systems, and you were highly focussed on delivery excellence.
+                    These operational systems now generate domain data.
                 </p>
                 <p>
-                    It was quite an effort to reach this level, and you were highly focussed on delivery excellence.
-                    So, you didn't have capacity to do data analytics during that transformation as well.
-                    Others, like a central data team, however, may import your production database into a central data lake for data analysis and management reports.
-                    You might feel uncomfortable that others have direct access to your production databases, violating the principle of information hiding you worked so hard to achieve in your operational systems.
-                    Some management reports may include insights on your domain, but you don't really understand how the numbers were calculated and nobody can validate if these were correct.
+                    Data analytics was just not relevant.
                 </p>
             </div>
             <div class="column">
@@ -446,17 +451,18 @@
         <div class="columns is-vcentered">
             <div class="column content">
                 <p>
-                    You probably have to investigate a production incident and need to analyze how many customers are affected.
-                    Also, some stakeholders might have questions regarding your data.
+                    Being in production, you probably have to investigate an incident and need to analyze how many customers are affected.
+                    Also, some stakeholders might have questions regarding your data, such as "Which in-stock articles haven't been sold in the last 6 months?"
+                    or "What were the shipping times during last black week?".
                     To answer all these questions, you send analytical queries to your operational database.
                     Over time, you also do some first explorative analytics to get a deeper understanding of your system's behaviour.
                 </p>
                 <p>
-                    This increases load on your production database, so you might be tempted to change the production database to better support your analytical queries, like creating additional indices.
-                    And this feels very wrong.
-                    Although you might offload the additional load to a secondary database node, it doesn't solve the performance issues.
+                    This increases load on your production database, and you might be tempted to change the production database to better support your analytical queries,
+                    like creating additional indices.
+                    You might offload the additional load to read replicas.
+                    But analytical queries are still slow and cumbersome to write.
                 </p>
-                <p>In summary, the valuable insights of your analytical efforts are shaded by performance optimization trade-offs.</p>
             </div>
             <div class="column">
                 <figure class="image">
@@ -473,8 +479,8 @@
         </div>
         <div class="columns is-vcentered">
             <div class="column content">
-
                 <p>
+
                     Your team starts to build an analytical data model from your operational databases while keeping them untouched.
                     This allows you to analyze data covering your own systems performantly.
                 </p>
@@ -576,9 +582,9 @@
             <img src="images/newdomainteam.svg" alt="">
         <p>
             The real mind shift, however, happens when founding new data-centric domains as shown in the figure above.
-            Let's look at typical management reports that large central data teams usually produces bases on monolithic data warehouses or data lakes .
+            Let's look at typical management reports that large central data teams usually produces bases on monolithic data warehouses or data lakes.
             With Data Mesh, the data engineers that created those management reports form a new domain team together with a dedicated product owner.
-            They now can focus on their new domain and their consumers.
+            As engineers of the new domain team, they now can focus on their new domain and their consumers.
             This allows them to gain deep domain knowledge over time, resulting in better reports and continuous optimizations.
             In addition, they switch from using that monolith data warehouse to data products from other domains.
             This switch is a gradual process driven by the demand for data products, accelerating the forming of a Data Mesh.
