@@ -228,10 +228,14 @@
                                 <p>
                                    Diving into the analytical data, we can see the data flows that lead towards the data products.
                                     Operational data is often ingested as some kind of <strong>raw</strong> and unstructured data.
+                                </p>
+                                <p>
                                     In a preprocessing step, raw data is cleaned and structured into events and entities.
                                     <strong>Events</strong> are small, immutable, and highly domain oriented, such as <em>OrderPurchased</em> or <em>ShipmentDelivered</em>.
                                     <strong>Entities</strong> represent business objects such as <em>shipments</em> or <em>articles</em> that change over time. That's why the entities often are represented as a list of snapshots, the history, with the latest snapshot being the current state.
                                     In practice, we often see <strong>manually</strong> entered data, we've made this explicit here as well.
+                                </p>
+                                <p>
                                    The data product is derived by aggregating a subset of the events, entities, manual data, and data products from other teams.
                                    It is similar with the internal data analysis of the domain team.
                                 </p>
@@ -241,6 +245,41 @@
                                 <figure class="media-right">
                                     <p class="image">
                                         <img src="images/analyticaldata.svg" alt="">
+                                    </p>
+                                </figure>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-content content">
+                        <h4 class="title is-4">Ingesting and Cleaning</h4>
+
+                        <div class="columns">
+
+                            <div class="column">
+                                <p>
+                                    Operational data must be ingested into the data platform and stored as events and entities.
+                                    - SCS already emits domain events via messaging, stores entities in database
+                                    - domain events: connect to messaging, insert into data platform, only little cleaning necessary (View + CTEs might suffice instead of powerful data/streaming processing pipelines). Example: Kafka Connect
+                                    - entities: more work, add onCreate/onUpdate events with current state with onDelete tombstones -> similar to domain events, or alternatively CDC with filter/transformation either in ingest or clean step towards an entity history
+                                </p>
+                                <p>
+                                    traditional ETL/ELT is also possible.
+                                </p>
+                            </div>
+
+                            <div class="column">
+                                <figure class="media-right">
+                                    <p class="image">
+                                        <img src="images/ingestingandcleaning.svg" alt="">
                                     </p>
                                 </figure>
                             </div>
