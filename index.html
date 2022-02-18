@@ -41,23 +41,46 @@
         <h1 class="title">Why Central Data Overpromised and Underdelivered?</h1>
         <div class="columns is-vcentered">
             <div class="column content">
-                <p>
-                    To tackle scaling issues, many organizations made a transformation towards domain-oriented teams and systems.
-                    But they didn't for analytical data.
-                    Central data teams, however, failed to scale giving meaningful insights from data in time.
-                    They suffered from limited domain knowledge and insufficient data quality.
-<!--                    Domain teams have a deep understanding of their processes and data.-->
-                </p>
-                <p>
-                    Data Mesh adopts the idea of domain-oriented decentralization for analytical data.
-                    A Data Mesh Architecture gives domain teams the capabilities to analyze data on their own and to provide data as products to other domains.
-                </p>
-                <p>
-                    TBD:
-                    A central data team import your production database into a central data lake for data analysis and management reports.
-                    You might feel uncomfortable that others had direct access to your production databases, violating the principle of information hiding you worked so hard to achieve in your operational systems.
-                    Some management reports may include insights on your domain, but you don't really understand how the numbers were calculated and nobody can validate if these were correct.
-                </p>
+                Many organisations invested in central Data Warehouse or Data Lake systems and a data team with
+                the expectations to drive their business based on data.
+                After a few quick-wins, they quickly notice that the central data team becomes a bottleneck.
+                The team cannot handle all the analytical questions of management and product owners quick enough.
+                <!-- Delay-->
+                In the worst case they give up and business decisions, e.g. for new software features, are not validated through data.
+
+                The data team want to give answers quickly, but they suffer from
+                - fix broken data pipelines after schema changes
+                - don't know what kind of data is available
+                - learning domain knowledge
+
+                Domain teams
+                - know their domain and their available data
+                - can answer their domain questions quickly
+                - but only access to their data
+
+                -> Data Mesh adopts the idea of domain-oriented decentralization for analytical data.
+                - interconnect data like we did with API/microservices
+
+
+
+
+
+<!--                <p>-->
+<!--                    To tackle scaling issues, many organizations made a transformation towards domain-oriented teams and systems.-->
+<!--                    But they didn't for analytical data.-->
+<!--                    Central data teams, however, failed to scale giving meaningful insights from data in time.-->
+<!--                    They suffered from limited domain knowledge and insufficient data quality.-->
+<!--                </p>-->
+<!--                <p>-->
+<!--                    Data Mesh adopts the idea of domain-oriented decentralization for analytical data.-->
+<!--                    A Data Mesh Architecture gives domain teams the capabilities to analyze data on their own and to provide data as products to other domains.-->
+<!--                </p>-->
+<!--                <p>-->
+<!--                    TBD:-->
+<!--                    A central data team import your production database into a central data lake for data analysis and management reports.-->
+<!--                    You might feel uncomfortable that others had direct access to your production databases, violating the principle of information hiding you worked so hard to achieve in your operational systems.-->
+<!--                    Some management reports may include insights on your domain, but you don't really understand how the numbers were calculated and nobody can validate if these were correct.-->
+<!--                </p>-->
 
             </div>
             <div class="column">
