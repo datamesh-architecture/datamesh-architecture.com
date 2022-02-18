@@ -1,4 +1,4 @@
 # datamesh-architecture.com
 
-Preview: https://datamesh-architecture-com.pages.dev  
-(served by cloudflare)
+Preview: https://preview.datamesh-architecture.com
+(served by netlify)
