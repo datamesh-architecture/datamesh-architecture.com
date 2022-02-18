@@ -226,7 +226,7 @@
 
                             <div class="column">
                                 <p>
-                                   Diving into the analytical data, we can see the data flows that lead towards the data products.
+                                    Diving into the analytical data, we can see the data flows that lead towards the data products.
                                     Operational data is often ingested as some kind of <strong>raw</strong> and unstructured data.
                                 </p>
                                 <p>
@@ -234,6 +234,7 @@
                                     <strong>Events</strong> are small, immutable, and highly domain oriented, such as <em>OrderPurchased</em> or <em>ShipmentDelivered</em>.
                                     <strong>Entities</strong> represent business objects such as <em>shipments</em> or <em>articles</em> that change over time. That's why the entities often are represented as a list of snapshots, the history, with the latest snapshot being the current state.
                                     In practice, we often see <strong>manually</strong> entered data, we've made this explicit here as well.
+                                    <!-- TBD --> These information objects are domain-private.
                                 </p>
                                 <p>
                                    The data product is derived by aggregating a subset of the events, entities, manual data, and data products from other teams.
@@ -283,6 +284,14 @@
                                 - Mutuable Business Objects
                                 - deduplication, vollständig
                                 - aufbereitet
+
+                                Preprocessing to get clean data:
+                                - structuring (json -> columns)
+                                - mitigate schema/format/structural changes
+                                - fill null-values
+                                - deduplication
+                                - completeness
+                                - fix outliers (through bugs)
 
                             </div>
 
