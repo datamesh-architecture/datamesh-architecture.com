@@ -40,11 +40,11 @@
     <section class="section is-large">
         <h1 class="title" id="why">Why Central Data Overpromised and Underdelivered?</h1>
         <div class="columns is-vcentered">
-            <div class="column content">
+            <div class="column content mb-0 pb-1">
                 <p>
-                    Many organizations have invested in a central data warehouse and a data team with the
+                    Many organizations have invested in a central data lake and a data team with the
                     expectations to drive their business based on data. However, after initial quick wins, 
-                    they notice that the central data team becomes a bottleneck. The team cannot handle all 
+                    they notice that <strong>the central data team becomes a bottleneck</strong>. The team cannot handle all
                     the analytical questions of management and product owners quickly enough. This is a 
                     massive problem because making timely data-driven decisions is crucial to stay competitive. 
                     For example,
@@ -55,34 +55,35 @@
                 <p>
                     The data team wants to answer all those questions quickly.
                     In practice, however, they fail because they need to spend too much time fixing broken data pipelines after operational database changes.
-                    In their little time remaining, they have to discover and understand the necessary domain data.
-                    For every question, the data team needs to learn domain knowledge to give meaningful insights.
+                    In their little time remaining, <strong>the data team has to discover and understand the necessary domain data</strong>.
+                    For every question, they need to learn domain knowledge to give meaningful insights.
                     Getting the required domain expertise is a daunting task.
                 </p>
-                <p>
-                    <!--  with the expectations to build new features quickly while scaling the engineering efforts These expectations were met.-->
+            </div>
+            <div class="column">
+                <figure class="image">
+                    <img src="images/whyteam.png" alt="">
+                </figure>
+            </div>
+        </div>
+        <div class="columns is-vcentered">
+
+            <div class="column content">
+
+            <p>
                     On the other hand, organizations have also invested in autonomous domain teams and a decentralized microservice architecture.
-                    These domain teams own and know their domain, including the information needs of the business.
-                    They design, build, and run their products, e.g., APIs or web applications, on their own.
+                    These <strong>domain teams own and know their domain</strong>, including the information needs of the business.
+                    They design, build, and run their web applications and APIs on their own.
                     Despite knowing the domain and the relevant information needs, the domain teams have to reach out to the overloaded central data team to get the necessary data-driven insights.
                 </p>
                 <p>
                     With the eventual growth of the organization, the situation of the domain teams and the central data team becomes worse.
                     A way out of this vicious cycle is to shift the responsibility for data from the central data team to the domain teams.
-                    This is the core idea behind the Data Mesh concept &mdash; domain-oriented decentralization for analytical data.
-                    Basically, in a Data Mesh architecture, data are interconnected, similar to APIs in a microservices architecture.
+                    This is the core idea behind the Data Mesh concept: <strong>Domain-oriented
+                    decentralization for analytical data</strong>.
+                    In a Data Mesh architecture, data are interconnected, similar to APIs in a microservices architecture.
                 </p>
 
-<!--                <p>-->
-<!--                    To tackle scaling issues, many organizations made a transformation towards domain-oriented teams and systems.-->
-<!--                    But they didn't for analytical data.-->
-<!--                    Central data teams, however, failed to scale giving meaningful insights from data in time.-->
-<!--                    They suffered from limited domain knowledge and insufficient data quality.-->
-<!--                </p>-->
-<!--                <p>-->
-<!--                    Data Mesh adopts the idea of domain-oriented decentralization for analytical data.-->
-<!--                    A Data Mesh Architecture gives domain teams the capabilities to analyze data on their own and to provide data as products to other domains.-->
-<!--                </p>-->
 <!--                <p>-->
 <!--                    TBD:-->
 <!--                    A central data team import your production database into a central data lake for data analysis and management reports.-->
