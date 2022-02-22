@@ -303,12 +303,11 @@
                 <div class="media">
                     <div class="media-content content">
                         <h4 class="title is-4">Ingesting and Cleaning</h4>
-
                         <div class="columns">
-
                             <div class="column">
                                 <p>
                                     Operational data must be ingested into the data platform and stored as events and entities.
+
                                     - SCS already emits domain events via messaging, stores entities in database
                                     - domain events: connect to messaging, insert into data platform, only little cleaning necessary (View + CTEs might suffice instead of powerful data/streaming processing pipelines). Example: Kafka Connect
                                     - entities: more work, add onCreate/onUpdate events with current state with onDelete tombstones -> similar to domain events, or alternatively CDC with filter/transformation either in ingest or clean step towards an entity history
