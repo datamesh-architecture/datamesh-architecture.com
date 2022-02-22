@@ -1,4 +1,4 @@
 alias draw.io='/Applications/draw.io.app/Contents/MacOS/draw.io'
 mkdir -p images/
 draw.io --export --format svg --output images/ diagrams/
-draw.io --export --format png --output images/ diagrams/
+draw.io --export --format png --scale 4 --output images/ diagrams/
