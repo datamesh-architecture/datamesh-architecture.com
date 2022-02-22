@@ -306,13 +306,31 @@
                         <div class="columns">
                             <div class="column">
                                 <p>
-                                    Operational data must be ingested into the data platform and stored as events and entities.
-
-                                    - SCS already emits domain events via messaging, stores entities in database
-                                    - domain events: connect to messaging, insert into data platform, only little cleaning necessary (View + CTEs might suffice instead of powerful data/streaming processing pipelines). Example: Kafka Connect
-                                    - entities: more work, add onCreate/onUpdate events with current state with onDelete tombstones -> similar to domain events, or alternatively CDC with filter/transformation either in ingest or clean step towards an entity history
+                                    Operational data must be ingested into the self-serve data platform.
+                                    When designing a system following domain-driven design principles,
+                                    <strong>domain events</strong> are a great fit to be ingested into the data platform as they represent relevant business facts.
+                                    If there's a <strong>messaging</strong> system in place, which nowadays typically is,
+                                    domain events can be forwarded to the data platform by adding a message consumer.
+                                    Data can be collected and processed as a stream in real time, for example by using Kafka Connect/Stream.
+                                    As domain events are already well-defined, there is little to do in terms of cleaning and preprocessing, except deduplication
+                                    and anonymization of PII data.
                                 </p>
                                 <p>
+                                    Other concepts of domain-driven design are <strong>entities</strong> and aggregates.
+                                    These represent states and typically they are persisted in databases.
+                                    Their state changes over time.
+                                    Strong candidates for entities with state are article prices, customer data, and shipment status.
+
+                                    - entities: more work, add onCreate/onUpdate events with current state with onDelete tombstones -> similar to domain events,
+                                    or alternatively CDC with filter/transformation either in ingest or clean step towards an entity history
+                                </p>
+                                <p>
+                                    A domain team owns their systems with their operational data.
+                                    This does not hold for some legacy systems like immutable mainframes with a significant amount of operational data.
+                                    These systems and their operational data are shared between domain teams.
+                                </p>
+                                <p>
+
                                     traditional ETL/ELT is also possible.
                                 </p>
 
@@ -332,7 +350,6 @@
                                 - deduplication
                                 - completeness
                                 - fix outliers (through bugs)
-
                             </div>
 
                             <div class="column">
