@@ -16,9 +16,12 @@
 
     <link rel="stylesheet" href="css/0.9.3_css_bulma.css" />
     <link rel="stylesheet" href="css/font-awesome_6.0.0_css_all.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
 
     <style>
-        @media(max-width: 767px) { /* <== You can change this break point as per your  needs */
+        @media(max-width: 767px) {
             .reverse-columns {
                 flex-direction: column-reverse;
                 display: flex;
@@ -27,6 +30,27 @@
     </style>
 </head>
 <body>
+<!--<section class="hero is-fullheight" style="background-color: #242424">-->
+<!--    <div class="hero-body">-->
+<!--        <div class="">-->
+<!--            <p class="title" style="color: white; font-size: 8rem">-->
+<!--                Data Mesh <br><span style="color: #FF9B66;">Architecture</span>-->
+<!--            </p>-->
+<!--            <p class="subtitle" style="color: white; font-family: 'Architects Daughter', cursive; font-size: large;">Data Mesh from an Engineering Perspective</p>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="hero-foot">-->
+<!--        <div class="columns is-mobile is-centered" style="font-size: 3em;">-->
+<!--            <div class="column is-half" style="text-align: center">-->
+<!--                <a href="#why" style="color: black">-->
+<!--                <span class="icon is-medium">-->
+<!--                    <i class="fa-solid fa-angle-down"></i>-->
+<!--                </span>-->
+<!--                </a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
 <div class="container">
     <section class="hero is-fullheight">
         <div class="hero-body">
@@ -288,42 +312,43 @@
                 <div class="columns">
                     <div class="column content">
                         <p>
-                            Operational data must be ingested into the self-serve data platform.
-                            When designing a system following domain-driven design principles,
-                            <strong>domain events</strong> are a great fit to be ingested into the data platform as they represent relevant business facts.
-                            If there's a <strong>messaging</strong> system in place, which nowadays typically is,
-                            domain events can be forwarded to the data platform by adding a message consumer.
-                            Data can be collected and processed as a stream in real time, for example by using Kafka Connect/Stream.
-                            As domain events are already well-defined, there is little to do in terms of cleaning and preprocessing, except deduplication
-                            and anonymization of PII data.
+                            How can domain teams ingest their operational data into the data platform?
+                            A software system designed according to DDD principles contains data as mutable entities/aggregates and immutable domain events.
                         </p>
                         <p>
-                            Other concepts of domain-driven design are <strong>entities</strong> and aggregates.
-                            These represent states and typically they are persisted in databases.
-                            Their state changes over time.
-                            Strong candidates for entities with state are article prices, customer data, and shipment status.
-
-                            - entities: more work, add onCreate/onUpdate events with current state with onDelete tombstones -> similar to domain events,
-                            or alternatively CDC with filter/transformation either in ingest or clean step towards an entity history
+                            <strong>Domain events</strong> are a great fit to be ingested into the data platform as they represent relevant business facts.
+                            If there's a messaging system in place domain events can be forwarded to the data platform by attaching an additional message consumer.
+                            Data can be collected, processed, and forwarded to the data platform in real time.
+                            With this <strong>streaming ingestion</strong>, data is sent in small batches when they arrive, so they are immediately available for analytics.
+                            As domain events are already well-defined, there is little to do in terms of cleaning and preprocessing, except deduplication
+                            and anonymization of PII data.
+                            Sometimes, it is also advisable, to define and ingest internal analytical events that contain information that is relevant only for analytical use cases, so that domain events don't have to be modified.
+                            <br>
+                            <em>Examples: Kafka Connect, Kafka Streams, AWS Lambda</em>
+                        </p>
+                        <p>
+                            Many business objects are persisted as <strong>entities and aggregates</strong> in SQL or NoSQL databases.
+                            Their state changes over time and the latest state is persisted in the database, only.
+                            Strong candidates for entities with state are <em>articles</em>, <em>prices</em>,
+                            <em>customer data</em>, or <em>shipment status</em>.
+                            For analytical use cases it is often required to have both, the latest state and the history of states over time.
+                            There are a number of different approaches to ingest entities.
+                            One way is to generate and publish an <em>onCreate/onUpdate/onDelete event</em> with the current state, every time an entity is changed, e.g. by adding an
+                            <a href="https://en.wikipedia.org/wiki/Aspect-oriented_programming">aspect</a> or <a href="https://docs.spring.io/spring-data/jpa/docs/current/api/index.html?org/springframework/data/jpa/domain/support/AuditingEntityListener.html">EntityListeners</a> .
+                            Then streaming ingestion can be used to ingest the data as described above.
+                            When it is not feasible to change the operational software, <strong>change
+                            data capture</strong> may be used to listen on database changes directly and stream then into the data platform.
+                            Lastly, a traditional scheduled ELT/ETL job that exports data to file and loads it into the platform can be set up, with the downside of not having realtime-data, not having all stage changes between exports, and some work to consolidate exported data again.
+                            All these database-centric approaches deal with the operational data model.
+                            In order to comply with the principle of information hiding, these data should be transformed into a defined analytical model before ingested to the data platform.
+                            <br>
+                            <em>Examples: <a href="https://www.http-feeds.org/#aggregate-feeds">HTTP Aggregate Feeds</a>, <a href="https://debezium.io">debezium</a></em>.
                         </p>
                         <p>
                             A domain team owns their systems with their operational data.
                             This does not hold for some legacy systems like immutable mainframes with a significant amount of operational data.
                             These systems and their operational data are shared between domain teams.
                         </p>
-                        <p>
-
-                            traditional ETL/ELT is also possible.
-                        </p>
-
-                        How to get the operational data into data platform?
-
-                        Streaming
-                        - Real-time
-                        - Events (immutable): Domain Events and Analytical Events
-                        - Mutuable Business Objects
-                        - deduplication, vollständig
-                        - aufbereitet
 
                         Preprocessing to get clean data:
                         - structuring (json -> columns)
@@ -340,8 +365,6 @@
                         </figure>
                     </div>
                 </div>
-
-
             </div>
         </div>
 
