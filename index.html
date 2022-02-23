@@ -308,7 +308,7 @@
 
         <div class="card mt-4">
             <div class="card-content">
-                <h4 class="title is-4">Ingesting and Cleaning</h4>
+                <h4 class="title is-4">Ingesting</h4>
                 <div class="columns">
                     <div class="column content">
                         <p>
@@ -333,35 +333,68 @@
                             <em>customer data</em>, or <em>shipment status</em>.
                             For analytical use cases it is often required to have both, the latest state and the history of states over time.
                             There are a number of different approaches to ingest entities.
-                            One way is to generate and publish an <em>onCreate/onUpdate/onDelete event</em> with the current state, every time an entity is changed, e.g. by adding an
-                            <a href="https://en.wikipedia.org/wiki/Aspect-oriented_programming">aspect</a> or <a href="https://docs.spring.io/spring-data/jpa/docs/current/api/index.html?org/springframework/data/jpa/domain/support/AuditingEntityListener.html">EntityListeners</a> .
+                            One way is to generate and publish an <strong>onCreate/onUpdate/onDelete event</strong> with the current state, every time an entity is changed, e.g. by adding an
+                            <a href="https://en.wikipedia.org/wiki/Aspect-oriented_programming">aspect</a> or <a href="https://docs.spring.io/spring-data/jpa/docs/current/api/index.html?org/springframework/data/jpa/domain/support/AuditingEntityListener.html">EntityListeners</a>.
                             Then streaming ingestion can be used to ingest the data as described above.
                             When it is not feasible to change the operational software, <strong>change
                             data capture</strong> may be used to listen on database changes directly and stream then into the data platform.
                             Lastly, a traditional scheduled ELT/ETL job that exports data to file and loads it into the platform can be set up, with the downside of not having realtime-data, not having all stage changes between exports, and some work to consolidate exported data again.
                             All these database-centric approaches deal with the operational data model.
                             In order to comply with the principle of information hiding, these data should be transformed into a defined analytical model before ingested to the data platform.
+                            In this transformation, PII information should be removed, when not required for analytical use cases.
                             <br>
-                            <em>Examples: <a href="https://www.http-feeds.org/#aggregate-feeds">HTTP Aggregate Feeds</a>, <a href="https://debezium.io">debezium</a></em>.
+                            <em>Examples: <a href="https://debezium.io">debezium</a></em>
                         </p>
-                        <p>
-                            A domain team owns their systems with their operational data.
-                            This does not hold for some legacy systems like immutable mainframes with a significant amount of operational data.
-                            These systems and their operational data are shared between domain teams.
-                        </p>
-
-                        Preprocessing to get clean data:
-                        - structuring (json -> columns)
-                        - mitigate schema/format/structural changes
-                        - fill null-values
-                        - deduplication
-                        - completeness
-                        - fix outliers (through bugs)
                     </div>
 
                     <div class="column">
                         <figure class="image">
                             <img src="images/ingestingandcleaning.png" alt="">
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <div class="card-content">
+                <h4 class="title is-4">Clean Data</h4>
+                <div class="columns">
+                    <div class="column content">
+                        <p>
+                            Clean data is the foundation for effective data analytics.
+                            With Data Mesh, domain teams are responsible to perform data cleaning.
+                            They know their domain and can identify why and how their domain data needs to be processed.
+                        </p>
+                        <p>
+                            Data that is ingested into the data platform is usually imported in its original raw and unstructured format.
+                            When using a columnar database, this might be a row per event that contains a clob field for the event payload, which may be in JSON format.
+
+                            Now it can be preprocessing to get data clean:
+                        </p>
+                        <ul>
+                            <li><strong>Structuring:</strong> Transform unstructured and semi-structured data to the analytical data model, e.g. by extracting json fields into columns.</li>
+                            <li><strong>Mitigation of structural changes:</strong> When data structures have changed, mitigate them, e.g. by filling null-values with sensible defaults.</li>
+                            <li><strong>Deduplication:</strong> As most analytical storage systems are append-only, entities and events cannot be updated. Remove all duplicate entries.</li>
+                            <li><strong>Completeness:</strong> Ensure that data contains agreed time periods, even when there were technical issues during ingestion.</li>
+                            <li><strong>Fix outliers:</strong> Invalid data that may occur through bugs gets identified and corrected.</li>
+                        </ul>
+                        <p>
+                            From an implementation perspective, these preprocessing steps can be implemented as simple SQL views that project the raw data.
+                            The queries may be organized through
+                            <a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#with_clause">common table expressions</a> (CTEs)
+                            and may be enhanced with <a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/user-defined-functions">user-defined function</a> (UDFs), e.g. for JSON processing.
+                            As an alternative, the cleaning steps can be implemented as lambda functions that operate on topics.
+                            More complex pipelines can be build with frameworks like <a href="https://www.getdbt.com">dbt</a> or
+                            <a href="https://beam.apache.org">Apache Beam</a> that offer an advanced programming model,
+                            but als requires more skills to be learned.
+                        </p>
+
+                    </div>
+
+                    <div class="column">
+                        <figure class="image">
+                            <img src="images/datacleaning.png" alt="">
                         </figure>
                     </div>
                 </div>
