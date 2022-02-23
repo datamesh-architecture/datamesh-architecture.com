@@ -318,32 +318,31 @@
                         <p>
                             <strong>Domain events</strong> are a great fit to be ingested into the data platform as they represent relevant business facts.
                             If there's a messaging system in place domain events can be forwarded to the data platform by attaching an additional message consumer.
-                            Data can be collected, processed, and forwarded to the data platform in real time.
+                            Data can be collected, processed, and forwarded to the data platform in real-time.
                             With this <strong>streaming ingestion</strong>, data is sent in small batches when they arrive, so they are immediately available for analytics.
                             As domain events are already well-defined, there is little to do in terms of cleaning and preprocessing, except deduplication
                             and anonymization of PII data.
                             Sometimes, it is also advisable, to define and ingest internal analytical events that contain information that is relevant only for analytical use cases, so that domain events don't have to be modified.
                             <br>
-                            <em>Examples: Kafka Connect, Kafka Streams, AWS Lambda</em>
+                            <em>Examples for streaming ingestion: Kafka Connect, Kafka Streams, AWS Lambda</em>
                         </p>
                         <p>
                             Many business objects are persisted as <strong>entities and aggregates</strong> in SQL or NoSQL databases.
                             Their state changes over time and the latest state is persisted in the database, only.
-                            Strong candidates for entities with state are <em>articles</em>, <em>prices</em>,
-                            <em>customer data</em>, or <em>shipment status</em>.
-                            For analytical use cases it is often required to have both, the latest state and the history of states over time.
-                            There are a number of different approaches to ingest entities.
+                            Strong candidates for entities with state are <em>articles</em>, <em>prices</em>, <em>customer data</em>, or <em>shipment status</em>.
+                            For analytical use cases, it is often required to have both, the latest state and the history of states over time.
+                            There are several approaches to ingest entities.
                             One way is to generate and publish an <strong>onCreate/onUpdate/onDelete event</strong> with the current state, every time an entity is changed, e.g. by adding an
                             <a href="https://en.wikipedia.org/wiki/Aspect-oriented_programming">aspect</a> or <a href="https://docs.spring.io/spring-data/jpa/docs/current/api/index.html?org/springframework/data/jpa/domain/support/AuditingEntityListener.html">EntityListeners</a>.
                             Then streaming ingestion can be used to ingest the data as described above.
                             When it is not feasible to change the operational software, <strong>change
-                            data capture</strong> may be used to listen on database changes directly and stream then into the data platform.
+                            data capture</strong> may be used to listen to database changes directly and stream them into the data platform.
                             Lastly, a traditional scheduled ELT/ETL job that exports data to file and loads it into the platform can be set up, with the downside of not having realtime-data, not having all stage changes between exports, and some work to consolidate exported data again.
                             All these database-centric approaches deal with the operational data model.
-                            In order to comply with the principle of information hiding, these data should be transformed into a defined analytical model before ingested to the data platform.
+                            To comply with the principle of information hiding, these data should be transformed into a defined analytical model before being ingested to the data platform.
                             In this transformation, PII information should be removed, when not required for analytical use cases.
                             <br>
-                            <em>Examples: <a href="https://debezium.io">debezium</a></em>
+                            <em>Examples for CDC streaming: <a href="https://debezium.io">debezium</a></em>
                         </p>
                     </div>
 
@@ -368,26 +367,27 @@
                         </p>
                         <p>
                             Data that is ingested into the data platform is usually imported in its original raw and unstructured format.
-                            When using a columnar database, this might be a row per event that contains a clob field for the event payload, which may be in JSON format.
+                            When using a columnar database, this might be a row per event that contains a
+                            <a href="https://en.wikipedia.org/wiki/Character_large_object">CLOB</a> field for the event payload, which may be in JSON format.
 
-                            Now it can be preprocessing to get data clean:
+                            Now it can be preprocessed to get data clean:
                         </p>
                         <ul>
-                            <li><strong>Structuring:</strong> Transform unstructured and semi-structured data to the analytical data model, e.g. by extracting json fields into columns.</li>
+                            <li><strong>Structuring:</strong> Transform unstructured and semi-structured data to the analytical data model, e.g. by extracting JSON fields into columns.</li>
                             <li><strong>Mitigation of structural changes:</strong> When data structures have changed, mitigate them, e.g. by filling null-values with sensible defaults.</li>
                             <li><strong>Deduplication:</strong> As most analytical storage systems are append-only, entities and events cannot be updated. Remove all duplicate entries.</li>
-                            <li><strong>Completeness:</strong> Ensure that data contains agreed time periods, even when there were technical issues during ingestion.</li>
-                            <li><strong>Fix outliers:</strong> Invalid data that may occur through bugs gets identified and corrected.</li>
+                            <li><strong>Completeness:</strong> Ensure that data contains agreed periods, even when there were technical issues during ingestion.</li>
+                            <li><strong>Fix outliers:</strong> Invalid data that may occur through bugs get identified and corrected.</li>
                         </ul>
                         <p>
                             From an implementation perspective, these preprocessing steps can be implemented as simple SQL views that project the raw data.
                             The queries may be organized through
                             <a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#with_clause">common table expressions</a> (CTEs)
-                            and may be enhanced with <a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/user-defined-functions">user-defined function</a> (UDFs), e.g. for JSON processing.
+                            and may be enhanced with <a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/user-defined-functions">user-defined functions</a> (UDFs), e.g. for JSON processing.
                             As an alternative, the cleaning steps can be implemented as lambda functions that operate on topics.
-                            More complex pipelines can be build with frameworks like <a href="https://www.getdbt.com">dbt</a> or
+                            More complex pipelines can be built with frameworks like <a href="https://www.getdbt.com">dbt</a> or
                             <a href="https://beam.apache.org">Apache Beam</a> that offer an advanced programming model,
-                            but als requires more skills to be learned.
+                            but also requires more skills to master.
                         </p>
 
                     </div>
@@ -403,22 +403,11 @@
 
         <div class="card mt-4">
             <div class="card-content">
-                <div class="media">
-                    <div class="media-content content">
-                        <h4 class="title is-4">Analysis</h4>
-                        <p>
-                            Ad-hoc queries, visualization, reports, A/B testing
-                        </p>
-                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-                        <footer>
-                            <a href="#" >Learn More</a>
-                        </footer>
-                    </div>
-                    <figure class="media-right">
-                        <p class="image is-128x128">
-                            <img src="https://bulma.io/images/placeholders/128x128.png" alt="">
-                        </p>
-                    </figure>
+                <div class="content">
+                    <h4 class="title is-4">Analysis</h4>
+                    <p>
+                        Ad-hoc queries, visualization, reports, A/B testing
+                    </p>
                 </div>
             </div>
         </div>
