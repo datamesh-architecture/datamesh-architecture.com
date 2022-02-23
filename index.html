@@ -1,18 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <title>Data Mesh Architecture</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- remove this before we go live -->
-    <meta name="robots" content="noindex">
-
-
-    <title>Data Mesh Architecture</title>
-    <link rel="stylesheet" href="css/0.9.3_css_bulma.css" />
-    <link rel="stylesheet" href="css/font-awesome_6.0.0_css_all.css"/>
-
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@innoq" />
     <meta name="twitter:title" content="Data Mesh Architecture" />
@@ -22,8 +13,19 @@
     <meta property="og:title" content="Data Mesh Architecture" />
     <meta property="og:description" content="Data Mesh from an Engineering Perspective" />
     <meta property="og:image" content="https://preview.datamesh-architecture.com/images/datamesh.png" />
-</head>
 
+    <link rel="stylesheet" href="css/0.9.3_css_bulma.css" />
+    <link rel="stylesheet" href="css/font-awesome_6.0.0_css_all.css"/>
+
+    <style>
+        @media(max-width: 767px) { /* <== You can change this break point as per your  needs */
+            .reverse-columns {
+                flex-direction: column-reverse;
+                display: flex;
+            }
+        }
+    </style>
+</head>
 <body>
 <div class="container">
     <section class="hero is-fullheight">
@@ -49,7 +51,7 @@
     </section>
 
     <section class="section is-large">
-        <h1 class="title" id="why">Why you may need a Data Mesh?</h1>
+        <h1 class="title" id="why" >Why you may need a Data Mesh?</h1>
         <div class="columns is-vcentered">
             <div class="column content mb-0 pb-1">
                 <p>
@@ -157,56 +159,52 @@
     <section class="section is-medium">
         <div class="title">How to design a Data Mesh?</div>
         <div class="content">
-            <img src="images/datamesharchitecture.png" alt="Data Mesh Architecture">
             <p class="mt-5">
                 A Data Mesh Architecture is a decentralized approach that enables domain teams to perform cross-domain data analysis on their own.
                 At its core is the domain with its responsible team and its operational and analytical data.
                 The domain team ingests operational data and builds analytical data models to perform their own analysis.
                 It uses analytical data to build data products based on other domains' needs.
             </p>
+            <img src="images/datamesharchitecture.png" alt="Data Mesh Architecture">
             <p>
-                The domain team agrees with others on global policies, such as interoperability, security, and documentation standards, in a Federated Governance guild, so that domain teams know how to discover, understand and use data products available in the Data Mesh.
+                The domain team agrees with others on global policies, such as interoperability, security, and documentation standards in a Federated Governance guild, so that domain teams know how to discover, understand and use data products available in the Data Mesh.
                 The self-serving domain-agnostic data platform, provided by the data platform team, enables domain teams to easily build their own data products and do their own analysis effectively.
                 An enabling team guides domain teams how to model analytical data, use the data platform, build, and maintain interoperable data products.
+            </p>
+            <p>
+                Let's zoom into core components and their relationships of a Data Mesh architecture:
             </p>
         </div>
 
         <div class="card mt-5">
             <div class="card-content">
-                <div class="media">
-                    <div class="media-content content">
-                        <h4 class="title is-4">Data Product</h4>
-                        <div class="columns">
-                            <div class="column">
-                                <p>
-                                    A data product usually is a published <strong>data set</strong>, similar to an API.
-                                    The data itself is curated for the use by other domains.
-                                    For example, the history of inventory updates of articles in a Google BigQuery table
-                                    or a JSON file per day with purchase orders on an AWS S3 bucket.
-                                    A data product can take other forms as well, including
-                                    a sales report containing KPIs and charts as a PDF or even an
-                                    ML model in <a href="https://onnx.ai/">ONNX</a> format to predict shipping dates.
-                                </p>
-                                <p>
-                                    To discover, access, and use the data product, it is described with <strong>metadata</strong>, including
-                                    ownership and contact information, data location and access, update frequency,
-                                    and a specification of the data model.
-                                </p>
-                                <p>
-                                    The domain team is responsible for the <strong>operations</strong> of the data product during its entire lifecycle.
-                                    The team needs to continuously monitor and ensure data quality and availability.
-                                    For example, keep the data without duplicates or react on missing entries.
-                                </p>
-                            </div>
-                            <div class="column">
+                <h4 class="title is-4">Data Product</h4>
+                <div class="columns">
+                    <div class="column content">
+                        <p>
+                            A data product usually is a published <strong>data set</strong> that can be accessed by other domains, similar to an API.
+                            For example, the history of inventory updates in a Google BigQuery table
+                            or a daily JSON file with purchase orders on an AWS S3 bucket.
+                            A data product can take other forms as well, including
+                            a sales report containing KPIs and charts as a PDF or even an
+                            ML model to predict shipping dates as a <a href="https://onnx.ai/">ONNX</a> file.
+                        </p>
+                        <p>
+                            To discover, access, and use the data product, it is described with <strong>metadata</strong>, including
+                            ownership and contact information, data location and access, update frequency,
+                            and a specification of the data model.
+                        </p>
+                        <p>
+                            The domain team is responsible for the <strong>operations</strong> of the data product during its entire lifecycle.
+                            The team needs to continuously monitor and ensure data quality and availability.
+                            For example, keep the data without duplicates or react on missing entries.
+                        </p>
+                    </div>
+                    <div class="column">
 
-                                <figure class="media-right">
-                                <p class="image">
-                                    <img src="images/dataproduct.png" alt="">
-                                </p>
-                                </figure>
-                            </div>
-                        </div>
+                        <p class="image">
+                            <img src="images/dataproduct.png" alt="">
+                        </p>
                     </div>
                 </div>
             </div>
@@ -214,156 +212,136 @@
 
         <div class="card mt-4">
             <div class="card-content">
-                <div class="media">
-                    <div class="media-content content">
-                        <h4 class="title is-4">Global Policies</h4>
-
-                        <div class="columns">
-
-                            <div class="column">
-                                <p>
-                                    Global policies are rules of play in the Data Mesh.
-                                    They define how the domain teams have to build their data products.
-                                </p>
-                                <p>
-                                    Policies on <strong>interoperability</strong> are the starting point.
-                                    They allow other domain teams to use data products in a consistent way.
-                                    For example, global policies could define that the standard way to provide data is as a CSV file on AWS S3 in a bucket owned by the corresponding domain team.
-                                </p>
-                                <p>
-                                    Next, there has to be some form of <strong>documentation</strong> to discover and understand available data products.
-                                    A simple policy for this could be a wiki page with a predefined set of metadata, such as owner of the data product, location url, and descriptions of the CSV fields.
-                                </p>
-                                <p>
-                                    A uniform way to access the actual data product in a <strong>secure</strong> way could be using a role-based access in AWS IAM, managed by the domain team.
-                                </p>
-                                <p>
-                                    Global policies such as <strong>privacy</strong> and <strong>compliance</strong> are also common. Think about protection of personally identifiable information (PII) or industry-specific legal requirements.
-                                </p>
-                            </div>
-
-                            <div class="column">
-                                <figure class="media-right">
-                                    <p class="image">
-                                        <img src="images/globalpolicies.png" alt="">
-                                    </p>
-                                </figure>
-                            </div>
-                        </div>
-
+                <h4 class="title is-4">Global Policies</h4>
+                <div class="columns">
+                    <div class="column content">
+                        <p>
+                            Global policies are rules of play in the Data Mesh.
+                            They define how the domain teams have to build their data products.
+                        </p>
+                        <p>
+                            Policies on <strong>interoperability</strong> are the starting point.
+                            They allow other domain teams to use data products in a consistent way.
+                            For example, global policies could define that the standard way to provide data is as a CSV file on AWS S3 in a bucket owned by the corresponding domain team.
+                        </p>
+                        <p>
+                            Next, there has to be some form of <strong>documentation</strong> to discover and understand available data products.
+                            A simple policy for this could be a wiki page with a predefined set of metadata, such as owner of the data product, location url, and descriptions of the CSV fields.
+                        </p>
+                        <p>
+                            A uniform way to access the actual data product in a <strong>secure</strong> way could be using a role-based access in AWS IAM, managed by the domain team.
+                        </p>
+                        <p>
+                            Global policies such as <strong>privacy</strong> and <strong>compliance</strong> are also common. Think about protection of personally identifiable information (PII) or industry-specific legal requirements.
+                        </p>
                     </div>
 
+                    <div class="column">
+                        <figure class="media-right">
+                            <p class="image">
+                                <img src="images/globalpolicies.png" alt="">
+                            </p>
+                        </figure>
+                    </div>
                 </div>
+
+
             </div>
         </div>
 
         <div class="card mt-4">
             <div class="card-content">
-                <div class="media">
-                    <div class="media-content content">
-                        <h4 class="title is-4">Analytical Data</h4>
-
-                        <div class="columns">
-
-                            <div class="column">
-                                <p>
-                                    Diving into the analytical data, we can see the data flows that lead towards the data products.
-                                    Operational data is often ingested as some kind of <strong>raw</strong> and unstructured data.
-                                </p>
-                                <p>
-                                    In a preprocessing step, raw data is cleaned and structured into events and entities.
-                                    <strong>Events</strong> are small, immutable, and highly domain oriented, such as <em>OrderPurchased</em> or <em>ShipmentDelivered</em>.
-                                    <strong>Entities</strong> represent business objects such as <em>shipments</em> or <em>articles</em> that change over time. That's why the entities often are represented as a list of snapshots, the history, with the latest snapshot being the current state.
-                                    In practice, we often see <strong>manually</strong> entered data, we've made this explicit here as well.
-                                    <!-- TBD --> These information objects are domain-private.
-                                </p>
-                                <p>
-                                   The data product is derived by aggregating a subset of the events, entities, manual data, and data products from other teams.
-                                   It is similar with the internal data analysis of the domain team.
-                                </p>
-                            </div>
-
-                            <div class="column">
-                                <figure class="media-right">
-                                    <p class="image">
-                                        <img src="images/analyticaldata.png" alt="">
-                                    </p>
-                                </figure>
-                            </div>
-                        </div>
-
+                <h4 class="title is-4">Analytical Data</h4>
+                <div class="columns">
+                    <div class="column content">
+                        <p>
+                            Diving into the analytical data, we can see the data flows that lead towards the data products.
+                            Operational data is often ingested as some kind of <strong>raw</strong> and unstructured data.
+                        </p>
+                        <p>
+                            In a preprocessing step, raw data is cleaned and structured into events and entities.
+                            <strong>Events</strong> are small, immutable, and highly domain oriented, such as <em>OrderPurchased</em> or <em>ShipmentDelivered</em>.
+                            <strong>Entities</strong> represent business objects such as <em>shipments</em> or <em>articles</em> that change over time. That's why the entities often are represented as a list of snapshots, the history, with the latest snapshot being the current state.
+                            In practice, we often see <strong>manually</strong> entered data, we've made this explicit here as well.
+                            <!-- TBD --> These information objects are domain-private.
+                        </p>
+                        <p>
+                            The data product is derived by aggregating a subset of the events, entities, manual data, and data products from other teams.
+                            It is similar with the internal data analysis of the domain team.
+                        </p>
                     </div>
 
+                    <div class="column">
+                        <figure class="image">
+                            <img src="images/analyticaldata.png" alt="">
+                        </figure>
+                    </div>
                 </div>
+
+
             </div>
         </div>
 
         <div class="card mt-4">
             <div class="card-content">
-                <div class="media">
-                    <div class="media-content content">
-                        <h4 class="title is-4">Ingesting and Cleaning</h4>
-                        <div class="columns">
-                            <div class="column">
-                                <p>
-                                    Operational data must be ingested into the self-serve data platform.
-                                    When designing a system following domain-driven design principles,
-                                    <strong>domain events</strong> are a great fit to be ingested into the data platform as they represent relevant business facts.
-                                    If there's a <strong>messaging</strong> system in place, which nowadays typically is,
-                                    domain events can be forwarded to the data platform by adding a message consumer.
-                                    Data can be collected and processed as a stream in real time, for example by using Kafka Connect/Stream.
-                                    As domain events are already well-defined, there is little to do in terms of cleaning and preprocessing, except deduplication
-                                    and anonymization of PII data.
-                                </p>
-                                <p>
-                                    Other concepts of domain-driven design are <strong>entities</strong> and aggregates.
-                                    These represent states and typically they are persisted in databases.
-                                    Their state changes over time.
-                                    Strong candidates for entities with state are article prices, customer data, and shipment status.
+                <h4 class="title is-4">Ingesting and Cleaning</h4>
+                <div class="columns">
+                    <div class="column content">
+                        <p>
+                            Operational data must be ingested into the self-serve data platform.
+                            When designing a system following domain-driven design principles,
+                            <strong>domain events</strong> are a great fit to be ingested into the data platform as they represent relevant business facts.
+                            If there's a <strong>messaging</strong> system in place, which nowadays typically is,
+                            domain events can be forwarded to the data platform by adding a message consumer.
+                            Data can be collected and processed as a stream in real time, for example by using Kafka Connect/Stream.
+                            As domain events are already well-defined, there is little to do in terms of cleaning and preprocessing, except deduplication
+                            and anonymization of PII data.
+                        </p>
+                        <p>
+                            Other concepts of domain-driven design are <strong>entities</strong> and aggregates.
+                            These represent states and typically they are persisted in databases.
+                            Their state changes over time.
+                            Strong candidates for entities with state are article prices, customer data, and shipment status.
 
-                                    - entities: more work, add onCreate/onUpdate events with current state with onDelete tombstones -> similar to domain events,
-                                    or alternatively CDC with filter/transformation either in ingest or clean step towards an entity history
-                                </p>
-                                <p>
-                                    A domain team owns their systems with their operational data.
-                                    This does not hold for some legacy systems like immutable mainframes with a significant amount of operational data.
-                                    These systems and their operational data are shared between domain teams.
-                                </p>
-                                <p>
+                            - entities: more work, add onCreate/onUpdate events with current state with onDelete tombstones -> similar to domain events,
+                            or alternatively CDC with filter/transformation either in ingest or clean step towards an entity history
+                        </p>
+                        <p>
+                            A domain team owns their systems with their operational data.
+                            This does not hold for some legacy systems like immutable mainframes with a significant amount of operational data.
+                            These systems and their operational data are shared between domain teams.
+                        </p>
+                        <p>
 
-                                    traditional ETL/ELT is also possible.
-                                </p>
+                            traditional ETL/ELT is also possible.
+                        </p>
 
-                                How to get the operational data into data platform?
+                        How to get the operational data into data platform?
 
-                                Streaming
-                                - Real-time
-                                - Events (immutable): Domain Events and Analytical Events
-                                - Mutuable Business Objects
-                                - deduplication, vollständig
-                                - aufbereitet
+                        Streaming
+                        - Real-time
+                        - Events (immutable): Domain Events and Analytical Events
+                        - Mutuable Business Objects
+                        - deduplication, vollständig
+                        - aufbereitet
 
-                                Preprocessing to get clean data:
-                                - structuring (json -> columns)
-                                - mitigate schema/format/structural changes
-                                - fill null-values
-                                - deduplication
-                                - completeness
-                                - fix outliers (through bugs)
-                            </div>
-
-                            <div class="column">
-                                <figure class="media-right">
-                                    <p class="image">
-                                        <img src="images/ingestingandcleaning.png" alt="">
-                                    </p>
-                                </figure>
-                            </div>
-                        </div>
-
+                        Preprocessing to get clean data:
+                        - structuring (json -> columns)
+                        - mitigate schema/format/structural changes
+                        - fill null-values
+                        - deduplication
+                        - completeness
+                        - fix outliers (through bugs)
                     </div>
 
+                    <div class="column">
+                        <figure class="image">
+                            <img src="images/ingestingandcleaning.png" alt="">
+                        </figure>
+                    </div>
                 </div>
+
+
             </div>
         </div>
 
@@ -392,65 +370,56 @@
 
         <div class="card mt-5">
             <div class="card-content">
-                <div class="media">
-                    <div class="media-content content">
-                        <h4 class="title is-4">Data Platform</h4>
-                        <p>
-                            Storing data is a primary purpose of any data platform.
-                            As hundreds of terabytes and more may be stored on the platform, storage should be cost-efficient and provide good performance for complex analytical queries.
-                        </p>
-                        <p>
-                            Most common are <strong>SQL-like databases</strong> that store data in tables with a structured schema, with the option of semi-structured fields.
-                            These databases usually use columnar data stores to retrieve and search large datasets efficiently, hence there is no need for indexes.
-                            For smaller datasets it is also possible to use traditional relational databases, but these will require more storage management efforts and index optimizations to build efficient queries.
-                            <br>
-                            <em>Examples for SQL-like databases: Google BigQuery, AWS Redshift, Azure Synapse Analytics, Snowflake, PostgreSQL</em>
-                        </p>
-                        <p>
-                            In some use cases, data needs to be exported from operative or third party systems as files, such as CSV, JSON or XML.
-                            The data platform may need support to store files in an <strong>object storage</strong>, that can be further processed or analyzed.
-                            <br>
-                            <em>Examples for object storage: Google Object Store, AWS S3, Git</em>
-                        </p>
-                        <p>
-                            For high-volume realtime data, it might be inappropriate to store all events permanently.
-                            A <strong>streaming platform</strong> with short-time retention can be the suitable technology to perform realtime analytics.
-                            <br>
-                            <em>Examples for streaming platforms: Kafka, AWS Kinesis</em>
-                        </p>
-                    </div>
-                    <figure class="media-right">
-                        <p class="image is-128x128">
-                            <img src="https://bulma.io/images/placeholders/128x128.png" alt="">
-                        </p>
-                    </figure>
+                <div class="content">
+                    <h4 class="title is-4">Data Platform</h4>
+                    <p>
+                        Storing data is a primary purpose of any data platform.
+                        As hundreds of terabytes and more may be stored on the platform, storage should be cost-efficient and provide good performance for complex analytical queries.
+                    </p>
+                    <p>
+                        Most common are <strong>SQL-like databases</strong> that store data in tables with a structured schema, with the option of semi-structured fields.
+                        These databases usually use columnar data stores to retrieve and search large datasets efficiently, hence there is no need for indexes.
+                        For smaller datasets it is also possible to use traditional relational databases, but these will require more storage management efforts and index optimizations to build efficient queries.
+                        <br>
+                        <em>Examples for SQL-like databases: Google BigQuery, AWS Redshift, Azure Synapse Analytics, Snowflake, PostgreSQL</em>
+                    </p>
+                    <p>
+                        In some use cases, data needs to be exported from operative or third party systems as files, such as CSV, JSON or XML.
+                        The data platform may need support to store files in an <strong>object storage</strong>, that can be further processed or analyzed.
+                        <br>
+                        <em>Examples for object storage: Google Object Store, AWS S3, Git</em>
+                    </p>
+                    <p>
+                        For high-volume realtime data, it might be inappropriate to store all events permanently.
+                        A <strong>streaming platform</strong> with short-time retention can be the suitable technology to perform realtime analytics.
+                        <br>
+                        <em>Examples for streaming platforms: Kafka, AWS Kinesis</em>
+                    </p>
                 </div>
             </div>
         </div>
 
         <div class="card mt-4">
             <div class="card-content">
-                <div class="media">
-                    <div class="media-content content">
-                        <h4 class="title is-4">Enabling Team</h4>
-                        <p>
-                            The enabling team spreads the idea of Data Mesh within the organization. 
-                            In the beginning of Data Mesh adoption a lot of explanatory efforts will be required and the enabling team can act as Data Mesh advocates.
-                            They help domain teams <a href="#domain-teams-journey">on their journey to becoming a full member of the data mesh</a>.
-                            The enabling team consists of <strike>certified enterprise Data Mesh engineers</strike> specialists with extensive knowledge on
-                            data analytics, data engineering, and the self-serve data platform.
-                        </p>
-                        <p>
-                            A member of the enabling team temporarily joins a domain team for a limited time span like a month as an
-                            <strong>internal consultant</strong> to understand the team's needs, establish a learning environment,
-                            upskill the team members in data analytics, and guide them how to use the self-serve data platform.
-                            They don't create data products by themselves.
-                        </p>
-                        <p>
-                            In between their consulting engagements, they <strong>share learning
-                            materials</strong> such as walking skeletons, examples, best practices, tutorials, or even podcasts.
-                        </p>
-                    </div>
+                <div class="content">
+                    <h4 class="title is-4">Enabling Team</h4>
+                    <p>
+                        The enabling team spreads the idea of Data Mesh within the organization.
+                        In the beginning of Data Mesh adoption a lot of explanatory efforts will be required and the enabling team can act as Data Mesh advocates.
+                        They help domain teams <a href="#domain-teams-journey">on their journey to becoming a full member of the data mesh</a>.
+                        The enabling team consists of <strike>certified enterprise Data Mesh engineers</strike> specialists with extensive knowledge on
+                        data analytics, data engineering, and the self-serve data platform.
+                    </p>
+                    <p>
+                        A member of the enabling team temporarily joins a domain team for a limited time span like a month as an
+                        <strong>internal consultant</strong> to understand the team's needs, establish a learning environment,
+                        upskill the team members in data analytics, and guide them how to use the self-serve data platform.
+                        They don't create data products by themselves.
+                    </p>
+                    <p>
+                        In between their consulting engagements, they <strong>share learning
+                        materials</strong> such as walking skeletons, examples, best practices, tutorials, or even podcasts.
+                    </p>
                 </div>
             </div>
         </div>
