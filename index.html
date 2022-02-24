@@ -16,9 +16,6 @@
 
     <link rel="stylesheet" href="css/0.9.3_css_bulma.css" />
     <link rel="stylesheet" href="css/font-awesome_6.0.0_css_all.css"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
 
     <style>
         @media(max-width: 767px) {
@@ -126,7 +123,7 @@
 <!--                    TBD:-->
 <!--                    A central data team import your production database into a central data lake for data analysis and management reports.-->
 <!--                    You might feel uncomfortable that others had direct access to your production databases, violating the principle of information hiding you worked so hard to achieve in your operational systems.-->
-<!--                    Some management reports may include insights on your domain, but you don't really understand how the numbers were calculated and nobody can validate if these were correct.-->
+<!--                    Some management reports may include insights on your domain, but you don’t really understand how the numbers were calculated and nobody can validate if these were correct.-->
 <!--                </p>-->
 
             </div>
@@ -157,7 +154,7 @@
                     </p>
                     <p>
                         The <strong>Domain Ownership</strong> principle mandates the domain teams to take responsibility for their data.
-                        According to this principle, analytical data should be composed around domains, similar to the team boundaries aligning with the system's bounded context.
+                        According to this principle, analytical data should be composed around domains, similar to the team boundaries aligning with the system’s bounded context.
                         Following the domain-driven distributed architecture, analytical and operational data ownership is moved to the domain teams, away from the central data team.
                     </p>
                     <p>
@@ -187,7 +184,7 @@
                 A Data Mesh Architecture is a decentralized approach that enables domain teams to perform cross-domain data analysis on their own.
                 At its core is the domain with its responsible team and its operational and analytical data.
                 The domain team ingests operational data and builds analytical data models to perform their own analysis.
-                It uses analytical data to build data products based on other domains' needs.
+                It uses analytical data to build data products based on other domains’ needs.
             </p>
             <img src="images/datamesharchitecture.png" alt="Data Mesh Architecture">
             <p>
@@ -196,7 +193,7 @@
                 An enabling team guides domain teams how to model analytical data, use the data platform, build, and maintain interoperable data products.
             </p>
             <p>
-                Let's zoom into core components and their relationships of a Data Mesh architecture:
+                Let’s zoom into core components and their relationships of a Data Mesh architecture:
             </p>
         </div>
 
@@ -285,8 +282,8 @@
                         <p>
                             In a preprocessing step, raw data is cleaned and structured into events and entities.
                             <strong>Events</strong> are small, immutable, and highly domain oriented, such as <em>OrderPurchased</em> or <em>ShipmentDelivered</em>.
-                            <strong>Entities</strong> represent business objects such as <em>shipments</em> or <em>articles</em> that change over time. That's why the entities often are represented as a list of snapshots, the history, with the latest snapshot being the current state.
-                            In practice, we often see <strong>manually</strong> entered data, we've made this explicit here as well.
+                            <strong>Entities</strong> represent business objects such as <em>shipments</em> or <em>articles</em> that change over time. That’s why the entities often are represented as a list of snapshots, the history, with the latest snapshot being the current state.
+                            In practice, we often see <strong>manually</strong> entered data, we’ve made this explicit here as well.
                             <!-- TBD --> These information objects are domain-private.
                         </p>
                         <p>
@@ -317,12 +314,12 @@
                         </p>
                         <p>
                             <strong>Domain events</strong> are a great fit to be ingested into the data platform as they represent relevant business facts.
-                            If there's a messaging system in place domain events can be forwarded to the data platform by attaching an additional message consumer.
+                            If there’s a messaging system in place domain events can be forwarded to the data platform by attaching an additional message consumer.
                             Data can be collected, processed, and forwarded to the data platform in real-time.
                             With this <strong>streaming ingestion</strong>, data is sent in small batches when they arrive, so they are immediately available for analytics.
                             As domain events are already well-defined, there is little to do in terms of cleaning and preprocessing, except deduplication
                             and anonymization of PII data.
-                            Sometimes, it is also advisable, to define and ingest internal analytical events that contain information that is relevant only for analytical use cases, so that domain events don't have to be modified.
+                            Sometimes, it is also advisable, to define and ingest internal analytical events that contain information that is relevant only for analytical use cases, so that domain events don’t have to be modified.
                             <br>
                             <em>Examples for streaming ingestion: Kafka Connect, Kafka Streams, AWS Lambda</em>
                         </p>
@@ -492,9 +489,9 @@
                     </p>
                     <p>
                         A member of the enabling team temporarily joins a domain team for a limited time span like a month as an
-                        <strong>internal consultant</strong> to understand the team's needs, establish a learning environment,
+                        <strong>internal consultant</strong> to understand the team’s needs, establish a learning environment,
                         upskill the team members in data analytics, and guide them how to use the self-serve data platform.
-                        They don't create data products by themselves.
+                        They don’t create data products by themselves.
                     </p>
                     <p>
                         In between their consulting engagements, they <strong>share learning
@@ -540,7 +537,7 @@
             </div>
 
             <div class="column content">
-                <h1 class="title is-1" id="domain-teams-journey">Domain Team's Journey</h1>
+                <h1 class="title is-1" id="domain-teams-journey">Domain Team’s Journey</h1>
             </div>
         </div>
 
@@ -562,7 +559,7 @@
                 <p>
                     To make this journey successful, the team needs three things: a clear data mesh vision from top management to get everybody moving in the same direction, a supportive environment including an easy to use self-serve data platform to get the engineering team on a learning path towards data analytics, and trust to walk the journey in their own way and pace.
                 </p>
-                <p>So let's start your journey!</p>
+                <p>So let’s start your journey!</p>
             </div>
         </div>
 
@@ -600,10 +597,10 @@
             <div class="column content">
                 <p>
                     Being in production, you probably have to investigate an incident and need to analyze how many customers are affected.
-                    Also, some stakeholders might have questions regarding your data, such as "Which in-stock articles haven't been sold in the last 6 months?"
+                    Also, some stakeholders might have questions regarding your data, such as "Which in-stock articles haven’t been sold in the last 6 months?"
                     or "What were the shipping times during last black week?".
                     To answer all these questions, you send analytical queries to your operational database.
-                    Over time, you also do some first explorative analytics to get a deeper understanding of your system's behaviour.
+                    Over time, you also do some first explorative analytics to get a deeper understanding of your system’s behaviour.
                 </p>
                 <p>
                     This increases load on your production database, and you might be tempted to change the production database to better support your analytical queries,
@@ -628,11 +625,11 @@
         <div class="columns is-vcentered">
             <div class="column content">
                 <p>
-                    With the pains of slow and hard to write analytical queries in the back of your mind, you try out the self-serve data platform that's being promoted by the data platform team.
+                    With the pains of slow and hard to write analytical queries in the back of your mind, you try out the self-serve data platform that’s being promoted by the data platform team.
                     For example, you now have access to Google BigQuery.
                     On this platform, your team starts to build an analytical data model from your operational databases.
                     This allows you to analyze data covering your own systems with maintainable and fast queries, while keeping the schemas of your operational databases untouched.
-                    You learn how to structure, preprocess, clean, analyze, and visualize analytical data&mdash;that's a lot to learn even though most is SQL which you are already familiar with.
+                    You learn how to structure, preprocess, clean, analyze, and visualize analytical data&mdash;that’s a lot to learn even though most is SQL which you are already familiar with.
                 </p>
                 <p>
                     As questions regarding your own data can now be answered quickly, you and your product owner now enter the cycle of making data-driven decisions: define hypotheses and verify with data.
@@ -711,7 +708,7 @@
             <div class="column content">
             </div>
             <div class="column">
-                <h1 class="title is-1" id="data-teams-journey">Data Team's Journey</h1>
+                <h1 class="title is-1" id="data-teams-journey">Data Team’s Journey</h1>
             </div>
         </div>
 
@@ -748,7 +745,7 @@
                 <div class="content">
         <p>
             The real mind shift, however, happens when founding new data-centric domains as shown in the figure above.
-            Let's look at typical management reports that large central data teams usually produces bases on monolithic data warehouses or data lakes.
+            Let’s look at typical management reports that large central data teams usually produces bases on monolithic data warehouses or data lakes.
             With Data Mesh, the data engineers that created those management reports form a new domain team together with a dedicated product owner.
             As engineers of the new domain team, they now can focus on their new domain and their consumers.
             This allows them to gain deep domain knowledge over time, resulting in better reports and continuous optimizations.
@@ -758,7 +755,7 @@
         </p>
         <p>
             As existing domain teams on their journey do more and more data analytics, another perspective for members of the central data team is to join one of those existing teams.
-            With their existing knowledge, the can accelerate the domain teams' journey towards a Data Mesh by spreading and teaching their knowledge and skills to the others of the team.
+            With their existing knowledge, the can accelerate the domain teams’ journey towards a Data Mesh by spreading and teaching their knowledge and skills to the others of the team.
             It is important that they become full members of the team, and not founding a data subteam within the domain team.
 
             In addition to their knowledge and skills, the data engineers may also bring responsibilities and artefacts from the central data team to their domain teams.
@@ -766,7 +763,7 @@
         </p>
         <p>
             The data scientists, typically, are centrally organized as well.
-            That's why their future, organizational-wise, is quite similar to that of the central data team.
+            That’s why their future, organizational-wise, is quite similar to that of the central data team.
             The data products they focus on are ML features and models.
             When joining an existing domain team, such an ML model might be fully integrated in the systems.
         </p></div>
@@ -957,13 +954,12 @@
         <div class="content has-text-centered">
             <p>
                 <a href="https://www.innoq.com">
-                    <img src="/images/supported-by-innoq--petrol-apricot.svg" alt="Supported by INNOQ" class="footer-logo" />
+                    <img src="/images/supported-by-innoq--petrol-apricot.svg" alt="Supported by INNOQ" class="footer-logo" width="180" />
                 </a>
             </p>
             <p>
                 <a href="https://www.innoq.com/en/impressum/">Legal Notice</a>
-                &nbsp;
-                &nbsp;
+                &nbsp
                 <a href="https://www.innoq.com/en/datenschutz/">Privacy</a>
             </p>
         </div>
