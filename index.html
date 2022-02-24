@@ -8,11 +8,11 @@
     <meta name="twitter:site" content="@innoq" />
     <meta name="twitter:title" content="Data Mesh Architecture" />
     <meta name="twitter:description" content="Data Mesh from an Engineering Perspective" />
-    <meta name="twitter:image" content="https://preview.datamesh-architecture.com/images/datamesh.png" />
+    <meta name="twitter:image" content="https://preview.datamesh-architecture.com/images/datamesharchitecture.png" />
     <meta property="og:url" content="https://datamesh-architecture.com" />
     <meta property="og:title" content="Data Mesh Architecture" />
     <meta property="og:description" content="Data Mesh from an Engineering Perspective" />
-    <meta property="og:image" content="https://preview.datamesh-architecture.com/images/datamesh.png" />
+    <meta property="og:image" content="https://preview.datamesh-architecture.com/images/datamesharchitecture.png" />
 
     <link rel="stylesheet" href="css/0.9.3_css_bulma.css" />
     <link rel="stylesheet" href="css/font-awesome_6.0.0_css_all.css"/>
@@ -403,11 +403,42 @@
 
         <div class="card mt-4">
             <div class="card-content">
-                <div class="content">
-                    <h4 class="title is-4">Analysis</h4>
-                    <p>
-                        Ad-hoc queries, visualization, reports, A/B testing
-                    </p>
+                <h4 class="title is-4">Analytics</h4>
+                <div class="columns">
+                    <div class="column content">
+                        <p>
+                            To gain insights, domain teams query, process and aggregate their analytical data together with relevant data products from other domains.
+                        </p>
+                        <p>
+                            <strong>SQL</strong> is the foundation for most analytical queries.
+                            It provides powerful functions to connect and investigate data.
+                            The data platform should perform JOIN operations efficiently, even for large data sets.
+                            Aggregations are used to group data and window functions help to perform a calculation across multiple rows.
+                            Notebooks help to build and document exploratory findings.
+                            <br>
+                            <em>Examples: Jupyter Notebooks, Presto</em>
+                        </p>
+                        <p>
+                            Humans understand data, trends, and anomalies much easier when they perceive them visually.
+                            There are a number of great data <strong>visualization</strong> tools that build beautiful charts, KPIs, dashboards and reports.
+                            They provide an easy-to-use UI to drill down, filter and aggregate data.
+                            <br>
+                            <em>Examples: Looker, Tableau, Metabase, Redash</em>
+                        </p>
+                        <p>
+                            For more advanced insights, <strong>data science and machine learning</strong> methods can be applied.
+                            These enable correlation analyses, prediction models, and other advanced use cases.
+                            Special methodological, statistical, and technological skills are required.
+                            <br>
+                            <em>Examples: scikit-learn, PyTorch, TensorFlow</em>
+                        </p>
+                    </div>
+
+                    <div class="column">
+                        <figure class="image">
+                            <img src="images/notebook.png" alt="Notebook">
+                        </figure>
+                    </div>
                 </div>
             </div>
         </div>
@@ -417,6 +448,10 @@
             <div class="card-content">
                 <div class="content">
                     <h4 class="title is-4">Data Platform</h4>
+                    <p>
+                        From a technical perspective, Data Mesh relies on data warehouses and data lakes.
+                        The data platform gives domain teams the choice, which technology suits best for their use cases.
+                    </p>
                     <p>
                         Storing data is a primary purpose of any data platform.
                         As hundreds of terabytes and more may be stored on the platform, storage should be cost-efficient and provide good performance for complex analytical queries.
@@ -430,15 +465,15 @@
                     </p>
                     <p>
                         In some use cases, data needs to be exported from operative or third party systems as files, such as CSV, JSON or XML.
-                        The data platform may need support to store files in an <strong>object storage</strong>, that can be further processed or analyzed.
+                        The data platform may support storing files in an <strong>object storage</strong>, that can be further processed or analyzed.
                         <br>
                         <em>Examples for object storage: Google Object Store, AWS S3, Git</em>
                     </p>
                     <p>
                         For high-volume realtime data, it might be inappropriate to store all events permanently.
-                        A <strong>streaming platform</strong> with short-time retention can be the suitable technology to perform realtime analytics.
+                        A <strong>streaming platform</strong> with short-time retention can be the suitable technology to perform real-time analytics.
                         <br>
-                        <em>Examples for streaming platforms: Kafka, AWS Kinesis</em>
+                        <em>Examples for streaming platforms: Apache Kafka, Confluent, AWS Kinesis</em>
                     </p>
                 </div>
             </div>
