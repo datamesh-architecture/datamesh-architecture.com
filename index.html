@@ -19,6 +19,9 @@
     <link rel="stylesheet" href="css/font-awesome_6.0.0_css_all.css"/>
 
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         @font-face {
             font-family: 'Mark Pro';
             src: url('webfonts/MarkPro-Heavy.woff2') format('woff2');
@@ -46,7 +49,7 @@
     <div class="hero-foot">
         <div class="columns is-mobile is-centered" style="font-size: 3em;">
             <div class="column is-half" style="text-align: center">
-                <a href="#why" style="color: black">
+                <a href="#why" style="color: #FF9B66;">
                 <span class="icon is-medium">
                     <i class="fa-solid fa-angle-down"></i>
                 </span>
@@ -339,12 +342,11 @@
                             Then streaming ingestion can be used to ingest the data as described above.
                             When it is not feasible to change the operational software, <strong>change
                             data capture</strong> may be used to listen to database changes directly and stream them into the data platform.
-                            Lastly, a traditional scheduled ELT/ETL job that exports data to file and loads it into the platform can be set up, with the downside of not having realtime-data, not having all stage changes between exports, and some work to consolidate exported data again.
-                            All these database-centric approaches deal with the operational data model.
-                            To comply with the principle of information hiding, these data should be transformed into a defined analytical model before being ingested to the data platform.
-                            In this transformation, PII information should be removed, when not required for analytical use cases.
                             <br>
                             <em>Examples for CDC streaming: <a href="https://debezium.io">debezium</a></em>
+                        </p>
+                        <p>
+                            Lastly, traditional scheduled <strong>ELT or ETL jobs</strong> that export data to file and loads them into the platform can be set up, with the downside of not having realtime-data, not having all stage changes between exports, and some work to consolidate exported data again. However, they are a viable option for legacy systems, such as mainframes.
                         </p>
                     </div>
 
