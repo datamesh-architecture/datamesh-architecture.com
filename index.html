@@ -152,7 +152,7 @@
         <div class="columns is-vcentered">
 
             <div class="column">
-                <img src="images/datamesh.png" alt="What is data mesh?">
+                <img src="images/datamesh.png" alt="What is Data Mesh?">
             </div>
 
             <div class="column">
@@ -177,7 +177,7 @@
                         With its platform, the data platform team enables domain teams to seamlessly consume and create data products.
                     </p>
                     <p>
-                        The <strong>Federated Computational Governance</strong> principle achieves interoperability of all data products through standardization, which is promoted through the whole data mesh by the governance guild.
+                        The <strong>Federated Computational Governance</strong> principle achieves interoperability of all data products through standardization, which is promoted through the whole Data Mesh by the governance guild.
                         The main goal of federated governance is to create a data ecosystem with adherence to the organizational rules and industry regulations.
                     </p>
                 </div>
@@ -291,12 +291,18 @@
                             In a preprocessing step, raw data is cleaned and structured into events and entities.
                             <strong>Events</strong> are small, immutable, and highly domain oriented, such as <em>OrderPurchased</em> or <em>ShipmentDelivered</em>.
                             <strong>Entities</strong> represent business objects such as <em>shipments</em> or <em>articles</em> that change over time. That’s why the entities often are represented as a list of snapshots, the history, with the latest snapshot being the current state.
-                            In practice, we often see <strong>manually</strong> entered data, we’ve made this explicit here as well.
-                            <!-- TBD --> These information objects are domain-private.
                         </p>
                         <p>
-                            The data product is derived by aggregating a subset of the events, entities, manual data, and data products from other teams.
-                            It is similar with the internal data analysis of the domain team.
+                            In practice, we often see <strong>manually</strong> entered or imported data.
+                            For example, forecast data sent via email as CSV files or text descriptions for business codes.
+                        </p>
+                        <p>
+                            Data from other teams are integrated as <strong>external</strong> data.
+                            When using data products from other teams that are well governed, this external area might be implemented very lightweight.
+                            In case of importing data from legacy systems, the external area acts as an anti-corruption layer.
+                        </p>
+                        <p>
+                            The published data product is derived by <strong>aggregating</strong> a subset of the events, entities, manual, and external data.
                         </p>
                     </div>
 
@@ -490,7 +496,7 @@
                     <p>
                         The enabling team spreads the idea of Data Mesh within the organization.
                         In the beginning of Data Mesh adoption a lot of explanatory efforts will be required and the enabling team can act as Data Mesh advocates.
-                        They help domain teams <a href="#domain-teams-journey">on their journey to becoming a full member of the data mesh</a>.
+                        They help domain teams <a href="#domain-teams-journey">on their journey to becoming a full member of the Data Mesh</a>.
                         The enabling team consists of <span style="text-decoration: line-through;">certified enterprise Data Mesh engineers</span> specialists with extensive knowledge on
                         data analytics, data engineering, and the self-serve data platform.
                     </p>
@@ -557,14 +563,14 @@
 
             <div class="column content">
                 <p>
-                    Just as the <a href="#data-teams-journey">data team has a journey to go</a>, each of your domain teams has to go on a journey to become a contributing part of your data mesh as well.
+                    Just as the <a href="#data-teams-journey">data team has a journey to go</a>, each of your domain teams has to go on a journey to become a contributing part of your Data Mesh as well.
                     Each team can start their journey whenever they are ready and in their own pace.
                     The benefits arise already along the journey.
                     Teams will quickly gain from first data-driven decisions, starting an avalanche to use more and better data for even deeper insights.
-                    The data mesh forms itself with each team that shares their data as products, enabling data-driven innovation.
+                    The Data Mesh forms itself with each team that shares their data as products, enabling data-driven innovation.
                 </p>
                 <p>
-                    To make this journey successful, the team needs three things: a clear data mesh vision from top management to get everybody moving in the same direction, a supportive environment including an easy to use self-serve data platform to get the engineering team on a learning path towards data analytics, and trust to walk the journey in their own way and pace.
+                    To make this journey successful, the team needs three things: a clear Data Mesh vision from top management to get everybody moving in the same direction, a supportive environment including an easy to use self-serve data platform to get the engineering team on a learning path towards data analytics, and trust to walk the journey in their own way and pace.
                 </p>
                 <p>So let’s start your journey!</p>
             </div>
@@ -666,8 +672,8 @@
                     This is when the mesh begins to form itself.
                 </p>
                 <p>
-                    When a team becomes a consuming member of the data mesh, it starts to gain interest in the interoperability and governance of the data mesh.
-                    Ideally, the team will send a representative to the data mesh governance body.
+                    When a team becomes a consuming member of the Data Mesh, it starts to gain interest in the interoperability and governance of the Data Mesh.
+                    Ideally, the team will send a representative to the Data Mesh governance body.
                 </p>
                 <p>
                     In case you are the first team, you may have to skip this step for now and move on to level 4 and be the first to provide data for others.
