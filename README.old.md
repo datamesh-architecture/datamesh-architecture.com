@@ -8,12 +8,6 @@ The goal of this website is to *focus on the engineering perspective of the doma
 
 The term *Data Mesh* was coined by [Zhamak Dehghani](https://martinfowler.com/articles/data-monolith-to-mesh.html).
 
-## Why
-
-![](datamesh-overview.jpg)
-
-- status quo 1: Value proposition perspective
- - innovative product development: improve existing products or create new products
 
 ## Data Mesh Principles
 Data Mesh builds upon four principles: 
