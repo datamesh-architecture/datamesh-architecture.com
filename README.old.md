@@ -24,10 +24,6 @@ Data Mesh builds upon four principles:
 1. __Computational Federated Governance__ TODO... 
 
 
-
-## Case Study
-
-
 ## Architecture Components
 
 - Data Storage
