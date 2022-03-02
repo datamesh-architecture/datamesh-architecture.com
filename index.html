@@ -259,7 +259,7 @@
                         </p>
                         <p>
                             Next, there has to be some form of <strong>documentation</strong> to discover and understand available data products.
-                            A simple policy for this could be a wiki page with a predefined set of metadata, such as owner of the data product, location url, and descriptions of the CSV fields.
+                            A simple policy for this could be a wiki page with a predefined set of metadata, such as owner of the data product, location URL, and descriptions of the CSV fields.
                         </p>
                         <p>
                             A uniform way to access the actual data product in a <strong>secure</strong> way could be using a role-based access in AWS IAM, managed by the domain team.
@@ -294,7 +294,7 @@
                         <p>
                             In a preprocessing step, raw data is cleaned and structured into events and entities.
                             <strong>Events</strong> are small, immutable, and highly domain oriented, such as <em>OrderPurchased</em> or <em>ShipmentDelivered</em>.
-                            <strong>Entities</strong> represent business objects such as <em>shipments</em> or <em>articles</em> that change over time. That’s why the entities often are represented as a list of snapshots, the history, with the latest snapshot being the current state.
+                            <strong>Entities</strong> represent business objects such as <em>shipments</em> or <em>articles</em> with their state changing over time. That’s why the entities often are represented as a list of snapshots, the history, with the latest snapshot being the current state.
                         </p>
                         <p>
                             In practice, we often see <strong>manually</strong> entered or imported data.
@@ -302,8 +302,8 @@
                         </p>
                         <p>
                             Data from other teams are integrated as <strong>external</strong> data.
-                            When using data products from other teams that are well governed, this external area might be implemented very lightweight.
-                            In case of importing data from legacy systems, the external area acts as an anti-corruption layer.
+                            When using data products from other teams that are well governed, this integration might be implemented very lightweight.
+                            In case of importing data from legacy systems, the external area acts as an <a href="https://www.domainlanguage.com/ddd/reference/">anti-corruption layer <i class="fa-solid fa-arrow-up-right-from-square"></i></a>.
                         </p>
                         <p>
                             The published data product is derived by <strong>aggregating</strong> a subset of the events, entities, manual, and external data.
@@ -330,7 +330,7 @@
                     <div class="column content">
                         <p>
                             How can domain teams ingest their operational data into the data platform?
-                            A software system designed according to DDD principles contains data as mutable entities/aggregates and immutable domain events.
+                            A software system designed according to domain-driven design principles contains data as mutable entities/aggregates and immutable domain events.
                         </p>
                         <p>
                             <strong>Domain events</strong> are a great fit to be ingested into the data platform as they represent relevant business facts.
@@ -339,13 +339,13 @@
                             With this <strong>streaming ingestion</strong>, data is sent in small batches when they arrive, so they are immediately available for analytics.
                             As domain events are already well-defined, there is little to do in terms of cleaning and preprocessing, except deduplication
                             and anonymization of PII data.
-                            Sometimes, it is also advisable, to define and ingest internal analytical events that contain information that is relevant only for analytical use cases, so that domain events don’t have to be modified.
+                            Sometimes, it is also advisable to define and ingest internal analytical events that contain information that is relevant only for analytical use cases so that domain events don’t have to be modified.
                             <br>
                             <em>Examples for streaming ingestion: Kafka Connect, Kafka Streams, AWS Lambda</em>
                         </p>
                         <p>
                             Many business objects are persisted as <strong>entities and aggregates</strong> in SQL or NoSQL databases.
-                            Their state changes over time and the latest state is persisted in the database, only.
+                            Their state changes over time, and the latest state is persisted in the database, only.
                             Strong candidates for entities with state are <em>articles</em>, <em>prices</em>, <em>customer data</em>, or <em>shipment status</em>.
                             For analytical use cases, it is often required to have both, the latest state and the history of states over time.
                             There are several approaches to ingest entities.
@@ -353,9 +353,9 @@
                             <a href="https://en.wikipedia.org/wiki/Aspect-oriented_programming">aspect <i class="fa-solid fa-arrow-up-right-from-square"></i></a> or <a href="https://docs.spring.io/spring-data/jpa/docs/current/api/index.html?org/springframework/data/jpa/domain/support/AuditingEntityListener.html">EntityListeners <i class="fa-solid fa-arrow-up-right-from-square"></i></a>.
                             Then streaming ingestion can be used to ingest the data as described above.
                             When it is not feasible to change the operational software, <strong>change
-                            data capture</strong> may be used to listen to database changes directly and stream them into the data platform.
+                            data capture (CDC)</strong> may be used to listen to database changes directly and stream them into the data platform.
                             <br>
-                            <em>Examples for CDC streaming: <a href="https://debezium.io">debezium <i class="fa-solid fa-arrow-up-right-from-square"></i></a></em>
+                            <em>Examples for CDC streaming: <a href="https://debezium.io">Debezium <i class="fa-solid fa-arrow-up-right-from-square"></i></a></em>
                         </p>
                         <p>
                             Lastly, traditional scheduled <strong>ELT or ETL jobs</strong> that export data to file and loads them into the platform can be set up, with the downside of not having realtime-data, not having all stage changes between exports, and some work to consolidate exported data again. However, they are a viable option for legacy systems, such as mainframes.
@@ -389,8 +389,8 @@
                             Now it can be preprocessed to get data clean:
                         </p>
                         <ul>
-                            <li><strong>Structuring:</strong> Transform unstructured and semi-structured data to the analytical data model, e.g. by extracting JSON fields into columns.</li>
-                            <li><strong>Mitigation of structural changes:</strong> When data structures have changed, mitigate them, e.g. by filling null-values with sensible defaults.</li>
+                            <li><strong>Structuring:</strong> Transform unstructured and semi-structured data to the analytical data model, e.g., by extracting JSON fields into columns.</li>
+                            <li><strong>Mitigation of structural changes:</strong> When data structures have changed, mitigate them, e.g., by filling null-values with sensible defaults.</li>
                             <li><strong>Deduplication:</strong> As most analytical storage systems are append-only, entities and events cannot be updated. Remove all duplicate entries.</li>
                             <li><strong>Completeness:</strong> Ensure that data contains agreed periods, even when there were technical issues during ingestion.</li>
                             <li><strong>Fix outliers:</strong> Invalid data that may occur through bugs get identified and corrected.</li>
@@ -436,7 +436,7 @@
                         </p>
                         <p>
                             Humans understand data, trends, and anomalies much easier when they perceive them visually.
-                            There are a number of great data <strong>visualization</strong> tools that build beautiful charts, KPIs, dashboards and reports.
+                            There are a number of great data <strong>visualization</strong> tools that build beautiful charts, key performance indicator overviews, dashboards and reports.
                             They provide an easy-to-use UI to drill down, filter and aggregate data.
                             <br>
                             <em>Examples: Looker, Tableau, Metabase, Redash</em>
@@ -501,18 +501,18 @@
                     <p>
                         Most common are <strong>SQL-like databases</strong> that store data in tables with a structured schema, with the option of semi-structured fields.
                         These databases usually use columnar data stores to retrieve and search large datasets efficiently, hence there is no need for indexes.
-                        For smaller datasets it is also possible to use traditional relational databases, but these will require more storage management efforts and index optimizations to build efficient queries.
+                        For smaller datasets, it is also possible to use traditional relational databases, but these will require more storage management efforts and index optimizations to build efficient queries.
                         <br>
                         <em>Examples for SQL-like databases: Google BigQuery, AWS Redshift, Azure Synapse Analytics, Snowflake, PostgreSQL</em>
                     </p>
                     <p>
-                        In some use cases, data needs to be exported from operative or third party systems as files, such as CSV, JSON or XML.
+                        In some use cases, data needs to be exported from operative or third-party systems as files, such as CSV, JSON or XML.
                         The data platform may support storing files in an <strong>object storage</strong>, that can be further processed or analyzed.
                         <br>
                         <em>Examples for object storage: Google Object Store, AWS S3, Git</em>
                     </p>
                     <p>
-                        For high-volume realtime data, it might be inappropriate to store all events permanently.
+                        For high-volume real-time data, it might be inappropriate to store all events permanently.
                         A <strong>streaming platform</strong> with short-time retention can be the suitable technology to perform real-time analytics.
                         <br>
                         <em>Examples for streaming platforms: Apache Kafka, Confluent, AWS Kinesis</em>
@@ -562,8 +562,8 @@
                     <h4 class="title is-4">Enabling Team</h4>
                     <p>
                         The enabling team spreads the idea of Data Mesh within the organization.
-                        In the beginning of Data Mesh adoption a lot of explanatory efforts will be required and the enabling team can act as Data Mesh advocates.
-                        They help domain teams <a href="#domain-teams-journey">on their journey to becoming a full member of the Data Mesh</a>.
+                        In the beginning of Data Mesh adoption, a lot of explanatory efforts will be required and the enabling team can act as Data Mesh advocates.
+                        They help domain teams <a href="#domain-teams-journey">on their journey to become a full member of the Data Mesh</a>.
                         The enabling team consists of specialists with extensive knowledge on
                         data analytics, data engineering, and the self-serve data platform.
                     </p>
@@ -636,10 +636,10 @@
                     Each team can start their journey whenever they are ready and in their own pace.
                     The benefits arise already along the journey.
                     Teams will quickly gain from first data-driven decisions, starting an avalanche to use more and better data for even deeper insights.
-                    The Data Mesh forms itself with each team that shares their data as products, enabling data-driven innovation.
+                    The Data Mesh evolves with each team that shares their data as products, enabling data-driven innovation.
                 </p>
                 <p>
-                    To make this journey successful, the team needs three things: a clear Data Mesh vision from top management to get everybody moving in the same direction, a supportive environment including an easy to use self-serve data platform to get the engineering team on a learning path towards data analytics, and trust to walk the journey in their own way and pace.
+                    To make this journey successful, the team needs three things: a clear Data Mesh vision from top management to get everybody moving in the same direction, a supportive environment including an easy to use self-serve data platform to get the engineering team on a learning path towards data analytics, and a high trust environment to walk the journey in their own way and pace.
                 </p>
                 <p>So let’s start your journey!</p>
             </div>
@@ -655,7 +655,7 @@
             <div class="column content">
                 <p>
                     Your team is responsible for a domain and builds and operates <a href="https://scs-architecture.org/">self-contained systems <i class="fa-solid fa-arrow-up-right-from-square"></i></a> including the necessary infrastructure.
-                    It was quite an effort to build these systems, and you were highly focussed on delivery excellence.
+                    It was quite an effort to build these systems, and you were highly focused on delivery excellence.
                     These operational systems now generate domain data.
                 </p>
                 <p>
@@ -684,7 +684,7 @@
                     Also, some stakeholders might have questions regarding your data, such as "Which in-stock articles haven’t been sold in the last 6 months?"
                     or "What were the shipping times during last black week?".
                     To answer all these questions, you send analytical queries to your operational database.
-                    Over time, you also do some first explorative analytics to get a deeper understanding of your system’s behaviour.
+                    Over time, you also do some first explorative analytics to get a deeper understanding of your system’s behavior.
                 </p>
                 <p>
                     This increases load on your production database, and you might be tempted to change the production database to better support your analytical queries,
@@ -781,7 +781,7 @@
                 <p>
                     Data products must comply with the global policies defined by the federated governance body.
                     You have to know and understand the current global policies.
-                    Now, at the latest, you need to participate and contribute in the federated governance body.
+                    Now, at the latest, you need to participate in and contribute to the federated governance body.
                 </p>
             </div>
             <div class="column">
@@ -815,12 +815,12 @@
             <div class="content">
 
             <p>
-                Data Mesh is primarily an organizational construct and relies on the <a href="https://teamtopologies.com/key-concepts">principles of team topologies <i class="fa-solid fa-arrow-up-right-from-square"></i></a>.
+                Data Mesh is primarily an organizational construct and fits right into the <a href="https://teamtopologies.com/key-concepts">principles of team topologies <i class="fa-solid fa-arrow-up-right-from-square"></i></a>.
                 It shifts the responsibilities for data towards domain teams which are supported by a data platform team and a data enabling team.
                 Representatives of all teams come together in a federated governance guild to define the common standards.
             </p>
             <p>
-                Today, in many organizations a central data team is responsible for wide-ranging analytical tasks, from data-engineering to managing data infrastructure to creating C-level reports.
+                Today, in many organizations a central data team is responsible for wide-ranging analytical tasks, from data engineering over managing data infrastructure to creating C-level reports.
                 Such a central data team suffers from cognitive overload, including domain, technical, and methodical knowledge.
                 Data Mesh mitigates this.
             </p>
@@ -840,7 +840,7 @@
         <p>
             The real mind shift, however, happens when founding new data-centric domains as shown in the figure above.
             Let’s look at typical management reports that large central data teams usually produce based on monolithic data warehouses or data lakes.
-            With Data Mesh, the data engineers that created those management reports form a new domain team together with a dedicated product owner.
+            With Data Mesh, the data engineers that created those management reports build a new domain team together with a dedicated product owner.
             As engineers of the new domain team, they now can focus on their new domain and their consumers.
             This allows them to gain deep domain knowledge over time, resulting in better reports and continuous optimizations.
             In addition, they switch from using that monolith data warehouse to data products from other domains.
@@ -849,10 +849,10 @@
         </p>
         <p>
             As existing domain teams on their journey do more and more data analytics, another perspective for members of the central data team is to join one of those existing teams.
-            With their existing knowledge, they can accelerate the domain teams’ journey towards a Data Mesh by spreading and teaching their knowledge and skills to the others of the team.
-            It is important that they become full members of the team, and not founding a data subteam within the domain team.
+            With their existing knowledge, they can accelerate the domain teams’ journeys towards a Data Mesh by spreading and teaching their knowledge and skills to the others of the team.
+            It is important that they become full members of the team and not founding a data sub-team within the domain team.
 
-            In addition to their knowledge and skills, the data engineers may also bring responsibilities and artefacts from the central data team to their domain teams.
+            In addition to their knowledge and skills, the data engineers may also bring responsibilities and artifacts from the central data team to their domain teams.
             For example, customer profiling, that was previously done by the central data team, will move into the responsibility of the recommendation domain team.
         </p>
         <p>
@@ -860,7 +860,7 @@
             That’s why their future, organizational-wise, is quite similar to that of the central data team.
             The data products in the Data Mesh they focus on are machine learning features and models.
             When joining an existing domain team, such a machine learning model might be fully integrated in a microservice.
-            So, Data Mesh enables such machine learning based services because the required <a href="https://ml-ops.org">MLOps <i class="fa-solid fa-arrow-up-right-from-square"></i></a> capabilities can be built on top of the Data Mesh easily.
+            So, Data Mesh enables such machine learning based services because the required <a href="https://ml-ops.org">MLOps <i class="fa-solid fa-arrow-up-right-from-square"></i></a> capabilities can be easily built on top of the Data Mesh.
         </p></div>
         </div>
             <div class="column">
@@ -889,7 +889,7 @@
             <p>
                 It depends, of course.
                 There are a few prerequisites that should be in place:
-                You should have modularized your software system following Domain-driven Design principles, or something similar.
+                You should have modularized your software system following Domain-driven Design principles or something similar.
                 You should have a good number (5+) of independent domain teams that have their systems already running in production.
                 And finally, you should trust your teams to make data-driven decisions on their own.
             </p>
@@ -913,7 +913,7 @@
             <h5 class="title">Data Mesh vs. Data Fabric?</h5>
             <p>
                 At first, <a href="https://www.ibm.com/analytics/data-fabric">Data Fabric <i class="fa-solid fa-arrow-up-right-from-square"></i></a> looks similar to Data Mesh because it offers a similar self-serve data platform.
-                Looking deeper, it turns out Data Fabric is a central and domain-agnostic approach, which stands in stark contrast to the domain-centric and decentralized approach of Data Mesh.
+                Looking deeper, it turns out Data Fabric is a central and domain-agnostic approach, which is in stark contrast to the domain-centric and decentralized approach of Data Mesh.
                 <a href="https://www.datanami.com/2021/10/25/data-mesh-vs-data-fabric-understanding-the-differences/">More in this comparison article <i class="fa-solid fa-arrow-up-right-from-square"></i></a>.
             </p>
 
@@ -1010,7 +1010,7 @@
 
                 <div class="content">
                     In her follow-up article, Zhamak gets into more detail on the four principles.
-                    The article is worth reading, but it remains vague in many areas.
+                    The article is worth reading, but move on to her book if you want to learn even more.
                 </div>
             </div>
         </div>
