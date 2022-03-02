@@ -493,9 +493,9 @@
                     <p>
                         Efficiently combining data products from multiple domains, i.e., having large cross-domain join operations within a few seconds, ensures developer acceptance and happiness.
                         That's why the <strong>query engine has a large influence on the architecture of the data platform</strong>.
-                        A central shared platform with a single query language and support for separated areas is a good way to start as everything is highly integrated.
+                        A shared platform with a single query language and support for separated areas is a good way to start as everything is highly integrated.
                         This could be Google Big Query with tables in multiple projects that are discoverable through Google Data Catalog.
-                        In a more decentralized and distributed Data Mesh, a distributed query engine such as Presto can still perform cross-domain joins without importing data, but they come with their own limitations.
+                        In a more decentralized and distributed Data Mesh, a distributed query engine such as Presto can still perform cross-domain joins without importing data, but they come with their own limitations, e.g., limited pushdowns require that all underlying column data needs to be transferred.
                     </p>
                 </div>
             </div>
