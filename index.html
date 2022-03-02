@@ -159,7 +159,7 @@
             <div class="column">
                 <div class="content">
                     <p>
-                        The term <em>Data Mesh</em> was coined by <a href="https://martinfowler.com/articles/data-mesh-principles.html">Zhamak Dehghani</a> and is based on four fundamental principles that bundle well-known concepts:
+                        The term <em>Data Mesh</em> was coined by <a href="https://martinfowler.com/articles/data-mesh-principles.html">Zhamak Dehghani <i class="fa-solid fa-arrow-up-right-from-square"></i></a> and is based on four fundamental principles that bundle well-known concepts:
                     </p>
                     <p>
                         The <strong>Domain Ownership</strong> principle mandates the domain teams to take responsibility for their data.
@@ -217,7 +217,7 @@
                             or a daily JSON file with purchase orders on an AWS S3 bucket.
                             A data product can take other forms as well, including
                             a sales report containing KPIs and charts as a PDF or even an
-                            ML model to predict shipping dates as a <a href="https://onnx.ai/">ONNX</a> file.
+                            ML model to predict shipping dates as a <a href="https://onnx.ai/">ONNX <i class="fa-solid fa-arrow-up-right-from-square"></i></a> file.
                         </p>
                         <p>
                             To discover, access, and use the data product, it is described with <strong>metadata</strong>, including
@@ -345,12 +345,12 @@
                             For analytical use cases, it is often required to have both, the latest state and the history of states over time.
                             There are several approaches to ingest entities.
                             One way is to generate and publish an <strong>onCreate/onUpdate/onDelete event</strong> with the current state, every time an entity is changed, e.g. by adding an
-                            <a href="https://en.wikipedia.org/wiki/Aspect-oriented_programming">aspect</a> or <a href="https://docs.spring.io/spring-data/jpa/docs/current/api/index.html?org/springframework/data/jpa/domain/support/AuditingEntityListener.html">EntityListeners</a>.
+                            <a href="https://en.wikipedia.org/wiki/Aspect-oriented_programming">aspect <i class="fa-solid fa-arrow-up-right-from-square"></i></a> or <a href="https://docs.spring.io/spring-data/jpa/docs/current/api/index.html?org/springframework/data/jpa/domain/support/AuditingEntityListener.html">EntityListeners <i class="fa-solid fa-arrow-up-right-from-square"></i></a>.
                             Then streaming ingestion can be used to ingest the data as described above.
                             When it is not feasible to change the operational software, <strong>change
                             data capture</strong> may be used to listen to database changes directly and stream them into the data platform.
                             <br>
-                            <em>Examples for CDC streaming: <a href="https://debezium.io">debezium</a></em>
+                            <em>Examples for CDC streaming: <a href="https://debezium.io">debezium <i class="fa-solid fa-arrow-up-right-from-square"></i></a></em>
                         </p>
                         <p>
                             Lastly, traditional scheduled <strong>ELT or ETL jobs</strong> that export data to file and loads them into the platform can be set up, with the downside of not having realtime-data, not having all stage changes between exports, and some work to consolidate exported data again. However, they are a viable option for legacy systems, such as mainframes.
@@ -379,7 +379,7 @@
                         <p>
                             Data that is ingested into the data platform is usually imported in its original raw and unstructured format.
                             When using a columnar database, this might be a row per event that contains a
-                            <a href="https://en.wikipedia.org/wiki/Character_large_object">CLOB</a> field for the event payload, which may be in JSON format.
+                            <a href="https://en.wikipedia.org/wiki/Character_large_object">CLOB <i class="fa-solid fa-arrow-up-right-from-square"></i></a> field for the event payload, which may be in JSON format.
 
                             Now it can be preprocessed to get data clean:
                         </p>
@@ -393,11 +393,11 @@
                         <p>
                             From an implementation perspective, these preprocessing steps can be implemented as simple SQL views that project the raw data.
                             The queries may be organized through
-                            <a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#with_clause">common table expressions</a> (CTEs)
-                            and may be enhanced with <a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/user-defined-functions">user-defined functions</a> (UDFs), e.g. for JSON processing.
+                            <a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#with_clause">common table expressions <i class="fa-solid fa-arrow-up-right-from-square"></i></a> (CTEs)
+                            and may be enhanced with <a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/user-defined-functions">user-defined functions <i class="fa-solid fa-arrow-up-right-from-square"></i></a> (UDFs), e.g. for JSON processing.
                             As an alternative, the cleaning steps can be implemented as lambda functions that operate on topics.
-                            More complex pipelines can be built with frameworks like <a href="https://www.getdbt.com">dbt</a> or
-                            <a href="https://beam.apache.org">Apache Beam</a> that offer an advanced programming model,
+                            More complex pipelines can be built with frameworks like <a href="https://www.getdbt.com">dbt <i class="fa-solid fa-arrow-up-right-from-square"></i></a> or
+                            <a href="https://beam.apache.org">Apache Beam <i class="fa-solid fa-arrow-up-right-from-square"></i></a> that offer an advanced programming model,
                             but also requires more skills to master.
                         </p>
 
@@ -458,7 +458,7 @@
         <div class="card mt-5">
             <div class="card-content">
                 <div class="content">
-                    <h4 class="title is-4">Self-serve Data Platform</h4>
+                    <h4 class="title is-4">Data Platform: Topology</h4>
 
 
                     <p>
@@ -477,6 +477,14 @@
 
                     </p>
 
+                </div>
+            </div>
+        </div>
+
+        <div class="card mt-5">
+            <div class="card-content">
+                <div class="content">
+                    <h4 class="title is-4">Data Platform: Storage</h4>
                     <p>
                         From a technical perspective, Data Mesh relies on data warehouses and data lakes.
                         The data platform gives domain teams the choice, which technology suits best for their use cases.
@@ -503,6 +511,41 @@
                         A <strong>streaming platform</strong> with short-time retention can be the suitable technology to perform real-time analytics.
                         <br>
                         <em>Examples for streaming platforms: Apache Kafka, Confluent, AWS Kinesis</em>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mt-5">
+            <div class="card-content">
+                <div class="content">
+                    <h4 class="title is-4">Data Platform: Data Catalog</h4>
+                    <p>
+                        TBD
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mt-5">
+            <div class="card-content">
+                <div class="content">
+                    <h4 class="title is-4">Data Platform: Policy Automation</h4>
+                    <p>
+                        TBD
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="card mt-5">
+            <div class="card-content">
+                <div class="content">
+                    <h4 class="title is-4">Data Platform: Operations</h4>
+                    <p>
+                        TBD
                     </p>
                 </div>
             </div>
@@ -604,7 +647,7 @@
         <div class="columns is-vcentered">
             <div class="column content">
                 <p>
-                    Your team is responsible for a domain and builds and operates <a href="https://scs-architecture.org/">self-contained systems</a> including the necessary infrastructure.
+                    Your team is responsible for a domain and builds and operates <a href="https://scs-architecture.org/">self-contained systems <i class="fa-solid fa-arrow-up-right-from-square"></i></a> including the necessary infrastructure.
                     It was quite an effort to build these systems, and you were highly focussed on delivery excellence.
                     These operational systems now generate domain data.
                 </p>
@@ -753,7 +796,7 @@
             <div class="content">
 
             <p>
-                Data Mesh is primarily an organizational construct and relies on the <a href="https://teamtopologies.com/key-concepts">principles of team topologies</a>.
+                Data Mesh is primarily an organizational construct and relies on the <a href="https://teamtopologies.com/key-concepts">principles of team topologies <i class="fa-solid fa-arrow-up-right-from-square"></i></a>.
                 It shifts the responsibilities for data towards domain teams which are supported by a data platform team and a data enabling team.
                 Representatives of all teams come together in a federated governance guild to define the common standards.
             </p>
@@ -798,7 +841,7 @@
             That’s why their future, organizational-wise, is quite similar to that of the central data team.
             The data products in the Data Mesh they focus on are machine learning features and models.
             When joining an existing domain team, such a machine learning model might be fully integrated in a microservice.
-            So, Data Mesh enables such machine learning based services because the required <a href="https://ml-ops.org">MLOps</a> capabilities can be built on top of the Data Mesh easily.
+            So, Data Mesh enables such machine learning based services because the required <a href="https://ml-ops.org">MLOps <i class="fa-solid fa-arrow-up-right-from-square"></i></a> capabilities can be built on top of the Data Mesh easily.
         </p></div>
         </div>
             <div class="column">
@@ -817,6 +860,8 @@
                 Start small and agree on the big picture.
                 Find two domain teams (that are around level 2) that have a high value use case where one team needs data from the other team.
                 Let one team build a data product (level 4) and another team use that data product (level 3).
+                You don’t need a sophisticated data platform, yet.
+                You can start sharing the files via AWS S3, a Git repository, or use a cloud-based database, such as Google BigQuery.
             </p>
 
             <h5 class="title">Is Data Mesh for my company?</h5>
@@ -846,14 +891,21 @@
 
             <h5 class="title">Data Mesh vs. Data Fabric?</h5>
             <p>
-                At first, <a href="https://www.ibm.com/analytics/data-fabric">Data Fabric</a> looks similar to Data Mesh because it offers a similar self-serve data platform.
+                At first, <a href="https://www.ibm.com/analytics/data-fabric">Data Fabric <i class="fa-solid fa-arrow-up-right-from-square"></i></a> looks similar to Data Mesh because it offers a similar self-serve data platform.
                 Looking deeper, it turns out Data Fabric is a central and domain-agnostic approach, which stands in stark contrast to the domain-centric and decentralized approach of Data Mesh.
-                <a href="https://www.datanami.com/2021/10/25/data-mesh-vs-data-fabric-understanding-the-differences/">More in this comparison article.</a>
+                <a href="https://www.datanami.com/2021/10/25/data-mesh-vs-data-fabric-understanding-the-differences/">More in this comparison article <i class="fa-solid fa-arrow-up-right-from-square"></i></a>.
             </p>
 
             <h5 class="title">How is Machine Learning related to Data Mesh?</h5>
             <p>
                 TBD, @Larysa
+            </p>
+
+            <h5 class="title">How did you draw the diagrams?</h5>
+            <p>
+                We got this question quite a lot, so we are happy to share our tooling:
+                <a href="https://www.diagrams.net">diagrams.net <i class="fa-solid fa-arrow-up-right-from-square"></i></a> with "Sketch" style and
+                <a href="https://streamlinehq.com">Streamline Icons <i class="fa-solid fa-arrow-up-right-from-square"></i></a>.
             </p>
 
             <h5 class="title">What are your questions?</h5>
@@ -881,7 +933,7 @@
                     </div>
                     <div class="media-content">
                         <p class="title is-4">
-                            <a href="https://datameshlearning.com/">Data Mesh Learning Community</a>
+                            <a href="https://datameshlearning.com/">Data Mesh Learning Community <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                         </p>
                         <p class="subtitle is-6">
                             by Scott Hirleman
@@ -890,10 +942,10 @@
                 </div>
 
                 <div class="content">
-                    Scott started Data Mesh Learning community <a href="https://datameshlearning.com/">website</a>,
-                    a <a href="https://launchpass.com/data-mesh-learning">slack channel</a>,
-                    and issues a <a href="https://datameshlearning.substack.com/">bi-weekly newsletter</a>.
-                    He collects articles and experience reports about Data Mesh, and even has a <a href="https://daappod.com/data-mesh-radio/">podcast</a> on Data Mesh.
+                    Scott started Data Mesh Learning community <a href="https://datameshlearning.com/">website <i class="fa-solid fa-arrow-up-right-from-square"></i></a>,
+                    a <a href="https://launchpass.com/data-mesh-learning">slack channel <i class="fa-solid fa-arrow-up-right-from-square"></i></a>,
+                    and issues a <a href="https://datameshlearning.substack.com/">bi-weekly newsletter <i class="fa-solid fa-arrow-up-right-from-square"></i></a>.
+                    He collects articles and experience reports about Data Mesh, and even has a <a href="https://daappod.com/data-mesh-radio/">podcast <i class="fa-solid fa-arrow-up-right-from-square"></i></a> on Data Mesh.
                     It is worth subscribing to stay informed.
                 </div>
             </div>
@@ -908,7 +960,7 @@
                         </span>
                     </div>
                     <div class="media-content">
-                        <p class="title is-4"><a href="https://martinfowler.com/articles/data-monolith-to-mesh.html">How to Move Beyond a Monolithic Data Lake to a Distributed Data Mesh</a></p>
+                        <p class="title is-4"><a href="https://martinfowler.com/articles/data-monolith-to-mesh.html">How to Move Beyond a Monolithic Data Lake to a Distributed Data Mesh <i class="fa-solid fa-arrow-up-right-from-square"></i></a></p>
                         <p class="subtitle is-6">by Zhamak Dehghani</p>
                     </div>
                 </div>
@@ -929,7 +981,7 @@
                     </div>
                     <div class="media-content">
                         <p class="title is-4">
-                            <a href="https://martinfowler.com/articles/data-mesh-principles.html">Data Mesh Principles and Logical Architecture</a>
+                            <a href="https://martinfowler.com/articles/data-mesh-principles.html">Data Mesh Principles and Logical Architecture <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                         </p>
                         <p class="subtitle is-6">by Zhamak Dehghani</p>
                     </div>
@@ -952,7 +1004,7 @@
                     </div>
                     <div class="media-content">
                         <p class="title is-4">
-                            <a href="https://www.oreilly.com/library/view/data-mesh/9781492092384/">Data Mesh</a>
+                            <a href="https://www.oreilly.com/library/view/data-mesh/9781492092384/">Data Mesh <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                         </p>
                         <p class="subtitle is-6">by Zhamak Dehghani</p>
                     </div>
@@ -975,7 +1027,7 @@
                     </div>
                     <div class="media-content">
                         <p class="title is-4">
-                            <a href="https://www.manning.com/books/data-mesh-in-action">Data Mesh in Action</a>
+                            <a href="https://www.manning.com/books/data-mesh-in-action">Data Mesh in Action <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                         </p>
                         <p class="subtitle is-6">
                             by Jacek Majchrzak, Sven Balnojan, and Marian Siwiak
@@ -1000,7 +1052,7 @@
                     </div>
                     <div class="media-content">
                         <p class="title is-4">
-                            <a href="https://www.innoq.com/en/blog/data-mesh-to-go-how-to-data-product/">Data Mesh to Go: How to Get the Data Product</a>
+                            <a href="https://www.innoq.com/en/blog/data-mesh-to-go-how-to-data-product/">Data Mesh to Go: How to Get the Data Product <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                         </p>
                         <p class="subtitle is-6">
                             by Philipp Beyerlein
