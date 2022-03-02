@@ -17,16 +17,53 @@
     <meta property="og:description" content="Data Mesh from an Engineering Perspective" />
     <meta property="og:image" content="https://preview.datamesh-architecture.com/images/datamesharchitecture_card.png" />
 
-    <link rel="preload" as="font" type="font/woff2" href="webfonts/MarkPro-Heavy.woff2" crossorigin="">
+    <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Book.woff2?cachebuster=2" crossorigin="">
+    <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Bold.woff2?cachebuster=2" crossorigin="">
+    <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Heavy.woff2?cachebuster=2" crossorigin="">
     <link rel="stylesheet" href="css/0.9.3_css_bulma.css" />
     <link rel="stylesheet" href="css/font-awesome_6.0.0_css_all.css"/>
 
     <style>
         @font-face {
             font-family: 'Mark Pro';
-            src: url('webfonts/MarkPro-Heavy.woff2') format('woff2');
+            src: url('https://www.innoq.com/assets/MarkPro-Book.woff2?cachebuster=2') format('woff2');
+            font-weight: 400;
+        }
+        @font-face {
+            font-family: 'Mark Pro';
+            src: url('https://www.innoq.com/assets/MarkPro-Bold.woff2?cachebuster=2') format('woff2');
+            font-weight: 600;
+        }
+        @font-face {
+            font-family: 'Mark Pro';
+            src: url('https://www.innoq.com/assets/MarkPro-Heavy.woff2?cachebuster=2') format('woff2');
             font-weight: 800;
         }
+        @font-face {
+            font-family: 'Freight Text';
+            src: url('https://www.innoq.com/assets/350ED6_1_unhinted_0.woff2?cachebuster=2') format('woff2');
+            font-weight: 500;
+            font-style: italic;
+        }
+
+        body {
+            font-family: 'Mark Pro', sans-serif;
+            font-weight: 400;
+        }
+
+        .title,
+        .content h1,
+        .content h2,
+        .content h3,
+        .content h4 {
+            font-family: 'Mark Pro', sans-serif;
+            font-weight: 800;
+        }
+
+        strong {
+            font-weight: 600;
+        }
+
         @media(max-width: 767px) {
             /*noinspection CssUnusedSymbol*/
             .reverse-columns {
@@ -40,10 +77,10 @@
 <section class="hero is-fullheight" style="background-color: #242424">
     <div class="hero-body">
         <div class="">
-            <p class="title" style="color: white; font-family: 'Mark Pro',sans-serif; font-weight: 800; font-size: 10vw">
-                DATA MESH <br><span style="color: #FF9B66;">ARCHITECTURE</span>
+            <p class="title" style="color: white; font-family: 'Mark Pro',sans-serif; font-weight: 800; font-size: 10vw; letter-spacing: -1px; text-transform: uppercase; line-height: 1.0; margin-bottom: 5rem;">
+                Data Mesh <br><span style="color: #FF9B66;">Architecture</span>
             </p>
-            <p class="subtitle" style="color: white; font-family: 'FreightTextPro','Georgia,Times','Times New Roman',serif; font-style: italic; font-size: 3vw;">Data Mesh from an Engineering Perspective</p>
+            <p class="subtitle" style="color: white; font-family: 'Freight Text','Georgia,Times','Times New Roman',serif; font-style: italic; font-size: 3vw; font-weight: 500;">Data Mesh from an Engineering Perspective</p>
         </div>
     </div>
     <div class="hero-foot">
