@@ -8,3 +8,10 @@ wait $P1 $P2
 # find images/ -name '*.svg' -print0 | xargs -0 sed -i "" 's|<defs>|<defs><style>@font-face {font-family: "Architects Daughter";src: url(../webfonts/architectsdaughter.woff2) format("woff2");}</style>|g'
 # find images/ -name '*.svg' -print0 | xargs -0 sed -i "" 's|<defs/>|<defs><style>@font-face {font-family: "Architects Daughter";src: url(../webfonts/architectsdaughter.woff2) format("woff2");}</style></defs>|g'
 
+# requires installation
+#
+# brew install webp
+for i in images/*.png; do
+    [ -f "$i" ] || break
+    cwebp -q 100 -quiet -lossless "$i" -o "$i.webp"
+done
