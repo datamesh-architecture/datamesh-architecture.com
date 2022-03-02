@@ -463,7 +463,7 @@
         <div class="card mt-5">
             <div class="card-content">
                 <div class="content">
-                    <h4 class="title is-4">Data Platform: Topology</h4>
+                    <h4 class="title is-4">Data Platform</h4>
 
                     <p>
                     The self-serve data platform may vary for each organization.
@@ -471,7 +471,6 @@
                     </p>
 
                     <p>
-
                         Looking from the desired capabilities, you can distinguish between analytical capabilities and data product capabilities:
                             <strong>Analytical capabilities</strong> enable the domain team to build an analytical data model and perform analytics for data-driven decisions.
                         The data platform needs functions to ingest, store, query, and visualize data as a self-service.
@@ -480,48 +479,31 @@
                     </p>
 
                     <p>
-                        A more advanced data platform for Data Mesh also provides additional <strong>data products capabilities</strong>
+                        A more advanced data platform for Data Mesh also provides additional domain-agnostic <strong>data products capabilities</strong>
                         for creating, monitoring, discovering, and accessing data products.
-                        Creating and monitoring data products are the responsibilities of the domain teams.
+                        The self-serve data platform should support the domain teams so that they can quickly build a data product as well as run it in production in their isolated area.
+                        The platform should support the domain team in publishing their data products so that other teams can discover them.
+                        The discovery requires a central entry point for all the decentralized data products.
+                        A data catalog can be implemented in different ways: as a wiki, git repository, or there are even already vendor solutions for a cloud-based data catalog such as Select Star, Google Data Catalog, or AWS Glue Data Catalog.
+                        The actual usage of data products, however, requires a domain team to access, integrate, and query other domain's data products.
+                        The platform should support, monitor, and document the cross-domain access and usage of data products.
                     </p>
                     <p>
-                        Policy automation
+                        An even more advanced data platform supports <strong>policy automation</strong>.
+                        This means that, instead of forcing the domain team to manually ensure that the global policies are not violated, the policies are automatically enforced through the platform.
+                        For example, that all data products have the same metadata structure in the data catalog, or that the PII data are automatically removed during data ingestion.
                     </p>
-
-
-                    Data Product Capabilities
-                    - create data products
-                    - observe/monitor
-                    - discover
-                    - read data products: access, cross-domain querying
-                    - policy automation (cross-cutting)
-
-
-                    Dezentral: Unabhängig, polyglot, damit schneller in der Umsetzung
-                    Zentral: daten sind näher zusammen
-
-                    Federated Query Technologies (external tables and federated queries) reduce costs, as ETL is superfluous.
-
                     <p>
-                        decentralization: storage space/isolation/data schema, monitoring, logging, analyze, visualize in domain team
-                        combination: access and cross-domain querying (provide/use of data products)
-                        central view: discovery in a catalog (expose/find data products)
-
-                        policy automation as a bonus
+                        Efficiently combining data products from multiple domains, i.e., having large cross-domain join operations within a few seconds, ensures developer acceptance and happiness.
+                        That's why the <strong>query engine has a large influence on the architecture of the data platform</strong>.
+                        A central shared platform with a single query language and support for separated areas is a good way to start as everything is highly integrated.
+                        This could be Google Big Query with tables in multiple projects that are discoverable through Google Data Catalog.
+                        In a more decentralized and distributed Data Mesh, a distributed query engine such as Presto can still perform cross-domain joins without importing data, but they come with their own limitations.
                     </p>
-
-                    <p>
-                        - reuses classical/existing/available data technologies already part of the data platform of the central data team
-                        - necessary capabilities are different/usage scenarios differ: self-service, separate spaces (decentralization), join across separation (combine), catalog for those separate spaces (central view on available data), per domain monitoring/logging
-
-
-
-                    </p>
-
                 </div>
             </div>
         </div>
-
+<!--
         <div class="card mt-5">
             <div class="card-content">
                 <div class="content">
@@ -591,6 +573,7 @@
                 </div>
             </div>
         </div>
+        -->
 
         <div class="card mt-5">
             <div class="card-content">
