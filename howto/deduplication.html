@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Data Mesh Architecture</title>
+    <meta charset="utf-8">
+    <meta name="description" content="A Data Mesh Architecture is a decentralized approach that enables domain teams to perform cross-domain data analysis on their own." />
+    <meta name="keywords" content="data mesh, data mesh architecture, domain-driven data analytics, data analytics, domain-driven design, domain ownership, data as a product, data product, federated governance, self-serve data platform, data platform">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@innoq" />
+    <meta name="twitter:title" content="Data Mesh Architecture" />
+    <meta name="twitter:description" content="Data Mesh from an Engineering Perspective" />
+    <meta name="twitter:image" content="https://preview.datamesh-architecture.com/images/datamesharchitecture_card.png" />
+    <meta name="twitter:image:alt" content="Data Mesh Architecture: Domains are in the center and teams do analytics on their own. They build and interconnect with data products. A data platform team and a enablement team help. Global policies are agreed through federated governance." />
+    <meta property="og:url" content="https://datamesh-architecture.com" />
+    <meta property="og:title" content="Data Mesh Architecture" />
+    <meta property="og:description" content="Data Mesh from an Engineering Perspective" />
+    <meta property="og:image" content="https://preview.datamesh-architecture.com/images/datamesharchitecture_card.png" />
+
+    <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Book.woff2?cachebuster=2" crossorigin="">
+    <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Bold.woff2?cachebuster=2" crossorigin="">
+    <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Heavy.woff2?cachebuster=2" crossorigin="">
+    <link rel="stylesheet" href="../css/0.9.3_css_bulma.css" />
+    <link rel="stylesheet" href="../css/font-awesome_6.0.0_css_all.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+
+    <style>
+        @font-face {
+            font-family: 'Mark Pro';
+            src: url('https://www.innoq.com/assets/MarkPro-Book.woff2?cachebuster=2') format('woff2');
+            font-weight: 400;
+        }
+        @font-face {
+            font-family: 'Mark Pro';
+            src: url('https://www.innoq.com/assets/MarkPro-Bold.woff2?cachebuster=2') format('woff2');
+            font-weight: 600;
+        }
+        @font-face {
+            font-family: 'Mark Pro';
+            src: url('https://www.innoq.com/assets/MarkPro-Heavy.woff2?cachebuster=2') format('woff2');
+            font-weight: 800;
+        }
+        @font-face {
+            font-family: 'Freight Text';
+            src: url('https://www.innoq.com/assets/350ED6_1_unhinted_0.woff2?cachebuster=2') format('woff2');
+            font-weight: 500;
+            font-style: italic;
+        }
+
+        .title,
+        .content h1,
+        .content h2,
+        .content h3,
+        .content h4 {
+            font-family: 'Mark Pro', sans-serif;
+            font-weight: 800;
+        }
+
+        strong {
+            font-weight: 600;
+        }
+
+        .fa-arrow-up-right-from-square {
+            display: inline;
+        }
+
+        @media(max-width: 767px) {
+            /*noinspection CssUnusedSymbol*/
+            .reverse-columns {
+                flex-direction: column-reverse;
+                display: flex;
+            }
+        }
+    </style>
+
+    <link rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+<body>
+<div class="container">
+
+    <section class="section">
+        <h2 class="title">Deduplication in SQL</h2>
+
+        <div class="content">
+            <p>
+                Deduplication is necessary in append-only systems.
+                Because of at least once delivery, there are duplicates due to technical issues, and where one entry should be superseded by a newer one.
+            </p>
+            <p>
+                For deduplication in SQL, the table needs to have two columns:
+            </p>
+            <ul>
+                <li>deduplication field, typically an ID</li>
+                <li>timestamp when inserted to order by</li>
+            </ul>
+            <p>
+                Note: <code>SELECT DISTINCT</code> is not sufficient, esp. when created timestamps differ
+            </p>
+
+        <h3>Deduplicate in a Query</h3>
+
+            <p>
+                A simple way to deduplicate is directly in your query.
+                We recommend doing this in a separate deduplication step with a common table expression to keep your actual query clean.
+            </p>
+
+
+<pre><code class="language-sql">-- Step 1: Deduplicate
+WITH mytable_deduplicated AS (
+    SELECT *
+    EXCEPT (row_number)
+    FROM (
+       SELECT *,
+              ROW_NUMBER() OVER (PARTITION BY id ORDER BY time DESC) row_number
+       FROM `mytable`)
+    WHERE row_number = 1
+),
+-- Step X: Process further
+SELECT *
+FROM mytable_deduplicated
+</code></pre>
+
+            <h3>Deduplicate in a Scheduled Job (Google BigQuery specific)</h3>
+
+            <p>
+            Deduplication can also happen periodically with scheduled jobs. Here's the SQL code of a scheduled job in Google BigQuery.
+            </p>
+
+<pre><code class="language-sql">MERGE `mytable` target
+USING (
+          SELECT
+            * EXCEPT(row_number)
+          FROM (
+            SELECT
+              *,
+              ROW_NUMBER() OVER (PARTITION BY id ORDER BY time DESC) row_number
+            FROM `target`)
+          WHERE
+            row_number = 1
+          AND
+            time < TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 90 MINUTE)
+) source
+ON FALSE
+WHEN NOT MATCHED BY SOURCE AND time < TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 90 MINUTE) THEN DELETE
+WHEN NOT MATCHED BY TARGET AND time < TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 90 MINUTE) THEN INSERT ROW
+</code></pre>
+
+            <h4>Learnings</h4>
+
+            <ul>
+                <li></li>
+
+                -
+                - select and write to same table is not atomic
+                - always have a field with instant.now in the event, set the instant now right before sending the info to bigquery
+                - When streaming is used `bigquery.insertAll()`, the stream buffer cannot be manipulated by merge, it takes 30-90 minutes, until the entries are written to columnar storage.
+            </ul>
+
+        </div>
+    </section>
+
+</div>
+
+<footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            <a href="https://www.innoq.com">
+                <img src="/images/supported-by-innoq--petrol-apricot.svg" alt="Supported by INNOQ" class="footer-logo" width="180" />
+            </a>
+        </p>
+        <p>
+            <a href="https://www.innoq.com/en/impressum/">Legal Notice</a>
+            &nbsp
+            <a href="https://www.innoq.com/en/datenschutz/">Privacy</a>
+        </p>
+    </div>
+</footer>
+
+<script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+<noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript>
+
+<link rel="stylesheet" href="css/glightbox.css" />
+<script src="js/glightbox.js"></script>
+<script type="text/javascript">
+    const lightbox = GLightbox({});
+</script>
+
+
+<script src="js/anchor.min.js"></script>
+<script>anchors.add();</script>
+</body>
+
+</html>
