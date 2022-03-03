@@ -609,8 +609,69 @@
 
 
 
+        <section class="section is-medium">
+            <h2 class="title">Tech Stacks</h2>
+            <div class="columns is-vcentered">
+                <div class="column content">
+                    <h3>Google Cloud Platform</h3>
+                    <p>
+                        In our experience, most Data Mesh implementations rely on <strong>Google Cloud Platform</strong> as a common infrastructure, at least for analytical data.
+                        Every domain team typically gets their own GCP project(s) under a organization resource.
+                        There is one separate project for each relevant stage, such as test and production.
+                    </p>
+                    <p>
+                        <strong>BigQuery</strong> is the central component for storing analytical data.
+                        BigQuery is based on columnar storage technology and can perform very efficient JOIN operations with large data sets.
+                        It supports access to files stored in Google Cloud Storage as <a href="https://cloud.google.com/bigquery/docs/external-tables">external tables</a>,
+                        so it can also be used as a data lake, if required.
+                    </p>
+                    <p>
+                        BigQuery supports both, batch ingestion and streaming ingestion.
+                        Streaming ingestion is usually performed together with Apache Kafka using a <strong>Kafka Connect Google BigQuery Sink Connector</strong>.
+                        When the operational system architecture does not rely on Apache Kafka, then streaming ingestion often is done with Google Pub/Sub and a simple Cloud Function to forward events to BigQuery.
+                    </p>
+                    <p>
+                        For analytics, BigQuery supports SQL queries with a number of available <a href="https://github.com/GoogleCloudPlatform/bigquery-utils/tree/master/udfs/community">user-defined functions</a>.
+                        For basic visualization and report generation, <a href="https://datastudio.google.com">Google Data Studio</a> is well-integrated and can be used for free.
+                        A good integration also exists for <a href="https://docs.google.com/spreadsheets/">Google Sheets</a> and
+                        <a href="https://colab.research.google.com/">Colab</a>, an online Jupyter Notebook service.
+                        More advanced analytics is done with <strong><a href="https://www.looker.com/">Looker</a></strong>, which was acquired by Google in 2019.
+                    </p>
+<!--                    <p>-->
+<!--                        When data processing is requried-->
+<!--                    </p>-->
+                    <p>
+                        Data Products are usually simple BigQuery tables or views in a marked dataset.
+                        The access to these data is managed by the domain teams with Google IAM roles.
+                        Google has an integrated <strong><a href="https://cloud.google.com/data-catalog">Data Catalog</a></strong>, which is pretty cluttered.
+                        It can be used to document and tag datasets as data products, but we see that
+                        many users still stick on a Wiki page with available data products listed.
+                    </p>
 
-<!--    <section class="section is-medium">-->
+                    <p>
+                        References: <a href="https://services.google.com/fh/files/misc/build-a-modern-distributed-datamesh-with-google-cloud-whitepaper.pdf">Build a modern, distributed Data Mesh with Google Cloud</a>
+                        <a href="https://cloud.google.com/blog/products/data-analytics/build-a-data-mesh-on-google-cloud-with-dataplex-now-generally-available">Build a data mesh on Google Cloud with Dataplex, now generally available</a>
+                    </p>
+
+
+
+    <!--                <p>-->
+    <!--                    Browse example <a href="https://github.com/datamesh-architecture/datamesh-architecture-example">sourcecode</a>-->
+    <!--                </p>-->
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <img src="images/landscape.png.webp" alt="Shows the relationships of the domains product, checkout, and fulfillment of the case study example">
+                    </figure>
+
+                </div>
+            </div>
+        </section>
+
+
+
+
+    <!--    <section class="section is-medium">-->
 <!--        <h1 class="title">Example</h1>-->
 <!--        <div class="columns is-vcentered">-->
 <!--            <div class="column content">-->
