@@ -924,7 +924,21 @@
                 You should have a good number (5+) of independent domain teams that have their systems already running in production.
                 And finally, you should trust your teams to make data-driven decisions on their own.
             </p>
-<!--            <h4 class="title">How to integrate data from legacy systems?</h4>-->
+
+            <h4 class="title">When should I avoid a Data Mesh?</h4>
+            <p>
+                There are some indicators when a data mesh approach might not be suitable for you, including:
+            </p>
+            <ul>
+                <li>You are too small and don’t have multiple independent engineering teams.</li>
+                <li>You have low-latency data requirements. Data Mesh is a network of data. If you need to optimize for low-latency, invest in a more integrated data platform.</li>
+                <li>You are happy with your monolithic highly integrated system (such as SAP). It might be more efficient to use their analytical platform.</li>
+                <li>You are restricted to on-premise solutions. Cloud services drove innovation for data mesh by offering flexibility and self-service. Data mesh can also be implemented on-premise, but principles such as self-service are much more difficult to implement.</li>
+            </ul>
+
+
+
+            <!--            <h4 class="title">How to integrate data from legacy systems?</h4>-->
 <!--            <p>-->
 <!--                Option 1: A team needs to wrap legacy data into a data product.-->
 <!--                Option 2: ACL-->
@@ -955,9 +969,11 @@
 
             <h4 class="title">How did you draw the diagrams?</h4>
             <p>
-                We got this question quite a lot, so we are happy to share our tooling:
-                <a href="https://www.diagrams.net">diagrams.net&nbsp;<i class="fa-solid fa-arrow-up-right-from-square"></i></a> with "Sketch" style and
+                We got this question quite a lot, so we are happy to share our tooling:<br>
+                We use <a href="https://www.diagrams.net">diagrams.net&nbsp;<i class="fa-solid fa-arrow-up-right-from-square"></i></a> with "Sketch" style and
                 <a href="https://streamlinehq.com">Streamline Icons&nbsp;<i class="fa-solid fa-arrow-up-right-from-square"></i></a>.
+                We automate the conversion to PNG, SVG and WebP with a little <a href="https://github.com/datamesh-architecture/datamesh-architecture.com/blob/main/convert">script</a>.
+
             </p>
 
             <h4 class="title">What are your questions?</h4>
