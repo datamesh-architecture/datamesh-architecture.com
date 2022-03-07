@@ -20,58 +20,10 @@
     <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Book.woff2?cachebuster=2" crossorigin="">
     <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Bold.woff2?cachebuster=2" crossorigin="">
     <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Heavy.woff2?cachebuster=2" crossorigin="">
+    <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/0.9.3_css_bulma.css" />
     <link rel="stylesheet" href="css/font-awesome_6.0.0_css_all.css"/>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
-
-    <style>
-        @font-face {
-            font-family: 'Mark Pro';
-            src: url('https://www.innoq.com/assets/MarkPro-Book.woff2?cachebuster=2') format('woff2');
-            font-weight: 400;
-        }
-        @font-face {
-            font-family: 'Mark Pro';
-            src: url('https://www.innoq.com/assets/MarkPro-Bold.woff2?cachebuster=2') format('woff2');
-            font-weight: 600;
-        }
-        @font-face {
-            font-family: 'Mark Pro';
-            src: url('https://www.innoq.com/assets/MarkPro-Heavy.woff2?cachebuster=2') format('woff2');
-            font-weight: 800;
-        }
-        @font-face {
-            font-family: 'Freight Text';
-            src: url('https://www.innoq.com/assets/350ED6_1_unhinted_0.woff2?cachebuster=2') format('woff2');
-            font-weight: 500;
-            font-style: italic;
-        }
-
-        .title,
-        .content h1,
-        .content h2,
-        .content h3,
-        .content h4 {
-            font-family: 'Mark Pro', sans-serif;
-            font-weight: 800;
-        }
-
-        strong {
-            font-weight: 600;
-        }
-
-        .fa-arrow-up-right-from-square {
-            display: inline;
-        }
-
-        @media(max-width: 767px) {
-            /*noinspection CssUnusedSymbol*/
-            .reverse-columns {
-                flex-direction: column-reverse;
-                display: flex;
-            }
-        }
-    </style>
 </head>
 <body>
 <section class="hero is-fullheight" style="background-color: #242424">
@@ -607,36 +559,29 @@
     </section>
 
 
+    <section class="section is-medium">
+        <h2 class="title is-1">Tech Stacks</h2>
+        <div class="content">
+            <p>
+                There are a lot of different ways to implement a data mesh architecture.
+                Here is a selection of typical tech stacks that we saw:
+            </p>
 
-
-
-<!--    <section class="section is-medium">-->
-<!--        <h1 class="title">Example</h1>-->
-<!--        <div class="columns is-vcentered">-->
-<!--            <div class="column content">-->
-<!--                <p>-->
-<!--                    Still work in progress...-->
-<!--                </p>-->
-<!--                <p>-->
-<!--                    Stay tuned...-->
-<!--                </p>-->
-<!--&lt;!&ndash;                <p>&ndash;&gt;-->
-<!--&lt;!&ndash;                    Browse example <a href="https://github.com/datamesh-architecture/datamesh-architecture-example">sourcecode</a>&ndash;&gt;-->
-<!--&lt;!&ndash;                </p>&ndash;&gt;-->
-<!--            </div>-->
-<!--            <div class="column">-->
-<!--                <figure class="image">-->
-<!--                    <img src="images/landscape.png.webp" alt="Shows the relationships of the domains product, checkout, and fulfillment of the case study example">-->
-<!--                </figure>-->
-
-<!--            </div>-->
-<!--        </div>-->
-<!--    </section>-->
+            <ul>
+                <li><a href="tech-stacks/google-cloud-bigquery.html">Google Cloud BigQuery</a></li>
+                <li>AWS S3 + Athena (TBD)</li>
+                <li>Azure (TBD)</li>
+                <li>On-Premise (TBD)</li>
+            </ul>
+            <p>
+                If you want to share your tech stack here, feel free to <a href="#authors">reach out to us</a>.
+            </p>
+        </div>
+    </section>
 
 
 
     <section class="section is-medium">
-
         <div class="columns is-vcentered">
             <div class="column content">
             </div>
@@ -650,21 +595,30 @@
             <div class="column">
                 <figure class="image">
                     <a href="images/domainteamjourney.png.webp" class="glightbox">
-                        <img src="images/domainteamjourney.png.webp" alt="The five levels of the domain team's journey: (Level 0) No Data Analytics; (Level 1) Operational Database Queries; (Level 2) Analyze Own Data; (Level 3) Analyze Cross-domain Data; (Level 4) Publish Data as a Product">
+                        <img src="images/domainteamjourney.png.webp"
+                             alt="The five levels of the domain team's journey: (Level 0) No Data Analytics; (Level 1) Operational Database Queries; (Level 2) Analyze Own Data; (Level 3) Analyze Cross-domain Data; (Level 4) Publish Data as a Product">
                     </a>
                 </figure>
             </div>
 
             <div class="column content">
                 <p>
-                    Just as the <a href="#data-teams-journey">data team has a journey to go on</a>, each of your domain teams has to go on a journey to become a contributing part of your data mesh as well.
+                    Just as the <a href="#data-teams-journey">data team has a journey to go on</a>,
+                    each of your domain teams has to go on a journey to become a contributing part
+                    of your data mesh as well.
                     Each team can start their journey whenever they are ready and at their own pace.
                     The benefits arise already along the journey.
-                    Teams will quickly gain from first data-driven decisions, starting an avalanche to use more and better data for even deeper insights.
-                    The data mesh evolves with each team that shares their data as products, enabling data-driven innovation.
+                    Teams will quickly gain from first data-driven decisions, starting an avalanche
+                    to use more and better data for even deeper insights.
+                    The data mesh evolves with each team that shares their data as products,
+                    enabling data-driven innovation.
                 </p>
                 <p>
-                    To make this journey successful, the team needs three things: a clear data mesh vision from top management to get everybody moving in the same direction, a supportive environment including an easy-to-use self-serve data platform to get the engineering team on a learning path toward data analytics, and a high trust environment to walk the journey in their own way and pace.
+                    To make this journey successful, the team needs three things: a clear data mesh
+                    vision from top management to get everybody moving in the same direction, a
+                    supportive environment including an easy-to-use self-serve data platform to get
+                    the engineering team on a learning path toward data analytics, and a high trust
+                    environment to walk the journey in their own way and pace.
                 </p>
                 <p>So let’s start your journey!</p>
             </div>
@@ -679,8 +633,11 @@
         <div class="columns reverse-columns is-vcentered">
             <div class="column content">
                 <p>
-                    Your team is responsible for a domain and builds and operates <a href="https://scs-architecture.org/">self-contained systems&nbsp;<i class="fa-solid fa-arrow-up-right-from-square"></i></a> including the necessary infrastructure.
-                    It was quite an effort to build these systems, and you were highly focused on delivery excellence.
+                    Your team is responsible for a domain and builds and operates <a
+                    href="https://scs-architecture.org/">self-contained systems&nbsp;<i class="fa-solid fa-arrow-up-right-from-square"></i></a> including the necessary
+                    infrastructure.
+                    It was quite an effort to build these systems, and you were highly focused on
+                    delivery excellence.
                     These operational systems now generate domain data.
                 </p>
                 <p>
@@ -690,7 +647,8 @@
             <div class="column">
                 <figure class="image">
                     <a href="images/domainteamjourney_level0.png.webp" class="glightbox">
-                        <img src="images/domainteamjourney_level0.png.webp" alt="Level 0: No Data Analytics">
+                        <img src="images/domainteamjourney_level0.png.webp"
+                             alt="Level 0: No Data Analytics">
                     </a>
                 </figure>
             </div>
@@ -698,21 +656,27 @@
 
         <div class="columns is-vcentered mt-6">
             <div class="column content">
-                <h3 class="title is-3"><span class="tag">Level 1</span> Operational Database Queries</h3>
+                <h3 class="title is-3"><span class="tag">Level 1</span> Operational Database Queries
+                </h3>
             </div>
         </div>
 
         <div class="columns reverse-columns is-vcentered">
             <div class="column content">
                 <p>
-                    Being in production, you probably have to investigate an incident and need to analyze how many customers are affected.
-                    Also, some stakeholders might have questions regarding your data, such as "Which in-stock articles haven’t been sold in the last six months?"
+                    Being in production, you probably have to investigate an incident and need to
+                    analyze how many customers are affected.
+                    Also, some stakeholders might have questions regarding your data, such as "Which
+                    in-stock articles haven’t been sold in the last six months?"
                     or "What were the shipping times during the last Black Week?"
-                    To answer all these questions, you send analytical queries to your operational database.
-                    Over time, you also do some first explorative analytics to get a deeper understanding of your system’s behavior.
+                    To answer all these questions, you send analytical queries to your operational
+                    database.
+                    Over time, you also do some first explorative analytics to get a deeper
+                    understanding of your system’s behavior.
                 </p>
                 <p>
-                    This increases load on your production database, and you might be tempted to change the production database to better support your analytical queries,
+                    This increases load on your production database, and you might be tempted to
+                    change the production database to better support your analytical queries,
                     like creating additional indices.
                     You might offload the additional load to read replicas.
                     But analytical queries are still slow and cumbersome to write.
@@ -721,7 +685,8 @@
             <div class="column">
                 <figure class="image">
                     <a href="images/domainteamjourney_level1.png.webp" class="glightbox">
-                        <img src="images/domainteamjourney_level1.png.webp" alt="Level 1: Operational Database Queries">
+                        <img src="images/domainteamjourney_level1.png.webp"
+                             alt="Level 1: Operational Database Queries">
                     </a>
                 </figure>
             </div>
@@ -736,21 +701,30 @@
         <div class="columns reverse-columns is-vcentered">
             <div class="column content">
                 <p>
-                    With the pains of slow and hard-to-write analytical queries in the back of your mind, you try out the self-serve data platform that’s being promoted by the data platform team.
+                    With the pains of slow and hard-to-write analytical queries in the back of your
+                    mind, you try out the self-serve data platform that’s being promoted by the data
+                    platform team.
                     For example, you now have access to Google BigQuery.
-                    On this platform, your team starts to build an analytical data model from your operational databases.
-                    This allows you to analyze data covering your own systems with maintainable and fast queries, while keeping the schemas of your operational databases untouched.
-                    You learn how to structure, preprocess, clean, analyze, and visualize analytical data&mdash;that’s a lot to learn even though most is SQL, which you are already familiar with.
+                    On this platform, your team starts to build an analytical data model from your
+                    operational databases.
+                    This allows you to analyze data covering your own systems with maintainable and
+                    fast queries, while keeping the schemas of your operational databases untouched.
+                    You learn how to structure, preprocess, clean, analyze, and visualize analytical
+                    data&mdash;that’s a lot to learn even though most is SQL, which you are already
+                    familiar with.
                 </p>
                 <p>
-                    As questions regarding your own data can now be answered quickly, you and your product owner now enter the cycle of making data-driven decisions: define hypotheses and verify with data.
+                    As questions regarding your own data can now be answered quickly, you and your
+                    product owner now enter the cycle of making data-driven decisions: define
+                    hypotheses and verify with data.
                 </p>
 
             </div>
             <div class="column">
                 <figure class="image">
                     <a href="images/domainteamjourney_level2.png.webp" class="glightbox">
-                        <img src="images/domainteamjourney_level2.png.webp" alt="Level 2: Analyze Own Data">
+                        <img src="images/domainteamjourney_level2.png.webp"
+                             alt="Level 2: Analyze Own Data">
                     </a>
                 </figure>
             </div>
@@ -758,31 +732,39 @@
 
         <div class="columns is-vcentered mt-6">
             <div class="column content">
-                <h3 class="title is-3"><span class="tag">Level 3</span> Analyze Cross-domain Data</h3>
+                <h3 class="title is-3"><span class="tag">Level 3</span> Analyze Cross-domain Data
+                </h3>
             </div>
         </div>
 
         <div class="columns reverse-columns is-vcentered">
             <div class="column content">
                 <p>
-                    Analyzing your own domain data is a great start, but combining it with data from other domains is where the magic begins.
+                    Analyzing your own domain data is a great start, but combining it with data from
+                    other domains is where the magic begins.
                     It allows you to get a comprehensive view despite the decentralization of data.
-                    Examples are A/B tests of the effect of a UI change to the conversion rate or building up machine learning models for fraud detection that include previous purchasing history and current click stream behavior.
-                    This requires that other teams share their data in a way that your team can discover, access, and use it.
+                    Examples are A/B tests of the effect of a UI change to the conversion rate or
+                    building up machine learning models for fraud detection that include previous
+                    purchasing history and current click stream behavior.
+                    This requires that other teams share their data in a way that your team can
+                    discover, access, and use it.
                     This is when the mesh begins to form itself.
                 </p>
                 <p>
-                    When a team becomes a consuming member of the data mesh, it starts to gain interest in the interoperability and governance of the data mesh.
+                    When a team becomes a consuming member of the data mesh, it starts to gain
+                    interest in the interoperability and governance of the data mesh.
                     Ideally, the team will send a representative to the data mesh governance body.
                 </p>
                 <p>
-                    In case you are the first team, you may have to skip this step for now and move on to level 4 and be the first to provide data for others.
+                    In case you are the first team, you may have to skip this step for now and move
+                    on to level 4 and be the first to provide data for others.
                 </p>
             </div>
             <div class="column">
                 <figure class="image">
                     <a href="images/domainteamjourney_level3.png.webp" class="glightbox">
-                        <img src="images/domainteamjourney_level3.png.webp" alt="Level 3: Analyze Cross-domain Data">
+                        <img src="images/domainteamjourney_level3.png.webp"
+                             alt="Level 3: Analyze Cross-domain Data">
                     </a>
                 </figure>
             </div>
@@ -791,33 +773,41 @@
 
         <div class="columns is-vcentered mt-6">
             <div class="column content">
-                <h3 class="title is-3"><span class="tag">Level 4</span> Publish Data as a Product</h3>
+                <h3 class="title is-3"><span class="tag">Level 4</span> Publish Data as a Product
+                </h3>
             </div>
         </div>
         <div class="columns reverse-columns is-vcentered">
             <div class="column content">
                 <p>
                     Based on other teams' needs, you share your data with others as products.
-                    For example, you provide the confirmed, rejected, and aborted orders so others can correlate their events to the conversion rate.
-                    Instead of just being a consumer of data products, you become a producer of data products.
+                    For example, you provide the confirmed, rejected, and aborted orders so others
+                    can correlate their events to the conversion rate.
+                    Instead of just being a consumer of data products, you become a producer of data
+                    products.
                     You generate value for other teams.
-                    But at the same time, it increases your responsibility and operational duties in the long term.
+                    But at the same time, it increases your responsibility and operational duties in
+                    the long term.
                 </p>
                 <p>
-                    Data products must comply with the global policies defined by the federated governance body.
+                    Data products must comply with the global policies defined by the federated
+                    governance body.
                     You have to know and understand the current global policies.
-                    Now, at the latest, you need to participate in and contribute to the federated governance body.
+                    Now, at the latest, you need to participate in and contribute to the federated
+                    governance body.
                 </p>
             </div>
             <div class="column">
                 <figure class="image">
                     <a href="images/domainteamjourney_level4.png.webp" class="glightbox">
-                        <img src="images/domainteamjourney_level4.png.webp" alt="Level 4: Publish Data as a Product">
+                        <img src="images/domainteamjourney_level4.png.webp"
+                             alt="Level 4: Publish Data as a Product">
                     </a>
                 </figure>
             </div>
         </div>
     </section>
+
 
     <section class="section is-medium">
 
