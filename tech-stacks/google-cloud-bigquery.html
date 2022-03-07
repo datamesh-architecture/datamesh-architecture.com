@@ -1,157 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Data Mesh Architecture</title>
+    <title>Data Mesh Architecture: Google Cloud BigQuery</title>
     <meta charset="utf-8">
-    <meta name="description" content="A Data Mesh Architecture is a decentralized approach that enables domain teams to perform cross-domain data analysis on their own." />
+    <meta name="description" content="How to build a data mesh architecture with Google Cloud BigQuery" />
     <meta name="keywords" content="data mesh, data mesh architecture, domain-driven data analytics, data analytics, domain-driven design, domain ownership, data as a product, data product, federated governance, self-serve data platform, data platform">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@innoq" />
-    <meta name="twitter:title" content="Data Mesh Architecture" />
-    <meta name="twitter:description" content="Data Mesh from an Engineering Perspective" />
-    <meta name="twitter:image" content="https://preview.datamesh-architecture.com/images/datamesharchitecture_card.png" />
+    <meta name="twitter:title" content="Data Mesh Architecture: Google Cloud BigQuery" />
+    <meta name="twitter:description" content="How to build a data mesh architecture with Google Cloud BigQuery" />
+    <meta name="twitter:image" content="https://www.datamesh-architecture.com/images/datamesharchitecture_card.png" />
     <meta name="twitter:image:alt" content="Data Mesh Architecture: Domains are in the center and teams do analytics on their own. They build and interconnect with data products. A data platform team and a enablement team help. Global policies are agreed through federated governance." />
     <meta property="og:url" content="https://datamesh-architecture.com" />
-    <meta property="og:title" content="Data Mesh Architecture" />
-    <meta property="og:description" content="Data Mesh from an Engineering Perspective" />
-    <meta property="og:image" content="https://preview.datamesh-architecture.com/images/datamesharchitecture_card.png" />
+    <meta property="og:title" content="Data Mesh Architecture: Google Cloud BigQuery" />
+    <meta property="og:description" content="How to build a data mesh architecture with Google Cloud BigQuery" />
+    <meta property="og:image" content="https://www.datamesh-architecture.com/images/datamesharchitecture_card.png" />
 
     <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Book.woff2?cachebuster=2" crossorigin="">
     <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Bold.woff2?cachebuster=2" crossorigin="">
     <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Heavy.woff2?cachebuster=2" crossorigin="">
+    <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/0.9.3_css_bulma.css" />
     <link rel="stylesheet" href="../css/font-awesome_6.0.0_css_all.css"/>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
-
-    <style>
-        @font-face {
-            font-family: 'Mark Pro';
-            src: url('https://www.innoq.com/assets/MarkPro-Book.woff2?cachebuster=2') format('woff2');
-            font-weight: 400;
-        }
-        @font-face {
-            font-family: 'Mark Pro';
-            src: url('https://www.innoq.com/assets/MarkPro-Bold.woff2?cachebuster=2') format('woff2');
-            font-weight: 600;
-        }
-        @font-face {
-            font-family: 'Mark Pro';
-            src: url('https://www.innoq.com/assets/MarkPro-Heavy.woff2?cachebuster=2') format('woff2');
-            font-weight: 800;
-        }
-        @font-face {
-            font-family: 'Freight Text';
-            src: url('https://www.innoq.com/assets/350ED6_1_unhinted_0.woff2?cachebuster=2') format('woff2');
-            font-weight: 500;
-            font-style: italic;
-        }
-
-        .title,
-        .content h1,
-        .content h2,
-        .content h3,
-        .content h4 {
-            font-family: 'Mark Pro', sans-serif;
-            font-weight: 800;
-        }
-
-        strong {
-            font-weight: 600;
-        }
-
-        .fa-arrow-up-right-from-square {
-            display: inline;
-        }
-
-        @media(max-width: 767px) {
-            /*noinspection CssUnusedSymbol*/
-            .reverse-columns {
-                flex-direction: column-reverse;
-                display: flex;
-            }
-        }
-    </style>
-
-    <link rel="stylesheet"
-          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/default.min.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
-    <script>hljs.highlightAll();</script>
 </head>
 <body>
 <div class="container">
 
     <section class="section">
-      Data Mesh Architecture / Tech-Stack
-        <h1 class="title">Google Cloud BigQuery</h1>
 
+      <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+          <li><a href="https://www.datamesh-architecture.com/">Data Mesh Architecture</a></li>
+          <li><a href="https://www.datamesh-architecture.com/#tech-stacks">Tech Stacks</a></li>
+          <li class="is-active"><a href="#" aria-current="page">Google Cloud BigQuery</a></li>
+        </ul>
+      </nav>
 
-      BigQuery-Way
-
-      - SQL-like/Datenbank
-      - integrierte Plattform
-      - Query: BigQuery SQL
-      - Skalierung, Performance, Self-Service: Vorteile durch Cloud
-      - Ingesting: Streaming support (Kafka Connect, Pub/Sub) + batch? + manual Data: Google Sheets
-      - Transform: SQL Views + UDFs (or Dataform)
-      - Visualize: Data Studio, Google Sheets, Looker
-      - Data Products: Data=Table/View, Metadata=Catalog, Operations=Noch nichts gutes
-      - Data Catalog: Google Catalog?
-
-
+      <h1 class="title">Google Cloud BigQuery</h1>
 
       <div class="content">
-          <p>
-            In our experience, many Data Mesh implementations rely on <strong>Google Cloud Platform</strong> as a common infrastructure, at least for analytical data.
-            It is a highly integrated platform.
-            Everything is available as developer-friendly self-service.
-            The on-demand query performance is remarkable.
-          </p>
-          <p>
-            Every domain team typically gets their own GCP project(s) under an <em>organization</em> resource.
-            There is a separate project for each stage, such as test and production.
-          </p>
-          <p>
-            <strong>BigQuery</strong> is the central component for storing analytical data.
-            BigQuery is a columnar data store and can perform efficient JOIN operations with large data sets.
-            It supports access to files stored in Google Cloud Storage as <a href="https://cloud.google.com/bigquery/docs/external-tables">external tables</a>,
-            so it can also be used as a data lake, if required.
-            Manual data is easily edited with <a href="https://docs.google.com/spreadsheets/">Google Sheets</a>.
-          </p>
-          <p>
-            BigQuery supports both, batch ingestion and streaming ingestion.
+        <p>
+          In our experience, many Data Mesh implementations rely on <strong>Google Cloud Platform</strong> (GCP) as a common infrastructure, at least for analytical data.
+          It is a highly integrated platform.
+          Everything is available as developer-friendly self-service.
+          The on-demand query performance of BigQuery is remarkable, especially for large data sets.
+        </p>
+        <p>
+          Every domain team typically gets their <strong>own GCP project</strong> under an <em>organization</em> resource.
+          There might be separate projects for each stage such as test and production.
+        </p>
+        <p>
+          <strong>BigQuery</strong> is the central component for storing analytical data.
+          BigQuery is a columnar data store and can perform efficient JOIN operations with large data sets.
+          It supports access to files stored in Google Cloud Storage as <a href="https://cloud.google.com/bigquery/docs/external-tables">external tables&nbsp;<i class="fa-solid fa-arrow-up-right-from-square"></i></a>,
+          so it can also be used as a data lake, if required.
+          Manual data is easily edited with <a href="https://docs.google.com/spreadsheets/">Google Sheets&nbsp;<i class="fa-solid fa-arrow-up-right-from-square"></i></a>.
+        </p>
+        <p>
+          BigQuery supports both, batch ingestion and streaming ingestion.
+          When the operational system architecture relies on Apache Kafka, then streaming through <a href="https://github.com/confluentinc/kafka-connect-bigquery">Kafka Connect Google BigQuery Sink Connector&nbsp;<i class="fa-solid fa-arrow-up-right-from-square"></i></a> is recommended.
+          In a Google Cloud native setup with messages in Pub/Sub, then a simple Cloud Function can forward events to BigQuery. (Google itself points to Dataflow, but we think that is overkill.)
+          For CDC database replication to bigquery, consider <em>Data Fusion</em> and <em>Dataflow</em>, based on your operational database.
+        </p>
 
+        <p>
+          The simplest way to preprocess and clean raw data is with SQL views.
+          Special transformations can be implemented with <a href="https://github.com/GoogleCloudPlatform/bigquery-utils/tree/master/udfs/community">user-defined functions&nbsp;<i class="fa-solid fa-arrow-up-right-from-square"></i></a> written in SQL or JavaScript.
+          The SQL views can be implemented to perform directly on raw data or triggered as scheduled queries that materialize in a new table.
+          If this does not suffice, more complex pipelines can be implemented with <em>Dataflow</em> (Apache Beam) or <em>Dataform</em> (a dbt clone).
+        </p>
 
+        <p>
+          For analytics, BigQuery supports SQL queries with a number of available <a href="https://github.com/GoogleCloudPlatform/bigquery-utils/tree/master/udfs/community">user-defined functions&nbsp;<i class="fa-solid fa-arrow-up-right-from-square"></i></a>.
+          For basic visualization and report generation, <a href="https://datastudio.google.com">Google Data Studio</a> is well-integrated and can be used for free.
+          A good integration also exists for <a href="https://docs.google.com/spreadsheets/">Google Sheets&nbsp;<i class="fa-solid fa-arrow-up-right-from-square"></i></a> and
+          <a href="https://colab.research.google.com/">Colab&nbsp;<i class="fa-solid fa-arrow-up-right-from-square"></i></a>, an online Jupyter Notebook service.
+          More advanced analytics is done with <a href="https://www.looker.com/">Looker&nbsp;<i class="fa-solid fa-arrow-up-right-from-square"></i></a>, which was acquired by Google in 2019.
+        </p>
 
+        <p>
+          Data Products are usually simple BigQuery tables or views in a special dataset.
+          The access to these data is managed by the domain team with Google IAM roles.
+          Google has an integrated <a href="https://cloud.google.com/data-catalog">Data Catalog&nbsp;<i class="fa-solid fa-arrow-up-right-from-square"></i></a>, which can get pretty cluttered.
+          It can be used to document and tag datasets as data products, but we see that
+          many users still stick on a Wiki page with available data products listed.
+        </p>
 
+        <p>
+          Google recently announced <a href="https://cloud.google.com/blog/products/data-analytics/build-a-data-mesh-on-google-cloud-with-dataplex-now-generally-available">Dataplex&nbsp;<i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+          to centrally manage, monitor and govern data and promotes it for data mesh use cases.
+          We currently have no hands-on experience with it.
+        </p>
 
-            When the operational system architecture relies on Apache Kafka, then streaming ingestion  <strong>Kafka Connect Google BigQuery Sink Connector</strong>.
-            When the operational system architecture does not rely on Apache Kafka, then streaming ingestion often is done with Google Pub/Sub and a simple Cloud Function to forward events to BigQuery.
-
-          </p>
-          <p>
-            For analytics, BigQuery supports SQL queries with a number of available <a href="https://github.com/GoogleCloudPlatform/bigquery-utils/tree/master/udfs/community">user-defined functions</a>.
-            For basic visualization and report generation, <a href="https://datastudio.google.com">Google Data Studio</a> is well-integrated and can be used for free.
-            A good integration also exists for <a href="https://docs.google.com/spreadsheets/">Google Sheets</a> and
-            <a href="https://colab.research.google.com/">Colab</a>, an online Jupyter Notebook service.
-            More advanced analytics is done with <strong><a href="https://www.looker.com/">Looker</a></strong>, which was acquired by Google in 2019.
-          </p>
-          <!--                    <p>-->
-          <!--                        When data processing is requried-->
-          <!--                    </p>-->
-          <p>
-            Data Products are usually simple BigQuery tables or views in a marked dataset.
-            The access to these data is managed by the domain teams with Google IAM roles.
-            Google has an integrated <strong><a href="https://cloud.google.com/data-catalog">Data Catalog</a></strong>, which is pretty cluttered.
-            It can be used to document and tag datasets as data products, but we see that
-            many users still stick on a Wiki page with available data products listed.
-          </p>
-
-          <p>
-            References: <a href="https://services.google.com/fh/files/misc/build-a-modern-distributed-datamesh-with-google-cloud-whitepaper.pdf">Build a modern, distributed Data Mesh with Google Cloud</a>
-            <a href="https://cloud.google.com/blog/products/data-analytics/build-a-data-mesh-on-google-cloud-with-dataplex-now-generally-available">Build a data mesh on Google Cloud with Dataplex, now generally available</a>
-          </p>
-
+        <h5>References</h5>
+          <ul>
+            <li><a href="https://services.google.com/fh/files/misc/build-a-modern-distributed-datamesh-with-google-cloud-whitepaper.pdf">Build a modern, distributed Data Mesh with Google Cloud</a></li>
+            <li><a href="https://cloud.google.com/blog/products/data-analytics/build-a-data-mesh-on-google-cloud-with-dataplex-now-generally-available">Build a data mesh on Google Cloud with Dataplex, now generally available</a></li>
+          </ul>
 
         </div>
     </section>

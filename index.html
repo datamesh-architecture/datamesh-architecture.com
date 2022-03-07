@@ -20,58 +20,10 @@
     <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Book.woff2?cachebuster=2" crossorigin="">
     <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Bold.woff2?cachebuster=2" crossorigin="">
     <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Heavy.woff2?cachebuster=2" crossorigin="">
+    <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/0.9.3_css_bulma.css" />
     <link rel="stylesheet" href="css/font-awesome_6.0.0_css_all.css"/>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
-
-    <style>
-        @font-face {
-            font-family: 'Mark Pro';
-            src: url('https://www.innoq.com/assets/MarkPro-Book.woff2?cachebuster=2') format('woff2');
-            font-weight: 400;
-        }
-        @font-face {
-            font-family: 'Mark Pro';
-            src: url('https://www.innoq.com/assets/MarkPro-Bold.woff2?cachebuster=2') format('woff2');
-            font-weight: 600;
-        }
-        @font-face {
-            font-family: 'Mark Pro';
-            src: url('https://www.innoq.com/assets/MarkPro-Heavy.woff2?cachebuster=2') format('woff2');
-            font-weight: 800;
-        }
-        @font-face {
-            font-family: 'Freight Text';
-            src: url('https://www.innoq.com/assets/350ED6_1_unhinted_0.woff2?cachebuster=2') format('woff2');
-            font-weight: 500;
-            font-style: italic;
-        }
-
-        .title,
-        .content h1,
-        .content h2,
-        .content h3,
-        .content h4 {
-            font-family: 'Mark Pro', sans-serif;
-            font-weight: 800;
-        }
-
-        strong {
-            font-weight: 600;
-        }
-
-        .fa-arrow-up-right-from-square {
-            display: inline;
-        }
-
-        @media(max-width: 767px) {
-            /*noinspection CssUnusedSymbol*/
-            .reverse-columns {
-                flex-direction: column-reverse;
-                display: flex;
-            }
-        }
-    </style>
 </head>
 <body>
 <section class="hero is-fullheight" style="background-color: #242424">
@@ -616,12 +568,14 @@
             </p>
 
             <ul>
-                <li><a href="tech-stacks/google-cloud-bigquery.html">Google Cloud: BigQuery</a></li>
-                <li>AWS: S3 + Athena (planned)</li>
-                <li>AWS: Redshift (planned)</li>
-                <li>Azure (planned)</li>
-                <li>On-Premise (planned)</li>
+                <li><a href="tech-stacks/google-cloud-bigquery.html">Google Cloud BigQuery</a></li>
+                <li>AWS S3 + Athena (TBD)</li>
+                <li>Azure (TBD)</li>
+                <li>On-Premise (TBD)</li>
             </ul>
+            <p>
+                If you want to share your tech stack here, feel free to <a href="#authors">reach out to us</a>.
+            </p>
         </div>
     </section>
 
@@ -680,8 +634,7 @@
             <div class="column content">
                 <p>
                     Your team is responsible for a domain and builds and operates <a
-                    href="https://scs-architecture.org/">self-contained systems&nbsp;<i
-                    class="fa-solid fa-arrow-up-right-from-square"></i></a> including the necessary
+                    href="https://scs-architecture.org/">self-contained systems&nbsp;<i class="fa-solid fa-arrow-up-right-from-square"></i></a> including the necessary
                     infrastructure.
                     It was quite an effort to build these systems, and you were highly focused on
                     delivery excellence.
