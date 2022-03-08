@@ -923,7 +923,6 @@
                 <li>You are too small and don’t have multiple independent engineering teams.</li>
                 <li>You have low-latency data requirements. Data Mesh is a network of data. If you need to optimize for low-latency, invest in a more integrated data platform.</li>
                 <li>You are happy with your monolithic highly integrated system (such as SAP). It might be more efficient to use their analytical platform.</li>
-                <li>You are restricted to on-premise solutions. Cloud services drove innovation for data mesh by offering flexibility and self-service. Data mesh can also be implemented on-premise, but principles such as self-service are much more difficult to implement.</li>
             </ul>
 
 
@@ -950,6 +949,30 @@
                 At first, <a href="https://www.ibm.com/analytics/data-fabric">data fabric&nbsp;<i class="fa-solid fa-arrow-up-right-from-square"></i></a> looks similar to data mesh because it offers a similar self-serve data platform.
                 Looking deeper, it turns out that data fabric is a central and domain-agnostic approach, which is in stark contrast to the domain-centric and decentralized approach of data mesh.
                 <a href="https://www.datanami.com/2021/10/25/data-mesh-vs-data-fabric-understanding-the-differences/">More in this comparison article&nbsp;<i class="fa-solid fa-arrow-up-right-from-square"></i></a>.
+            </p>
+
+            <h4 class="title">What might a journey be for teams who operate commercial off-the-shelf (COTS) systems?</h4>
+            <p>
+                Many COTS systems (such as Salesforce, SAP, Shopify, Odoo) provide domain optimized analytical capabilities.
+                So the journey for domain teams starts directly from <a href="https://www.datamesh-architecture.com/#level-2-analyze-own-data">level 2</a>.
+            </p>
+            <p>
+                The challenge is to integrate data products from other domains (<a href="https://www.datamesh-architecture.com/#level-3-analyze-cross-domain-data">level 3</a>, which may be skipped if not needed)
+                and to publish data products for other domains (<a href="https://www.datamesh-architecture.com/#level-4-publish-data-as-a-product">level 4</a>).
+                The system’s data need to be exported to the data platform and managed as data products, conforming the global policies.
+                As data models evolve with system updates, an anti-corruption layer is a must, e.g., as a cleaning step.
+            </p>
+
+            <h4 class="title">How might externally acquired datasets be part of a data mesh?</h4>
+            <p>
+                Typical examples: Price-Databases or Medical Studies.
+                A team needs to own this dataset and bring it into the datamesh. If this is not a very technical team, the data-platform should offer an easy self-service to upload files and provide Meta-Data. An Excel API or Google Sheets might also be an option here.
+            </p>
+
+            <h4 class="title">How might you explain the value of domain teams doing data analysis over delivering user-facing product improvements, especially when data analysts already analyse the data elsewhere in the company?</h4>
+            <p>
+                From our experience, this question does not occur in data-driven organizations, where every product improvement is evaluated with data.
+                So, you might face a culture issue here. How important are data-driven decisions for your company?
             </p>
 
 <!--            <h4 class="title">How is Machine Learning related to Data Mesh?</h4>-->
