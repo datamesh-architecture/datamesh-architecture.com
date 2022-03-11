@@ -15,3 +15,5 @@ for i in images/*.png; do
     [ -f "$i" ] || break
     cwebp -q 100 -quiet -lossless "$i" -o "$i.webp"
 done
+
+convert images/google-cloud-bigquery.png -splice 200x0 -extent 2875x1719 images/google-cloud-bigquery_card.png
