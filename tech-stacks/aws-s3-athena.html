@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Data Mesh Architecture: AWS S3 and Athena</title>
+    <meta charset="utf-8">
+    <meta name="description" content="How to build a data mesh architecture with AWS S3 and Athena" />
+    <meta name="keywords" content="data mesh, data mesh architecture, domain-driven data analytics, data analytics, domain-driven design, domain ownership, data as a product, data product, federated governance, self-serve data platform, data platform">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@innoq" />
+    <meta name="twitter:title" content="Data Mesh Architecture: AWS S3 and Athena" />
+    <meta name="twitter:description" content="How to build a data mesh architecture with AWS S3 and Athena" />
+    <meta name="twitter:image" content="https://www.datamesh-architecture.com/images/aws-s3-athena_card.png" />
+    <meta name="twitter:image:alt" content="Data Mesh Architecture: Domains are in the center and teams do analytics on their own. They build and interconnect with data products. A data platform team and a enablement team help. Global policies are agreed through federated governance." />
+    <meta property="og:url" content="https://datamesh-architecture.com" />
+    <meta property="og:title" content="Data Mesh Architecture: AWS S3 and Athena" />
+    <meta property="og:description" content="How to build a data mesh architecture with AWS S3 and Athena" />
+    <meta property="og:image" content="https://www.datamesh-architecture.com/images/google-cloud-bigquery_card.png" />
+
+    <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Book.woff2?cachebuster=2" crossorigin="">
+    <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Bold.woff2?cachebuster=2" crossorigin="">
+    <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Heavy.woff2?cachebuster=2" crossorigin="">
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/0.9.3_css_bulma.css" />
+    <link rel="stylesheet" href="../css/font-awesome_6.0.0_css_all.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+</head>
+<body>
+<div class="container">
+
+    <section class="section">
+
+      <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+          <li><a href="https://www.datamesh-architecture.com/">Data Mesh Architecture</a></li>
+          <li><a href="https://www.datamesh-architecture.com/#tech-stacks">Tech Stacks</a></li>
+          <li class="is-active"><a href="#" aria-current="page">AWS S3 and Athena</a></li>
+        </ul>
+      </nav>
+
+      <h1 class="title">AWS S3 and Athena</h1>
+
+      <div class="notification is-info is-light">
+        Data mesh is primarily an organizational approach, and that's why you can't buy a data mesh from a vendor. Technology, however, is important still as it acts as an enabler for data mesh, and only useful and easy to use solutions will lead to domain teams' acceptance. The available offerings of cloud providers already provide a sufficient set of good self-serve data services to let you form a data platform for your data mesh. We want to show which services can be used to get started.
+      </div>
+
+      <div class="content">
+        <p>
+          We often see Data Mesh implementations relying on <strong>AWS S3 and Athena</strong> as the primary means to share and query data products.
+          It is a highly integrated platform.
+          Everything is available as developer-friendly self-service.
+          The on-demand query performance of BigQuery is remarkable, especially for large data sets.
+        </p>
+          <img src="../images/aws-s3-athena.png.webp" alt="Data Mesh Architecture with AWS S3 and Athena" style="width: 100%">
+        <p>
+          Every domain team typically gets their <strong>own AWS S3 bucket</strong> to store their own data products.
+        </p>
+          <p>
+          <strong>AWS S3</strong> is the central component for storing analytical data.
+          The data stored there is typically of a JSON file format, but others are possible as well.
+            <strong>AWS Athena</strong> supports querying multiple JSON files stored in different S3 buckets.
+        </p>
+        <p>
+          BigQuery supports both, batch ingestion and streaming ingestion.
+          When the operational system architecture relies on Apache Kafka, then streaming through <a href="https://github.com/confluentinc/kafka-connect-bigquery">Kafka Connect Google BigQuery Sink Connector&nbsp;<i class="fa-solid fa-arrow-up-right-from-square"></i></a> is recommended.
+          In a Google Cloud native setup with messages in Pub/Sub, then a simple Cloud Function can forward events to BigQuery. (Google itself points to Dataflow, but we think that is overkill.)
+          For CDC database replication to bigquery, consider <em>Data Fusion</em> and <em>Dataflow</em>, based on your operational database.
+        </p>
+
+        <p>
+          The simplest way to preprocess and clean raw data is with SQL views.
+          Special transformations can be implemented with <a href="https://github.com/GoogleCloudPlatform/bigquery-utils/tree/master/udfs/community">user-defined functions&nbsp;<i class="fa-solid fa-arrow-up-right-from-square"></i></a> written in SQL or JavaScript.
+          The SQL views can be implemented to perform directly on raw data or triggered as scheduled queries that materialize in a new table.
+          If this does not suffice, more complex pipelines can be implemented with <em>Dataflow</em> (Apache Beam) or <em>Dataform</em> (a dbt clone).
+        </p>
+
+        <p>
+          For analytics, BigQuery supports SQL queries with a number of available <a href="https://github.com/GoogleCloudPlatform/bigquery-utils/tree/master/udfs/community">user-defined functions&nbsp;<i class="fa-solid fa-arrow-up-right-from-square"></i></a>.
+          For basic visualization and report generation, <a href="https://datastudio.google.com">Google Data Studio</a> is well-integrated and can be used for free.
+          A good integration also exists for <a href="https://docs.google.com/spreadsheets/">Google Sheets&nbsp;<i class="fa-solid fa-arrow-up-right-from-square"></i></a> and
+          <a href="https://colab.research.google.com/">Colab&nbsp;<i class="fa-solid fa-arrow-up-right-from-square"></i></a>, an online Jupyter Notebook service.
+          More advanced analytics is done with <a href="https://www.looker.com/">Looker&nbsp;<i class="fa-solid fa-arrow-up-right-from-square"></i></a>, which was acquired by Google in 2019.
+        </p>
+
+        <p>
+          Data Products are usually simple BigQuery tables or views in a special dataset.
+          The access to these data is managed by the domain team with Google IAM roles.
+          Google has an integrated <a href="https://cloud.google.com/data-catalog">Data Catalog&nbsp;<i class="fa-solid fa-arrow-up-right-from-square"></i></a>, which can get pretty cluttered.
+          It can be used to document and tag datasets as data products, but we see that
+          many users still stick on a Wiki page with available data products listed.
+        </p>
+
+        <p>
+          Google recently announced <a href="https://cloud.google.com/blog/products/data-analytics/build-a-data-mesh-on-google-cloud-with-dataplex-now-generally-available">Dataplex&nbsp;<i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+          to centrally manage, monitor and govern data and promotes it for data mesh use cases.
+          We currently have no hands-on experience with it.
+        </p>
+
+        <h5>References</h5>
+          <ul>
+            <li><a href="https://services.google.com/fh/files/misc/build-a-modern-distributed-datamesh-with-google-cloud-whitepaper.pdf">Build a modern, distributed Data Mesh with Google Cloud</a></li>
+            <li><a href="https://cloud.google.com/blog/products/data-analytics/build-a-data-mesh-on-google-cloud-with-dataplex-now-generally-available">Build a data mesh on Google Cloud with Dataplex, now generally available</a></li>
+          </ul>
+
+        </div>
+    </section>
+
+</div>
+
+<footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            <a href="https://www.innoq.com">
+                <img src="/images/supported-by-innoq--petrol-apricot.svg" alt="Supported by INNOQ" class="footer-logo" width="180" />
+            </a>
+        </p>
+        <p>
+            <a href="https://www.innoq.com/en/impressum/">Legal Notice</a>
+            &nbsp
+            <a href="https://www.innoq.com/en/datenschutz/">Privacy</a>
+        </p>
+    </div>
+</footer>
+
+<script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+<noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript>
+
+<link rel="stylesheet" href="css/glightbox.css" />
+<script src="js/glightbox.js"></script>
+<script type="text/javascript">
+    const lightbox = GLightbox({});
+</script>
+
+
+<script src="js/anchor.min.js"></script>
+<script>anchors.add();</script>
+</body>
+
+</html>
