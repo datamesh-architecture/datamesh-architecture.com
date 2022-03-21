@@ -47,11 +47,15 @@
         <div class="content">
             <p>
                 We often see Data Mesh implementations relying on <strong>AWS S3 and Athena</strong> as the primary means to share and query data products.
-                Everything is available as developer-friendly self-service.
-                Interestingly enough, most data mesh implementations on AWS are using S3 and Athena, and not Redshift, which would be more the equivalent to <a href="google-cloud-bigquery.html">Google’s BigQuery approach</a>.
-                We assume this is mainly because S3 and Athena are more simple to use, serverless, and billed on a pay-per-use basis, without the need to provision clusters upfront.
             </p>
             <img src="../images/aws-s3-athena.png.webp" alt="Data Mesh Architecture with AWS S3 and Athena" style="width: 100%">
+            <p>
+                Interestingly enough, most data mesh implementations on AWS are using S3 and Athena,
+                and not Redshift, which would be more the equivalent to <a
+                    href="google-cloud-bigquery.html">Google’s BigQuery approach</a>.
+                We assume this is mainly because S3 and Athena are more simple to use, serverless,
+                and billed on a pay-per-use basis, without the need to provision clusters
+                upfront.</p>
 
             <div class="columns">
                 <div class="column">
