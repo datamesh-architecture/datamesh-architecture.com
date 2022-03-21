@@ -38,7 +38,7 @@
             </ul>
         </nav>
 
-        <h1 class="title">AWS S3 and Athena</h1>
+        <h1 class="title">AWS S3 and AWS Athena</h1>
 
         <div class="notification is-info is-light">
             Data mesh is primarily an organizational approach, and that's why you can't buy a data mesh from a vendor. Technology, however, is important still as it acts as an enabler for data mesh, and only useful and easy to use solutions will lead to domain teams' acceptance. The available offerings of cloud providers already provide a sufficient set of good self-serve data services to let you form a data platform for your data mesh. We want to show which services can be used to get started.
@@ -46,9 +46,9 @@
 
         <div class="content">
             <p>
-                We often see Data Mesh implementations relying on <strong>AWS S3 and Athena</strong> as the primary means to share and query data products.
+                We often see Data Mesh implementations relying on <strong>AWS S3 and AWS Athena</strong> as the primary means to share and query data products.
             </p>
-            <img src="../images/aws-s3-athena.png.webp" alt="Data Mesh Architecture with AWS S3 and Athena" style="width: 100%">
+            <img src="../images/aws-s3-athena.png.webp" alt="Data Mesh Architecture with AWS S3 and AWS Athena" style="width: 100%">
             <p>
                 Interestingly enough, most data mesh implementations on AWS are using S3 and Athena,
                 and not Redshift, which would be more the equivalent to <a
@@ -61,11 +61,9 @@
                 <div class="column">
                     <p>
                         <strong>AWS S3</strong> is the central component for storing analytical data.
-                        S3 is a simple file based object store and data can be stored in many different formats, such as CSV, JSON, Avro, or Parquet.
-                        S3 buckets are used for all stages: raw files, aggregated data, and data products.
-                        Metadata and queries are often stored as S3 files, as well.
+                        S3 is a file based object store and data can be stored in many formats, such as CSV, JSON, Avro, or Parquet.
+                        S3 buckets are used for all stages: raw files, aggregated data, and even data products.
                         All data relevant AWS services and most independent software product have an interface to S3, either as a sink or as a source.
-                        <strong>AWS Athena</strong> supports querying multiple JSON files stored in different S3 buckets.
                     </p>
                     <p>
                         Every domain team typically has their <strong>own AWS S3 buckets</strong> to store their own data products, either on a shared AWS account or in a team AWS account.
@@ -81,10 +79,11 @@
             <div class="columns">
                 <div class="column">
                     <p>
-                        Analytical queries are executed through <strong>Athena</strong> that queries S3 files and other datasets with standard SQL and performs cross-dataset join operations.
+                        Analytical queries are executed through <strong>AWS Athena</strong> that queries data stored in many locations, including files on S3, with standard SQL and performs cross-dataset join operations.
                         Athena uses <em>Presto</em>, a distributed query engine.
-                        Athena works directly on S3 files without the need to import data first, but it requires to know the schema of the files,
-                        so metadata need to be defined first, either manually, or by using AWS Glue Data Catalog which can crawl files to infer the structure.
+                        Although Athena works directly on S3 files without the need to import any data, it still needs to know the schema of the files.
+                        That's why metadata need to be defined first, either manually, or by using AWS Glue Data Catalog, which can crawl files to infer the structure.
+                        Typically, metadata and queries are often stored as files on S3, just as the data they describe.
                     </p>
                 </div>
                 <div class="column">
@@ -125,7 +124,7 @@
                     <p>
                         Governance, Data Catalog, and even policy automation can be implemented through
                         <strong>AWS Lake Formation</strong>.
-                        In Lake Formation S3 locations from different AWS accounts can be linked.
+                        In Lake Formation, S3 locations from different AWS accounts can be linked.
                         The data in S3 files can be documented in the Data Catalog, including the data schema.
                         Data sets can be tagged with special <em>LF-Tags</em> to give table and columnar-level permissions.
                         Data loss prevention can be automated by enabling <strong>Macie</strong> to continuously scan S3 buckets for sensitive data and potentially unwanted data exposures.
