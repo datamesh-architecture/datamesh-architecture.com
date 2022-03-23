@@ -6,6 +6,7 @@ draw.io --export --format svg --output images/ diagrams/
 # find images/ -name '*.svg' -print0 | xargs -0 sed -i "" 's|<defs/>|<defs><style>@font-face {font-family: "Architects Daughter";src: url(../webfonts/architectsdaughter.woff2) format("woff2");}</style></defs>|g'
 
 convert images/google-cloud-bigquery.png -splice 350x0 -extent 3175x1709 images/google-cloud-bigquery_card.png
+convert images/aws-s3-athena.png -splice 350x0 -extent 3175x1709 images/aws-s3-athena_card.png
 
 # requires installation
 #
