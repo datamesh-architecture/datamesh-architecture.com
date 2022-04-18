@@ -24,9 +24,92 @@
     <link rel="stylesheet" href="css/0.9.3_css_bulma.css" />
     <link rel="stylesheet" href="css/font-awesome_6.0.0_css_all.css"/>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+
+        // Get all "navbar-burger" elements
+        const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+        // Check if there are any navbar burgers
+        if ($navbarBurgers.length > 0) {
+
+          // Add a click event on each of them
+          $navbarBurgers.forEach( el => {
+            el.addEventListener('click', () => {
+
+              // Get the target from the "data-target" attribute
+              const target = el.dataset.target;
+              const $target = document.getElementById(target);
+
+              // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+              el.classList.toggle('is-active');
+              $target.classList.toggle('is-active');
+
+            });
+          });
+        }
+
+      });
+    </script>
 </head>
 <body>
 <section class="hero is-fullheight" style="background-color: #242424">
+    <div class="hero-head">
+        <nav class="navbar is-dark" role="navigation" aria-label="dropdown navigation">
+            <div class="container">
+                <div class="navbar-brand">
+                    <span class="navbar-burger" data-target="navbarMenuHeroA">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+                </div>
+                <div id="navbarMenuHeroA" class="navbar-menu">
+
+            <div class="navbar-end">
+
+
+                <a href="#why" class="navbar-item">
+                    Why
+                </a>
+                <a href="#what-is-data-mesh" class="navbar-item">
+                    What
+                </a>
+                <a href="#how-to-design-a-data-mesh" class="navbar-item">
+                    How
+                </a>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a href="#tech-stacks" class="navbar-link">
+                        Tech Stacks
+                    </a>
+                    <div class="navbar-dropdown" id="navbarMenuTechStackDropdown">
+                        <a href="tech-stacks/google-cloud-bigquery" class="navbar-item">
+                            Google Cloud BigQuery
+                        </a>
+                        <a href="tech-stacks/aws-s3-athena" class="navbar-item">
+                            AWS S3 and AWS Athena
+                        </a>
+                    </div>
+                </div>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a href="#domain-teams-journey" class="navbar-link">
+                        Start the Journey
+                    </a>
+                    <div class="navbar-dropdown is-right" id="navbarMenuTransformationDropdown">
+                        <a href="#domain-teams-journey" class="navbar-item">
+                            Domain Team’s Journey
+                        </a>
+                        <a href="#data-teams-journey" class="navbar-item">
+                            Data Team’s Journey
+                        </a>
+                    </div>
+                </div>
+            </div>
+            </div>
+            </div>
+        </nav>
+
+    </div>
     <div class="hero-body">
         <div class="">
             <p class="title" style="color: white; font-family: 'Mark Pro',sans-serif; font-weight: 800; font-size: 10vw; letter-spacing: -1px; text-transform: uppercase; line-height: 1.0; margin-bottom: 2rem;">
@@ -107,7 +190,7 @@
     <section class="section is-medium">
         <div class="columns is-vcentered">
             <div class="column is-half is-offset-half">
-            <h2 class="title">What Is Data Mesh?</h2>
+            <h2 class="title" id="what-is-data-mesh">What Is Data Mesh?</h2>
             </div>
         </div>
         <div class="columns is-vcentered">
@@ -149,7 +232,7 @@
     </section>
 
     <section class="section is-medium">
-        <h2 class="title">How To Design a Data Mesh?</h2>
+        <h2 class="title" id="how-to-design-a-data-mesh">How To Design a Data Mesh?</h2>
         <div class="content">
             <p class="mt-5">
                 A data mesh architecture is a decentralized approach that enables domain teams to perform cross-domain data analysis on their own.
@@ -560,7 +643,7 @@
 
 
     <section class="section is-medium">
-        <h2 class="title is-1">Tech Stacks</h2>
+        <h2 class="title is-1" id="tech-stacks">Tech Stacks</h2>
         <div class="notification is-info is-light">
             Data mesh is primarily an organizational approach, and that's why you can't buy a data mesh from a vendor. Technology, however, is important still as it acts as an enabler for data mesh, and only useful and easy to use solutions will lead to domain teams' acceptance. The available offerings of cloud providers already provide a sufficient set of good self-serve data services to let you form a data platform for your data mesh. We want to show which services can be used to get started.
         </div>
