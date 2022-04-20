@@ -29,6 +29,20 @@
   font-weight: 800;
 }
 
+.navbar-item {
+  font-family: 'Mark Pro',sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+/*
+Bulma variables would be more elegant, but would require a  Sass setup
+https://bulma.io/documentation/components/navbar/#variables
+*/
+.navbar a:hover {
+  color: #FF9B66 !important;
+}
+
 strong {
   font-weight: 600;
 }
