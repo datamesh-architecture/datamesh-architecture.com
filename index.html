@@ -92,6 +92,9 @@
                         <a href="#enabling-team" class="navbar-item">Enabling Team</a>
                     </div>
                 </div>
+                <a href="#mesh" class="navbar-item">
+                    Mesh
+                </a>
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a href="#tech-stacks" class="navbar-link is-arrowless">
                         Tech Stacks
@@ -671,11 +674,16 @@
                 Let's look at a simplified e-commerce example:
             </p>
 
-            <p>
-            <img src="images/mesh.png.webp" alt="Mesh" style="width: 100%">
-            </p>
+            <div class="block">
+                <a href="images/mesh.png.webp" class="glightbox">
+                    <img src="images/mesh.png.webp" alt="Domains access data products from other domains">
+                </a>
 
-            Domains can be classified by data characteristics and data product usage. We adopt Zhamak Dehghani’s classification:
+            </div>
+
+            <p>
+                Domains can be classified by data characteristics and data product usage. We adopt Zhamak Dehghani’s classification:
+            </p>
 
             <h2>Source-aligned</h2>
             <p>
@@ -690,10 +698,9 @@
             <p>
                 For <a href="https://teamtopologies.com/key-concepts">complicated subsystems&nbsp;<i class="fa-solid fa-arrow-up-right-from-square"></i></a>, it can be efficient that a team focuses solely on delivering a data product that is <strong>aggregated</strong> of various data products from other domains.
                 A typical example is a 360° customer view that includes relevant data from multiple domains, such as account data, orders, shipments, invoices, returns, account balance, and internal ratings.
-                A 360° customer view is hard to build, but it might be useful for many other domains.
+                With respect to different bounded contexts, a comprehensive 360° customer view is hard to build, but it might be useful for many other domains.
                 Another example for a complicated subsystem is building sophisticated ML models that require enhanced data science skills.
-                It may be sensible that one team focuses on building an ML model that is published as a data product.
-                For example, a data scientists team develops and trains a recommendation model by using data from checkout and the 360° customer view, and another team uses this model and focuses to present the recommendations to the customers in the online shop or in promotional emails.
+                It may be sensible that a data scientists team develops and trains a recommendation model by using data from checkout and the 360° customer view, and another team uses this model and focuses to present the calculated recommendations in the online shop or in promotional emails.
             </p>
 
             <h2>Consumer-aligned</h2>
@@ -709,7 +716,6 @@
             </p>
         </div>
     </section>
-
 
 
     <section class="section is-medium">
