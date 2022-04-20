@@ -92,6 +92,9 @@
                         <a href="#enabling-team" class="navbar-item">Enabling Team</a>
                     </div>
                 </div>
+                <a href="#mesh" class="navbar-item">
+                    Mesh
+                </a>
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a href="#tech-stacks" class="navbar-link is-arrowless">
                         Tech Stacks
@@ -653,6 +656,65 @@
             </div>
         </div>
 
+    </section>
+
+
+
+
+    <section class="section is-medium">
+        <h2 class="title is-1">Mesh</h2>
+        <div class="content">
+            <p class="mt-5">
+                The <em>mesh</em> emerges when teams use other domain's data products.
+                Using data from upstream domains simplifies data references and lookups (such as getting an article's price),
+                while data from downstream domains enables analyzing effects, e.g. for A/B tests (such as changes in the conversion rate).
+                Data from multiple other domains can be aggregated to build comprehensive reports and new data products.
+            </p>
+            <p>
+                Let's look at a simplified e-commerce example:
+            </p>
+
+            <div class="block">
+                <a href="images/mesh.png.webp" class="glightbox">
+                    <img src="images/mesh.png.webp" alt="Domains access data products from other domains">
+                </a>
+
+            </div>
+
+            <p>
+                Domains can be classified by data characteristics and data product usage. We adopt Zhamak Dehghani’s classification:
+            </p>
+
+            <h2>Source-aligned</h2>
+            <p>
+                In this example, an online shop is subdivided into domains along the customer journey, from <em>product search</em> over <em>checkout</em> to <em>payment</em>.
+                In a data mesh, these domains publish their data as data products, so others can access them.
+                The engineers do analytics on their own data to improve their operational systems and validate the business value of new features.
+                They use domain neighbor’s data to simplify their queries and get insights on effects in downstream domains.
+                These domain data can be referred to as <strong>source-aligned</strong>, as most of their published data products correspond closely to the <em>domain events</em> and <em>entities</em> generated in their operational systems.
+            </p>
+
+            <h2>Aggregate</h2>
+            <p>
+                For <a href="https://teamtopologies.com/key-concepts">complicated subsystems&nbsp;<i class="fa-solid fa-arrow-up-right-from-square"></i></a>, it can be efficient that a team focuses solely on delivering a data product that is <strong>aggregated</strong> of various data products from other domains.
+                A typical example is a 360° customer view that includes relevant data from multiple domains, such as account data, orders, shipments, invoices, returns, account balance, and internal ratings.
+                With respect to different bounded contexts, a comprehensive 360° customer view is hard to build, but it might be useful for many other domains.
+                Another example for a complicated subsystem is building sophisticated ML models that require enhanced data science skills.
+                It may be sensible that a data scientists team develops and trains a recommendation model by using data from checkout and the 360° customer view, and another team uses this model and focuses to present the calculated recommendations in the online shop or in promotional emails.
+            </p>
+
+            <h2>Consumer-aligned</h2>
+            <p>
+                In a company, there are also business departments that need data from the whole value stream to make sensible decisions, with people working in these departments are business experts but not engineers or technology-savvy.
+                Management and controlling requires detailed reports and KPIs from all domains to identify strengths and deviations.
+                Marketing does funnel and web analysis over all steps in the customer journey in their own optimized tools, such as Google Analytics or Adobe Analytics.
+                In these domains, the data model is optimized for a specific department's needs and can therefore be described as <strong>consumer-aligned</strong>.
+                Consumer-aligned reports were often one of the main tasks of central data teams.
+                With data mesh, (new) consumer-aligned domain teams focus on fulfilling data needs of one specific business domain, allowing them to gain deep domain knowledge and constantly develop better analytical results.
+                Business and IT grow closer together, either by building integrated domain teams or by having engineering teams that provide domain data as a service for the business, e.g., to support C-level or controlling.
+                Their data are typically used for their analytics and reports, but does not need to be published and managed as data products for other domains.
+            </p>
+        </div>
     </section>
 
 
