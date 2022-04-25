@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Data Mesh Architecture: Snowflake and dbt</title>
+    <meta charset="utf-8">
+    <meta name="description" content="How to build a data mesh architecture with Snowflake and dbt" />
+    <meta name="keywords" content="data mesh, data mesh architecture, domain-driven data analytics, data analytics, domain-driven design, domain ownership, data as a product, data product, federated governance, self-serve data platform, data platform">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@innoq" />
+    <meta name="twitter:title" content="Data Mesh Architecture: Snowflake and dbt" />
+    <meta name="twitter:description" content="How to build a data mesh architecture with Snowflake and dbt" />
+    <meta name="twitter:image" content="https://www.datamesh-architecture.com/images/snowflake_card.png" />
+    <meta name="twitter:image:alt" content="Data Mesh Architecture: Domains are in the center and teams do analytics on their own. They build and interconnect with data products. A data platform team and a enablement team help. Global policies are agreed through federated governance." />
+    <meta property="og:url" content="https://datamesh-architecture.com" />
+    <meta property="og:title" content="Data Mesh Architecture: Snowflake and dbt" />
+    <meta property="og:description" content="How to build a data mesh architecture with Snowflake and dbt" />
+    <meta property="og:image" content="https://www.datamesh-architecture.com/images/snowflake_card.png" />
+
+    <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Book.woff2?cachebuster=2" crossorigin="">
+    <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Bold.woff2?cachebuster=2" crossorigin="">
+    <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Heavy.woff2?cachebuster=2" crossorigin="">
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/0.9.3_css_bulma.css" />
+    <link rel="stylesheet" href="../css/font-awesome_6.0.0_css_all.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+</head>
+<body>
+<div class="container">
+
+    <section class="section">
+
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+            <ul>
+                <li><a href="https://www.datamesh-architecture.com/">Data Mesh Architecture</a></li>
+                <li><a href="https://www.datamesh-architecture.com/#tech-stacks">Tech Stacks</a></li>
+                <li class="is-active"><a href="#" aria-current="page">Snowflake and dbt</a></li>
+            </ul>
+        </nav>
+
+        <h1 class="title">Snowflake</h1>
+
+        <div class="notification is-info is-light">
+            Data mesh is primarily an organizational approach, and that's why you can't buy a data mesh from a vendor. Technology, however, is important still as it acts as an enabler for data mesh, and only useful and easy to use solutions will lead to domain teams' acceptance. The available offerings of cloud providers already provide a sufficient set of good self-serve data services to let you form a data platform for your data mesh. We want to show which services can be used to get started.
+        </div>
+
+        <div class="content">
+            <p>
+                Snowflake is a popular cloud-based data warehouse.
+                A Snowflake account can run on AWS, Google Cloud, or Azure.
+            </p>
+            <img src="../images/snowflake.png.webp" alt="Data Mesh Architecture with Snowflake" style="width: 100%">
+            <p>
+                Snowflake can be compared approximately with Google BigQuery and also has a serverless pricing model.
+                Internally, Snowflake uses cost-efficient object storage services (such as S3) to store data and compute instances to execute queries and DML operations.
+                For the users, the key concepts are traditional tables and views along with SQL queries.
+            </p>
+
+            <div class="columns">
+                <div class="column">
+                    <p>
+                    </p>
+                    <p>
+                        Teams and data can be organized by these layers:
+                    </p>
+                     <ul>
+                        <li>Organization Account</li>
+                        <li>Account</li>
+                        <li>Databases</li>
+                        <li>Schemas</li>
+                        <li>Tables, Views, Sequence, Stages</li>
+                    </ul>
+                    <p>
+                        An easy way to start would be a single account per environment for all teams and one logical database per team,
+                        but managing security roles can quickly become complex,
+                        as usually one role per data product will be required.
+                        In terms of governance and security, a recommended option is that each domain team has their own Snowflake account, one per environment and using <em>Secure Data Sharing</em> to give others access to data products.
+                    </p>
+
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <img src="../images/snowflake_account.png.webp" alt="">
+                    </figure>
+                </div>
+            </div>
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        Data products can be published and shared with other Snowflake accounts through <strong>Secure Data Sharing</strong>.
+                        A domain team defines a <em>secure view</em> for the desired data set and gives other accounts within the same cloud provider`s region read-access to the data set.
+                        As a share cannot be granted to an organization account, an automated script (e.g., with Terraform) should be considered to make data sets available company-wide, if desired.
+                    </p>
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <img src="../images/snowflake_data-sharing.png.webp" alt="Screenshot of Data Sharing with Snowflake">
+                    </figure>
+                </div>
+            </div>
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        Building models with dbt
+                    </p>
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <img src="../images/snowflake_dbt.png.webp" alt="Screenshot of dbt">
+                    </figure>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        Visualization
+                    </p>
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <img src="../images/snowflake_dashboard.png" alt="Screenshot of a Snowflake Dashboard">
+                    </figure>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        Snowflake provides no catalog do discover and govern published data products.
+                        Being one of the most data warehouses, there is a good integration for all third-party data catalog solutions,
+                        such as Select Star, Alation
+
+                    </p>
+                </div>
+            </div>
+
+
+            <h5>References</h5>
+            <ul>
+                <li><a href="https://www.snowflake.com/webinar/for-customers/master-class-deploying-data-mesh-and-dataops-on-snowflake/?utm_source=DataOps&utm_medium=Referral&utm_campaign=emea-en-dataopslive-partner-referral-link-01032022&_hsenc=p2ANqtz-89vJNi_-qlnOk2j6zzIBVRtDZp7xnoyHLSD-paz2C_hRm9gfqDgtiGvbP-7icxu4B1RZEu">MASTER CLASS: USING SNOWFLAKE AND DATAOPS.LIVE TO DELIVER A DOMAIN-DRIVEN DATA MESH ARCHITECTURE SUCCESSFULLY</a></li>
+            </ul>
+
+        </div>
+    </section>
+
+</div>
+
+<footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            <a href="https://www.innoq.com">
+                <img src="/images/supported-by-innoq--petrol-apricot.svg" alt="Supported by INNOQ" class="footer-logo" width="180" />
+            </a>
+        </p>
+        <p>
+            <a href="https://www.innoq.com/en/impressum/">Legal Notice</a>
+            &nbsp
+            <a href="https://www.innoq.com/en/datenschutz/">Privacy</a>
+        </p>
+    </div>
+</footer>
+
+<script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+<noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript>
+
+<link rel="stylesheet" href="css/glightbox.css" />
+<script src="js/glightbox.js"></script>
+<script type="text/javascript">
+  const lightbox = GLightbox({});
+</script>
+
+
+<script src="js/anchor.min.js"></script>
+<script>anchors.add();</script>
+</body>
+
+</html>
