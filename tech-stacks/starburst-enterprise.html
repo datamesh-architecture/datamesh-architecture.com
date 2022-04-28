@@ -51,8 +51,7 @@
             <img src="../images/starburst-enterprise.png.webp" alt="Data Mesh Architecture with Starburst Enterprise" style="width: 100%">
 
             <p>
-                How would you structure it?
-
+                How would you structure it for your team? Permission?
             </p>
 
 
@@ -61,14 +60,13 @@
                     <p>
                         The central piece in Starburst Enterprise is its distributed <strong>query engine</strong> that's built on top of <a href="https://trino.io/">Trino</a>, formerly known PrestoSQL.
                         It allows to query and join data stored in different formats on different data stores on different cloud providers or even on-premise, presuming there's a connector available.
-                        In addition to all the connectors that are available with Trino directly, Starburst Enterprise adds even more.
+                        In addition to all the connectors that are available with Trino out of the box, Starburst Enterprise adds even more.
                         This means that regardless how you store your ingested analytical data, you will probably be able to process it further with Starburst Enterprise.
                     </p>
                     <p>
                         Because of all of these connectors, Starburst makes it easy to <strong>query operational data</strong> directly instead of ingesting it first.
-                        It may be a way to get started quickly, but be aware of the downsides such as additional load on the operational data stores or making your queries resilient to breaking changes in the operational schemas.
+                        You may get started quickly with this approach, but be aware of the downsides such as additional load on the operational data stores or making your queries resilient to breaking changes in the operational schemas.
                     </p>
-
                 </div>
                 <div class="column">
                     <figure class="image">
