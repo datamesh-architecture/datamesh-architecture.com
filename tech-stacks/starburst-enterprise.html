@@ -61,11 +61,11 @@
                     <p>
                         The central piece in Starburst Enterprise is its distributed <strong>query engine</strong> that's built on top of <a href="https://trino.io/">Trino</a>, formerly known PrestoSQL.
                         It allows to query and join data stored in different formats on different data stores on different cloud providers or even on-premise, presuming there's a connector available.
-                        Most commonly, data are stored as files in object stores, such as S3 or MinIO.
-                        The recommended file format is <em>Parquet</em>.
-
-                        - partitions
-                        - metadata
+                        Most commonly, the ingested analytical data and results are stored as files in object stores, such as S3 or MinIO.
+                        The recommended file format is <em>Parquet</em> as it optimizes for fast queries and requires significantly less space.
+                        The query engine needs to know how to deserialize the Parquet or JSON file and the structure of the actual data, such as which column has which data type.
+                        This information needs to be stored in a metadata store, usually in a <em>Hive metastore</em>.
+                        Large data sets should be partitioned, for example by date, into smaller files.
                     </p>
                     <p>
                         In addition to all the connectors that are available with Trino out of the box, Starburst Enterprise adds even more.
