@@ -46,39 +46,30 @@
 
         <div class="content">
             <p>
-                Starburst`s main product is <em>Starburst Enterprise</em> which you license and run by yourself.
-                Their cloud service offering <em>Starburst Galaxy</em> is still very limited.
+                Starburst`s main product is <em>Starburst Enterprise</em> which you license and run by yourself, typically in a Kubernetes cluster.
+                Their cloud service offering <em>Starburst Galaxy</em> is maturing, but not on par with their main product yet.
             </p>
             <img src="../images/starburst-enterprise.png.webp" alt="Data Mesh Architecture with Starburst Enterprise" style="width: 100%">
-
-            <p>
-                How would you structure it for your team? Permission?
-            </p>
 
 
             <div class="columns">
                 <div class="column">
                     <p>
-                        The central piece in Starburst Enterprise is its distributed <strong>query engine</strong> that's built on top of <a href="https://trino.io/">Trino</a>, formerly known PrestoSQL.
+                        The central piece in Starburst Enterprise is its distributed <strong>query engine</strong> that's built on top of <a href="https://trino.io/">Trino</a>, formerly known as PrestoSQL.
                         It allows to query and join data stored in different formats on different data stores on different cloud providers or even on-premise, presuming there's a connector available.
                         Most commonly, the ingested analytical data and results are stored as files in object stores, such as S3 or MinIO.
                         The recommended file format is <em>Parquet</em> as it optimizes for fast queries and requires significantly less space.
                         The query engine needs to know how to deserialize the Parquet or JSON file and the structure of the actual data, such as which column has which data type.
-                        This information needs to be stored in a metadata store, usually in a <em>Hive metastore</em>.
-                        Large data sets should be partitioned, for example by date, into smaller files.
+                        This information needs to be stored in a Hive metastore, or in a Hive metastore compatible cloud offering such as AWS Glue Data Catalog.
+                        Large data sets should be partitioned, for example by date, into smaller files to speed up your queries.
                     </p>
                     <p>
-                        In addition to all the connectors that are available with Trino out of the box, Starburst Enterprise adds even more.
+                        In addition to all the <a href="https://trino.io/docs/current/connector.html">connectors that are available with Trino</a> out of the box, Starburst Enterprise adds <a href="https://docs.starburst.io/latest/connector.html">even more</a>.
                         This means that, regardless of how you store your ingested analytical data, you will probably be able to process it further with Starburst Enterprise.
                         Because of all of these connectors, Starburst makes it easy to <strong>query operational data</strong> directly instead of ingesting it first.
                         You may get started quickly with this approach, but be aware of the downsides such as additional load on the operational data stores or making your queries resilient to breaking changes in the operational schemas.
                         For integrated SaaS providers, such as Salesforce, these connectors might be a valid option, as the schema stays stable and the load is managed by the providers.
                     </p>
-                </div>
-                <div class="column">
-                    <figure class="image">
-                        <img src="../images/TBD.png.webp" alt="TBD">
-                    </figure>
                 </div>
             </div>
 
@@ -87,17 +78,17 @@
                     <p>
                         A <strong>data product</strong> in Starburst Enterprise is first and foremost a schema containing one or more (materialized) views that can be accessed through a standardized SQL interface.
                         But it also includes metadata such as tags, a rating, and usage data of the views.
-                        The full definition of every data product is available as JSON, and it is recommended to version it in git or to be imported into sophisticated data catalogs, such as <a href="https://marquezproject.github.io/marquez/">marquez</a> or <a href="https://www.amundsen.io/">Amundsen</a>.
+                        The full definition of every data product is available as JSON, and it is recommended to version it in git or to be imported into sophisticated data catalogs.
                     </p>
                     <p>
                         Starburst Enterprise comes with a <strong>simple data catalog</strong> that is just a collection of published data products grouped by data domains.
                         It can act as a starting point but is no replacement for more sophisticated data catalogs.
+                        We recommend to use <a href="https://www.amundsen.io/">Amundsen</a>.
                     </p>
                 </div>
                 <div class="column">
                     <figure class="image">
                         <img src="https://www.starburst.io/wp-content/uploads/2022/02/Data-Products-View.png" alt="Data product in Starburst Enterprise">
-                        <img src="https://www.starburst.io/wp-content/themes/starburst-theme/includes/img/data-products.jpg" alt="Data catalog in Starburst Enterprise">
                     </figure>
                 </div>
             </div>
