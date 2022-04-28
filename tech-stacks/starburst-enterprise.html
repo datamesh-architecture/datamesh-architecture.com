@@ -46,23 +46,45 @@
 
         <div class="content">
             <p>
-                TBD
+                Although Starburst is building up its own cloud service Starburst Galaxy, its main product is Starburst Enterprise which you license but have to run yourself or via a managed appliance.
             </p>
             <img src="../images/starburst-enterprise.png.webp" alt="Data Mesh Architecture with Starburst Enterprise" style="width: 100%">
-            <p>
-               TBD
-            </p>
 
             <div class="columns">
                 <div class="column">
                     <p>
-                        TBD
+                        The central piece in Starburst Enterprise is its distributed <strong>query engine</strong> that's built on top of <a href="https://trino.io/">Trino</a>, formerly known PrestoSQL.
+                        It allows to query and join data stored in different formats on different data stores on different cloud providers or even on-premise, presuming there's a connector available.
+                        In addition to all the connectors that are available with Trino directly, Starburst Enterprise adds even more.
+                        This means that regardless how you store your ingested analytical data, you will probably be able to process it further with Starburst Enterprise.
+                        Because of all of these connectors, Starburst advocates for an approach to query operational data directly instead of ingesting it first.
+                        It may be an easy way to get started quickly, but be aware of the downsides such as additional load on the operational data stores.
                     </p>
 
                 </div>
                 <div class="column">
                     <figure class="image">
                         <img src="../images/TBD.png.webp" alt="TBD">
+                    </figure>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        A <strong>data product</strong> in Starburst Enterprise is first and foremost a schema containing one or more (materialized) views that can be accessed through a standardized SQL interface.
+                        But it also includes metadata such as tags, a rating, and usage data of the views.
+                        The full definition of every data product is available as JSON, and it is recommended to version it in git or to be imported into sophisticated data catalogs, such as <a href="https://marquezproject.github.io/marquez/">marquez</a> or <a href="https://www.amundsen.io/">Amundsen</a>.
+                    </p>
+                    <p>
+                        Starburst supports a simple <a href="https://docs.starburst.io/latest/data-products/dashboard.html">data catalog</a> as a collection of published <a href="https://docs.starburst.io/latest/data-products/index.html">data products</a> grouped by <a href="https://docs.starburst.io/latest/data-products/domain-management.html">data domains</a>.
+                        It can act as a starting point but is no replacement for more sophisticated data catalogs.
+                    </p>
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <img src="https://www.starburst.io/wp-content/themes/starburst-theme/includes/img/data-products.jpg" alt="Data catalog in Starburst Enterprise">
+                        <img src="https://www.starburst.io/wp-content/uploads/2022/02/Data-Products-View.png" alt="Data product in Starburst Enterprise">
                     </figure>
                 </div>
             </div>
