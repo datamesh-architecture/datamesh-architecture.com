@@ -48,6 +48,7 @@
             <p>
                 Starburst`s main product is <em>Starburst Enterprise</em> which you license and run by yourself, typically in a Kubernetes cluster.
                 Their cloud service offering <em>Starburst Galaxy</em> is maturing, but not on par with their main product yet.
+                From an architectural point of view, Starburst Enterprise is comparable with <a href="aws-s3-athena.html">AWS Athena</a>, but more flexible because of the many deployment and integrations options.
             </p>
             <img src="../images/starburst-enterprise.png.webp" alt="Data Mesh Architecture with Starburst Enterprise" style="width: 100%">
 
@@ -90,6 +91,20 @@
                     <figure class="image">
                         <img src="https://www.starburst.io/wp-content/uploads/2022/02/Data-Products-View.png" alt="Data product in Starburst Enterprise">
                     </figure>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        Starburst Enterprise is a very flexible solution, that, from our perspective, requires a strong <strong>data platform team</strong> to configure and manage all the integrations.
+                        Most prominently, the integration of a best of breed data catalog, data visualization, and data monitoring tool, but also managing access controls.
+                        Not to forget the management of the Hive metastore.
+                    </p>
+                    <p>
+                        From the perspective of a <strong>domain team</strong>, the main effort lies in ingesting and storing data in an optimized form (Parquet format) on the object store (MinIO, AWS S3, ...) and defining and storing the corresponding metadata in the Hive metastore.
+                        After this set up work, a domain team can make use of Starburst for their analysis and visualization needs.
+                    </p>
                 </div>
             </div>
 
