@@ -34,11 +34,11 @@
             <ul>
                 <li><a href="https://www.datamesh-architecture.com/">Data Mesh Architecture</a></li>
                 <li><a href="https://www.datamesh-architecture.com/#tech-stacks">Tech Stacks</a></li>
-                <li class="is-active"><a href="#" aria-current="page">Snowflake and dbt</a></li>
+                <li class="is-active"><a href="#" aria-current="page">dbt and Snowflake</a></li>
             </ul>
         </nav>
 
-        <h1 class="title">Snowflake</h1>
+        <h1 class="title">dbt and Snowflake</h1>
 
         <div class="notification is-info is-light">
             Data mesh is primarily an organizational approach, and that's why you can't buy a data mesh from a vendor. Technology, however, is important still as it acts as an enabler for data mesh, and only useful and easy to use solutions will lead to domain teams' acceptance. The available offerings of cloud providers already provide a sufficient set of good self-serve data services to let you form a data platform for your data mesh. We want to show which services can be used to get started.
@@ -46,67 +46,88 @@
 
         <div class="content">
             <p>
-                Snowflake is a popular cloud-based data warehouse.
-                A Snowflake account can run on AWS, Google Cloud, or Azure.
+                dbt has emerged as the default framework to engineer analytical data.
+                This is where you define and test your models. Compare it with <em>Spring Boot</em> in the micro services world.
+                dbt has <a href="https://docs.getdbt.com/docs/available-adapters">adapters</a> for most data warehouses, storages, and query engines.
             </p>
-            <img src="../images/snowflake.png.webp" alt="Data Mesh Architecture with Snowflake" style="width: 100%">
             <p>
-                Snowflake can be compared approximately with Google BigQuery and also has a serverless pricing model.
-                Internally, Snowflake uses cost-efficient object storage services (such as S3) to store data and compute instances to execute queries and DML operations.
-                For the users, the key concepts are traditional tables and views along with SQL queries.
+                Snowflake is a modern data warehouse.
+                From a usage perspective, it feels like a traditional database.
+                The key concepts to store and access data are tables and views, along with SQL queries.
+                Snowflake can be compared with Google BigQuery, AWS Redshift and Azure Synapse, but each of them has a different pricing structures.
+                Internally, Snowflake is built on cost-efficient object storage services (such as S3) to store data and compute instances (such as EC2) to execute queries and DML operations.
+                We think that Snowflake is a great fit for dbt, particularly through its simplicity, a fair pricing model, and is supported by all relevant tools.            </p>
             </p>
+
+            <img src="../images/snowflake.png.webp" alt="Data Mesh Architecture with Snowflake" style="width: 100%">
+
+
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        dbt is a framework to clean, transform, and aggregate data within you data warehouse.
+                        Transformations are written as SQL statements and result in <em>models</em> that are SQL views, materialized views, or tables,
+                        without the need to define their structure using DDL upfront.
+                        dbt supports references to other models and builds a usage dependency graph before executing the models.
+                        The templating language Jinja can be used to define these references and also build your own macros, that are reusable functions.
+
+                    </p>
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <img src="../images/snowflake_dbt.png.webp" alt="Screenshot of dbt">
+                    </figure>
+                </div>
+            </div>
+
+
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        Also, dbt includes tests to verify your defined data expectations and the data quality when running any transformation, both for sources and results.
+
+                    </p>
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <img src="../images/snowflake_dbt.png.webp" alt="Screenshot of dbt">
+                    </figure>
+                </div>
+            </div>
+
+            dbt has an excellent integration with Snowflake.
+
 
             <div class="columns">
                 <div class="column">
                     <p>
                     </p>
                     <p>
-                        Teams and data can be organized by these layers:
+                        How to organize domain teams and data?
+                        In Snowflake, data can be organized by these layers:
                     </p>
                      <ul>
                         <li>Organization Account</li>
                         <li>Account</li>
-                        <li>Databases</li>
-                        <li>Schemas</li>
-                        <li>Tables, Views, Sequence, Stages</li>
+                        <li>Databases (a database is just a logical grouping)</li>
+                        <li>Schemas (a schema is also just a logical grouping)</li>
+                        <li>Tables, Views, Sequence, Stages (references to files in an object store), ...</li>
                     </ul>
                     <p>
-                        An easy way to start would be a single account per environment for all teams and one logical database per team,
-                        but managing security roles can quickly become complex,
-                        as usually one role per data product will be required.
-                        In terms of governance and security, a recommended option is that each domain team has their own Snowflake account, one per environment and using <em>Secure Data Sharing</em> to give others access to data products.
+                        The simple option is one single account per environment for all teams and one logical database per team.
+                        Teams can use schemas to internally organize their data.
+                        Data Products can be published in a special schema like <em>DATA_PRODUCTS</em> as secure views and given appropriate permissions.
+                        <br>
+                        An alternative is that each domain team has their own Snowflake account under the same organization account.
+                        Data products can then be shared using <em>Secure Data Sharing</em> to give other accounts access.
+                        Unfortunately, there is no simple way to share data across the whole organization, so some scripts or terraform configurations are required.
+                        This option enhances the isolation and security, as everything is clearly separated, but it is more management overhead to share and use data products.
                     </p>
 
                 </div>
                 <div class="column">
                     <figure class="image">
                         <img src="../images/snowflake_account.png.webp" alt="">
-                    </figure>
-                </div>
-            </div>
-            <div class="columns">
-                <div class="column">
-                    <p>
-                        Data products can be published and shared with other Snowflake accounts through <strong>Secure Data Sharing</strong>.
-                        A domain team defines a <em>secure view</em> for the desired data set and gives other accounts within the same cloud provider`s region read-access to the data set.
-                        As a share cannot be granted to an organization account, an automated script (e.g., with Terraform) should be considered to make data sets available company-wide, if desired.
-                    </p>
-                </div>
-                <div class="column">
-                    <figure class="image">
-                        <img src="../images/snowflake_data-sharing.png.webp" alt="Screenshot of Data Sharing with Snowflake">
-                    </figure>
-                </div>
-            </div>
-            <div class="columns">
-                <div class="column">
-                    <p>
-                        Building models with dbt
-                    </p>
-                </div>
-                <div class="column">
-                    <figure class="image">
-                        <img src="../images/snowflake_dbt.png.webp" alt="Screenshot of dbt">
                     </figure>
                 </div>
             </div>
