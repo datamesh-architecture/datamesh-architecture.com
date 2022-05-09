@@ -117,8 +117,9 @@
         <div class="content">
             <p>
                 <a href="https://www.getdbt.com">dbt</a> has emerged as the default framework to engineer analytical data.
-                This is where you define and test your models. Compare it with <em>Spring Boot</em> in the micro services world.
-                dbt has <a href="https://docs.getdbt.com/docs/available-adapters">adapters</a> for most data warehouses, storages, and query engines.
+                This is where you define and test your models.
+                Compare it with <em>Spring Boot</em> in the microservices world.
+                dbt has <a href="https://docs.getdbt.com/docs/available-adapters">adapters</a> for most data warehouses, databases, and query engines.
             </p>
             <p>
                 <a href="https://www.snowflake.com">Snowflake</a> is a modern data warehouse.
@@ -143,8 +144,8 @@
                         Transformations are written as plain SQL statements and result in <em>models</em> that are SQL views, materialized views, or tables,
                         without the need to define their structure using DDL upfront.
                         Instead, models are defined, configured, and documented in simple YML structures.
-                        Models can refer other models and dbt builds a usage dependency graph before executing the models.
-                        The templating language Jinja can be used to define these references and also build your own macros, that are reusable functions.
+                        Models can refer to other models, and dbt builds a usage dependency graph before executing the models.
+                        The templating engine Jinja can be used to define these references and also build your own macros, that are reusable functions.
                     </p>
                 </div>
                 <div class="column">
@@ -197,7 +198,7 @@
                 <div class="column">
                     <p>
                         dbt transformations, data loads, and all other SQL queries are <strong>executed</strong> by a <em>warehouse</em>.
-                        Warehouses are compute instances and the query performance scales with their underlying CPU cores and memory.
+                        Warehouses are compute instances, and the query performance scales with their underlying CPU cores and memory.
                         Warehouses are charged while they are active.
                         They can be configured to auto-suspend after a defined inactivity time period, which may provide significant savings.
                         A warehouse can be attached to specific transformations and queries to give a high level of isolation.
