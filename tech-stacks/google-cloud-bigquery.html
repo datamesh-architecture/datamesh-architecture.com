@@ -26,14 +26,84 @@
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
 </head>
 <body>
+<nav class="navbar is-dark" role="navigation" aria-label="dropdown navigation">
+  <div class="container">
+    <div class="navbar-brand">
+                    <span class="navbar-burger" data-target="navbarMenuHeroA">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+    </div>
+    <div id="navbarMenuHeroA" class="navbar-menu">
+
+      <div class="navbar-end">
+
+
+        <a href="/#why" class="navbar-item">
+          Why
+        </a>
+        <a href="/#what-is-data-mesh" class="navbar-item">
+          What
+        </a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a href="/#how-to-design-a-data-mesh" class="navbar-link is-arrowless">
+            How
+          </a>
+          <div class="navbar-dropdown" id="navbarMenuArchitectureDropdown">
+            <a href="/#how-to-design-a-data-mesh" class="navbar-item">Data Mesh Architecture</a>
+            <hr class="navbar-divider">
+            <a href="/#data-product" class="navbar-item">Data Product</a>
+            <a href="/#federated-governance" class="navbar-item">Federated Governance</a>
+            <a href="/#analytical-data" class="navbar-item">Analytical Data</a>
+            <a href="/#ingesting" class="navbar-item">Ingesting</a>
+            <a href="/#clean-data" class="navbar-item">Clean Data</a>
+            <a href="/#analytics" class="navbar-item">Analytics</a>
+            <a href="/#data-platform" class="navbar-item">Data Platform</a>
+            <a href="/#enabling-team" class="navbar-item">Enabling Team</a>
+          </div>
+        </div>
+        <a href="#mesh" class="navbar-item">
+          Mesh
+        </a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a href="/#tech-stacks" class="navbar-link is-arrowless">
+            Tech Stacks
+          </a>
+          <div class="navbar-dropdown" id="navbarMenuTechStackDropdown">
+            <a href="/tech-stacks/google-cloud-bigquery" class="navbar-item">
+              Google Cloud BigQuery
+            </a>
+            <a href="/tech-stacks/aws-s3-athena" class="navbar-item">
+              AWS S3 and AWS Athena
+            </a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a href="#domain-teams-journey" class="navbar-link is-arrowless">
+            Start the Journey
+          </a>
+          <div class="navbar-dropdown is-right" id="navbarMenuTransformationDropdown">
+            <a href="#domain-teams-journey" class="navbar-item">
+              Domain Team’s Journey
+            </a>
+            <a href="#data-teams-journey" class="navbar-item">
+              Data Team’s Journey
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
 <div class="container">
 
     <section class="section">
 
       <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
-          <li><a href="https://www.datamesh-architecture.com/">Data Mesh Architecture</a></li>
-          <li><a href="https://www.datamesh-architecture.com/#tech-stacks">Tech Stacks</a></li>
+          <li><a href="/">Data Mesh Architecture</a></li>
+          <li><a href="/#tech-stacks">Tech Stacks</a></li>
           <li class="is-active"><a href="#" aria-current="page">Google Cloud BigQuery</a></li>
         </ul>
       </nav>
