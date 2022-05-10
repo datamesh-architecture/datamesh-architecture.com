@@ -167,17 +167,43 @@
                         <a href="https://docs.getdbt.com/docs/building-a-dbt-project/tests">dbt tests</a> can be added when defining a model, such as unique or not-null constraints.
                         More complex tests are written as SQL statements that need to return an empty result for a test to pass.
                         The extension <em><a href="https://github.com/calogica/dbt-expectations">dbt-expectations</a></em> adds powerful test methods to verify the data quality.
-                        These tests
+                        <br/>
+                        dbt tests are great start to have <strong>data quality</strong> monitored.
+                        Just run <code>dbt test</code> regularly through your CI platform or some other scheduler like cron or Airflow.
                     </p>
                 </div>
                 <div class="column">
                     <figure class="image">
                         <a href="../images/dbt_test.png" class="glightbox">
-                            <img src="../images/dbt_test.png" alt="Screenshot of dbt">
+                            <img src="../images/dbt_test.png" alt="Screenshot of a test in dbt">
                         </a>
                     </figure>
                 </div>
             </div>
+
+
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        With data mesh, every domain team manages its own dbt project(s) and they own their CI pipelines to run the models.
+                        When publishing models as data products, a model (usually a view) should be tagged as <code>data_product</code>, and it is a good idea to put them into a folder like <code>/models/data_products/</code>.
+                        When using data products from other domains, they are defined in a <em>source</em> configuration file, and, again, tests can be used to verify the expectations, you have on the data set.
+                        <br/>
+                        You can use
+                        <a href="https://docs.getdbt.com/docs/building-a-dbt-project/jinja-macros"><em>macros</em></a>
+                        and lifecycle <a href="https://docs.getdbt.com/docs/building-a-dbt-project/hooks-operations"><em>hooks</em></a> to automate policies that you agreed on in the federated governance group,
+                        like granting and checking permissions, or hashing columns that are tagged as <em>pii-sensitve</em> data.
+                    </p>
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <a href="../images/dbt_model.png" class="glightbox">
+                            <img src="../images/dbt_model.png" alt="Screenshot of a model configuration in dbt">
+                        </a>
+                    </figure>
+                </div>
+            </div>
+
 
             <div class="columns">
                 <div class="column">
@@ -286,7 +312,7 @@
             <div class="columns">
                 <div class="column">
                     <p>
-                        To monitor the platform itself, Snowflake comes with essential statistics on consumed credits, data storage and transfers.
+                        To <strong>monitor</strong> the platform itself, Snowflake comes with essential statistics on consumed credits, data storage and transfers.
                         Resource monitors help to notify and suspend when a defined budget exceeds.
                         More detailed usage, access history and especially query execution statistics are accessible through a system database via SQL.
                         These can be integrated in monitoring tools, such as <a href="https://grafana.com/docs/plugins/grafana-snowflake-datasource/latest/">Grafana</a> or <a href="https://docs.datadoghq.com/integrations/snowflake/">Datadog</a>.
