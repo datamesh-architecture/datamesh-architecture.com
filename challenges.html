@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Data Mesh Architecture: AWS S3 and Athena</title>
+    <title>Data Mesh Architecture: Challenges for Domain Teams</title>
     <meta charset="utf-8">
-    <meta name="description" content="How to build a data mesh architecture with AWS S3 and Athena" />
+    <meta name="description" content="Challenges for domain teams in a data mesh architecture" />
     <meta name="keywords" content="data mesh, data mesh architecture, domain-driven data analytics, data analytics, domain-driven design, domain ownership, data as a product, data product, federated governance, self-serve data platform, data platform">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@innoq" />
-    <meta name="twitter:title" content="Data Mesh Architecture: AWS S3 and Athena" />
-    <meta name="twitter:description" content="How to build a data mesh architecture with AWS S3 and Athena" />
-    <meta name="twitter:image" content="https://www.datamesh-architecture.com/images/aws-s3-athena_card.png" />
-    <meta name="twitter:image:alt" content="Data Mesh Architecture: Domains are in the center and teams do analytics on their own. They build and interconnect with data products. A data platform team and a enablement team help. Global policies are agreed through federated governance." />
+    <meta name="twitter:title" content="Data Mesh Architecture: Challenges for Domain Teams" />
+    <meta name="twitter:description" content="Challenges for domain teams in a data mesh architecture" />
+    <meta name="twitter:image" content="https://www.datamesh-architecture.com/images/challenges-domain-teams.png" />
+    <meta name="twitter:image:alt" content="Challenges for domain teams in a data mesh architecture" />
     <meta property="og:url" content="https://datamesh-architecture.com" />
-    <meta property="og:title" content="Data Mesh Architecture: AWS S3 and Athena" />
-    <meta property="og:description" content="How to build a data mesh architecture with AWS S3 and Athena" />
-    <meta property="og:image" content="https://www.datamesh-architecture.com/images/aws-s3-athena_card.png" />
+    <meta property="og:title" content="Data Mesh Architecture: Challenges for Domain Teams" />
+    <meta property="og:description" content="Challenges for domain teams in a data mesh architecture" />
+    <meta property="og:image" content="https://www.datamesh-architecture.com/images/challenges-domain-teams.png" />
 
     <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Book.woff2?cachebuster=2" crossorigin="">
     <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Bold.woff2?cachebuster=2" crossorigin="">
@@ -107,95 +107,102 @@
                 <li class="is-active"><a href="#" aria-current="page">Challenges for Domain Teams</a></li>
             </ul>
         </nav>
+        <h1 class="title">The Issue with Data Mesh</h1>
 
-            <h1 class="title">The Problem with Data Mesh</h1>
-
+        <div class="content">
             <p>
-                    Data mesh shifts responsibilities to the engineering teams. Once again.
+                Data mesh shifts responsibilities to the engineering teams. Once again.
+                The full stack becomes even <em>fuller</em>.
+                In addition to frontend, backend, mobile apps, databases, operations, security, and more, they are now also expected to perform data analysis and publish high quality data products.
+                Many teams are already more than busy implementing the user stories in their ever-growing backlog and managing their technical debt.
             </p>
-    </section>
-    <section class="section content">
-        <h4 class="title is-4">Capacity</h4>
-        <div class="columns">
-            <div class="column">
-                <h6>The Problem</h6>
-                <p>
-                    Data mesh shifts the responsibility for data analysis and providing analytical data to domain teams.
-                    In addition to frontend, backend, mobile apps, databases, operations, security, and more, they are now also expected to build and run analytical data.
-                    Many teams are already more than busy implementing the user stories in their ever-growing backlog.
-                </p>
-            </div>
-            <div class="column">
-                <h6>How to tackle</h6>
-                <p>
-                    Restrain to add more engineers to the team.
-                    Instead, agree with the team and their stakeholders that data analytics is an investment they want to make and give it priority.
-                    Implementing a first data product may take up to 4 weeks or more.
-                    <br/>
-                    Aim for teams participating in a Data Mesh to <strong>achieve benefits from analyzing data</strong> that are higher than the investment in the long term.
-                    For example, they measure the business value of user stories before implementing,
-                    and make a qualified decision that certain user stories are <em>not worth implementing</em>, freeing up capacities.
-                    With their own domain data analytics, they can focus on the user stories that provide the highest business value, proven by data.
-                    This requires that managers give teams the freedom and trust to choose user stories themselves and not be driven by external projects or milestones.
-                    Data Mesh requires a true culture of product thinking and autonomous teams.
-                </p>
-            </div>
+            <p>
+                How is this supposed to work in practice?
+            </p>
+            <p>
+                Valid question.
+                In the end, this is a question of prioritization and culture.
+                Do the domain teams see a high return on invest for themselves and the whole company?
+                Advocating for data mesh goes hand in hand with building a culture in which data is highly valued.
+            </p>
         </div>
     </section>
 
     <section class="section content">
-    <h4 class="title is-4">Know How</h4>
-        <div class="columns">
-            <div class="column">
-                <h6>The Problem</h6>
-                <p>
-                    Operational domain teams have a lot of experience with frontend and backend technologies, along with SQL and No-SQL databases, Kafka, and runtime platforms like Kubernetes.
-                    Managing data for analytical use cases needs additional know how, particularly for performance and cost optimization:
-                    How to efficiently transfer data from Kafka to S3?
-                    Single events get expensive and may take too long.
-                    Building batches increases latency and,
-                    more importantly, may lead to inconsistencies.
-                    JSON as storage format takes too much space and costs, so engineers need to learn Parquet or Avro.
-                    When you need a data pipeline that is built on Spark (what to consider very carefully), you suddenly need to learn Python.
-                    While SQL is well-known to most engineers, more analytical queries may require features you have to learn, such as aggregations and window functions.
-                    Also, visualization of data is a new competency that requires know how to build meaningful and correct charts.
-                    And we did not event get into data science and machine learning yet.
-                </p>
-            </div>
-            <div class="column">
-                <h6>How to tackle</h6>
-                <p>
-                    Trust your team that they will learn the required skills, but don’t underestimate the time they need to master.
-                    Make sure that the whole team does data analytics, not just a single data analyst.
-                    <strong>Establish an enabling team</strong> that accompanies domain teams with their first steps building analytical models and building first data products.
-                    They show how to solve typical use cases, like ingesting Kafka messages into the data platform using best practices.
-                    Embrace <em>dbt</em>, it is a developer-friendly framework that engineers use to build and test data models.
-                    When designing the data platform, it should serve primarily the needs of domain teams’ engineers.
-                    SQL-like integrated data warehouses (such as BigQuery or Snowflake) may be more appropriate than modular platforms (like files on S3 with Presto) or data science oriented platforms (such as Spark).
-                </p>
-            </div>
-        </div>
+        <h1 class="title">The Issues with Data Mesh</h1>
+
+        <h4 class="title is-4">Know How</h4>
+        <p>
+            Operational domain teams have a lot of experience with frontend and backend technologies, along with SQL and No-SQL databases, Kafka, and runtime platforms like Kubernetes.
+            Managing data for analytical use cases needs additional know how, particularly for performance and cost optimization:
+            How to efficiently transfer data from Kafka to S3?
+            Single events get expensive and may take too long.
+            Building batches increases latency and,
+            more importantly, may lead to inconsistencies.
+            JSON as storage format takes too much space and costs, so engineers need to learn Parquet or Avro.
+            When you need a data pipeline that is built on Spark (what to consider very carefully), you suddenly need to learn Python.
+            While SQL is well-known to most engineers, more analytical queries may require features you have to learn, such as aggregations and window functions.
+            Also, visualization of data is a new competency that requires know how to build meaningful and correct charts.
+            And we did not event get into data science and machine learning yet.
+        </p>
+        <h4 class="title is-4">Teams are different. So are domains.</h4>
+        <p>
+            In an ideal world, each team could develop a data product and profit right away through analytics.
+            In practice, this is not true for all teams.
+            Teams may be on <a href="https://www.datamesh-architecture.com/#level-1-operational-database-queries">level 1</a>
+            and gain good-enough results running queries on operational databases may have no immediate benefit to go the journey to level 4 to make their data available for other teams.
+            Other teams may not profit from analytics, as their business is driven by fulfilling standardized processes,
+            or they use standard software that already has good reporting for their domain.
+            And there may be teams that just started implementing new services and are not yet in production.
+            So the readiness or willingness to offer a data product is not always given.
+            Enforcing them to build data products puts even more burden on their shoulders.
+            If the organization pushes data mesh, teams will be requested quite often “when do we get your data?”.
+            When they finally agree to provide data, but struggle with the setup, there may be data quality issues that may lead to false insights for data consumers.
+        </p>
+        <h4 class="title is-4">Data Governance</h4>
+        <p>Am I allowed to process data? Consent. De-Information...., Right to be forget.</p>
+        <h4 class="title is-4">Trust your Data</h4>
+        <p>data quality guards & alerts (dbt tests, monte carlo)</p>
+        <h4 class="title is-4">Individual ROIs for teams / unbalanced ROI across the Org.
+        </h4>
+        <p>‘we don’t see any return. no one uses our data it was a total waste to provide it.</p>
     </section>
 
     <section class="section content">
-    <h4 class="title is-4">Teams are different. So are domains.</h4>
-    <div class="columns">
+        <h4 class="title is-4">Respect the Cognitive Load</h4>
+        <p>provide examples around the three things of cognitive load</p>
+    </section>
+
+    <section class="section content">
+        DEPRECATED
         <div class="column">
-            <h6>The Problem</h6>
             <p>
-                In an ideal world, each team could develop a data product and profit right away through analytics.
-                In practice, this is not true for all teams.
-                Teams may be on <a href="https://www.datamesh-architecture.com/#level-1-operational-database-queries">level 1</a>
-                and gain good-enough results running queries on operational databases may have no immediate benefit to go the journey to level 4 to make their data available for other teams.
-                Other teams may not profit from analytics, as their business is driven by fulfilling standardized processes,
-                or they use standard software that already has good reporting for their domain.
-                And there may be teams that just started implementing new services and are not yet in production.
-                So the readiness or willingness to offer a data product is not always given.
-                Enforcing them to build data products puts even more burden on their shoulders.
-                If the organization pushes data mesh, teams will be requested quite often “when do we get your data?”.
-                When they finally agree to provide data, but struggle with the setup, there may be data quality issues that may lead to false insights for data consumers.
+                Restrain to add more engineers to the team.
+                Instead, agree with the team and their stakeholders that data analytics is an investment they want to make and give it priority.
+                Implementing a first data product may take up to 4 weeks or more.
+                <br/>
+                Aim for teams participating in a Data Mesh to <strong>achieve benefits from analyzing data</strong> that are higher than the investment in the long term.
+                For example, they measure the business value of user stories before implementing,
+                and make a qualified decision that certain user stories are <em>not worth implementing</em>, freeing up capacities.
+                With their own domain data analytics, they can focus on the user stories that provide the highest business value, proven by data.
+                This requires that managers give teams the freedom and trust to choose user stories themselves and not be driven by external projects or milestones.
+                Data Mesh requires a true culture of product thinking and autonomous teams.
             </p>
         </div>
+
+        <div class="column">
+            <h6>How to tackle</h6>
+            <p>
+                Trust your team that they will learn the required skills, but don’t underestimate the time they need to master.
+                Make sure that the whole team does data analytics, not just a single data analyst.
+                <strong>Establish an enabling team</strong> that accompanies domain teams with their first steps building analytical models and building first data products.
+                They show how to solve typical use cases, like ingesting Kafka messages into the data platform using best practices.
+                Embrace <em>dbt</em>, it is a developer-friendly framework that engineers use to build and test data models.
+                When designing the data platform, it should serve primarily the needs of domain teams’ engineers.
+                SQL-like integrated data warehouses (such as BigQuery or Snowflake) may be more appropriate than modular platforms (like files on S3 with Presto) or data science oriented platforms (such as Spark).
+            </p>
+        </div>
+
         <div class="column">
             <h6>How to tackle</h6>
 
@@ -205,41 +212,6 @@
             - Appreciate data products, as you do with other features
 
         </div>
-    </div>
-    </section>
-
-    <section class="section content">
-        <h4 class="title is-4">Architektur der Anwendung muss angepasst werden: Replay von Events notwendig</h4>
-        <p>Lorem ipsum was is das Problem</p>
-        <p>How to tackle</p>
-
-
-        <h4 class="title is-4">Individual ROIs for teams / unbalanced ROI across the Org.
-        </h4>
-        <p>Lorem ipsum was is das Problem</p>
-        ‘we don’t see any return. no one uses our data it was a total waste to provide it.
-
-        <p>How to tackle</p>
-        - Develop a data culture
-
-
-        <h4 class="title is-4">Trust your Data</h4>
-        <p>Lorem ipsum was is das Problem</p>
-        <p>How to tackle</p>
-        - data quality guards & alerts (dbt tests, monte carlo)
-
-        <h4 class="title is-4">Data Governance</h4>
-        <p>Am I allowed to process data? Consent. De-Information...., Right to be forget.</p>
-        <p>How to tackle</p>
-
-        <h4 class="title is-4">Power structures</h4>
-
-
-        Data Mesh is not the perfect solution for every organization.
-
-
-
-
     </section>
 
 </div>
