@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Data Mesh Architecture: Challenges for Domain Teams</title>
+    <title>Data Mesh Architecture: Real World Learnings Implementing Data Mesh</title>
     <meta charset="utf-8">
-    <meta name="description" content="Challenges for domain teams in a data mesh architecture" />
+    <meta name="description" content="Real world learnings implementing data mesh" />
     <meta name="keywords" content="data mesh, data mesh architecture, domain-driven data analytics, data analytics, domain-driven design, domain ownership, data as a product, data product, federated governance, self-serve data platform, data platform">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@innoq" />
-    <meta name="twitter:title" content="Data Mesh Architecture: Challenges for Domain Teams" />
-    <meta name="twitter:description" content="Challenges for domain teams in a data mesh architecture" />
-    <meta name="twitter:image" content="https://www.datamesh-architecture.com/images/challenges-domain-teams.png" />
-    <meta name="twitter:image:alt" content="Challenges for domain teams in a data mesh architecture" />
+    <meta name="twitter:title" content="Data Mesh Architecture: Real World Learnings Implementing Data Mesh" />
+    <meta name="twitter:description" content="Real world learnings implementing data mesh" />
+    <meta name="twitter:image" content="https://www.datamesh-architecture.com/images/real-world-learnings.png" />
+    <meta name="twitter:image:alt" content="Real world learnings implementing data mesh" />
     <meta property="og:url" content="https://datamesh-architecture.com" />
-    <meta property="og:title" content="Data Mesh Architecture: Challenges for Domain Teams" />
-    <meta property="og:description" content="Challenges for domain teams in a data mesh architecture" />
-    <meta property="og:image" content="https://www.datamesh-architecture.com/images/challenges-domain-teams.png" />
+    <meta property="og:title" content="Data Mesh Architecture: Real World Learnings Implementing Data Mesh" />
+    <meta property="og:description" content="Real world learnings implementing data mesh" />
+    <meta property="og:image" content="https://www.datamesh-architecture.com/images/real-world-learnings.png" />
 
     <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Book.woff2?cachebuster=2" crossorigin="">
     <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Bold.woff2?cachebuster=2" crossorigin="">
@@ -104,13 +104,151 @@
         <nav class="breadcrumb" aria-label="breadcrumbs">
             <ul>
                 <li><a href="/">Data Mesh Architecture</a></li>
-                <li class="is-active"><a href="#" aria-current="page">Challenges for Domain Teams</a></li>
+                <li class="is-active"><a href="#" aria-current="page">Real World Learnings Implementing Data Mesh</a></li>
             </ul>
         </nav>
-        <h1 class="title">Challenges for Domain Teams</h1>
+        <h1 class="title">Real World Learnings Implementing Data Mesh</h1>
 
         <div class="content">
             <p>
+                Implementing data mesh is nontrivial and highly dependent on the organization.
+                Here, we capture real world observations and extract learnings so you might be able to get something out of it for your data mesh journey.
+                <a href="https://www.datamesh-architecture.com/#authors">We're happy to add your observations and learnings to this site.</a>
+            </p>
+        </div>
+    </section>
+
+    <section class="section content">
+        <h4 class="title is-4">Initial Reaction of Engineering Teams</h4>
+        <div class="columns">
+            <div class="column">
+                <div class="title is-6">Observation</div>
+                <blockquote>
+                    We are already more than busy implementing the user stories in our ever-growing backlog and managing our technical debt. We are responsible for frontend, backend, mobile apps, databases, operations, and security. We can't take on this additional responsibility for analytical data and data products.
+                </blockquote>
+            </div>
+            <div class="column">
+                <div class="title is-6">Learnings</div>
+                <ul>
+                    <li>Team takes protective stance on the current goals</li>
+                    <li>Current goals driven by projects from management</li>
+                    <li>Lacks culture that values data-driven decisions</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section content">
+        <h4 class="title is-4">Is it the right time?</h4>
+        <div class="columns">
+            <div class="column">
+                <div class="title is-6">Observation</div>
+                <blockquote>
+                    - in the middle of a huge transformation
+                    - move from on-premise monolith to the cloud microservices
+                    - and you come to us with this now?
+
+                    <br>
+                    <br>
+                    &mdash; <em>Engineering team in a mid-sized fintech</em>
+                </blockquote>
+            </div>
+            <div class="column">
+                <div class="title is-6">Learnings</div>
+                <ul>
+                    <li>not the right time for this team</li>
+                    <li>come back when the current transformation comes to an end</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section content">
+        <h4 class="title is-4">Investment</h4>
+        <div class="columns">
+            <div class="column">
+                <div class="title is-6">Observation</div>
+                <blockquote>
+                    It took us 3 sprints to build our first data product.
+                    And after a while, we had to invest even more because of hiccups and things we haven't thought about before.
+                    <br>
+                    <br>
+                    &mdash; <em>Engineering team in a mid-sized ecommerce company</em>
+                </blockquote>
+            </div>
+            <div class="column">
+                <div class="title is-6">Learnings</div>
+                <ul>
+                    <li>building a data product is a huge investment</li>
+                    <li>it takes time to learn</li>
+                    <li>hiccups are to be expected as it's something new/different</li>
+                    <li>maintaining a data product requires continuous care</li>
+                    <li>enabling team and community of practice can help</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section content">
+        <h4 class="title is-4">Dependencies</h4>
+        <div class="columns">
+            <div class="column">
+                <div class="title is-6">Observation</div>
+                <blockquote>
+                    We are annoyed.
+                    We need data from an upstream team.
+                    When they finally provided the data product, it had such a low quality that it was incomplete every other day.
+                    We inform them, and they fix it after a few hours.
+                    But it still happens again and again.
+                    <br>
+                    <br>
+                    &mdash; <em>Engineering team in a mid-sized ecommerce company</em>
+                </blockquote>
+            </div>
+            <div class="column">
+                <div class="title is-6">Learnings</div>
+                <ul>
+                    <li>teams might struggle to provide a high quality data product</li>
+                    <li>not enough know how and skills</li>
+                    <li>data without quality doesn't really help</li>
+                    <li>data quality monitoring is crucial</li>
+                    <li>dependencies can hurt and slow down</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section content">
+        <h4 class="title is-4">Investment</h4>
+        <div class="columns">
+            <div class="column">
+                <div class="title is-6">Observation</div>
+                <blockquote>
+                    We are annoyed.
+                    We need data from an upstream team.
+                    When they finally provided the data product, it had such a low quality that it was incomplete every other day.
+                    We inform them, and they fix it after a few hours.
+                    But it still happens again and again.
+                    <br>
+                    <br>
+                    &mdash; <em>Engineering team in a mid-sized ecommerce company</em>
+                </blockquote>
+            </div>
+            <div class="column">
+                <div class="title is-6">Learnings</div>
+                <ul>
+                    <li>teams might struggle to provide a high quality data product</li>
+                    <li>not enough know how and skills</li>
+                    <li>data without quality doesn't really help</li>
+                    <li>data quality monitoring is crucial</li>
+                    <li>dependencies can hurt and slow down</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+            <p>
+                How is this supposed to work in practice?
                 Data mesh shifts responsibilities to the engineering teams. Once again.
                 The full stack becomes even <em>fuller</em>.
                 In addition to frontend, backend, mobile apps, databases, operations, security, and more, they are now also expected to perform data analysis and publish high quality data products.
@@ -118,10 +256,11 @@
                 And we haven't talked about the guild meetings and work sessions yet.
             </p>
             <p>
-                How is this supposed to work in practice?
+
             </p>
             <p>
                 This is a valid concern.
+                In our experience, it's not not a question of prioritizati
                 In the end, this boils down to the question of prioritization and culture.
                 Do the domain teams expect to see a high return on invest for themselves and the whole company when implementing a data mesh?
                 There's a ton of resources out there that advocates for data mesh.
