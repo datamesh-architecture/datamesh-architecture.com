@@ -131,7 +131,8 @@
             <div class="column">
                 <div class="title is-6">Learnings</div>
                 <ul>
-                    <li>Team takes protective stance on the current goals</li>
+                    <li>Respect the <a href="https://itrevolution.com/cognitive-load/">cognitive load limit</a> that is individual for every team</li>
+                    <li>Team takes protective stance on their current goals</li>
                     <li>Current goals driven by projects from management</li>
                     <li>Lacks culture that values data-driven decisions</li>
                 </ul>
@@ -154,11 +155,11 @@
             <div class="column">
                 <div class="title is-6">Learnings</div>
                 <ul>
-                    <li>building a data product is a huge investment</li>
-                    <li>it takes time to learn</li>
-                    <li>hiccups are to be expected as it's something new/different</li>
-                    <li>maintaining a data product requires continuous care</li>
-                    <li>enabling team and community of practice can help</li>
+                    <li>Building a data product is a significant investment</li>
+                    <li>It takes time to learn</li>
+                    <li>Hiccups are to be expected as it's something new/different</li>
+                    <li>Maintaining a data product requires continuous care</li>
+                    <li>Enabling team and community of practice can help</li>
                 </ul>
             </div>
         </div>
@@ -179,8 +180,8 @@
             <div class="column">
                 <div class="title is-6">Learnings</div>
                 <ul>
-                    <li>not the right time for this team</li>
-                    <li>come back when the current transformation comes to an end</li>
+                    <li>Not the right time for this team</li>
+                    <li>Come back when the current transformation comes to an end</li>
                 </ul>
             </div>
         </div>
@@ -203,10 +204,10 @@
             <div class="column">
                 <div class="title is-6">Learnings</div>
                 <ul>
-                    <li>starting the data mesh journey can quickly result in business value</li>
-                    <li>Just the availability of a simple-to-use self-service data platform brings high benefits</li>
-                    <li>qualify user stories before implementing allows focus</li>
-                    <li>all this is already possible without even consuming or providing data products by the team</li>
+                    <li>Starting the data mesh journey can quickly result in business value</li>
+                    <li>The availability of a simple-to-use self-service data platform already brings high benefits</li>
+                    <li>Qualify user stories before implementing allows focus</li>
+                    <li>All this is already possible without even consuming or providing data products by the team</li>
                 </ul>
             </div>
         </div>
@@ -227,8 +228,34 @@
             <div class="column">
                 <div class="title is-6">Learnings</div>
                 <ul>
-                    <li>more capacity because we reject feature requests</li>
-                    <li>line of argument is easy with data</li>
+                    <li>Increased capacity as they reject feature requests</li>
+                    <li>Line of argument is easy with data</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="section content">
+        <h4 class="title is-4">Teams are different</h4>
+        <div class="columns">
+            <div class="column">
+                <blockquote>
+                    In an ideal world, each team could develop a data product and profit right away through analytics.
+                    In practice, this is not true for all teams.
+                    Teams may be on <a href="https://www.datamesh-architecture.com/#level-1-operational-database-queries">level 1</a>
+                    and gain good-enough results running queries on operational databases may have no immediate benefit to go the journey to level 4 to make their data available for other teams.
+                    Other teams may not profit from analytics, as their business is driven by fulfilling standardized processes,
+                    or they use standard software that already has good reporting for their domain.
+                    <br>
+                    <br>
+                    &mdash; <em>Engineering team in a price comparison company</em>
+                </blockquote>
+            </div>
+            <div class="column">
+                <div class="title is-6">Learnings</div>
+                <ul>
+                    <li>Teams have different starting points</li>
+                    <li>The return on investment may be unbalanced across the organization</li>
+                    <li>Standard products, commercial off-the-shelf software, and cloud services may already provide good-enough data analytics capabilities</li>
                 </ul>
             </div>
         </div>
@@ -241,8 +268,8 @@
                 <blockquote>
                     We knew SQL pretty well from our operational PostgreSQL database.
                     Our self-service data platform is based on Google BigQuery.
-                    So, after some initial efforts getting out data into BigQuery, we were quite at home defining analytical queries and building data products.
-                    However, we needed to learn some SQL features that we did not use in the past, such as common-table-expressions and window functions.
+                    So, after some initial efforts getting data into BigQuery, we were quite at home defining analytical queries and building data products.
+                    We needed to learn some SQL features that we did not use in the past, such as common-table-expressions and window functions, but this was not really an issue.
                     <br>
                     <br>
                     &mdash; <em>Engineering team in an e-commerce company</em>
@@ -251,7 +278,7 @@
             <div class="column">
                 <div class="title is-6">Learnings</div>
                 <ul>
-                    <li>engineers know SQL</li>
+                    <li>Engineers know SQL</li>
                     <li>SQL-based data platforms lower the barriers</li>
                </ul>
             </div>
@@ -259,7 +286,7 @@
     </section>
 
     <section class="section content">
-        <h4 class="title is-4">Developer experience matters</h4>
+        <h4 class="title is-4">Developer Experience Matters</h4>
         <div class="columns">
             <div class="column">
                 <blockquote>
@@ -272,7 +299,8 @@
             <div class="column">
                 <div class="title is-6">Learnings</div>
                 <ul>
-                    <li></li>
+                    <li>Optimize the data platform for developer experience</li>
+                    <li>The enabling team can provide best practices and tools that work well</li>
                </ul>
             </div>
         </div>
@@ -286,9 +314,10 @@
                     We use Athena with S3.
                     We were surprised, how much additional know how we had to learn, particularly for performance and cost optimization:
                     How to efficiently transfer data from Kafka to S3?
-                    Single events got expensive and took too long to process.
+                    Single events that we have in production got expensive and took too long to process.
                     Building batches increased latency and led to inconsistencies.
                     JSON as storage format took too much space and costs, so we had to learn Parquet.
+                    With Athena, every query is billed and needs to be considered, e.g., when defining regular data quality checks.
                     <br>
                     <br>
                     &mdash; <em>Engineering team in a price comparison company</em>
@@ -297,7 +326,7 @@
             <div class="column">
                 <div class="title is-6">Learnings</div>
                 <ul>
-                    <li>Data engineering know-how</li>
+                    <li>TBD</li>
                     <li></li>
                 </ul>
             </div>
@@ -320,16 +349,16 @@
             <div class="column">
                 <div class="title is-6">Learnings</div>
                 <ul>
-                    <li>dependencies can hurt and slow down</li>
-                    <li>workarounds using operational data can unblock</li>
-                    <li>one can switch from using the workaround to data product once it's available</li>
+                    <li>Dependencies can hurt and slow down</li>
+                    <li>Workarounds using operational data can unblock</li>
+                    <li>One can switch from using the workaround to data product once it's available</li>
                 </ul>
             </div>
         </div>
     </section>
 
     <section class="section content">
-        <h4 class="title is-4">Data Quality Monitoring is Essential</h4>
+        <h4 class="title is-4">Trust Your Data</h4>
         <div class="columns">
             <div class="column">
                 <blockquote>
@@ -346,10 +375,10 @@
             <div class="column">
                 <div class="title is-6">Learnings</div>
                 <ul>
-                    <li>teams might struggle to provide a high quality data product</li>
-                    <li>not enough know how and skills</li>
-                    <li>data without quality doesn't really help</li>
-                    <li>data quality monitoring is crucial</li>
+                    <li>Teams might struggle to provide a high quality data product</li>
+                    <li>Not enough know how and skills</li>
+                    <li>Data without quality doesn't really help</li>
+                    <li>Data quality monitoring is crucial</li>
                 </ul>
             </div>
         </div>
@@ -373,78 +402,13 @@
             <div class="column">
                 <div class="title is-6">Learnings</div>
                 <ul>
-                    <li>data as a product might fail similar to any other product</li>
-                    <li>own data analysis neglected</li>
+                    <li>Data as a product might fail similar to any other product</li>
+                    <li>Own data analysis neglected</li>
                 </ul>
             </div>
         </div>
     </section>
 <!--
-            <p>
-                How is this supposed to work in practice?
-                Data mesh shifts responsibilities to the engineering teams. Once again.
-                The full stack becomes even <em>fuller</em>.
-                In addition to frontend, backend, mobile apps, databases, operations, security, and more, they are now also expected to perform data analysis and publish high quality data products.
-                Many teams are already more than busy implementing the user stories in their ever-growing backlog and managing their technical debt.
-                And we haven't talked about the guild meetings and work sessions yet.
-            </p>
-            <p>
-
-            </p>
-            <p>
-                This is a valid concern.
-                In our experience, it's not not a question of prioritizati
-                In the end, this boils down to the question of prioritization and culture.
-                Do the domain teams expect to see a high return on invest for themselves and the whole company when implementing a data mesh?
-                There's a ton of resources out there that advocates for data mesh.
-            </p>
-            <p>
-                But let's assume you've got an initial buy-in from the domain teams, and they start building up a data mesh. Here are the typical challenges that domain teams face along their journey.
-            </p>
-
-    <section class="section content">
-        <h4 class="title is-4">Know How</h4>
-        <p>
-            Operational domain teams have a lot of experience with frontend and backend technologies, along with SQL and No-SQL databases, Kafka, and runtime platforms like Kubernetes.
-            Managing data for analytical use cases needs additional know how, particularly for performance and cost optimization:
-            How to efficiently transfer data from Kafka to S3?
-            Single events get expensive and may take too long.
-            Building batches increases latency and,
-            more importantly, may lead to inconsistencies.
-            JSON as storage format takes too much space and costs, so engineers need to learn Parquet or Avro.
-            When you need a data pipeline that is built on Spark (what to consider very carefully), you suddenly need to learn Python.
-            While SQL is well-known to most engineers, more analytical queries may require features you have to learn, such as aggregations and window functions.
-            Also, visualization of data is a new competency that requires know how to build meaningful and correct charts.
-            And we did not event get into data science and machine learning yet.
-        </p>
-
-        <h4 class="title is-4">Teams are different. So are domains.</h4>
-        <p>
-            In an ideal world, each team could develop a data product and profit right away through analytics.
-            In practice, this is not true for all teams.
-            Teams may be on <a href="https://www.datamesh-architecture.com/#level-1-operational-database-queries">level 1</a>
-            and gain good-enough results running queries on operational databases may have no immediate benefit to go the journey to level 4 to make their data available for other teams.
-            Other teams may not profit from analytics, as their business is driven by fulfilling standardized processes,
-            or they use standard software that already has good reporting for their domain.
-            And there may be teams that just started implementing new services and are not yet in production.
-            So the readiness or willingness to offer a data product is not always given.
-            Enforcing them to build data products puts even more burden on their shoulders.
-            If the organization pushes data mesh, teams will be requested quite often “when do we get your data?”.
-            When they finally agree to provide data, but struggle with the setup, there may be data quality issues that may lead to false insights for data consumers.
-        </p>
-        <h4 class="title is-4">Data Governance</h4>
-        <p>Am I allowed to process data? Consent. De-Information...., Right to be forget.</p>
-        <h4 class="title is-4">Trust your Data</h4>
-        <p>data quality guards & alerts (dbt tests, monte carlo)</p>
-        <h4 class="title is-4">Individual ROIs for teams / unbalanced ROI across the Org.
-        </h4>
-        <p>‘we don’t see any return. no one uses our data it was a total waste to provide it.</p>
-    </section>
-
-    <section class="section content">
-        <h4 class="title is-4">Respect the Cognitive Load</h4>
-        <p>provide examples around the three things of cognitive load</p>
-    </section>
 
     <section class="section content">
         DEPRECATED
