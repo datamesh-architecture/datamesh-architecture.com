@@ -126,35 +126,79 @@
 
         <div class="content">
             <p>
-                We often see Data Mesh implementations relying on <strong>AWS S3 and AWS Athena</strong> as the primary means to share and query data products.
+                Microsoft offers <strong>Azure Synapse Analytics</strong> as the central component for implementing data mesh.
             </p>
             <img src="../images/azure-synapse-analytics.png.webp" alt="Data Mesh Architecture with Azure Synapse Analytics" style="width: 100%">
             <p>
-                Interestingly enough, most data mesh implementations on AWS are using S3 and Athena,
-                and not Redshift, which would be more the equivalent to <a
-                    href="google-cloud-bigquery.html">Google’s BigQuery approach</a>.
-                We assume this is mainly because S3 and Athena are more simple to use, serverless,
-                and billed on a pay-per-use basis, without the need to provision clusters
-                upfront.
+                We evaluated the Azure tech stack, especially Azure Synapse Analytics.
+                To be honest, we struggled a bit during this evaluation, and we were a bit disappointed as we expected a better developer experience.
+                We couldn't really figure out how to set up a data mesh that made sense for us.
+                But we are open to chat with Azure experts that might know more than we do - feel free to reach out to us.
+            </p>
+            <p>
+                If you're on Azure, we currently would recommend to consider <a href="/tech-stacks/dbt-snowflake.html">Snowflake deployed to Azure</a>, or, if you are really into ML, have a look at Azure Databricks.
+            </p>
+            <!--
+
+            <p>
+                - DevEx: struggled (perceived ease of use: low, perceived usefulness: moderate)
+
+                Findings (we findings)
+                - no managed kafka connector to bring kafka messages to Azure on confluent cloud
+                - ADLS is the storage for data
+                - Synapse SQL Serverless only works with linked external ADLS parquet data; only supports queries and nonmaterialized views
+                - no official dbt adapter for Azure; only for databricks
+                Alternatives: solution that runs on azure (, databricks, starburst...)
             </p>
 
-            <div class="columns">
-                <div class="column">
-                    <p>
-                        <strong>Azure XXX</strong> is the central component for storing analytical data.
-                        TBD
-                    </p>
-                    <p>
-                        TBD
-                    </p>
 
-                </div>
-                <div class="column">
-                    <figure class="image">
-                        <img src="../images/aws-athena-s3.png.webp" alt="Screenshot of S3 files">
-                    </figure>
-                </div>
-            </div>
+                        <div class="columns">
+                            <div class="column">
+                                <p>
+                                    <strong>Azure XXX</strong> is the central component for storing analytical data.
+                                    TBD
+                                </p>
+                                <p>
+                                    TBD
+                                </p>
+
+                                <ul>
+                                    <li>different Schemas in same database in same Synapse workspace in same Resource group in same Subscription in same active directory</li>
+                                    <li>different Database in same Synapse workspace in same Resource group in same Subscription in same active directory</li>
+                                    <li>different Synapse workspace in same Resource group in same Subscription in same active directory</li>
+                                    <li>different Resource group in same Subscription in same active directory</li>
+                                    <li>different Subscription in same active directory</li>
+                                    <li>different active directory</li>
+                                </ul>
+
+                            </div>
+                            <div class="column">
+                                <figure class="image">
+                                    <img src="../images/aws-athena-s3.png.webp" alt="Screenshot of S3 files">
+                                </figure>
+                            </div>
+                        </div>
+
+
+                        <div class="columns">
+                            <div class="column">
+                                <p>
+                                    <strong>Azure Data Share</strong>
+                                    - share snapshots
+                                    - manage subscriptions
+                                    - full+inc load -> data replication
+                                    - make sharing explicit
+                                    - limitation:
+                                </p>
+
+                            </div>
+                            <div class="column">
+                                <figure class="image">
+                                    <img src="../images/aws-athena-s3.png.webp" alt="Screenshot of S3 files">
+                                </figure>
+                            </div>
+                        </div>
+                        -->
 
             <h5>References</h5>
             <ul>
