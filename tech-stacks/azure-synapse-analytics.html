@@ -10,12 +10,12 @@
     <meta name="twitter:site" content="@innoq" />
     <meta name="twitter:title" content="Data Mesh Architecture: Azure Synapse Analytics" />
     <meta name="twitter:description" content="How to build a data mesh architecture with Azure Synapse Analytics" />
-    <meta name="twitter:image" content="https://www.datamesh-architecture.com/images/azure-synapse_card.png" />
+    <meta name="twitter:image" content="https://www.datamesh-architecture.com/images/azure-synapse-analytics_card.png" />
     <meta name="twitter:image:alt" content="Data Mesh Architecture: Domains are in the center and teams do analytics on their own. They build and interconnect with data products. A data platform team and a enablement team help. Global policies are agreed through federated governance." />
     <meta property="og:url" content="https://datamesh-architecture.com" />
     <meta property="og:title" content="Data Mesh Architecture: Azure Synapse Analytics" />
     <meta property="og:description" content="How to build a data mesh architecture with Azure Synapse Analytics" />
-    <meta property="og:image" content="https://www.datamesh-architecture.com/images/azure-synapse_card.png" />
+    <meta property="og:image" content="https://www.datamesh-architecture.com/images/azure-synapse-analytics_card.png" />
 
     <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Book.woff2?cachebuster=2" crossorigin="">
     <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Bold.woff2?cachebuster=2" crossorigin="">
@@ -126,79 +126,35 @@
 
         <div class="content">
             <p>
-                Microsoft offers <strong>Azure Synapse Analytics</strong> as the central component for implementing data mesh.
+                Microsoft offers <strong>Azure Synapse Analytics</strong>, along with both Data Lake Storage Gen2 and SQL database, as the central components for implementing a data mesh architecture.
             </p>
             <img src="../images/azure-synapse-analytics.png.webp" alt="Data Mesh Architecture with Azure Synapse Analytics" style="width: 100%">
             <p>
-                We evaluated the Azure tech stack, especially Azure Synapse Analytics.
-                To be honest, we struggled a bit during this evaluation, and we were a bit disappointed as we expected a better developer experience.
-                We couldn't really figure out how to set up a data mesh that made sense for us.
-                But we are open to chat with Azure experts that might know more than we do - feel free to reach out to us.
+                We evaluated the Azure tech stack, especially the services around Azure Synapse Analytics.
+                We like the idea of an integrated environment to manage and analyze data and Microsoft even provides
+                <a href="https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/scenarios/cloud-scale-analytics/architectures/what-is-data-mesh">data mesh specific guidance</a> in their Cloud Adoption Framework.
             </p>
             <p>
-                If you're on Azure, we currently would recommend to consider <a href="/tech-stacks/dbt-snowflake.html">Snowflake deployed to Azure</a>, or, if you are really into ML, have a look at Azure Databricks.
+                To be honest, we struggled a bit during this evaluation, and we were slightly disappointed as we expected a much better developer experience.
+                We couldn't figure out how to set up a data mesh architecture that made sense for us.
+                The services are convoluted:
+                What database should we use to store analytical data?
+                The SQL database or lake database that are integrated into the Synapse Workspace, or should we use an external object storage with Parquet files that we <em>link</em> into Synapse Analytics?
+                When to use Azure Blob Storage, when to use Azure Data Lake Storage Gen2?
+                Some features are supported by the built-in serverless SQL pool, some features require a dedicated SQL pool.
+                We even were surprised how difficult it is to ingest messages from our operational Confluent platform.
+                Currently, there is no managed Kafka Connector for Azure sinks available, so we had to run our own microservice to forward messages (not directly Azure's fault, but this was part of the overall experience we had).
+                We had more or less the same experiences with transformations, data sharing, and visualization&mdash;there is no straightforward way to accomplish a task.
+                In addition, due to recent rebrandings on their services, many tutorials on the internet are outdated.
             </p>
-            <!--
-
             <p>
-                - DevEx: struggled (perceived ease of use: low, perceived usefulness: moderate)
-
-                Findings (we findings)
-                - no managed kafka connector to bring kafka messages to Azure on confluent cloud
-                - ADLS is the storage for data
-                - Synapse SQL Serverless only works with linked external ADLS parquet data; only supports queries and nonmaterialized views
-                - no official dbt adapter for Azure; only for databricks
-                Alternatives: solution that runs on azure (, databricks, starburst...)
+                We assume that many of our difficulties are due to a lack of extensive experience with the platform.
+                We are open to chat with Azure experts that might know more than we do - feel free <a href="/#authors">to reach out to us</a>.
             </p>
-
-
-                        <div class="columns">
-                            <div class="column">
-                                <p>
-                                    <strong>Azure XXX</strong> is the central component for storing analytical data.
-                                    TBD
-                                </p>
-                                <p>
-                                    TBD
-                                </p>
-
-                                <ul>
-                                    <li>different Schemas in same database in same Synapse workspace in same Resource group in same Subscription in same active directory</li>
-                                    <li>different Database in same Synapse workspace in same Resource group in same Subscription in same active directory</li>
-                                    <li>different Synapse workspace in same Resource group in same Subscription in same active directory</li>
-                                    <li>different Resource group in same Subscription in same active directory</li>
-                                    <li>different Subscription in same active directory</li>
-                                    <li>different active directory</li>
-                                </ul>
-
-                            </div>
-                            <div class="column">
-                                <figure class="image">
-                                    <img src="../images/aws-athena-s3.png.webp" alt="Screenshot of S3 files">
-                                </figure>
-                            </div>
-                        </div>
-
-
-                        <div class="columns">
-                            <div class="column">
-                                <p>
-                                    <strong>Azure Data Share</strong>
-                                    - share snapshots
-                                    - manage subscriptions
-                                    - full+inc load -> data replication
-                                    - make sharing explicit
-                                    - limitation:
-                                </p>
-
-                            </div>
-                            <div class="column">
-                                <figure class="image">
-                                    <img src="../images/aws-athena-s3.png.webp" alt="Screenshot of S3 files">
-                                </figure>
-                            </div>
-                        </div>
-                        -->
+            <p>
+                If you're on Azure, we currently would recommend to consider <a href="/tech-stacks/dbt-snowflake.html">Snowflake deployed to Azure</a>,
+                or, if many of your domains do machine learning, have a look at <em>Azure Databricks</em>.
+            </p>
 
             <h5>References</h5>
             <ul>
@@ -233,14 +189,14 @@
 <script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
 <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript>
 
-<link rel="stylesheet" href="css/glightbox.css" />
-<script src="js/glightbox.js"></script>
+<link rel="stylesheet" href="/css/glightbox.css" />
+<script src="/js/glightbox.js"></script>
 <script type="text/javascript">
   const lightbox = GLightbox({});
 </script>
 
 
-<script src="js/anchor.min.js"></script>
+<script src="/js/anchor.min.js"></script>
 <script>anchors.add();</script>
 </body>
 
