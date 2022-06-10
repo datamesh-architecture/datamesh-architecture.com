@@ -168,6 +168,11 @@ In the following, you will find a list of examples of possible Data Products::
             <li> Ubiquitous Language
             <li> Classification
           </ol> 
+        </p>
+
+        <img src="../images/data-product-canvas-template.png" alt="Data Product Canvas" style="width: 100%">
+
+        <p>
           In the following, we describe each of the building blocks that constitute the Data Product.   
         </p>
 
@@ -204,26 +209,44 @@ In the following, you will find a list of examples of possible Data Products::
         </p>
         <h4> Outbound Data Flow</h4>
         <p>
-          The output ports define the format and protocol in which data can be exposed.
+          The output ports define the format and consumption protocol in which data can be exposed.
           For example, database connection string, file, API, or visualizations.
-          In addition to the output ports specification
+          In addition to the output ports specification, the Data Product should define its metadata and provide 
+          additional information for observability.
+          <ul>
+            <li>Ownership part describes domain, data product owner, organizational unit, license, 
+              version and probable expiration date of the data product</li>
+            <li>Data Schema describes attributes, data types, constraints, 
+              and relationships to other elements in the data unit (e.g functional dependencies)</li>
+            <li>Semantics part provides information about the logical model of the data unit.</li>
+            <li>Security describes security rules applied to the data product usage 
+              e.g. public, org. internal, PII attributes</li>
+            <li>Quality Metrics outlines data quality requirements and metrics such as 
+              accuracy, completeness, integrity, as well as compliance to Data Governance policies.</li>
+            <li>Operational Metrics include Interval of change, freshness, usage statistics, availability, number of users, data versioning etc.</li>
+            <li>SLOs for Data Product enable the discipline of building trustworthiness in each data product.</li>
+          </ul>
+          Please note, this is not an extensive list of metadata and observability points. Make sure that 
+          you define all the information required in your organization in order to establish the data mesh architecture.
         </p>
         <h4> Data Product Design block</h4>
         <p>
-          xxx
+          This is the core building block where we design the internal of the Data Product. This is the place
+         to specify everything between the input and output ports. Describe everything you need to design a 
+         data product on a conceptual level. For instance, data ingestion, storage, transport, wrangling, 
+         cleaning, transformations, enrichment, augmentation, analytics, SQL statements, or data platform services.
         </p>
         <h4> Ubiquitous Language</h4>
         <p>
-          xxx
+          Describe here a common language that is shared between everyone involved in the project. This is usually a context-specific domain 
+          terminology that is relevant for Data Product.
         </p>
         <h4> Classification</h4>
         <p>
-          xxx
+          In this block, we specify the nature of the exposed data, meaning, we classify our Data Product as either, 
+          source-aligned, aggregate, or consumer-aligned.
         </p>
 
-       
-
-        <img src="../images/data-product-canvas-template.png" alt="Data Product Canvas" style="width: 100%">
         <p>
           The proposed canvas is suitable for working collaboratively on Data Products design. The canvas might be easily
           used with the common online whiteboard tools like Miro or Mural. Once your organization has 
