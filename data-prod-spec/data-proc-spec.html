@@ -107,21 +107,24 @@
         </ul>
       </nav>
 
-      <h1 class="title">Data Product Specification</h1>
-
-      <div class="notification is-info is-light">
-        At a core, Data mesh is a graph, a network, consisting of nodes and connecting edges. Each node in a Data Mesh is called <strong>Data Product</strong>. 
-        According <a href="https://www.manning.com/books/data-mesh-in-action">to J.Majchrzak at al.</a>, 
-        <i>"Data Product is an autonomous, read-optimized, standardized data unit containing at least one dataset (Domain Dataset), created for satisfying user needs".</i>
-        Important to understand, that Data Product exists within a bounded context and one bounded context might contain several Data Products.
-      </div>
-
+      <h1 class="title">Architecting Data Product</h1>
       <div class="content">
+      
         <p>
-          As already mentioned, Data Mesh is about the decentralization in data management. However, as with 
-          every architecture, data architecture is also a socio-technical phenomenon. Therefore, we need to 
+        According <a href="https://www.manning.com/books/data-mesh-in-action">to J. Majchrzak et al.</a>, 
+        a <em>"Data Product is an autonomous, read-optimized, standardized data unit containing at least one dataset 
+        (Domain Dataset), created for satisfying user needs".</em>
+       </p>
+        <p>
+          Conceptually, a mesh is a graph, a network, consisting of nodes and connecting edges. 
+          Each node in a Data Mesh is called <strong>Data Product</strong>. 
+          Every Data Product exists within a bounded context and one bounded context might contain several Data Products.
+        </p>
+     
+        <p>
+          As with every architecture, data architecture also has a socio-technical perspective. Therefore, we need to 
           consider people and processes in addition to technology for data management. Furthermore, because 
-          we have consumers for our data, these consumers expect a certain quality. Our data need to be 
+          we have consumers for our data, these consumers expect a certain quality. Therefore, our data need to be 
           accessible, and everyone should know where to find data. Thus, the socio-technical perspective 
           pushes us to adopt the product thinking philosophy for data - Data Product. 
 
@@ -132,42 +135,37 @@
 
         <ul>
             <li>A database table or view
-            <li>Raw unstructured files: e.g., images or videos uploaded by users of a video portal; however, to be valuable to consumers, they should be provided with metadata.
-            <li>Data stream of data entities from a transaction system.
-            <li>Data stream representing the history of changes to the application: For example, events that relate to changes made within a billing account.
-            <li>Simple files: Data in CSV format, excel files.
-            <li>REST API: Read-optimized data exposed from applications.
-            <li>Master Data Management database.
-            <li>Features for the machine learning models.
-            <li>Visualizations and dashboard.
-        </ul>           
+            <li>Raw unstructured files: e.g., images or videos uploaded by users of a video portal; however, to be valuable to consumers, they should be provided with metadata
+            <li>Data stream of data entities from a transaction system
+            <li>Data stream representing the history of changes to the application: For example, events that relate to changes made within a billing account
+            <li>Simple files: Data in CSV format, excel files
+            <li>Partitioned files in optimized (Parquet) format
+            <li>REST API: Read-optimized data exposed from applications
+            <li>Master Data Management database
+            <li>Features for the machine learning models
+            <li>Visualizations and dashboard
+        </ul>       
+        Building and maintaining Data Products is a financial investment and takes up domain team's capacity. Therefore, 
+        the value and costs need to be evaluated upfront.
         </p>
         
-        <h2 class="title" id="anatomy-dp" >Architecting Data Product.</h2>
-        <p>
-            
-          To ensure the interoperability, Data Products need to be standardized so that other domain 
-          teams can immediately consume in a convenient way.
-          Generally, the Data Product consists of the following three groups:
-          <ul>
-              <li>Input </li>
-              <li>Core data unit and transformations</li>
-              <li>Output </li>
-          </ul>
-        </p>
-
+        <h2 class="title" id="data-product-canvas">Data Product Canvas</h2>
+        
         <p>
           To establish a structured process of data product design across an organization, we propose a <strong>Data Product Canvas</strong>. 
         </p>
         <p>
-          <strong>Data Product Canvas</strong> is a visual framework that guides your team through the Data Product specification. In total, Data Product Canvas consists of eight building blocks: 
+          <strong>Data Product Canvas</strong> is a visual framework that guides your team through the Data Product specification. 
+          In total, Data Product Canvas consists of ten building blocks: 
           <ol>
-            <li> Data Product Name
             <li> Domain
-               <li> Purpose and Use Case(s)
-            <li> Inbound Data Flow
-            <li> Outbound Data Flow
+            <li> Consumer and Use Case
+            <li> Data Product Name     
+            <li> Output port
+            <li> Metadata        
+            <li> Input ports            
             <li> Data Product Design block
+            <li> Observability
             <li> Ubiquitous Language
             <li> Classification
           </ol> 
@@ -177,11 +175,6 @@
 
         <p>
           In the following, we describe each of the building blocks that constitute the Data Product.   
-        </p>
-
-        <h4> Data Product Name</h4>
-        <p>
-          Each Data Product has a unique name to be identified within an organization.
         </p>
         <h4> Domain</h4>
         <p>
@@ -200,22 +193,22 @@
            which would help us to define analytical use cases. Understanding the use cases is essential 
            to specify the data products required to implement the use cases.
         </p>
-        <h4> Inbound Data Flow</h4>
-        <p>
-          The first core building block describes the input data for the future Data Product. 
-          The input ports are receiving mechanism for data that will constitute the Data Product.
-          This can be input ports define the format and protocol in which data can be read. 
-          For example, database connection string, file, API, or visualizations.
-          We distinguish here between operational source systems and other data products, which might be either
-          internal or from other domains.
 
+        <h4> Data Product Name</h4>
+        <p>
+          Each Data Product has a unique name to be identified within an organization.
         </p>
-        <h4> Outbound Data Flow</h4>
+        
+        
+        <h4> Output ports </h4>
         <p>
           The output ports define the format and consumption protocol in which data can be exposed.
           For example, database connection string, file, API, or visualizations.
-          In addition to the output ports specification, the Data Product should define its metadata and provide 
-          additional information for observability.
+
+        </p>
+        <h4> Metadata </h4>
+        <p>
+          In addition to the output ports specification, the Data Product should define its metadata.
           <ul>
             <li>Ownership part describes domain, data product owner, organizational unit, license, 
               version and probable expiration date of the data product</li>
@@ -224,14 +217,20 @@
             <li>Semantics part provides information about the logical model of the data unit.</li>
             <li>Security describes security rules applied to the data product usage 
               e.g. public, org. internal, PII attributes</li>
-            <li>Quality Metrics outlines data quality requirements and metrics such as 
-              accuracy, completeness, integrity, as well as compliance to Data Governance policies.</li>
-            <li>Operational Metrics include Interval of change, freshness, usage statistics, availability, number of users, data versioning etc.</li>
-            <li>SLOs for Data Product enable the discipline of building trustworthiness in each data product.</li>
-          </ul>
-          Please note, this is not an extensive list of metadata and observability points. Make sure that 
-          you define all the information required in your organization in order to establish the data mesh architecture.
+            </ul>
         </p>
+
+        <h4> Input Ports</h4>
+        <p>
+          This building block describes the input data for the future Data Product. 
+          The input ports are receiving mechanism for data that will constitute the Data Product.
+          This can be input ports define the format and protocol in which data can be read. 
+          We distinguish here between <em>operational</em> source systems and other <em>data products</em>, 
+          which might be either internal or from other domains.
+
+        </p>
+        
+        
         <h4> Data Product Design block</h4>
         <p>
           This is the core building block where we design the internal of the Data Product. This is the place
@@ -239,6 +238,21 @@
          data product on a conceptual level. For instance, data ingestion, storage, transport, wrangling, 
          cleaning, transformations, enrichment, augmentation, analytics, SQL statements, or data platform services.
         </p>
+
+        <h4> Observability</h4>
+        <p>
+          In addition to metadata specification, the Data Product should provide information for observability.
+          <ul>
+          <li>Quality Metrics outlines data quality requirements and metrics such as 
+            accuracy, completeness, integrity, as well as compliance to Data Governance policies.</li>
+          <li>Operational Metrics include Interval of change, freshness, usage statistics, availability, number of users, data versioning etc.</li>
+          <li>SLOs for Data Product enable the discipline of building trustworthiness in each data product.</li>
+        </ul>
+        </p>
+          Please note, this is not an extensive list of metadata and observability points. Make sure that 
+          you define all the information required in your organization in order to establish the data mesh architecture.
+        </p>
+
         <h4> Ubiquitous Language</h4>
         <p>
           Describe here a common language that is shared between everyone involved in the project. This is usually a context-specific domain 
