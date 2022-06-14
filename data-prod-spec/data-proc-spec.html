@@ -103,7 +103,7 @@
       <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
           <li><a href="/">Data Mesh Architecture</a></li>
-          <li class="is-active"><a href="#" aria-current="page">Data Product Specification</a></li>
+          <li class="is-active"><a href="#" aria-current="page">Architecting Data Product</a></li>
         </ul>
       </nav>
 
@@ -112,13 +112,13 @@
       
         <p>
         According <a href="https://www.manning.com/books/data-mesh-in-action">to J. Majchrzak et al.</a>, 
-        a <em>"Data Product is an autonomous, read-optimized, standardized data unit containing at least one dataset 
+        a <em>"data product is an autonomous, read-optimized, standardized data unit containing at least one dataset
         (Domain Dataset), created for satisfying user needs".</em>
        </p>
         <p>
           Conceptually, a mesh is a graph, a network, consisting of nodes and connecting edges. 
-          Each node in a Data Mesh is called <strong>Data Product</strong>. 
-          Every Data Product exists within a bounded context and one bounded context might contain several Data Products.
+          Each node in a Data Mesh is called <strong>data product</strong>.
+          Every data product exists within a bounded context and one bounded context might contain several data products.
         </p>
      
         <p>
@@ -126,12 +126,12 @@
           consider people and processes in addition to technology for data management. Furthermore, because 
           we have consumers for our data, these consumers expect a certain quality. Therefore, our data need to be 
           accessible, and everyone should know where to find data. Thus, the socio-technical perspective 
-          pushes us to adopt the product thinking philosophy for data - Data Product. 
+          pushes us to adopt the product thinking philosophy for data - data products.
 
         </p>
         <p>
-          What could be a Data Product? Generally, any data representation that has value for its consumers can be a good candidate. 
-          In the following, you will find a list of examples of possible Data Products:
+          What could be a data product? Generally, any data representation that has value for its consumers can be a good candidate.
+          In the following, you will find a list of examples of possible data products:
 
         <ul>
             <li>A database table or view
@@ -145,7 +145,7 @@
             <li>Features for the machine learning models
             <li>Visualizations and dashboard
         </ul>       
-        Building and maintaining Data Products is a financial investment and takes up domain team's capacity. Therefore, 
+        Building and maintaining data products is a financial investment and takes up domain team's capacity. Therefore,
         the value and costs need to be evaluated upfront.
         </p>
         
@@ -155,16 +155,16 @@
           To establish a structured process of data product design across an organization, we propose a <strong>Data Product Canvas</strong>. 
         </p>
         <p>
-          <strong>Data Product Canvas</strong> is a visual framework that guides your team through the Data Product specification. 
-          In total, Data Product Canvas consists of ten building blocks: 
+          <strong>Data Product Canvas</strong> is a visual framework that guides your team through the data product specification.
+          In total, data product Canvas consists of ten building blocks:
           <ol>
             <li> Domain
             <li> Consumer and Use Case
             <li> Data Product Name     
-            <li> Output port
+            <li> Output Port
             <li> Metadata        
-            <li> Input ports            
-            <li> Data Product Design block
+            <li> Input Ports
+            <li> Data Product Design
             <li> Observability
             <li> Ubiquitous Language
             <li> Classification
@@ -174,29 +174,29 @@
         <img src="../images/data-product-canvas-template.png" alt="Data Product Canvas" style="width: 100%">
 
         <p>
-          In the following, we describe each of the building blocks that constitute the Data Product.   
+          In the following, we describe each of the building blocks that constitute the data product.
         </p>
         <h4> Domain</h4>
         <p>
-          Each Data Product should be implemented, evolved, and maintained by one domain team only. 
-          Therefore each Data Product belongs to exactly one domain. The following questions are 
+          Each data product should be implemented, evolved, and maintained by one domain team only.
+          Therefore each data product belongs to exactly one domain. The following questions are
           relevant in this building block: 
-          Who is accountable for the Data Product?
+          Who is accountable for the data product?
           Who specifies its requirements?
-          Who will answer questions about the Data Product?
+          Who will answer questions about the data product?
           Who fixes it when it breaks?
         </p>
         <h4> Purpose and Use Case(s)</h4>
         <p>
-           This building block describes the reason behind the existence of the Data Product.
-           To identify the purpose of the Data Product, we would need to know the organizational goals, 
+           This building block describes the reason behind the existence of the data product.
+           To identify the purpose of the data product, we would need to know the organizational goals,
            which would help us to define analytical use cases. Understanding the use cases is essential 
            to specify the data products required to implement the use cases.
         </p>
 
         <h4> Data Product Name</h4>
         <p>
-          Each Data Product has a unique name to be identified within an organization.
+          Each data product has a unique name to be identified within an organization.
         </p>
         
         
@@ -208,9 +208,9 @@
         </p>
         <h4> Metadata </h4>
         <p>
-          In addition to the output ports specification, the Data Product should define its metadata.
+          In addition to the output ports specification, the data product should define its metadata.
           <ul>
-            <li>Ownership part describes domain, data product owner, organizational unit, license, 
+            <li>Ownership part describes domain, product owner, organizational unit, license,
               version and probable expiration date of the data product</li>
             <li>Data Schema describes attributes, data types, constraints, 
               and relationships to other elements in the data unit (e.g functional dependencies)</li>
@@ -222,8 +222,8 @@
 
         <h4> Input Ports</h4>
         <p>
-          This building block describes the input data for the future Data Product. 
-          The input ports are receiving mechanism for data that will constitute the Data Product.
+          This building block describes the input data for the future data product.
+          The input ports are receiving mechanism for data that will constitute the data product.
           This can be input ports define the format and protocol in which data can be read. 
           We distinguish here between <em>operational</em> source systems and other <em>data products</em>, 
           which might be either internal or from other domains.
@@ -231,9 +231,9 @@
         </p>
         
         
-        <h4> Data Product Design block</h4>
+        <h4> Data Product Design</h4>
         <p>
-          This is the core building block where we design the internal of the Data Product. This is the place
+          This is the core building block where we design the internal of the data product. This is the place
          to specify everything between the input and output ports. Describe everything you need to design a 
          data product on a conceptual level. For instance, data ingestion, storage, transport, wrangling, 
          cleaning, transformations, enrichment, augmentation, analytics, SQL statements, or data platform services.
@@ -241,12 +241,12 @@
 
         <h4> Observability</h4>
         <p>
-          In addition to metadata specification, the Data Product should provide information for observability.
+          In addition to metadata specification, the data product should provide information for observability.
           <ul>
           <li>Quality Metrics outlines data quality requirements and metrics such as 
             accuracy, completeness, integrity, as well as compliance to Data Governance policies.</li>
           <li>Operational Metrics include Interval of change, freshness, usage statistics, availability, number of users, data versioning etc.</li>
-          <li>SLOs for Data Product enable the discipline of building trustworthiness in each data product.</li>
+          <li>SLOs for data product enable the discipline of building trustworthiness in each data product.</li>
         </ul>
         </p>
           Please note, this is not an extensive list of metadata and observability points. Make sure that 
@@ -256,18 +256,18 @@
         <h4> Ubiquitous Language</h4>
         <p>
           Describe here a common language that is shared between everyone involved in the project. This is usually a context-specific domain 
-          terminology that is relevant for Data Product.
+          terminology that is relevant for data product.
         </p>
         <h4> Classification</h4>
         <p>
-          In this block, we specify the nature of the exposed data, meaning, we classify our Data Product as either, 
+          In this block, we specify the nature of the exposed data, meaning, we classify our data product as either,
           source-aligned, aggregate, or consumer-aligned.
         </p>
 
         <p>
-          The proposed canvas is suitable for working collaboratively on Data Products design. The canvas might be easily
+          The proposed canvas is suitable for working collaboratively on data products design. The canvas might be easily
           used with the common online whiteboard tools like Miro or Mural. Once your organization has 
-          created a collection of data products using the Data Product Canvas, you can start connecting all 
+          created a collection of data products using the data product Canvas, you can start connecting all
           data products and produce an actual mesh. 
         </p>
 
