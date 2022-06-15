@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Data Mesh Architecture: Designing Data Products</title>
+    <meta charset="utf-8">
+    <meta name="description" content="How to design data products by using data product canvas" />
+    <meta name="keywords" content="data mesh, data mesh architecture, domain-driven data analytics, data analytics, domain-driven design, domain ownership, data as a product, data product, data product canvas, canvas, federated governance, self-serve data platform, data platform">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@innoq" />
+    <meta name="twitter:title" content="Data Mesh Architecture: Designing Data Products" />
+    <meta name="twitter:description" content="How to design data products by using data product canvas" />
+    <meta name="twitter:image" content="https://www.datamesh-architecture.com/images/data-product-canvas-template.png" />
+    <meta name="twitter:image:alt" content="How to design data products by using data product canvas collaboratively." />
+    <meta property="og:url" content="https://datamesh-architecture.com" />
+    <meta property="og:title" content="Data Mesh Architecture: Designing Data Products" />
+    <meta property="og:description" content="How to design data products by using data product canvas" />
+    <meta property="og:image" content="https://www.datamesh-architecture.com/images/data-product-canvas-template.png" />
+
+    <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Book.woff2?cachebuster=2" crossorigin="">
+    <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Bold.woff2?cachebuster=2" crossorigin="">
+    <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Heavy.woff2?cachebuster=2" crossorigin="">
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/0.9.3_css_bulma.css" />
+    <link rel="stylesheet" href="css/font-awesome_6.0.0_css_all.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+</head>
+<body>
+<nav class="navbar is-dark" role="navigation" aria-label="dropdown navigation">
+    <div class="container">
+        <div class="navbar-brand">
+                    <span class="navbar-burger" data-target="navbarMenuHeroA">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </div>
+        <div id="navbarMenuHeroA" class="navbar-menu">
+
+            <div class="navbar-end">
+
+
+                <a href="/#why" class="navbar-item">
+                    Why
+                </a>
+                <a href="/#what-is-data-mesh" class="navbar-item">
+                    What
+                </a>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a href="/#how-to-design-a-data-mesh" class="navbar-link is-arrowless">
+                        How
+                    </a>
+                    <div class="navbar-dropdown" id="navbarMenuArchitectureDropdown">
+                        <a href="/#how-to-design-a-data-mesh" class="navbar-item">Data Mesh Architecture</a>
+                        <hr class="navbar-divider">
+                        <a href="/#data-product" class="navbar-item">Data Product</a>
+                        <a href="/#federated-governance" class="navbar-item">Federated Governance</a>
+                        <a href="/#analytical-data" class="navbar-item">Analytical Data</a>
+                        <a href="/#ingesting" class="navbar-item">Ingesting</a>
+                        <a href="/#clean-data" class="navbar-item">Clean Data</a>
+                        <a href="/#analytics" class="navbar-item">Analytics</a>
+                        <a href="/#data-platform" class="navbar-item">Data Platform</a>
+                        <a href="/#enabling-team" class="navbar-item">Enabling Team</a>
+                    </div>
+                </div>
+                <a href="/#mesh" class="navbar-item">
+                    Mesh
+                </a>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a href="/#tech-stacks" class="navbar-link is-arrowless">
+                        Tech Stacks
+                    </a>
+                    <div class="navbar-dropdown" id="navbarMenuTechStackDropdown">
+                        <a href="/tech-stacks/google-cloud-bigquery.html" class="navbar-item">
+                            Google Cloud BigQuery
+                        </a>
+                        <a href="/tech-stacks/aws-s3-athena.html" class="navbar-item">
+                            AWS S3 and AWS Athena
+                        </a>
+                        <a href="/tech-stacks/azure-synapse-analytics.html" class="navbar-item">
+                            Azure Synapse Analytics
+                        </a>
+                        <a href="/tech-stacks/dbt-snowflake.html" class="navbar-item">
+                            dbt and Snowflake
+                        </a>
+                    </div>
+                </div>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a href="/#domain-teams-journey" class="navbar-link is-arrowless">
+                        Start the Journey
+                    </a>
+                    <div class="navbar-dropdown is-right" id="navbarMenuTransformationDropdown">
+                        <a href="/#domain-teams-journey" class="navbar-item">
+                            Domain Team’s Journey
+                        </a>
+                        <a href="/#data-teams-journey" class="navbar-item">
+                            Data Team’s Journey
+                        </a>
+                        <a href="/real-world-learnings.html" class="navbar-item">
+                            Real World Learnings
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="container">
+
+    <section class="section">
+
+      <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+          <li><a href="/">Data Mesh Architecture</a></li>
+          <li class="is-active"><a href="#" aria-current="page">Designing Data Products</a></li>
+        </ul>
+      </nav>
+
+      <h1 class="title">Designing Data Products</h1>
+      <div class="content">
+      
+        <p>
+        According <a href="https://www.manning.com/books/data-mesh-in-action">to J. Majchrzak et al.</a>, 
+        a <em>"data product is an autonomous, read-optimized, standardized data unit containing at least one dataset
+        (Domain Dataset), created for satisfying user needs".</em>
+          Conceptually, a mesh is a graph, a network, consisting of nodes and connecting edges.
+          Each node in a data mesh is called <strong>data product</strong>.
+          Every data product exists within a bounded context and one bounded context might contain several data products.
+        </p>
+     
+        <p>
+          As with every architecture, data architecture also has a sociotechnical perspective. Therefore, we need to 
+          consider people and processes in addition to technology for data management. Furthermore, because 
+          we have consumers for our data, these consumers expect a certain quality. Therefore, our data need to be 
+          accessible, and everyone should know where to find data. Thus, the sociotechnical perspective 
+          pushes us to adopt the product thinking philosophy for data - data products.
+
+        </p>
+        <p>
+          What could be a data product? Generally, any data representation that has value for its consumers can be a good candidate.
+          In the following, you will find a list of examples of possible data products:
+
+        <ul>
+            <li>A database table or view
+            <li>Raw unstructured files: e.g., images or videos uploaded by users of a video portal; however, to be valuable to consumers, they should be provided with metadata
+            <li>Data stream of data entities from a transaction system
+            <li>Data stream representing the history of changes to the application: For example, events that relate to changes made within a billing account
+            <li>Simple files: Data in CSV format, excel files
+            <li>Partitioned files in optimized (Parquet) format
+            <li>REST API: Read-optimized data exposed from applications
+            <li>Master Data Management database
+            <li>Features for the machine learning models
+            <li>Visualizations and dashboard
+        </ul>       
+        Building and maintaining data products is a financial investment and takes up domain team's capacity. Therefore,
+        the value and costs need to be evaluated upfront.
+        </p>
+        
+        <h2 class="title" id="data-product-canvas">Data Product Canvas</h2>
+        
+        <p>
+          To establish a structured process of data product design across an organization, we propose to start with a <strong>Data Product Canvas</strong>. 
+          
+        </p>
+          <p class="image">
+              <a href="images/data-product-canvas-template.png.webp" class="glightbox">
+                  <img src="images/data-product-canvas-template.png.webp" alt="Data Product Canvas" style="width: 100%">
+              </a>
+          </p>
+
+          <p>
+          A <strong>Data Product Canvas</strong> is a visual framework that guides your team through the data product specification.
+          We suggest to fill out this canvas collaboratively.
+          In total, the Data Product Canvas consists of ten building blocks:
+          <ol>
+            <li> Domain
+            <li> Data Product Name    
+            <li> Consumer and Use Case             
+            <li> Output Port
+            <li> Metadata        
+            <li> Input Ports
+            <li> Data Product Design
+            <li> Observability
+            <li> Ubiquitous Language
+            <li> Classification
+          </ol> 
+        </p>
+
+        <p>
+          In the following, we describe each of the building blocks that constitute the data product.
+          The order of the building blocks represents the recommended sequence of the collaborative steps during the workshop.
+        </p>
+        <h4>Domain</h4>
+        <p>
+          Each data product should be implemented, evolved, and maintained by one domain team only.
+          Therefore each data product belongs exactly to one domain. The following possible questions are
+          relevant in this building block: 
+          <ul>
+          <li>Who is accountable for the data product?</li>
+          <li>Who specifies its requirements?</li>
+          <li>Who will answer questions about the data product?</li>
+          <li>Who fixes it when it breaks?</li>
+        </ul>
+        </p>
+
+        <h4> Data Product Name</h4>
+        <p>
+          Each data product has a unique name to be identified and accessed within an organization.
+          Typically, the product name should follow the common naming strategy.
+        </p>
+
+        <h4> Consumer and Use Case(s)</h4>
+        <p>
+           This building block describes the reason behind the existence of the data product.
+           Data product design follows the <a href="https://uxplanet.org/product-thinking-101-1d71a0784f60">"Product Thinking"</a> philosophy.
+           We always start with the consumer needs.
+        </p>
+        <p>
+           To identify the purpose of the data product, we describe analytical use cases and organizational objectives. 
+           Understanding the use cases is essential to specify the data required to implement the use cases.
+
+           The consumer of the future data product might be either our own domain team or different domain teams.
+        </p>
+ 
+        <h4> Output ports </h4>
+        <p>
+          The output ports define the format and consumption protocol in which data can be exposed.
+          For example, the output port can be a database table, file, API, or visualizations.
+
+        </p>
+        <h4> Metadata </h4>
+        <p>
+          In addition to the output port specification, the data product should define its metadata.
+          <ul>
+            <li> The ownership part describes domain name, product owner, organizational unit, license,
+              version and probable expiration date of the data product</li>
+            <li>The data schema part describes attributes, data types, constraints, 
+              and relationships to other elements in the data unit (e.g functional dependencies)</li>
+            <li>The semantics part provides description about the logical model of the data unit.</li>
+            <li>The security block describes security rules applied to the data product usage 
+              e.g. public, organization, internal, and PII attributes</li>
+          </ul>
+          
+          The discussion about required dataset attributes and their meaning contributes 
+          to the team's understanding of the data itself.
+          Please use additional space to brainstorm and discuss on some example.
+        </p>
+
+        <h4> Input Ports</h4>
+        <p>
+          This building block describes the input data for the future data product.
+          The input ports are receiving mechanism for data that will constitute the data product.
+          The input ports define the format and protocol in which data can be read. 
+          We distinguish here between <em>operational</em> source systems and other <em>data products</em>, 
+          which might be either internal or coming from other domains.
+
+        </p>
+        
+        <h4> Data Product Design</h4>
+        <p>
+          This is the core building block where we design the internals of the data product. This is the place
+         to specify everything between the input and output ports. Please, describe everything you need to design a 
+         data product on a conceptual level. For instance, you might describe data ingestion, storage, transport, wrangling, 
+         cleaning, transformations, enrichment, augmentation, analytics, SQL statements, or data platform services.
+        </p>
+
+        <h4> Observability</h4>
+        <p>
+          In addition to metadata specification, the data product design implies information for observability.
+          <ul>
+          <li>Quality Metrics outlines data quality requirements and metrics such as 
+            accuracy, completeness, integrity, as well as compliance to data governance policies.</li>
+          <li>Operational Metrics might include interval of change, freshness, usage statistics, availability, number of users, data versioning etc.</li>
+          <li>SLOs for data product enable the discipline of building trustworthiness in each data product. 
+            We specify here the thresholds for metrics to trigger alarms.
+          </li>
+        </ul>
+        </p>
+          Please note, this is not an extensive list of metadata and observability points. Make sure that 
+          you define all the information required in your organization in order to establish the data mesh architecture.
+        </p>
+
+        <h4> Ubiquitous Language</h4>
+        <p>
+          Describe here a common language that is shared between everyone involved in the project. This is usually a context-specific domain 
+          terminology that is relevant for operational systems and data product.
+        </p>
+        <h4> Classification</h4>
+        <p>
+          In this block, we specify the nature of the exposed data, meaning, we classify our data product as either,
+          source-aligned, aggregate, or consumer-aligned.
+        </p>
+
+        <h3>Data Product Canvas Templates</h3>
+        <p>
+          The proposed canvas is suitable for working collaboratively on data products design. The canvas might be easily
+          used either plotted on paper or with the common online whiteboards like Miro or Mural. Once your organization has 
+          created a collection of data products using the proposed data product canvas, you can start connecting all
+          data products and produce an actual mesh. 
+        </p>
+
+        <h3>Further Reading</h3>
+          <ul>
+            <li><a href="https://uxplanet.org/product-thinking-101-1d71a0784f60">Product Thinking 101</a></li>
+            <li><a href="https://www.thoughtworks.com/insights/articles/data-mesh-in-practice-product-thinking-and-development">Data Mesh in practice: Product thinking and development</a></li>
+            <li><a href="https://www.agilelab.it/how-to-identify-data-products-welcome-data-product-flow/">How to identify Data Products? (by Agile Lab)</a></li>
+          </ul>
+
+        </div>
+    </section>
+
+</div>
+
+<footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            <a href="https://www.innoq.com">
+                <img src="images/supported-by-innoq--petrol-apricot.svg" alt="Supported by INNOQ" class="footer-logo" width="180" />
+            </a>
+        </p>
+        <p>
+            <a href="https://www.innoq.com/en/impressum/">Legal Notice</a>
+            &nbsp
+            <a href="https://www.innoq.com/en/datenschutz/">Privacy</a>
+        </p>
+    </div>
+</footer>
+
+<script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+<noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript>
+
+<link rel="stylesheet" href="css/glightbox.css" />
+<script src="js/glightbox.js"></script>
+<script type="text/javascript">
+    const lightbox = GLightbox({});
+</script>
+
+
+<script src="js/anchor.min.js"></script>
+<script>anchors.add();</script>
+</body>
+
+</html>
