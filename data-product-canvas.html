@@ -27,74 +27,83 @@
 </head>
 <body>
 <nav class="navbar is-dark" role="navigation" aria-label="dropdown navigation">
-  <div class="container">
-    <div class="navbar-brand">
+    <div class="container">
+        <div class="navbar-brand">
                     <span class="navbar-burger" data-target="navbarMenuHeroA">
             <span></span>
             <span></span>
             <span></span>
           </span>
+        </div>
+        <div id="navbarMenuHeroA" class="navbar-menu">
+
+            <div class="navbar-end">
+
+
+                <a href="/#why" class="navbar-item">
+                    Why
+                </a>
+                <a href="/#what-is-data-mesh" class="navbar-item">
+                    What
+                </a>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a href="/#how-to-design-a-data-mesh" class="navbar-link is-arrowless">
+                        How
+                    </a>
+                    <div class="navbar-dropdown" id="navbarMenuArchitectureDropdown">
+                        <a href="/#how-to-design-a-data-mesh" class="navbar-item">Data Mesh Architecture</a>
+                        <hr class="navbar-divider">
+                        <a href="/#data-product" class="navbar-item">Data Product</a>
+                        <a href="/#federated-governance" class="navbar-item">Federated Governance</a>
+                        <a href="/#analytical-data" class="navbar-item">Analytical Data</a>
+                        <a href="/#ingesting" class="navbar-item">Ingesting</a>
+                        <a href="/#clean-data" class="navbar-item">Clean Data</a>
+                        <a href="/#analytics" class="navbar-item">Analytics</a>
+                        <a href="/#data-platform" class="navbar-item">Data Platform</a>
+                        <a href="/#enabling-team" class="navbar-item">Enabling Team</a>
+                    </div>
+                </div>
+                <a href="/#mesh" class="navbar-item">
+                    Mesh
+                </a>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a href="/#tech-stacks" class="navbar-link is-arrowless">
+                        Tech Stacks
+                    </a>
+                    <div class="navbar-dropdown" id="navbarMenuTechStackDropdown">
+                        <a href="/tech-stacks/google-cloud-bigquery.html" class="navbar-item">
+                            Google Cloud BigQuery
+                        </a>
+                        <a href="/tech-stacks/aws-s3-athena.html" class="navbar-item">
+                            AWS S3 and AWS Athena
+                        </a>
+                        <a href="/tech-stacks/azure-synapse-analytics.html" class="navbar-item">
+                            Azure Synapse Analytics
+                        </a>
+                        <a href="/tech-stacks/dbt-snowflake.html" class="navbar-item">
+                            dbt and Snowflake
+                        </a>
+                    </div>
+                </div>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a href="/#domain-teams-journey" class="navbar-link is-arrowless">
+                        Start the Journey
+                    </a>
+                    <div class="navbar-dropdown is-right" id="navbarMenuTransformationDropdown">
+                        <a href="/#domain-teams-journey" class="navbar-item">
+                            Domain Team’s Journey
+                        </a>
+                        <a href="/#data-teams-journey" class="navbar-item">
+                            Data Team’s Journey
+                        </a>
+                        <a href="/real-world-learnings.html" class="navbar-item">
+                            Real World Learnings
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div id="navbarMenuHeroA" class="navbar-menu">
-
-      <div class="navbar-end">
-
-
-        <a href="/#why" class="navbar-item">
-          Why
-        </a>
-        <a href="/#what-is-data-mesh" class="navbar-item">
-          What
-        </a>
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a href="/#how-to-design-a-data-mesh" class="navbar-link is-arrowless">
-            How
-          </a>
-          <div class="navbar-dropdown" id="navbarMenuArchitectureDropdown">
-            <a href="/#how-to-design-a-data-mesh" class="navbar-item">Data Mesh Architecture</a>
-            <hr class="navbar-divider">
-            <a href="/#data-product" class="navbar-item">Data Product</a>
-            <a href="/#federated-governance" class="navbar-item">Federated Governance</a>
-            <a href="/#analytical-data" class="navbar-item">Analytical Data</a>
-            <a href="/#ingesting" class="navbar-item">Ingesting</a>
-            <a href="/#clean-data" class="navbar-item">Clean Data</a>
-            <a href="/#analytics" class="navbar-item">Analytics</a>
-            <a href="/#data-platform" class="navbar-item">Data Platform</a>
-            <a href="/#enabling-team" class="navbar-item">Enabling Team</a>
-          </div>
-        </div>
-        <a href="#mesh" class="navbar-item">
-          Mesh
-        </a>
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a href="/#tech-stacks" class="navbar-link is-arrowless">
-            Tech Stacks
-          </a>
-          <div class="navbar-dropdown" id="navbarMenuTechStackDropdown">
-            <a href="/tech-stacks/google-cloud-bigquery" class="navbar-item">
-              Google Cloud BigQuery
-            </a>
-            <a href="/tech-stacks/aws-s3-athena" class="navbar-item">
-              AWS S3 and AWS Athena
-            </a>
-          </div>
-        </div>
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a href="#domain-teams-journey" class="navbar-link is-arrowless">
-            Start the Journey
-          </a>
-          <div class="navbar-dropdown is-right" id="navbarMenuTransformationDropdown">
-            <a href="#domain-teams-journey" class="navbar-item">
-              Domain Team’s Journey
-            </a>
-            <a href="#data-teams-journey" class="navbar-item">
-              Data Team’s Journey
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </nav>
 <div class="container">
 
@@ -114,9 +123,7 @@
         According <a href="https://www.manning.com/books/data-mesh-in-action">to J. Majchrzak et al.</a>, 
         a <em>"data product is an autonomous, read-optimized, standardized data unit containing at least one dataset
         (Domain Dataset), created for satisfying user needs".</em>
-       </p>
-        <p>
-          Conceptually, a mesh is a graph, a network, consisting of nodes and connecting edges. 
+          Conceptually, a mesh is a graph, a network, consisting of nodes and connecting edges.
           Each node in a data mesh is called <strong>data product</strong>.
           Every data product exists within a bounded context and one bounded context might contain several data products.
         </p>
@@ -155,8 +162,14 @@
           To establish a structured process of data product design across an organization, we propose to start with a <strong>Data Product Canvas</strong>. 
           
         </p>
-        <p>
-          <strong>Data Product Canvas</strong> is a visual framework that guides your team through the data product specification.
+          <p class="image">
+              <a href="images/data-product-canvas-template.png.webp" class="glightbox">
+                  <img src="images/data-product-canvas-template.png.webp" alt="Data Product Canvas" style="width: 100%">
+              </a>
+          </p>
+
+          <p>
+          A <strong>Data Product Canvas</strong> is a visual framework that guides your team through the data product specification.
           We suggest to fill out this canvas collaboratively.
           In total, the Data Product Canvas consists of ten building blocks:
           <ol>
@@ -173,13 +186,11 @@
           </ol> 
         </p>
 
-        <img src="images/data-product-canvas-template.png" alt="Data Product Canvas" style="width: 100%">
-
         <p>
           In the following, we describe each of the building blocks that constitute the data product.
           The order of the building blocks represents the recommended sequence of the collaborative steps during the workshop.
         </p>
-        <h4> Domain</h4>
+        <h4>Domain</h4>
         <p>
           Each data product should be implemented, evolved, and maintained by one domain team only.
           Therefore each data product belongs exactly to one domain. The following possible questions are
