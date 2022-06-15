@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Data Mesh Architecture: Snowflake and dbt</title>
+    <meta charset="utf-8">
+    <meta name="description" content="How to build a data mesh architecture with dbt and Snowflake" />
+    <meta name="keywords" content="dbt, snowflake, data mesh, data mesh architecture, domain-driven data analytics, data analytics, domain-driven design, domain ownership, data as a product, data product, federated governance, self-serve data platform, data platform">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@innoq" />
+    <meta name="twitter:title" content="Data Mesh Architecture: dbt and Snowflake" />
+    <meta name="twitter:description" content="How to build a data mesh architecture with dbt and Snowflake" />
+    <meta name="twitter:image" content="https://www.datamesh-architecture.com/images/dbt-snowflake_card.png" />
+    <meta name="twitter:image:alt" content="Data Mesh Architecture: Domains are in the center and teams do analytics on their own. They build and interconnect with data products. A data platform team and a enablement team help. Global policies are agreed through federated governance." />
+    <meta property="og:url" content="https://datamesh-architecture.com/tech-stacks/dbt-snowflake" />
+    <meta property="og:title" content="Data Mesh Architecture: dbt and Snowflake" />
+    <meta property="og:description" content="How to build a data mesh architecture with Snowflake and dbt" />
+    <meta property="og:image" content="https://www.datamesh-architecture.com/images/dbt-snowflake_card.png" />
+
+    <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Book.woff2?cachebuster=2" crossorigin="">
+    <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Bold.woff2?cachebuster=2" crossorigin="">
+    <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Heavy.woff2?cachebuster=2" crossorigin="">
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/0.9.3_css_bulma.css" />
+    <link rel="stylesheet" href="../css/font-awesome_6.0.0_css_all.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+</head>
+<body>
+<nav class="navbar is-dark" role="navigation" aria-label="dropdown navigation">
+    <div class="container">
+        <div class="navbar-brand">
+                    <span class="navbar-burger" data-target="navbarMenuHeroA">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </div>
+        <div id="navbarMenuHeroA" class="navbar-menu">
+
+            <div class="navbar-end">
+
+
+                <a href="/#why" class="navbar-item">
+                    Why
+                </a>
+                <a href="/#what-is-data-mesh" class="navbar-item">
+                    What
+                </a>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a href="/#how-to-design-a-data-mesh" class="navbar-link is-arrowless">
+                        How
+                    </a>
+                    <div class="navbar-dropdown" id="navbarMenuArchitectureDropdown">
+                        <a href="/#how-to-design-a-data-mesh" class="navbar-item">Data Mesh Architecture</a>
+                        <hr class="navbar-divider">
+                        <a href="/#data-product" class="navbar-item">Data Product</a>
+                        <a href="/#federated-governance" class="navbar-item">Federated Governance</a>
+                        <a href="/#analytical-data" class="navbar-item">Analytical Data</a>
+                        <a href="/#ingesting" class="navbar-item">Ingesting</a>
+                        <a href="/#clean-data" class="navbar-item">Clean Data</a>
+                        <a href="/#analytics" class="navbar-item">Analytics</a>
+                        <a href="/#data-platform" class="navbar-item">Data Platform</a>
+                        <a href="/#enabling-team" class="navbar-item">Enabling Team</a>
+                    </div>
+                </div>
+                <a href="/#mesh" class="navbar-item">
+                    Mesh
+                </a>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a href="/#tech-stacks" class="navbar-link is-arrowless">
+                        Tech Stacks
+                    </a>
+                    <div class="navbar-dropdown" id="navbarMenuTechStackDropdown">
+                        <a href="/tech-stacks/google-cloud-bigquery.html" class="navbar-item">
+                            Google Cloud BigQuery
+                        </a>
+                        <a href="/tech-stacks/aws-s3-athena.html" class="navbar-item">
+                            AWS S3 and AWS Athena
+                        </a>
+                        <a href="/tech-stacks/azure-synapse-analytics.html" class="navbar-item">
+                            Azure Synapse Analytics
+                        </a>
+                        <a href="/tech-stacks/dbt-snowflake.html" class="navbar-item">
+                            dbt and Snowflake
+                        </a>
+                    </div>
+                </div>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a href="/#domain-teams-journey" class="navbar-link is-arrowless">
+                        Start the Journey
+                    </a>
+                    <div class="navbar-dropdown is-right" id="navbarMenuTransformationDropdown">
+                        <a href="/#domain-teams-journey" class="navbar-item">
+                            Domain Team’s Journey
+                        </a>
+                        <a href="/#data-teams-journey" class="navbar-item">
+                            Data Team’s Journey
+                        </a>
+                        <a href="/real-world-learnings.html" class="navbar-item">
+                            Real World Learnings
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="container">
+
+    <section class="section">
+
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+            <ul>
+                <li><a href="https://www.datamesh-architecture.com/">Data Mesh Architecture</a></li>
+                <li><a href="https://www.datamesh-architecture.com/#tech-stacks">Tech Stacks</a></li>
+                <li class="is-active"><a href="#" aria-current="page">dbt and Snowflake</a></li>
+            </ul>
+        </nav>
+
+        <h1 class="title">dbt and Snowflake</h1>
+
+        <div class="notification is-info is-light">
+            Data mesh is primarily an organizational approach, and that's why you can't buy a data mesh from a vendor. Technology, however, is important still as it acts as an enabler for data mesh, and only useful and easy to use solutions will lead to domain teams' acceptance. The available offerings of cloud providers already provide a sufficient set of good self-serve data services to let you form a data platform for your data mesh. We want to show which services can be used to get started.
+        </div>
+
+        <div class="content">
+            <p>
+                <a href="https://www.getdbt.com">dbt</a> has emerged as the default framework to engineer analytical data.
+                This is where you define and test your models.
+                Compare it with <em>Spring Boot</em> in the microservices world.
+                dbt has <a href="https://docs.getdbt.com/docs/available-adapters">adapters</a> for most data warehouses, databases, and query engines.
+            </p>
+            <p>
+                <a href="https://www.snowflake.com">Snowflake</a> is a modern data warehouse.
+                From a usage perspective, it feels like a traditional database.
+                The key concepts to store and access data are tables and views, along with SQL queries.
+                Snowflake can be compared with Google BigQuery, AWS Redshift and Azure Synapse, but each of them has a different pricing structures.
+                Internally, Snowflake is built on cost-efficient object storage services (such as S3) to store data and compute instances (such as EC2) to execute queries and DML operations.
+            </p>
+            <p>
+                We think that Snowflake is a great fit for dbt, particularly through its simplicity, a fair pricing model, and extensive support from complementary tools.
+            </p>
+
+            <a href="../images/dbt-snowflake.png.webp" class="glightbox">
+                <img src="../images/dbt-snowflake.png.webp" alt="Data Mesh Architecture with Snowflake" style="width: 100%">
+            </a>
+
+
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        dbt is a framework to <strong>transform</strong>, clean, and aggregate data within your data warehouse.
+                        Transformations are written as plain SQL statements and result in <em>models</em> that are SQL views, materialized views, or tables,
+                        without the need to define their structure using DDL upfront.
+                        Instead, models are defined, configured, and documented in simple YML structures.
+                        Models can refer to other models, and dbt builds a usage dependency graph before executing the models.
+                        The templating engine Jinja can be used to define these references and also build your own macros, that are reusable functions.
+                    </p>
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <a href="../images/dbt_dataproduct.png" class="glightbox">
+                            <img src="../images/dbt_dataproduct.png" alt="Screenshot of dbt">
+                        </a>
+                    </figure>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        Also, dbt embraces <strong>tests</strong> to verify data when running any transformation, both for sources and results.
+                        <a href="https://docs.getdbt.com/docs/building-a-dbt-project/tests">dbt tests</a> can be added when defining a model, such as unique or not-null constraints.
+                        More complex tests are written as SQL statements that need to return an empty result for a test to pass.
+                        The extension <em><a href="https://github.com/calogica/dbt-expectations">dbt-expectations</a></em> adds powerful test methods to verify the data quality.
+                        <br/>
+                        dbt tests are great start to have <strong>data quality</strong> monitored.
+                        Just run <code>dbt test</code> regularly through your CI platform or some other scheduler like cron or Airflow.
+                    </p>
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <a href="../images/dbt_test.png" class="glightbox">
+                            <img src="../images/dbt_test.png" alt="Screenshot of a test in dbt">
+                        </a>
+                    </figure>
+                </div>
+            </div>
+
+
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        With data mesh, every domain team manages its own dbt project(s) and they own their CI pipelines to run the models.
+                        When publishing models as <strong>data products</strong>, a model (usually a view) should be tagged as <code>data_product</code>, and it is a good idea to put them into a folder like <code>/models/data_products/</code>.
+                        When using data products from other domains, they are defined in a <em>source</em> configuration file, and, again, tests can be used to verify the expectations, you have on the data set.
+                        <br/>
+                        You can use
+                        <a href="https://docs.getdbt.com/docs/building-a-dbt-project/jinja-macros"><em>macros</em></a>
+                        and lifecycle <a href="https://docs.getdbt.com/docs/building-a-dbt-project/hooks-operations"><em>hooks</em></a> to automate policies that you agreed on in the federated governance group,
+                        like granting and checking permissions, or hashing columns that are tagged as <em>pii-sensitve</em> data.
+                    </p>
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <a href="../images/dbt_model.png" class="glightbox">
+                            <img src="../images/dbt_model.png" alt="Screenshot of a model configuration in dbt">
+                        </a>
+                    </figure>
+                </div>
+            </div>
+
+
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        Snowflake stores data in <strong>tables</strong> that are logically organized in databases and schemas.
+                        Data is usually loaded into Snowflake using <em>stages</em> that are references to object stores (such as S3 buckets), either managed internally through Snowflake or external references.
+                        Pipes continuously copy these data into tables.
+                        There are pre-built solutions to ingest Kafka messages,
+                        and it is quite common to use a managed service like <a href="https://www.fivetran.com">Fivetran</a> or <a href="https://www.stitchdata.com">Stitch</a> to replicate data from databases or SaaS providers, such as Google Analytics or Salesforce.</p>
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <a href="../images/snowflake_table.png" class="glightbox">
+                            <img src="../images/snowflake_table.png" alt="Screenshot of a Snowflake Tables">
+                        </a>
+                    </figure>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        dbt transformations, data loads, and all other SQL queries are <strong>executed</strong> by a <em>warehouse</em>.
+                        Warehouses are compute instances, and the query performance scales with their underlying CPU cores and memory.
+                        Warehouses are charged while they are active.
+                        They can be configured to auto-suspend after a defined inactivity time period, which may provide significant savings.
+                        A warehouse can be attached to specific transformations and queries to give a high level of isolation.
+                    </p>
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <a href="../images/snowflake_warehouse.png" class="glightbox">
+                            <img src="../images/snowflake_warehouse.png" alt="Screenshot of a Snowflake Warehouse">
+                        </a>
+                    </figure>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        How to <strong>organize</strong> domain teams and data?
+                        In Snowflake, data can be organized by these layers:
+                    </p>
+                     <ul>
+                        <li>Organization Account</li>
+                        <li>Account</li>
+                        <li>Databases (a database is just a logical grouping)</li>
+                        <li>Schemas (a schema is also just a logical grouping)</li>
+                        <li>Tables, Views, Sequence, Stages (references to files in an object store), ...</li>
+                    </ul>
+                    <p>
+                        The simple option is one single account per environment for all teams and one logical database per team.
+                        Teams can use schemas to internally organize their data.
+                        <strong>Data products</strong> can be published in a special schema like <em>DATA_PRODUCTS</em> or just <em>PUBLIC</em> as <em>secure views</em> with appropriate permissions.
+                        <br>
+                        As permission management might get complex, an alternative is that each domain team has their own Snowflake account under the same organization account.
+                        Data products can then be shared using <em>Secure Data Sharing</em> to give other accounts access.
+                        Unfortunately, there is no simple way to share data across the whole organization, so a <a href="https://discourse.getdbt.com/t/using-dbt-snowflake-shares/1110">dbt hook</a> or some terraform configurations are required.
+                        This option enhances the isolation and security, as everything is clearly separated, but it is more management overhead to share and use data products.
+                    </p>
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <a href="../images/snowflake_secureshare.png" class="glightbox">
+                            <img src="../images/snowflake_secureshare.png" alt="Example of a secure share in Snowflake">
+                        </a>
+                    </figure>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        Snowflake has no built-in <strong>data catalog</strong> to discover and govern published data products.
+                        For a start, the generated documentation of dbt models might be sufficient, when linked on a common wiki page.
+                        Most advanced data catalogs, such as <a href="https://atlan.com">atlan</a>, integrated well, both in Snowflake and dbt projects.
+                    </p>
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <a href="../images/dbt_docs.png" class="glightbox">
+                            <img src="../images/dbt_docs.png" alt="dbt docs">
+                        </a>
+                    </figure>
+                </div>
+            </div>
+
+
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        Snowflake`s Web UI <em>Snowsight</em> has some basic support to visualize data in <strong>dashboards</strong>.
+                        Again, Snowflake integrates well with more advanced BI tools like Sisense, Tableau, or lightdash.
+                    </p>
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <a href="../images/snowflake_dashboard.png" class="glightbox">
+                            <img src="../images/snowflake_dashboard.png" alt="Screenshot of a Snowflake Dashboard">
+                        </a>
+                    </figure>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        To <strong>monitor</strong> the platform itself, Snowflake comes with essential statistics on consumed credits, data storage and transfers.
+                        Resource monitors help to notify and suspend when a defined budget exceeds.
+                        More detailed usage, access history and especially query execution statistics are accessible through a system database via SQL.
+                        These can be integrated in monitoring tools, such as <a href="https://grafana.com/docs/plugins/grafana-snowflake-datasource/latest/">Grafana</a> or <a href="https://docs.datadoghq.com/integrations/snowflake/">Datadog</a>.
+                    </p>
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <a href="../images/snowflake_usage.png" class="glightbox">
+                            <img src="../images/snowflake_usage.png" alt="Screenshot of a Snowflake Usage">
+                        </a>
+                    </figure>
+                </div>
+            </div>
+
+
+            <h5>References</h5>
+            <ul>
+                <li><a href="https://docs.getdbt.com/reference/warehouse-profiles/snowflake-profile">dbt configuration for Snowflake</a></li>
+                <li><a href="https://www.snowflake.com/webinar/for-customers/master-class-deploying-data-mesh-and-dataops-on-snowflake">Master Class: Using Snowflake And dataops.live To Deliver A Domain-driven Data Mesh Architecture Successfully</a></li>
+            </ul>
+
+        </div>
+    </section>
+
+</div>
+
+<footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            <a href="https://www.innoq.com">
+                <img src="/images/supported-by-innoq--petrol-apricot.svg" alt="Supported by INNOQ" class="footer-logo" width="180" />
+            </a>
+        </p>
+        <p>
+            <a href="https://www.innoq.com/en/impressum/">Legal Notice</a>
+            &nbsp
+            <a href="https://www.innoq.com/en/datenschutz/">Privacy</a>
+        </p>
+    </div>
+</footer>
+
+<script src="/js/navigation.js"></script>
+
+<script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+<noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript>
+
+<link rel="stylesheet" href="../css/glightbox.css" />
+<script src="../js/glightbox.js"></script>
+<script type="text/javascript">
+  const lightbox = GLightbox({});
+</script>
+
+<script src="../js/anchor.min.js"></script>
+<script>anchors.add();</script>
+</body>
+
+</html>

@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Data Mesh Architecture: Real World Learnings</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Real world learnings implementing data mesh" />
+    <meta name="keywords" content="data mesh, data mesh architecture, domain-driven data analytics, data analytics, domain-driven design, domain ownership, data as a product, data product, federated governance, self-serve data platform, data platform">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@innoq" />
+    <meta name="twitter:title" content="Data Mesh Architecture: Real World Learnings" />
+    <meta name="twitter:description" content="Real world learnings implementing data mesh" />
+    <meta name="twitter:image" content="https://www.datamesh-architecture.com/images/real-world-learnings.png" />
+    <meta name="twitter:image:alt" content="Real world learnings implementing data mesh" />
+    <meta property="og:url" content="https://datamesh-architecture.com" />
+    <meta property="og:title" content="Data Mesh Architecture: Real World Learnings" />
+    <meta property="og:description" content="Real world learnings implementing data mesh" />
+    <meta property="og:image" content="https://www.datamesh-architecture.com/images/real-world-learnings.png" />
+
+    <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Book.woff2?cachebuster=2" crossorigin="">
+    <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Bold.woff2?cachebuster=2" crossorigin="">
+    <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Heavy.woff2?cachebuster=2" crossorigin="">
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/0.9.3_css_bulma.css" />
+    <link rel="stylesheet" href="../css/font-awesome_6.0.0_css_all.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+</head>
+<body>
+<nav class="navbar is-dark" role="navigation" aria-label="dropdown navigation">
+    <div class="container">
+        <div class="navbar-brand">
+                    <span class="navbar-burger" data-target="navbarMenuHeroA">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </div>
+        <div id="navbarMenuHeroA" class="navbar-menu">
+
+            <div class="navbar-end">
+
+
+                <a href="/#why" class="navbar-item">
+                    Why
+                </a>
+                <a href="/#what-is-data-mesh" class="navbar-item">
+                    What
+                </a>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a href="/#how-to-design-a-data-mesh" class="navbar-link is-arrowless">
+                        How
+                    </a>
+                    <div class="navbar-dropdown" id="navbarMenuArchitectureDropdown">
+                        <a href="/#how-to-design-a-data-mesh" class="navbar-item">Data Mesh Architecture</a>
+                        <hr class="navbar-divider">
+                        <a href="/#data-product" class="navbar-item">Data Product</a>
+                        <a href="/#federated-governance" class="navbar-item">Federated Governance</a>
+                        <a href="/#analytical-data" class="navbar-item">Analytical Data</a>
+                        <a href="/#ingesting" class="navbar-item">Ingesting</a>
+                        <a href="/#clean-data" class="navbar-item">Clean Data</a>
+                        <a href="/#analytics" class="navbar-item">Analytics</a>
+                        <a href="/#data-platform" class="navbar-item">Data Platform</a>
+                        <a href="/#enabling-team" class="navbar-item">Enabling Team</a>
+                    </div>
+                </div>
+                <a href="#mesh" class="navbar-item">
+                    Mesh
+                </a>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a href="/#tech-stacks" class="navbar-link is-arrowless">
+                        Tech Stacks
+                    </a>
+                    <div class="navbar-dropdown" id="navbarMenuTechStackDropdown">
+                        <a href="/tech-stacks/google-cloud-bigquery" class="navbar-item">
+                            Google Cloud BigQuery
+                        </a>
+                        <a href="/tech-stacks/aws-s3-athena" class="navbar-item">
+                            AWS S3 and AWS Athena
+                        </a>
+                        <a href="/tech-stacks/azure-synapse-analytics.html" class="navbar-item">
+                            Azure Synapse Analytics
+                        </a>
+                        <a href="/tech-stacks/dbt-snowflake.html" class="navbar-item">
+                            dbt and Snowflake
+                        </a>
+                    </div>
+                </div>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a href="#domain-teams-journey" class="navbar-link is-arrowless">
+                        Start the Journey
+                    </a>
+                    <div class="navbar-dropdown is-right" id="navbarMenuTransformationDropdown">
+                        <a href="#domain-teams-journey" class="navbar-item">
+                            Domain Team’s Journey
+                        </a>
+                        <a href="#data-teams-journey" class="navbar-item">
+                            Data Team’s Journey
+                        </a>
+                        <a href="/real-world-learnings.html" class="navbar-item">
+                            Real World Learnings
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+
+    <section class="section">
+
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+            <ul>
+                <li><a href="/">Data Mesh Architecture</a></li>
+                <li class="is-active"><a href="#" aria-current="page">Real World Learnings</a></li>
+            </ul>
+        </nav>
+        <h1 class="title">Real World Learnings</h1>
+
+        <div class="content">
+            <p>
+                Implementing data mesh is nontrivial and highly dependent on the organization.
+                Here, we capture real world learnings based on observations and experiences, so you might be able to get something out of it for your own data mesh journey.
+            </p>
+            <p>
+                We want this collection of real world learnings to be a <strong>community effort</strong>. Please share your observations and learnings <a href="https://www.datamesh-architecture.com/#authors">with us</a> so we can put them up here for you, or <a href="https://github.com/datamesh-architecture/datamesh-architecture.com/edit/main/real-world-learnings.html">add them yourself via a pull request yourself</a>.
+            </p>
+        </div>
+    </section>
+
+    <section class="section content">
+        <h4 class="title is-4">Conflicting Goals</h4>
+        <div class="columns">
+            <div class="column">
+                <blockquote>
+                    We are already more than busy implementing the user stories in our ever-growing backlog to meet the roadmap goals.
+                    We can't take on this additional responsibility for analytical data and data products.
+                    <br>
+                    <br>
+                    &mdash; <em>Engineering team</em>
+                </blockquote>
+            </div>
+            <div class="column">
+                <div class="title is-6">Learnings</div>
+                <ul>
+                    <li>Team takes protective stance on their roadmap-driven goals</li>
+                    <li>Team's current goals don't align with data mesh</li>
+                    <li>Structural and cultural change in the organization necessary</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section content">
+        <h4 class="title is-4">Cognitive Load</h4>
+        <div class="columns">
+            <div class="column">
+                <blockquote>
+                    We are responsible for frontend, backend, databases, operations, and security.
+                    And now we have to perform data analysis and build data products with tools we have no experience with.
+                    <br>
+                    <br>
+                    &mdash; <em>Engineering team</em>
+                </blockquote>
+            </div>
+            <div class="column">
+                <div class="title is-6">Learnings</div>
+                <ul>
+                    <li>Respect the <a href="https://itrevolution.com/cognitive-load/">cognitive load limit</a> that is individual for every team</li>
+                    <li>Reduce their cognitive load with a supportive enabling team and a developer-friendly self-service data platform</li>
+                    <li>Let them grow in their own pace</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section content">
+        <h4 class="title is-4">It is an Investment</h4>
+        <div class="columns">
+            <div class="column">
+                <blockquote>
+                    It took us 3 sprints to build our first data product.
+                    And after a while, we had to invest even more because of hiccups and things we haven't thought about before.
+                    <br>
+                    <br>
+                    &mdash; <em>Engineering team</em>
+                </blockquote>
+            </div>
+            <div class="column">
+                <div class="title is-6">Learnings</div>
+                <ul>
+                    <li>Building a data product is a significant investment</li>
+                    <li>It takes time to learn</li>
+                    <li>Hiccups are to be expected as it's something new/different</li>
+                    <li>Maintaining a data product requires continuous care</li>
+                    <li>Enabling team and community of practice can help</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section content">
+        <h4 class="title is-4">Choose the Right Time</h4>
+        <div class="columns">
+            <div class="column">
+                <blockquote>
+                    We are in the middle of a huge transformation from on-premise monolith to cloud-native microservices.
+                    And you come to us with this new hype topic, now?
+                    <br>
+                    <br>
+                    &mdash; <em>Engineering team</em>
+                </blockquote>
+            </div>
+            <div class="column">
+                <div class="title is-6">Learnings</div>
+                <ul>
+                    <li>Not the right time for this team</li>
+                    <li>Come back when the current transformation comes to an end</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section content">
+        <h4 class="title is-4">Profit Right Away</h4>
+        <div class="columns">
+            <div class="column">
+                <blockquote>
+                    We previously were roadmap-driven by management.
+                    By using the self-service data platform, we learned a lot about our product that sometimes even surprised us.
+                    Based on hypotheses by our product owner and the team, we were able to craft and defend our own roadmap with user stories that had high business potential according to our data.
+                    It feels great to measure the business value you contribute.
+                    <br>
+                    <br>
+                    &mdash; <em>Engineering team</em>
+                </blockquote>
+            </div>
+            <div class="column">
+                <div class="title is-6">Learnings</div>
+                <ul>
+                    <li>Starting the data mesh journey can quickly result in business value</li>
+                    <li>The availability of a simple-to-use self-service data platform already brings high benefits</li>
+                    <li>Qualify user stories before implementing allows focus</li>
+                    <li>All this is already possible without even consuming or providing data products by the team</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section content">
+        <h4 class="title is-4">Strong Reject</h4>
+        <div class="columns">
+            <div class="column">
+                <blockquote>
+                    We get a lot of feature requests by our business and stakeholders.
+                    After we started to validate those feature requests with data, we could reject at least half of them that weren't worthwhile from a business perspective.
+                    <br>
+                    <br>
+                    &mdash; <em>Product owner</em>
+                </blockquote>
+            </div>
+            <div class="column">
+                <div class="title is-6">Learnings</div>
+                <ul>
+                    <li>Increased capacity as they reject feature requests</li>
+                    <li>Line of argument is easy with data</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="section content">
+        <h4 class="title is-4">Teams are different</h4>
+        <div class="columns">
+            <div class="column">
+                <blockquote>
+                    In an ideal world, each team could develop a data product and profit right away through analytics.
+                    In practice, this is not true for all teams.
+                    Teams may be on <a href="https://www.datamesh-architecture.com/#level-1-operational-database-queries">level 1</a>
+                    and gain good-enough results running queries on operational databases may have no immediate benefit to go the journey to level 4 to make their data available for other teams.
+                    Other teams may not profit from analytics, as their business is driven by fulfilling standardized processes,
+                    or they use standard software that already has good reporting for their domain.
+                    <br>
+                    <br>
+                    &mdash; <em>Engineering team</em>
+                </blockquote>
+            </div>
+            <div class="column">
+                <div class="title is-6">Learnings</div>
+                <ul>
+                    <li>Teams have different starting points</li>
+                    <li>The return on investment may be unbalanced across the organization</li>
+                    <li>Standard products, commercial off-the-shelf software, and cloud services may already provide good-enough data analytics capabilities</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section content">
+        <h4 class="title is-4">SQL is the Common Ground</h4>
+        <div class="columns">
+            <div class="column">
+                <blockquote>
+                    We knew SQL pretty well from our operational PostgreSQL database.
+                    Our self-service data platform is based on Google BigQuery.
+                    So, after some initial efforts getting data into BigQuery, we were quite at home defining analytical queries and building data products.
+                    We needed to learn some SQL features that we did not use in the past, such as common-table-expressions and window functions, but this was not really an issue.
+                    <br>
+                    <br>
+                    &mdash; <em>Engineering team</em>
+                </blockquote>
+            </div>
+            <div class="column">
+                <div class="title is-6">Learnings</div>
+                <ul>
+                    <li>Engineers know SQL</li>
+                    <li>SQL-based data platforms lower the barriers</li>
+               </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section content">
+        <h4 class="title is-4">Developer Experience Matters</h4>
+        <div class="columns">
+            <div class="column">
+                <blockquote>
+                    dbt is awesome.
+                    <br>
+                    <br>
+                    &mdash; <em>Engineering team</em>
+                </blockquote>
+            </div>
+            <div class="column">
+                <div class="title is-6">Learnings</div>
+                <ul>
+                    <li>Optimize the data platform for developer experience</li>
+                    <li>The enabling team can provide best practices and tools that work well</li>
+               </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section content">
+        <h4 class="title is-4">Pricing Drives Architecture</h4>
+        <div class="columns">
+            <div class="column">
+                <blockquote>
+                    We use Athena with S3 for our data mesh.
+                    We were surprised, how much additional know how we had to learn, particularly for performance and cost optimization:
+                    How to efficiently transfer data from Kafka to S3?
+                    Single events that we have in production got expensive and took too long to process.
+                    Building batches increased latency and led to inconsistencies.
+                    JSON as storage format took too much space and costs, so we had to learn Parquet.
+                    With Athena, every query is billed and needs to be considered, e.g., when defining regular data quality checks.
+                    <br>
+                    <br>
+                    &mdash; <em>Engineering team</em>
+                </blockquote>
+            </div>
+            <div class="column">
+                <div class="title is-6">Learnings</div>
+                <ul>
+                    <li>Substantial efforts needed for data platform specific optimizations</li>
+                    <li>Learning of additional unexpected technologies required</li>
+                    <li>Cloud pricing models have significant impact on data architecture</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section content">
+        <h4 class="title is-4">Chicken or the egg</h4>
+        <div class="columns">
+            <div class="column">
+                <blockquote>
+                    We need data from an upstream team.
+                    They don't get round to provide it.
+                    So we helped ourselves and simply import operational data from a feed they already provided.
+                    <br>
+                    <br>
+                    &mdash; <em>Engineering team</em>
+                </blockquote>
+            </div>
+            <div class="column">
+                <div class="title is-6">Learnings</div>
+                <ul>
+                    <li>Dependencies can hurt and slow down</li>
+                    <li>Workarounds using operational data can unblock</li>
+                    <li>One can switch from using the workaround to data product once it's available</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section content">
+        <h4 class="title is-4">Trust Your Data</h4>
+        <div class="columns">
+            <div class="column">
+                <blockquote>
+                    We are annoyed.
+                    We need data from an upstream team.
+                    When they finally provided the data product, it had such a low quality that it was incomplete every other day.
+                    We inform them, and they fix it after a few hours.
+                    But it still happens again and again.
+                    <br>
+                    <br>
+                    &mdash; <em>Engineering team</em>
+                </blockquote>
+            </div>
+            <div class="column">
+                <div class="title is-6">Learnings</div>
+                <ul>
+                    <li>Teams might struggle to provide a high quality data product</li>
+                    <li>Not enough know how and skills</li>
+                    <li>Data without quality doesn't really help</li>
+                    <li>Data quality monitoring is crucial</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="section content">
+        <h4 class="title is-4">Wished but Unused</h4>
+        <div class="columns">
+            <div class="column">
+                <blockquote>
+                    We don't see any return of invest.
+                    No one uses our data products, although they were requested by stakeholders.
+                    For us, providing them was a waste of time.
+                    <br>
+                    <br>
+                    &mdash; <em>Engineering team</em>
+                </blockquote>
+            </div>
+            <div class="column">
+                <div class="title is-6">Learnings</div>
+                <ul>
+                    <li>Data as a product might fail similar to any other product</li>
+                    <li>Own data analysis neglected</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+
+        <div class="content">
+            <p>
+                We want this collection of real world learnings to be a <strong>community effort</strong>. Please share your observations and learnings <a href="https://www.datamesh-architecture.com/#authors">with us</a> so we can put them up here for you, or <a href="https://github.com/datamesh-architecture/datamesh-architecture.com/edit/main/real-world-learnings.html">add them yourself via a pull request yourself</a>.
+            </p>
+        </div>
+    </section>
+
+</div>
+
+<footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            <a href="https://www.innoq.com">
+                <img src="/images/supported-by-innoq--petrol-apricot.svg" alt="Supported by INNOQ" class="footer-logo" width="180" />
+            </a>
+        </p>
+        <p>
+            <a href="https://www.innoq.com/en/impressum/">Legal Notice</a>
+            &nbsp
+            <a href="https://www.innoq.com/en/datenschutz/">Privacy</a>
+        </p>
+    </div>
+</footer>
+
+<script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+<noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript>
+
+<link rel="stylesheet" href="css/glightbox.css" />
+<script src="js/glightbox.js"></script>
+<script type="text/javascript">
+  const lightbox = GLightbox({});
+</script>
+
+
+<script src="js/anchor.min.js"></script>
+<script>anchors.add();</script>
+</body>
+
+</html>

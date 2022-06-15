@@ -24,33 +24,6 @@
     <link rel="stylesheet" href="css/0.9.3_css_bulma.css" />
     <link rel="stylesheet" href="css/font-awesome_6.0.0_css_all.css"/>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-
-        // Get all "navbar-burger" elements
-        const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
-
-        // Check if there are any navbar burgers
-        if ($navbarBurgers.length > 0) {
-
-          // Add a click event on each of them
-          $navbarBurgers.forEach( el => {
-            el.addEventListener('click', () => {
-
-              // Get the target from the "data-target" attribute
-              const target = el.dataset.target;
-              const $target = document.getElementById(target);
-
-              // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-              el.classList.toggle('is-active');
-              $target.classList.toggle('is-active');
-
-            });
-          });
-        }
-
-      });
-    </script>
 </head>
 <body>
 <section class="hero is-fullheight" style="background-color: #242424">
@@ -103,11 +76,17 @@
                                 Tech Stacks
                             </a>
                             <div class="navbar-dropdown" id="navbarMenuTechStackDropdown">
-                                <a href="/tech-stacks/google-cloud-bigquery" class="navbar-item">
+                                <a href="/tech-stacks/google-cloud-bigquery.html" class="navbar-item">
                                     Google Cloud BigQuery
                                 </a>
-                                <a href="/tech-stacks/aws-s3-athena" class="navbar-item">
+                                <a href="/tech-stacks/aws-s3-athena.html" class="navbar-item">
                                     AWS S3 and AWS Athena
+                                </a>
+                                <a href="/tech-stacks/azure-synapse-analytics.html" class="navbar-item">
+                                    Azure Synapse Analytics
+                                </a>
+                                <a href="/tech-stacks/dbt-snowflake.html" class="navbar-item">
+                                    dbt and Snowflake
                                 </a>
                             </div>
                         </div>
@@ -121,6 +100,9 @@
                                 </a>
                                 <a href="#data-teams-journey" class="navbar-item">
                                     Data Team’s Journey
+                                </a>
+                                <a href="/real-world-learnings.html" class="navbar-item">
+                                    Real World Learnings
                                 </a>
                             </div>
                         </div>
@@ -735,8 +717,10 @@
             <ul>
                 <li><a href="tech-stacks/google-cloud-bigquery.html">Google Cloud BigQuery</a></li>
                 <li><a href="tech-stacks/aws-s3-athena.html">AWS S3 and Athena</a></li>
-                <li>Azure (TBD)</li>
-                <li>On-Premise (TBD)</li>
+                <li><a href="tech-stacks/azure-synapse-analytics.html">Azure Synapse Analytics</a></li>
+                <li><a href="tech-stacks/dbt-snowflake.html">dbt and Snowflake</a></li>
+                <li>Starburst Enterprise (TBD)</li>
+                <li>Databricks (TBD)</li>
             </ul>
             <p>
                 If you want to share your tech stack here, feel free to <a href="#authors">reach out to us</a>.
@@ -1062,13 +1046,11 @@
                 This enables faster data-driven decisions and reduces barriers for data-centric innovations.
             </p>
 
-            <h4 class="title">How to get started?</h4>
+
+            <h4 class="title">Who has actually implemented a data mesh?</h4>
             <p>
-                Start small and agree on the big picture.
-                Find two domain teams (that are around level 2) that have a high value use case where one team needs data from the other team.
-                Let one team build a data product (level 4) and another team use that data product (level 3).
-                You don’t need a sophisticated data platform yet.
-                You can start sharing the files via AWS S3, a Git repository, or use a cloud-based database, such as Google BigQuery.
+                There is a comprehensive collection of <a href="https://datameshlearning.com/user-stories/">user journey stories</a> from the Data Mesh Learning community
+                that covers data mesh examples from many different industries.
             </p>
 
             <h4 class="title">Is Data Mesh for my company?</h4>
@@ -1078,6 +1060,15 @@
                 You should have modularized your software system following domain-driven design principles or something similar.
                 You should have a good number (5+) of independent domain teams that have their systems already running in production.
                 And finally, you should trust your teams to make data-driven decisions on their own.
+            </p>
+
+            <h4 class="title">How to get started?</h4>
+            <p>
+                Start small and agree on the big picture.
+                Find two domain teams (that are around level 2) that have a high value use case where one team needs data from the other team.
+                Let one team build a data product (level 4) and another team use that data product (level 3).
+                You don’t need a sophisticated data platform yet.
+                You can start sharing the files via AWS S3, a Git repository, or use a cloud-based database, such as Google BigQuery.
             </p>
 
             <h4 class="title">When should I avoid a Data Mesh?</h4>
@@ -1140,12 +1131,6 @@
             <p>
                 Typical examples: Price-Databases or Medical Studies.
                 A team needs to own this dataset and bring it into the datamesh. If this is not a very technical team, the data-platform should offer an easy self-service to upload files and provide Meta-Data. An Excel API or Google Sheets might also be an option here.
-            </p>
-
-            <h4 class="title">How might you explain the value of domain teams doing data analysis over delivering user-facing product improvements, especially when data analysts already analyse the data elsewhere in the company?</h4>
-            <p>
-                From our experience, this question does not occur in data-driven organizations, where every product improvement is evaluated with data.
-                So, you might face a culture issue here. How important are data-driven decisions for your company?
             </p>
 
 <!--            <h4 class="title">How is Machine Learning related to Data Mesh?</h4>-->
@@ -1229,9 +1214,9 @@
             <div class="card-content">
                 <div class="media">
                     <div class="media-left">
-                        <span class=" icon is-large has-text-link">
-                        <i class="fa-solid fa-book fa-2x"></i>
-                        </span>
+                        <p class="image is-64x64">
+                            <img src="images/book_datamesh_dehghani.jpg">
+                        </p>
                     </div>
                     <div class="media-content">
                         <p class="title is-4">
@@ -1252,9 +1237,10 @@
             <div class="card-content">
                 <div class="media">
                     <div class="media-left">
-                        <span class=" icon is-large has-text-link">
-                        <i class="fa-solid fa-book fa-2x"></i>
-                        </span>
+                        <p class="image is-64x64">
+                            <img src="images/book_datameshinaction.jpg">
+                        </p>
+
                     </div>
                     <div class="media-content">
                         <p class="title is-4">
@@ -1269,6 +1255,30 @@
                 <div class="content">
                     Data Mesh in Action is a great hands-on book.
                     We really liked the MVP hat shows how to start implementing a data mesh.
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-left">
+                        <span class=" icon is-large has-text-info">
+                        <i class="fa-solid fa-file-lines fa-2x"></i>
+                        </span>
+                    </div>
+                    <div class="media-content">
+                        <p class="title is-4">
+                            <a href="https://www.innoq.com/en/articles/2022/04/data-mesh-decentralized-data-analytics-for-software-engineers/">Data Mesh: Decentralized Data Analytics for Software Engineers</a>
+                        </p>
+                        <p class="subtitle is-6">
+                            by Jochen Christ
+                        </p>
+                    </div>
+                </div>
+
+                <div class="content">
+                    Intro article to data mesh with examples in the Google Cloud.
                 </div>
             </div>
         </div>
@@ -1425,6 +1435,8 @@
         </p>
     </div>
 </footer>
+
+<script src="/js/navigation.js"></script>
 
 <script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
 <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript>
