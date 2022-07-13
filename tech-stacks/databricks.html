@@ -133,7 +133,12 @@
             </p>
             <img src="../images/databricks.png.webp" alt="Data Mesh Architecture with Databricks" style="width: 100%">
             <p>
-                TBD
+                The starting point in databricks is the workspace. Each team creates their own workspace, and in their workspace their own cluster for their computing needs.
+            </p>
+            <p>Data can be <strong>imported</strong> via notebooks that are run within the cluster. There are notebook templates for importing files that have been uploaded to the Databricks File System (DBFS), importing records directly from Kafka, or data from SQL database, etc.</p>
+            <p>Databricks File System (DBFS) allows everybody within a Databricks workspace to read and write files. Other file-based storage can be mounted into the Databricks File System for easy access.</p>
+            <p>
+                Use shared cluster to increase performance by managing costs.
             </p>
             <p>
                 Databricks instance can be deployed in AWS, GCP, or Azure. Databricks on AWS and GCP are provided by Databricks and subject to Databrick's terms, but Databricks on Azure is provided by Microsoft and is subject to Microsoft's terms.
