@@ -136,14 +136,11 @@
             </p>
             <p>
                 To be honest, we struggled a bit during this evaluation, because we expected a more supportive developer experience.
-                We couldn't figure out how to set up a data mesh architecture MVP that made sense for us.
                 The services are convoluted:
-                What database should we use to store analytical data?
+                What storage or database should we use to store analytical data?
                 The SQL database or lake database that are integrated into the Synapse Workspace, or should we use an external object storage with Parquet files that we <em>link</em> into Synapse Analytics?
                 When to use Azure Blob Storage, when to use Azure Data Lake Storage Gen2?
                 Some features are supported by the built-in serverless SQL pool, some features require a dedicated SQL pool.
-                We even were surprised how difficult it is to ingest messages from our operational Kafka in the Confluent Cloud.
-                Currently, there is no managed Kafka Connector for Azure sinks available, so we had to run our own microservice to forward messages (not directly Azure's fault, but this was part of the overall experience we had).
                 We had similar experiences with implementing transformations, data sharing, and visualization&mdash;there is no straightforward way to accomplish these tasks.
                 In addition, due to recent rebrandings on Azure services, many tutorials on the internet are outdated.
             </p>
