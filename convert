@@ -12,6 +12,7 @@ convert images/google-cloud-bigquery.png -splice 350x0 -extent 3175x1709 images/
 convert images/aws-s3-athena.png -splice 350x0 -extent 3175x1709 images/aws-s3-athena_card.png
 convert images/azure-synapse-analytics.png -splice 350x0 -extent 3175x1709 images/azure-synapse-analytics_card.png
 convert images/dbt-snowflake.png -splice 350x0 -extent 3175x1709 images/dbt-snowflake_card.png
+convert images/databricks.png -splice 350x0 -extent 3175x1709 images/databricks_card.png
 
 # requires installation
 #
