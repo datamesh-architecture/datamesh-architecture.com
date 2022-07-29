@@ -132,34 +132,108 @@
                 TBD
             </p>
             <img src="../images/databricks.png.webp" alt="Data Mesh Architecture with Databricks" style="width: 100%">
-            <p>
-                The starting point in databricks is the workspace. Each team creates their own workspace, and in their workspace their own cluster for their computing needs. The team writes the import, transformation, and export of data typically in Jupyter-like notebooks using Python or Spark SQL.
-                Those notebooks are executed on the cluster directly or through (scheduled) jobs / workflows.
-            </p>
-            <p>
-                Data product
-                - notebook: the code, including import, transform, validation, and export; lots of freedom (sql, python, ...); custom step to publish data product description may be helpful (dynamic infos)
-                - policy automation through shared libraries
-            </p>
-            <p>
-                Mental load: medium to high
-            </p>
-            <p>
-                Use shared cluster to increase performance by managing costs.
-            </p>
-            <p>
-                Databricks instance can be deployed in AWS, GCP, or Azure. Databricks on AWS and GCP are provided by Databricks and subject to Databrick's terms, but Databricks on Azure is provided by Microsoft and is subject to Microsoft's terms.
 
-                access management of databricks to the cloud provider is cumbersome -> platform (enablement) team must help here
-            </p>
-            <p>
-                Databricks Premium: SQL warehouse, SQL dashboards, SQL Alarms, SQL endpoint for sharing a data product
-            </p>
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        The starting point in databricks is the workspace. Each team creates their own workspace, and in their workspace their own cluster for their computing needs. The team writes the import, transformation, and export of data typically in Jupyter-like notebooks using Python or Spark SQL.
+                        Those notebooks are executed on the cluster directly or through (scheduled) jobs / workflows.
+                    </p>
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <a href="../images/snowflake_dashboard.png" class="glightbox">
+                            <img src="../images/snowflake_dashboard.png" alt="Screenshot of a Snowflake Dashboard">
+                        </a>
+                    </figure>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        Data product
+                        - notebook: the code, including import, transform, validation, and export; lots of freedom (sql, python, ...); custom step to publish data product description may be helpful (dynamic infos)
+                        - policy automation through shared libraries
+                    </p>
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <a href="../images/snowflake_dashboard.png" class="glightbox">
+                            <img src="../images/snowflake_dashboard.png" alt="Screenshot of a Snowflake Dashboard">
+                        </a>
+                    </figure>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        Mental load: medium to high
+                    </p>
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <a href="../images/snowflake_dashboard.png" class="glightbox">
+                            <img src="../images/snowflake_dashboard.png" alt="Screenshot of a Snowflake Dashboard">
+                        </a>
+                    </figure>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        Use shared cluster to increase performance by managing costs.
+                    </p>
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <a href="../images/snowflake_dashboard.png" class="glightbox">
+                            <img src="../images/snowflake_dashboard.png" alt="Screenshot of a Snowflake Dashboard">
+                        </a>
+                    </figure>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        Databricks instance can be deployed in AWS, GCP, or Azure. Databricks on AWS and GCP are provided by Databricks and subject to Databrick's terms, but Databricks on Azure is provided by Microsoft and is subject to Microsoft's terms.
+
+                        access management of databricks to the cloud provider is cumbersome -> platform (enablement) team must help here
+                    </p>
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <a href="../images/snowflake_dashboard.png" class="glightbox">
+                            <img src="../images/snowflake_dashboard.png" alt="Screenshot of a Snowflake Dashboard">
+                        </a>
+                    </figure>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        Databricks Premium: SQL warehouse, SQL dashboards, SQL Alarms, SQL endpoint for sharing a data product
+                    </p>
+
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <a href="../images/snowflake_dashboard.png" class="glightbox">
+                            <img src="../images/snowflake_dashboard.png" alt="Screenshot of a Snowflake Dashboard">
+                        </a>
+                    </figure>
+                </div>
+            </div>
 
 
             <h5>References</h5>
             <ul>
-                <li></li>
+                <li><a href="https://docs.databricks.com/">Official databricks documentation</a></li>
+                <li><a href="https://www.youtube.com/watch?v=a00rdlNtW98">Data Mesh and Data Lakehouse talk by co-founder of databricks</a></li>
             </ul>
 
         </div>
