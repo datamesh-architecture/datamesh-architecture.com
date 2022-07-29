@@ -129,21 +129,72 @@
 
         <div class="content">
             <p>
-                TBD
+                - Databricks is another relevant vendor for a data platform
+                - Databricks is the company the built Spark
+                - Popular in ML
+                - Delta/Deltalake/...
+
+                - Databricks is a full-featured platform that runs on top of one of the three cloud providers.
+                  - With Azure, Microsoft is business partner
+                - uses Cloud Resources (Object Storage, Compute, Access) from cloud provider
             </p>
             <img src="../images/databricks.png.webp" alt="Data Mesh Architecture with Databricks" style="width: 100%">
 
             <div class="columns">
                 <div class="column">
                     <p>
-                        The starting point in databricks is the workspace. Each team creates their own workspace, and in their workspace their own cluster for their computing needs. The team writes the import, transformation, and export of data typically in Jupyter-like notebooks using Python or Spark SQL.
-                        Those notebooks are executed on the cluster directly or through (scheduled) jobs / workflows.
+                        The starting point in databricks is the <strong>workspace</strong>.
+                        Each team typically creates their own workspace,
+                        and in their workspace their own <strong>clusters</strong> for their computing needs.
+                        These clusters come with a configured <em>Spark Runtime</em> as query engine.
+                        The clusters are mapped to cloud provider's compute instances and
+                        can be scaled elastically with the workloads to execute code and queries.
                     </p>
                 </div>
                 <div class="column">
                     <figure class="image">
-                        <a href="../images/snowflake_dashboard.png" class="glightbox">
-                            <img src="../images/snowflake_dashboard.png" alt="Screenshot of a Snowflake Dashboard">
+                        <a href="../images/databricks_cluster.png" class="glightbox">
+                            <img src="../images/databricks_cluster.png" alt="TBD">
+                        </a>
+                    </figure>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        Storage
+                    </p>
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <a href="../images/databricks_notebook.png" class="glightbox">
+                            <img src="../images/databricks_notebook.png" alt="TBD">
+                        </a>
+                    </figure>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        With Spark, the import, transformation,
+                        and export of data is typically coded in Jupyter-like <strong>notebooks</strong>
+                        using <em>Python</em>, <em>Scala</em>, or <em>Spark SQL</em>,
+                        especially for explorative analysis.
+                        The code is usually managed in a connected Git repository.
+                    </p>
+                    <p>
+                        For production-ready workflows,
+                        those notebooks can be scheduled as <em>Databricks Jobs</em>,
+                        or Notebooks are replaced with tested <strong>libraries</strong>,
+                        deployed as Python Wheel or JARs.
+                    </p>
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <a href="../images/databricks_notebook.png" class="glightbox">
+                            <img src="../images/databricks_notebook.png" alt="TBD">
                         </a>
                     </figure>
                 </div>
@@ -236,6 +287,8 @@
                 </ul>
             </div>
 
+
+            https://zeppelin.apache.org/
 
             <h5>References</h5>
             <ul>
