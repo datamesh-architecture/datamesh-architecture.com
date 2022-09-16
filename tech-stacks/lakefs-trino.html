@@ -146,8 +146,8 @@
 
                 <li>can use cloud resources (Object Storage, Compute, Access) from cloud provider or in a local setup through docker containerization</li>
             </ul>
-            <strong>TBD needs to be adjusted for lakeFS:</strong>
-            <img src="../images/databricks.png.webp" alt="Data Mesh Architecture with LakeFS and Trino" style="width: 100%">
+            <strong>WIP needs to be adjusted for lakeFS:</strong>
+            <img src="../images/lakefs_trino.webp" alt="Data Mesh Architecture with LakeFS and Trino" style="width: 100%">
 
             <div class="columns">
                 <div class="column">
@@ -230,24 +230,31 @@
             <div class="columns">
                 <div class="column">
                     <p>
-                        Data product:
-                        - notebook: highly customizable through code, including import, transform, validation, and export;
-                            - lots of freedom (sql, python, ...);
-                            - custom step to publish data product description may be helpful (dynamic infos)
-                        - with dbt: sql statements in dbt models
-                            - sql only but benefits of dbt included
-                            - custom and predefined tests
-                            - dbt models as metadata information
+                        <strong>Data product:</strong>
+                    <ul>
+                        <li> in notebooks: highly customizable through code, including import, transform, validation, and export;</li>
+                            <ul>
+                                <li>lots of freedom (sql, python, ...);</li>
+                                <li>custom step to publish data product description may be helpful (dynamic infos)</li>
+                            </ul>
+                        <li> with dbt: sql statements in dbt models </li>
+                        <ul>
+                            <li> sql only but benefits of dbt included</li>
+                            <li> custom and predefined tests</li>
+                            <li> dbt models as metadata information</li>
+                        </ul>
+                    </ul>
                     </p>
                     <p>
-                        The sharing of data products:
-                            - easy: done within trino via just accessing database tables of another teams database
-                            - intermediate: with access control in lakeFS and sharing of snapshot branches whereby
-                                            metadata needs to be published accordingly
-
+                        <strong>The sharing of data products:</strong>
+                        <ul>
+                            <li> easy: done within trino via just accessing database tables of another teams database</li>
+                            <li> intermediate: with access control in lakeFS and sharing of snapshot branches whereby metadata needs to be published accordingly</li>
+                        </ul>
                     </p>
-                    <p>
-                        Mental load: high-medium to very high through the infinite amount of customizability.
+                    <p style="margin-top:1cm;">
+                        <strong>Downside:</strong>
+                    <li> Mental load is high-medium to very high through the infinite amount of customizability</li>
                     </p>
                 </div>
 
@@ -314,6 +321,8 @@
                 <div class="column">
                     <p>
                         Evtl noch etwas zum Data Product ablauf ?
+                    </p>
+                    <p>
                         With the setup running the domain team can look up existing tables in the metadata catalog (dbt or marquez) for their research.
                         With this research, the team can, thanks to trino, easily combine tables
                         from other domain teams even if they have other source databases.
@@ -339,8 +348,7 @@
                 </ul>
             </div>
 
-
-            <h5>References</h5>
+            <h5 style="margin-top:1cm;">References</h5>
             <ul>
                 <li><a href="https://docs.min.io">Official MinIO documentation</a></li>
                 <li><a href="https://docs.lakefs.io">Official lakeFS documentation</a></li>
