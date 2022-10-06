@@ -128,40 +128,56 @@
         </div>
 
         <div class="content">
+            <p>
+                LakeFS with Trino is an alternative open source tech stack for the data mesh approach.
+                </br></br>
+                <a href="https://lakefs.io">LakeFS</a> is a git-like data versioning tool that recently has emerged high popularity.
+                Thereby lakeFS is used like a layer on top of the common (s3) storage soluiton.
+                With lakeFS common git operations like branching and are added the storage solution.
+                This branching functionality provides isolation without copying data and can be used to create lasting snapshots of the data or in the case of a data mesh, a data product.
+            </p>
+            <p>
+                <a href="https://trino.io">Trino</a> is a fast and distributed query engine.
+                Thereby trino works with a hive metastore to support SQL-based data processing.
+                With trino its also easy to switch between databases due to the support of using multiple databases in a single SQL-statement.
+            </p>
+            <p>
+                <a href="https://trino.io">MinIO</a> is the complementary object storage.
+                MinIO is a good choice because of the flexible s3-compatibility, which allows using most of the large cloud providers like AWS, Azure and Google.
+            </p>
+
             <ul>
-                <li>LakeFS with Trino is an alternatvie open source tech stack</li>
-                <li>The stack consists of three main technologies/frameworks:</li>
+                <li>LakeFS with Trino is an alternative open source tech stack</li>
+                <li>The stack consists of three main frameworks:</li>
 
                 <ul>
-                    <li>MinIO or another s3-compatible object storage</li>
+                    <li>MinIO and an s3-compatible object storage</li>
                     <li>LakeFS as a layer on top of the object storage</li>
-                    <li>Trino is finally the distibuted query engine that can combine multiple datawarehouses</li>
+                    <li>Trino is the distibuted query engine that can combine multiple datawarehouses</li>
                 </ul>
 
-                <li>Fully open source and highly customizable through various optional expansions like</li>
+                <li>Fully open source and highly customizable through expansions like</li>
                 <ul>
-                    <li>dbt: gives the various benefits as described in the snowflake stack</li>
-                    <li>openlineage: is especially usefull if the data lineage is necessary</li>
+                    <li>dbt which gives various benefits as described in the snowflake stack</li>
+                    <li>openlineage which is especially useful if the data lineage is necessary</li>
                 </ul>
 
-                <li>can use cloud resources (Object Storage, Compute, Access) from cloud provider or in a local setup through docker containerization</li>
+                <li>can be initialized in a local setup or use cloud resources (Object Storage, Compute, Access) by a cloud provider</li>
             </ul>
-            <strong>WIP needs to be adjusted for lakeFS:</strong>
+            <strong>WIP:</strong>
             <img src="../images/lakefs_trino.webp" alt="Data Mesh Architecture with LakeFS and Trino" style="width: 100%">
 
+            <!-- intro setup with jnbs and dbt -->
             <div class="columns">
                 <div class="column">
                     <p>
-                        The workflow with this stack starts with booting up the docker containers.
-                        This works in a local mode but also in a cloud environment.
-                        When the containers are up and running that the endpoints should be accessable and the
-                        programming of data products can begin.
+                        This stack is about the combination of LakeFS with trino, which has the main benefit of providing
+                        data versioning to this data mesh stack. Furthermore, this stack comes with a very high customizability,
+                        which is both beneficial as well as a challenging factor through a quite high mental load.
                     </p>
                     <p>
-                        The coding then can be done in jupyter notebooks, but depends on the progress and if dbt is used.
-                        In the (filling the database)-phase we recommend using python inside of jupyter notebooks,
-                        because of a good integration of trino.
-                        When the database(s) is(are) already prepared the transformations can then optionally be transfered to dbt.
+                        Overall this stack is wrapped into a docker environment that can be configured in the docker compose file.
+                        With the containers running the transformation and cleaning of data can be done with trino.
                     </p>
                 </div>
                 <div class="column">
@@ -170,6 +186,24 @@
                             <img src="../images/lakeFS_dockercontainers.png" alt="Docker container overview">
                         </a>
                     </figure>
+                </div>
+            </div>
+
+            <!-- intro setup with jnbs and dbt -->
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        The trino engine can be used through jupyter notebooks or any database tool of choice.
+                        </br>
+                        We recommend using the database tools only for exploratory analysis, but jupyter notebooks can be used for exploratory
+                        as well as production purposes. If dbt is also used, it can be used for persistent production workflows.
+                    </p>
+                    <p>
+                        After the data product design, we suggest a data product workflow that starts with an exploratory phase in database tool or jupyter notebooks.
+                        The statements that lead to an accepted data product can always be easily transfered into a persistant jupyter notebook or dbt.
+                    </p>
+                </div>
+                <div class="column">
                     <figure class="image">
                         <a href="../images/lakeFS_jupyternotebook.png" class="glightbox">
                             <img src="../images/lakeFS_jupyternotebook.png" alt="Jupyter notebook overview">
@@ -178,59 +212,38 @@
                 </div>
             </div>
 
+            <!-- data product = trino Tabelle die mit Daten versorgt wird -->
             <div class="columns">
                 <div class="column">
                     <p>
-                        In our experience we used a MinIO object storage solution that uses the local storage, but
-                        that can be replaced by <strong>any s3-compatible object storage</strong>.
+                        With data mesh, every domain team manages their own jupyter notebooks and resulting tables in their database.
+                        When publishing a data product, usually a table or view, it should be tagged as <em>data_product</em>. Thereby its beneficial
+                        to also put them into a dedicated schema like <code>data_products</code>, which can be safed in a separate folder in lakeFS.
+                        <br/>
+                        To publish the data product that or any sub folder with the raw data could be published via lakeFS, but the recommended way is to use trino.
+                        When using data products from other domains, with trino, they can be easily referred through the ability to combine tables
+                        from multiple sources in the same sql statement.
                     </p>
                     <p>
-                        The object storage thereby gets layered by <strong>lakeFS, a version control system for data</strong>.
-                        With lakeFS the underlying object storage is just saving various data files that get mapped by
-                        lakeFS to recieve a filesystem for the user (siehe picture).
-                        Thereby each team typically works in its own lakeFS repository.
+                        Also, tests can be used to verify the expectations on an imported data set.
+                        Furthermore with lakeFS you can use pre- and post-merge or commit hooks to automate simple scripts for policies that you agreed on in the
+                        federated governance group.
                     </p>
                 </div>
                 <div class="column">
                     <figure class="image">
-                        <a href="../images/lakeFS_minio_homescreen.png" class="glightbox">
-                            <img src="../images/lakeFS_minio_homescreen.png" alt="MinIO Demoscreen">
-                        </a>
-                    </figure>
-                    <figure class="image">
-                        <a href="../images/lakeFS_lakefs_homescreen.png" class="glightbox">
-                            <img src="../images/lakeFS_lakefs_homescreen.png" alt="LakeFS Demoscreen">
-                        </a>
-                    </figure>
-                </div>
-            </div>
-
-            <div class="columns">
-                <div class="column">
-                    <p>
-                        This storage stack gets then combined with <strong>trino (ehem. presto) a fast and distributed query engine</strong>.
-                        Trino is thereby the processing unit that uses the local or cloud resources
-                    </p>
-                    <p>
-                        Thereby trino allows to combine databases from multiple inputs in one sql statement.
-                        This is especially useful when the database needs to be transfered, because
-                        it can be directly transfered, slowly by keeping old tables and creating new ones in the new database
-                        or even fully kept when its compatible with trino.
-                    </p>
-                </div>
-                <div class="column">
-                    <figure class="image">
-                        <a href="../images/lakeFS_DBeaver_homescreen.png" class="glightbox">
-                            <img src="../images/lakeFS_DBeaver_homescreen.png" alt="Any DB picture">
+                        <a href="../images/unknown.png" class="glightbox">
+                            <img src="../images/unknown.png" alt="dbeaver/lakefs tree">
                         </a>
                     </figure>
                 </div>
             </div>
 
+            <!-- complementary
             <div class="columns">
                 <div class="column">
                     <p>
-                        <strong>Data product:</strong>
+                        <strong>Creation of data products:</strong>
                     <ul>
                         <li> in notebooks: highly customizable through code, including import, transform, validation, and export;</li>
                             <ul>
@@ -258,7 +271,6 @@
                     </p>
                 </div>
 
-
                 <div class="column">
                     <figure class="image">
                         <a href="../images/lakeFS_trino_query.png" class="glightbox">
@@ -271,63 +283,219 @@
                         </a>
                     </figure>
                 </div>
-
-
             </div>
+            -->
 
+            <!-- stores = lakefs in branches, darunter MinIO was auf s3 liegt -->
             <div class="columns">
                 <div class="column">
                     <p>
-                        Trino offers an interface that provides information about the queries (ran, running, queued and blocked), performance
-                        and workload measurements (active workers, running drivers, reserved memory, rows&bytes /sec, worker parallelism).
-                        Additionally there is an detailed overview about every query, which can be sorted and searched through.
-
+                        In our experience we used a local MinIO setup that uses the local storage, but
+                        this can be replaced by <strong>any s3-compatible object storage</strong> for scaling.
+                        This allows a simple initial setup as well as beeing a viable production solution.
                     </p>
                     <p>
-                        Furthermore, the performance and managing costs are most likely provided by the cloud provider.
+                        The object storage gets covered by <strong>lakeFS, a version control system for data</strong>.
+                        With lakeFS the underlying object storage is saving various non-assignable data files that are mapped by
+                        lakeFS to construct a filesystem for the user (see lakeFS picture).
+                        Each team typically should work in its own lakeFS repository.
                     </p>
                 </div>
                 <div class="column">
                     <figure class="image">
-                        <a href="../images/lakeFS_trino_overview.png" class="glightbox">
-                            <img src="../images/lakeFS_trino_overview.png" alt="Trino 8080 Overview">
+                        <a href="../images/lakeFS_minio_homescreen.png" class="glightbox">
+                            <img src="../images/lakeFS_minio_homescreen.png" alt="MinIO Demoscreen">
+                        </a>
+                    </figure>
+                    <figure class="image">
+                        <a href="../images/lakeFS_lakefs_homescreen.png" class="glightbox">
+                            <img src="../images/lakeFS_lakefs_homescreen.png" alt="LakeFS Demoscreen">
                         </a>
                     </figure>
                 </div>
             </div>
 
+            <!-- data versioning =  infos über lakefs -->
             <div class="columns">
                 <div class="column">
                     <p>
-                        The docker containers can be deployed in a local environment or in the cloud. The only requirement
-                        is the s3-compatibility that MinIO is coming with.
+                        The <strong>speciality</strong> of this stack is the <strong>data versioning</strong> that LakeFS provides.
                     </p>
                     <p>
-                        Because there are multiple frameworks used, there are also multiple instances of access management, that have to be configured.
-                        First, most likely the cloud provider has an access management, then MinIO comes with an Access Management.
-                        Lastly on top of these LakeFS also has an access management.
+                        LakeFS is a data version control system which provides git-like operations for your data lake.
+                        Normally, through the branching it is easy to isolate specific snapshots of the current data in the repository.
+                        With that an exact snapshot of the data can be produced by simply creating a branch.
+                        For a data mesh, this branch could be either used as a data product, which gets shared with the current data,
+                        or as a exploration or test branch, where the developer can test out things, with the mindset, that he can't corrupt
+                        any data in the main or production branch.
+                    </br>
+                        A major benefit of <strong>branching</strong> is that <strong>no data gets copied</strong> in the process.
+                    </p>
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <a href="../images/tbd.png" class="glightbox">
+                            <img src="../images/tbd.png" alt="Lakefs branches picture">
+                        </a>
+                    </figure>
+                </div>
+            </div>
+
+
+            <!-- transformationen = local or cloud compute instance -->
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        The storage stack then gets combined with <strong>trino (form. presto) a fast and distributed query engine</strong>.
+                        This is also the framework that uses the local or cloud computing resources, which again supports a simple initial
+                        setup while also beeing a viable production solution.
+                    </p>
+                    <p>
+                        A benefit of trino is that it allows to combine tables from multiple databases in one sql statement.
+                        This gets useful in the data mesh context. One the one hand, this is very useful during the setup process,
+                        when the database gets built or transfered, because, if the old database is compatible with trino, it can be
+                        directly transfered or even fully kept if needed.
+                        </br>
+                        On the other hand it is useful when publishing data products, because it gives the domain teams a little freedom of choice when
+                        deciding which database to use, as long as it is compatible to trino.
+                    </p>
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <a href="../images/lakeFS_DBeaver_homescreen.png" class="glightbox">
+                            <img src="../images/lakeFS_DBeaver_homescreen.png" alt="Any DB picture">
+                        </a>
+                    </figure>
+                </div>
+            </div>
+
+            <!-- organization =
+                    Cloud provider - lakefs instance - mehrere Repos - je mehrere branches  - Verzeichnisse
+                    trino ways
+            -->
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        The <strong>organization</strong> can be seen out of two equivalent perspectives.
+                        On the one hand there is the data structure, which is similar to the filesystem,
+                        on the other hand there is the database structure.
+                    </p>
+                    <p>
+                        From the <strong>data perspective</strong> we have five layers that can be seen:
+                        <ul>
+                            <li> Most basically the Cloud provider holds the data in a s3-compatible obejct storage</li>
+                            <li> In that, we have the lakeFS instance, which is maintaining the saved data</li>
+                            <li> Each lakeFS instance can have multiple repositories</li>
+                            <li> In one repository there are multiple branches</li>
+                            <li> And in those branches, the data is maintained within a file system</li>
+                        </ul>
+                    </p>
+                </div>
+
+                <div class="column">
+                    <figure class="image">
+                        <a href="../images/lakefs_filesystem.png" class="glightbox">
+                            <img src="../images/lakefs_filesystem.png" alt="data perspective">
+                        </a>
+                    </figure>
+                </div>
+            </div>
+
+            <!-- organization =
+                    Cloud provider - lakefs instance - mehrere Repos - je mehrere branches  - Verzeichnisse
+                    trino ways
+            -->
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        Another perspective is the <strong>database perspective</strong>:
+                        <ul>
+                            <li> Here most basically is the compute instance, which executes the trino sql statements</li>
+                            <li> Those statements build trino's default database</li>
+                            <li> Each database can have multiple schemas, where the team organizes their data,
+                                like staging, dev, and data products</li>
+                            <li> As usual each schema can have multiple tables</li>
+                        </ul>
+                        The simple organization option is to have a single lakeFS instance for all teams. In this instance each team can work in one repository, but all teams share one database with their own schema(s).
+                        Inside a repository each team can decide on its own, how to structure their data and data products, within the given rules by
+                        the federated governance, of course. To publish a final data product the table can just be saved under a common schema like <code>data_products</code>,
+                        where other teams can look for data if needed.
+                        While this is a good starting point, it is likely that more access management will be needed in a production environment.
+                        Therefore this solution can be adjusted that each team works in its own lakeFS instance.
+                        That way the isolation gets one level above and the data products can still be easily shared through configuration files in trino.
+                        The access for other teams will then be regulated through trino profiles and read only lakeFS groups.
+                        More precisely, if a team needs access to a table from another team, the database can be added to trino with a simple properties file, which optimally
+                        would be provided by the domain team with predefined access rights.
+                    </p>
+                    <p>
+                        Another charakteristic of this stack is that, because of the usage of multiple frameworks, there are also multiple instances of access management, that need to be configured.
+                        First, most likely the cloud provider has an access management, then MinIO comes with an access management.
+                        Lastly on top the storage lakeFS also has an access management.
+                    </p>
+                </div>
+
+                <div class="column">
+                    <figure class="image">
+                        <a href="../images/lakefs_database_navigator.png" class="glightbox">
+                            <img src="../images/lakefs_database_navigator.png" alt="database perspective">
+                        </a>
+                    </figure>
+                </div>
+            </div>
+
+            <!-- data catalog = hive mit seinen vor und nachteilen -->
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        Trino uses a <strong>built-in hive-catalog</strong> as a metadata storage. This is also accessible to discover and govern published data products.
+                        Nonetheless we also recommend adding metadata tracking for the discovery of data products, like Openlineage.
                     </p>
                 </div>
                 <div class="column">
                     <figure class="image">
                         <a href="../images/unknown.png" class="glightbox">
-                            <img src="../images/unknown.png" alt="screenshot access managements - login screens or access overviews">
+                            <img src="../images/unknown.png" alt="screenshot hive catalog">
                         </a>
                     </figure>
                 </div>
             </div>
 
+            <!-- metadata tracking = entweder manuell über marquez oder mit dbt loggen lassen -->
+
             <div class="columns">
                 <div class="column">
                     <p>
-                        Evtl noch etwas zum Data Product ablauf ?
+                        We recommend using a <strong>metadata tracking service</strong>, which can be used both to discover
+                        available data products as well as debugging unusual data behaviour.
+                        With metadata tracking the processing steps are tracked and it is possible
+                        to discover the processing history of each dataset as well as metadata about it, which can be used and regulated in the federated governance.
                     </p>
                     <p>
-                        With the setup running the domain team can look up existing tables in the metadata catalog (dbt or marquez) for their research.
-                        With this research, the team can, thanks to trino, easily combine tables
-                        from other domain teams even if they have other source databases.
+                        For example, the data processing can be integrated with Marquez, a metadata tracking service, which implements the OpenLineage
+                        standard for tracking metadata and schema information. Then for each dataset the schema information and processing step, which created it, is logged.
+                        This allows visualizing the dependencies between datasets and processing steps (data lineage) in form of a graph.
                     </p>
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <a href="../images/unknown.png" class="glightbox">
+                            <img src="../images/unknown.png" alt="screenshot marquez lineage graph">
+                        </a>
+                    </figure>
+                </div>
+            </div>
 
+            <!-- dashboard = BYO was in JNBs funktioniert, über trino auch advanced bi tools -->
+
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        As mentioned before a benefit of this tech stack is customizablility. This shows when visualizing the data, because
+                        this stack does not come with a built-in dashboard for data analysis.
+                        On the other hand it has many options to integrate packages or frameworks.
+                        This way you can decide on our own if you like to integrate another framework, which trino has multiple options to,
+                        or to prepare your own dashboards in jupyter notebooks with frameworks, like zeppelin and matplotlib.
+                    </p>
                 </div>
                 <div class="column">
                     <figure class="image">
@@ -338,13 +506,40 @@
                 </div>
             </div>
 
+            <!-- monitoring = trino overview evtl ergänzend MinIO Speicherplatz -->
+
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        When it comes to <strong>monitoring</strong> this stack has a variety of monitoring tools.
+                        First of all the performance and managing costs are most likely provided by the cloud provider. Additionally lakeFS as well as MinIO are offering a Prometheus integration for monitoring purposes.
+                        In case of MinIO, the collected metrics from prometheus can then be visualized in the MinIO Homescreen.
+                    </p>
+                    <p>
+                        Also Trino offers an interface that provides information about the queries, like ran, running, queued and blocked queries and performance
+                        and workload measurements, like active workers, running drivers, reserved memory, rows and bytes/sec and worker parallelism.
+                        Additionally there is an overview about every query, which can be sorted and searched through.
+                    </p>
+
+
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <a href="../images/lakeFS_trino_overview.png" class="glightbox">
+                            <img src="../images/lakeFS_trino_overview.png" alt="trino overview, maybe more">
+                        </a>
+                    </figure>
+                </div>
+            </div>
+
             <div>
+                To recap this stack comes with the following characteristics:
                 <ul>
-                    <li>Highly flexible tech stack, with benefits and challenges</li>
-                    <li>similar to snowflake when dbt is integrated</li>
-                    <li>fully open souce for code transparency</li>
-                    <li>free of charge</li>
-                    <li>high customizability through coding, with benefits and challenges</li>
+                    <li>Highly flexible tech stack with endless variety of integration options</li>
+                    <li>Similar to Snowflake when dbt is integrated</li>
+                    <li>Fully open souce</li>
+                    <li>Free of charge</li>
+                    <li>High customizability through coding, with its benefits and challenges</li>
                 </ul>
             </div>
 
