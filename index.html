@@ -27,9 +27,23 @@
 </head>
 <body>
 <section class="hero is-fullheight" style="background-color: #242424">
-    <div class="has-text-centered py-3" style="background-color: #FF9B66;">
+    <div class="has-text-centered py-3" id="banner-data-product-canvas" style="background-color: #FF9B66;">
         <strong>🔥 NEW: We published a <a href="/data-product-canvas.html" style="color: inherit; text-decoration: underline">Data Product Canvas</a> to design data products.</strong>
     </div>
+    <div class="has-text-centered py-3" id="banner-training" style="background-color: #FF9B66; display: none;">
+        <strong>🇩🇪 NEU: Wir bieten ein <a href="https://www.socreatory.com/de/trainings/datamesh?ref=dma" style="color: inherit; text-decoration: underline">2-Tages-Training</a> zu Data Mesh an</strong>
+    </div>
+    <script type="text/javascript">
+      const languages = navigator.languages.join().toLowerCase();
+      if(languages.indexOf("de") > -1) {
+        document.getElementById("banner-training").style.display = "block";
+        document.getElementById("banner-data-product-canvas").style.display = "none";
+      } else {
+        document.getElementById("banner-training").style.display = "none";
+        document.getElementById("banner-data-product-canvas").style.display = "block";
+      }
+    </script>
+
     <div class="hero-head">
         <nav class="navbar is-dark" role="navigation" aria-label="dropdown navigation">
             <div class="container">
@@ -1432,8 +1446,9 @@
             </a>
         </p>
         <p>
-            <a href="https://www.innoq.com/en/impressum/">Legal Notice</a>
-            &nbsp
+            <a href="https://www.innoq.com/en/topics/data-mesh-workshop?ref=dma-footer">Workshop</a>&nbsp
+            <a href="https://www.socreatory.com/de/trainings/datamesh?ref=dma-footer">Training</a>&nbsp
+            <a href="https://www.innoq.com/en/impressum/">Legal Notice</a>&nbsp
             <a href="https://www.innoq.com/en/datenschutz/">Privacy</a>
         </p>
     </div>

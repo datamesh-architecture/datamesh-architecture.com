@@ -1,0 +1,5 @@
+mkdir -p pdf
+for f in *.png
+do
+    docker run --rm -it -v "`pwd`:/app" -w /app minidocks/img2pdf --pagesize A0^T --border 2cm -o pdf/$f.pdf $f
+done
