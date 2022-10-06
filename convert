@@ -27,4 +27,4 @@ done
 #docker run --rm -it -v "`pwd`:/app" -w /app minidocks/img2pdf --pagesize A0^T -o data-product-canvas-template_v1.pdf data-product-canvas-template_with-border.png
 #rm data-product-canvas-template_with-border.png
 
-docker run --rm -it -v "`pwd`:/app" -w /app minidocks/img2pdf --pagesize A0^T --border 2cm -o data-product-canvas-template_v1.pdf data-product-canvas-template.png
+docker run --rm -it -v "`pwd`:/app" -w /app minidocks/img2pdf --pagesize A0^T --border 2cm -o images/data-product-canvas-template_v1.pdf images/data-product-canvas-template.png
