@@ -129,21 +129,29 @@
 
         <div class="content">
             <p>
-                - Databricks is another relevant vendor for a data platform
-                - Databricks is the company the built Spark
-                - Popular in ML
-                - Delta/Deltalake/...
-
-                - Databricks is a full-featured platform that runs on top of one of the three cloud providers.
-                  - With Azure, Microsoft is business partner
-                - uses Cloud Resources (Object Storage, Compute, Access) from cloud provider
+                The Databricks Lakehouse Platform is a popular data platform.
+                It is fully based on <em>Apache Spark</em>.
+                In fact, the people who created Apache Spark found the company to offer a commercial data platform.
+                In addition, they heavily promote <em>Delta Lake</em>, a storage format for files that uses versioned Parquet files and a transaction log to provide ACID transactions.
+            </p>
+            <p>
+                Databricks is a full-featured platform that runs on top of one of the three cloud providers: AWS, GCP, Azure.
+                On Azure, Microsoft is your business partner, so you don't have to sign a separate contract with Databricks.
+                In any case, the cloud provider resources (such as object storage, compute engines, virtual network configuration, access control) are used by the platform.
+                The platform basically runs in compute engines and uses futher compute engines to manage workloads.
+            </p>
+            <p>
+                Databricks is very popular among Data Scientist.
+                It has an integrated environment, collaborative notebooks, and managed and scalable resources.
+                But is it also a good choice for a general Data Mesh platform?
+                Let's dive into the components that we would use for Data Mesh.
             </p>
             <img src="../images/databricks.png.webp" alt="Data Mesh Architecture with Databricks" style="width: 100%">
 
             <div class="columns">
                 <div class="column">
                     <p>
-                        The starting point in databricks is the <strong>workspace</strong>.
+                        The starting point in Databricks is the <strong>workspace</strong>.
                         Each team typically creates their own workspace,
                         and in their workspace their own <strong>clusters</strong> for their computing needs.
                         These clusters come with a configured <em>Spark Runtime</em> as query engine.
@@ -154,7 +162,7 @@
                 <div class="column">
                     <figure class="image">
                         <a href="../images/databricks_cluster.png" class="glightbox">
-                            <img src="../images/databricks_cluster.png" alt="TBD">
+                            <img src="../images/databricks_cluster.png" alt="Databricks requires a Spark cluster to run code.">
                         </a>
                     </figure>
                 </div>
@@ -163,13 +171,35 @@
             <div class="columns">
                 <div class="column">
                     <p>
-                        Storage
+                        Data are always stored as files.
+                        To ingest data, data need to be written to an object store (S3, Cloud Storage, ADLS) by a provider in an appropriate format, such as Parquet, JSON, CSV or Delta.
+                        Transformed and intermediary data are usually written to <strong>delta files</strong> in a backing object storage, but Spark supports all other formats, if required.
+                        Delta files represent a table structure, and are optimized for columnar access.
+                        These delta tables also support insert, update and delete operations.
+                    </p>
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <a href="../images/databricks_files.png" class="glightbox">
+                            <img src="../images/databricks_files.png" alt="Databricks relies on files on the object store">
+                        </a>
+                    </figure>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        With Spark, most of the data engineering is typically coded in Jupyter-like <strong>notebooks</strong> using <em>Python</em>, <em>Scala</em>, or <em>Spark SQL</em> code.
+                        The notebooks are interactive, meaning that cells can be executed directly and iteratively.
+                        With Databricks, data import, cleaning, transformation, explorative analytics, and machine learning is coded in notebooks.
+                        The code can usually be managed in a connected Git repository.
                     </p>
                 </div>
                 <div class="column">
                     <figure class="image">
                         <a href="../images/databricks_notebook.png" class="glightbox">
-                            <img src="../images/databricks_notebook.png" alt="TBD">
+                            <img src="../images/databricks_notebook.png" alt="A Notebook in Databricks contains code">
                         </a>
                     </figure>
                 </div>
@@ -178,23 +208,18 @@
             <div class="columns">
                 <div class="column">
                     <p>
-                        With Spark, the import, transformation,
-                        and export of data is typically coded in Jupyter-like <strong>notebooks</strong>
-                        using <em>Python</em>, <em>Scala</em>, or <em>Spark SQL</em>,
-                        especially for explorative analysis.
-                        The code is usually managed in a connected Git repository.
-                    </p>
-                    <p>
-                        For production-ready workflows,
-                        those notebooks can be scheduled as <em>Databricks Jobs</em>,
-                        or Notebooks are replaced with tested <strong>libraries</strong>,
-                        deployed as Python Wheel or JARs.
+                        Notebooks are also the default way to build <strong>data products</strong>.
+                        <em>Delta live tables</em> are used to build managed pipelines with notebooks, for scheduled or continuous tranformations.
+                        Notebooks include the code that imports data, transforms and aggregates, performs validation, includes tests and quality metrics and finally creates a data set in the export format.
+                        Through Spark, there is a lot of freedom how to operate with the data and available libraries (especially for Python) provide unlimited capabilities.
+                        For example, a data product notebook may also include a step to generate and publish a data product description for documentation, including dynamic information on the current data set.
+                        Also, <strong>policy automation</strong> can be implemented this way, e.g. by including a shared library that performs anonymization procedures on tagged columns.
                     </p>
                 </div>
                 <div class="column">
                     <figure class="image">
-                        <a href="../images/databricks_notebook.png" class="glightbox">
-                            <img src="../images/databricks_notebook.png" alt="TBD">
+                        <a href="../images/databricks_dlt.png" class="glightbox">
+                            <img src="../images/databricks_dlt.png" alt="Delta live tables can be used as managed pipelines">
                         </a>
                     </figure>
                 </div>
@@ -203,15 +228,24 @@
             <div class="columns">
                 <div class="column">
                     <p>
-                        Data product
-                        - notebook: the code, including import, transform, validation, and export; lots of freedom (sql, python, ...); custom step to publish data product description may be helpful (dynamic infos)
-                        - policy automation through shared libraries
+                        A <strong>metastore</strong> maps table structures to underlying files in the object store.
+                        This allows you to execute structured SQL queries to files and to evolve the schema over time.
+                        Traditionally, most Data Lakes rely on Apache Hive, a metastore coming from Hadoop.
+                        As Hive has some drawbacks (e.g., difficult to install and maintain, requires a relational database).
+                        Databricks recently implemented an alternative to Hive, the <em>Unity Catalog</em>, a proprietary metastore for Databricks.
+                        A Unity Catalog can be shared across workspaces, as it is backed by a simple object store.
+                    </p>
+                    <p>
+                        All tables and columns are registered in the metastore.
+                        This makes the metastore a candidate for a <strong>data catalog</strong> to publish, manage and discover data products.
+                        A frequent challenge with a metastore as a data catalog is that it quickly becomes clattered and convoluted with internal and irrelevant data structures, important data products may perish.
+                        Unity Catalog is quite new, but certainly will become the default data catalog solution for a Databricks-only data platform concept.
                     </p>
                 </div>
                 <div class="column">
                     <figure class="image">
-                        <a href="../images/snowflake_dashboard.png" class="glightbox">
-                            <img src="../images/snowflake_dashboard.png" alt="Screenshot of a Snowflake Dashboard">
+                        <a href="../images/databricks_catalog.png" class="glightbox">
+                            <img src="../images/databricks_catalog.png" alt="">
                         </a>
                     </figure>
                 </div>
@@ -220,80 +254,37 @@
             <div class="columns">
                 <div class="column">
                     <p>
-                        Mental load: medium to high
+                        Databricks Premium comes with special view for data analysts that prefer to work with SQL.
+                        Historically, it was just an SQL endpoint to access data on Databricks, but additional services were added, providing a more data-warehouse-like experience.
+                        SQL features can be used for data mesh capabilities:
+                        Software engineers can use SQL for simple analytics, without the need to work with notebooks, and they can leverage <em>SQL dashboards</em> and visualizations to gain <strong>insights</strong>.
+                        <em>SQL alerts</em> can be used for basic <strong>data quality monitoring</strong>, as they run queries regularly and send notifications to a when the queries trigger.
+                        The SQL warehouse provides an HTTP or JDBC <em>connection endpoint</em> to publish data products for external applications, such as Tableau or PowerBI.
                     </p>
                 </div>
                 <div class="column">
                     <figure class="image">
-                        <a href="../images/snowflake_dashboard.png" class="glightbox">
-                            <img src="../images/snowflake_dashboard.png" alt="Screenshot of a Snowflake Dashboard">
+                        <a href="../images/databricks_sql.png" class="glightbox">
+                            <img src="../images/databricks_sql.png" alt="Screenshot of a Snowflake Dashboard">
                         </a>
                     </figure>
                 </div>
             </div>
 
-            <div class="columns">
-                <div class="column">
-                    <p>
-                        Use shared cluster to increase performance by managing costs.
-                    </p>
-                </div>
-                <div class="column">
-                    <figure class="image">
-                        <a href="../images/snowflake_dashboard.png" class="glightbox">
-                            <img src="../images/snowflake_dashboard.png" alt="Screenshot of a Snowflake Dashboard">
-                        </a>
-                    </figure>
-                </div>
-            </div>
-
-            <div class="columns">
-                <div class="column">
-                    <p>
-                        Databricks instance can be deployed in AWS, GCP, or Azure. Databricks on AWS and GCP are provided by Databricks and subject to Databrick's terms, but Databricks on Azure is provided by Microsoft and is subject to Microsoft's terms.
-
-                        access management of databricks to the cloud provider is cumbersome -> platform (enablement) team must help here
-                    </p>
-                </div>
-                <div class="column">
-                    <figure class="image">
-                        <a href="../images/snowflake_dashboard.png" class="glightbox">
-                            <img src="../images/snowflake_dashboard.png" alt="Screenshot of a Snowflake Dashboard">
-                        </a>
-                    </figure>
-                </div>
-            </div>
-
-            <div class="columns">
-                <div class="column">
-                    <p>
-                        Databricks Premium: SQL warehouse, SQL dashboards, SQL Alarms, SQL endpoint for sharing a data product
-                    </p>
-
-                </div>
-                <div class="column">
-                    <figure class="image">
-                        <a href="../images/snowflake_dashboard.png" class="glightbox">
-                            <img src="../images/snowflake_dashboard.png" alt="Screenshot of a Snowflake Dashboard">
-                        </a>
-                    </figure>
-                </div>
-            </div>
-
-            <div>
-                <ul>
-                    <li>Jobs</li>
-                    <li>dbt integration for more complex pipelines -> we assume that's not necessary for typical data products in a data mesh</li>
-                </ul>
-            </div>
-
-
-            https://zeppelin.apache.org/
+            <p>
+                Databricks is probably the most powerful data platform available today, and it clearly can act as a foundation for a data mesh platform.
+                It is optimized for data scientists that work a lot with notebooks, but it also
+                invested in further experiences.
+                As it tightly interacts with the cloud provider for data storage and access management, organization and administration will take a while to master for the data platform team, and it must be set up appropriately from the beginning.
+                Databricks is a great platform for data analysts and machine learning, but the entry barrier is pretty high for occasional users.
+                Domain team's software engineers who use data analytics from time to time and build just a few data products,
+                may need a lot of guidance by an enabling team to work efficiently and to gain a positive developer experience.<br>
+            </p>
 
             <h5>References</h5>
             <ul>
                 <li><a href="https://docs.databricks.com/">Official databricks documentation</a></li>
-                <li><a href="https://www.youtube.com/watch?v=a00rdlNtW98">Data Mesh and Data Lakehouse talk by co-founder of databricks</a></li>
+                <li><a href="https://www.youtube.com/watch?v=a00rdlNtW98">Data Mesh and Data Lakehouse talk by co-founder of Databricks</a></li>
             </ul>
 
         </div>
