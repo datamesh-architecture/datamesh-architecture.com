@@ -9,10 +9,15 @@ draw.io --export --format svg --output images/ diagrams/
 #
 # brew install imagemagick
 convert images/google-cloud-bigquery.png -splice 350x0 -extent 3175x1709 images/google-cloud-bigquery_card.png
+convert images/google-cloud-bigquery_card.png -resize 1600 images/google-cloud-bigquery_card.1600px.png
 convert images/aws-s3-athena.png -splice 350x0 -extent 3175x1709 images/aws-s3-athena_card.png
+convert images/aws-s3-athena_card.png -resize 1600 images/aws-s3-athena_card.1600px.png
 convert images/azure-synapse-analytics.png -splice 350x0 -extent 3175x1709 images/azure-synapse-analytics_card.png
+convert images/azure-synapse-analytics_card.png -resize 1600 images/azure-synapse-analytics_card.1600px.png
 convert images/dbt-snowflake.png -splice 350x0 -extent 3175x1709 images/dbt-snowflake_card.png
+convert images/dbt-snowflake_card.png -resize 1600 images/dbt-snowflake_card.1600px.png
 convert images/databricks.png -splice 350x0 -extent 3175x1709 images/databricks_card.png
+convert images/databricks_card.png -resize 1600 images/databricks_card.1600px.png
 
 # requires installation
 #
