@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Data Mesh Architecture: Azure Synapse Analytics</title>
+    <title>Data Mesh Architecture: Readiness Assessment</title>
     <meta charset="utf-8">
-    <meta name="description" content="How to build a data mesh architecture with Azure Synapse Analytics" />
-    <meta name="keywords" content="data mesh, data mesh architecture, domain-driven data analytics, data analytics, domain-driven design, domain ownership, data as a product, data product, federated governance, self-serve data platform, data platform">
+    <meta name="description" content="Is data mesh something for your company right now? Find out in our readiness assessment" />
+    <meta name="keywords" content="data mesh, data mesh architecture, domain-driven data analytics, data analytics, domain-driven design, domain ownership, data as a product, data product, data product canvas, canvas, federated governance, self-serve data platform, data platform">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@innoq" />
-    <meta name="twitter:title" content="Data Mesh Architecture: Azure Synapse Analytics" />
-    <meta name="twitter:description" content="How to build a data mesh architecture with Azure Synapse Analytics" />
-    <meta name="twitter:image" content="https://www.datamesh-architecture.com/images/azure-synapse-analytics_card.png" />
-    <meta name="twitter:image:alt" content="Data Mesh Architecture: Domains are in the center and teams do analytics on their own. They build and interconnect with data products. A data platform team and a enablement team help. Global policies are agreed through federated governance." />
+    <meta name="twitter:title" content="Data Mesh Architecture: Readiness Assessment" />
+    <meta name="twitter:description" content="Is data mesh something for your company right now? Find out in our readiness assessments" />
+    <meta name="twitter:image" content="https://www.datamesh-architecture.com/images/data-product-canvas-template.png" />
+    <meta name="twitter:image:alt" content="Is data mesh something for your company right now? Find out in our readiness assessment" />
     <meta property="og:url" content="https://datamesh-architecture.com" />
-    <meta property="og:title" content="Data Mesh Architecture: Azure Synapse Analytics" />
-    <meta property="og:description" content="How to build a data mesh architecture with Azure Synapse Analytics" />
-    <meta property="og:image" content="https://www.datamesh-architecture.com/images/azure-synapse-analytics_card.png" />
+    <meta property="og:title" content="Data Mesh Architecture: Readiness Assessment" />
+    <meta property="og:description" content="Is data mesh something for your company right now? Find out in our readiness assessment" />
+    <meta property="og:image" content="https://www.datamesh-architecture.com/images/data-product-canvas-template.png" />
 
     <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Book.woff2?cachebuster=2" crossorigin="">
     <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Bold.woff2?cachebuster=2" crossorigin="">
     <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Heavy.woff2?cachebuster=2" crossorigin="">
-    <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="../css/0.9.3_css_bulma.css" />
-    <link rel="stylesheet" href="../css/font-awesome_6.0.0_css_all.css"/>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/0.9.3_css_bulma.css" />
+    <link rel="stylesheet" href="css/font-awesome_6.0.0_css_all.css"/>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
 </head>
 <body>
@@ -117,66 +117,50 @@
         </div>
     </div>
 </nav>
-
 <div class="container">
 
     <section class="section">
 
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-            <ul>
-                <li><a href="/">Data Mesh Architecture</a></li>
-                <li><a href="/#tech-stacks">Tech Stacks</a></li>
-                <li class="is-active"><a href="#" aria-current="page">Azure Synapse Analytics</a></li>
-            </ul>
-        </nav>
+      <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+          <li><a href="/">Data Mesh Architecture</a></li>
+          <li class="is-active"><a href="#" aria-current="page">Self-Assessment</a></li>
+        </ul>
+      </nav>
 
-        <h1 class="title">Azure Synapse Analytics</h1>
+      <h1 class="title">Self-Assessment</h1>
+      <div class="content">
+      
+        <p>
+            Data Mesh is something new. That's why there are hardly any best practices and experience reports from the industry. Whether data mesh is really a sensible approach for your company can only be determined with a more detailed analysis. But with a few questions you can quickly get an indication in advance. That's why we present here a partial list of heuristics that can help you assess whether Data Mesh makes sense or is at least worth thinking about for your company. We have deliberately avoided a scoring approach, because such a thing always has its weaknesses, and instead worked on an unsorted list of topics with a rough classification of self-assessments into the three response categories "rather not", "worth thinking about" or "useful". This will give you a sense of how ready your company is for Data Mesh.
+        </p>
+     
+        <table>
+            <thead>
+                <th><strong>Aspect</strong></th>
+                <th><italic>rather not</italic></th>
+                <th><italic>worth thinking about</italic></th>
+                <th><italic>useful</italic></th>
+            </thead>
+            <tr>
+                <td>Domain-driven Design</td>
+                <td>Ist unbekannt oder spielt keine Rolle.</td>
+                <td>Teilweise bekannt und verstanden.</td>
+                <td>Ist von allen verstanden. Es gibt Bounded Contexts und Context Maps.</td>
+            </tr>
+            <tr>
+                <td>Vertikalisierung des Software-Systems anhand von Domänen</td>
+                <td>Nein. Es gibt einen Monolith für die gesamte Fachlichkeit.</td>
+                <td>Die Transformation zu Microservices hat begonnen.</td>
+                <td>Das Software-System besteht aus fachlich geschnittenen Microservices.</td>
+            </tr>
+        </table>
 
-        <div class="notification is-info is-light">
-            Data mesh is primarily an organizational approach, and that's why you can't buy a data mesh from a vendor. Technology, however, is important still as it acts as an enabler for data mesh, and only useful and easy to use solutions will lead to domain teams' acceptance. The available offerings of cloud providers already provide a sufficient set of good self-serve data services to let you form a data platform for your data mesh. We want to show which services can be used to get started.
-        </div>
-
-        <div class="content">
-            <p>
-                Microsoft offers <strong>Azure Synapse Analytics</strong>, along with both Data Lake Storage Gen2 and SQL database, as the central components for implementing a data mesh architecture.
-            </p>
-            <img src="../images/azure-synapse-analytics.png.webp" alt="Data Mesh Architecture with Azure Synapse Analytics" style="width: 100%">
-            <p>
-                We evaluated the Azure tech stack, especially the services around Azure Synapse Analytics.
-                We like the idea of an integrated environment to manage and analyze data and Microsoft even provides
-                <a href="https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/scenarios/cloud-scale-analytics/architectures/what-is-data-mesh">data mesh specific guidance</a> in their Cloud Adoption Framework.
-            </p>
-            <p>
-                To be honest, we struggled a bit during this evaluation, because we expected a more supportive developer experience.
-                The services are convoluted:
-                What storage or database should we use to store analytical data?
-                The SQL database or lake database that are integrated into the Synapse Workspace, or should we use an external object storage with Parquet files that we <em>link</em> into Synapse Analytics?
-                When to use Azure Blob Storage, when to use Azure Data Lake Storage Gen2?
-                Some features are supported by the built-in serverless SQL pool, some features require a dedicated SQL pool.
-                We had similar experiences with implementing transformations, data sharing, and visualization&mdash;there is no straightforward way to accomplish these tasks.
-                In addition, due to recent rebrandings on Azure services, many tutorials on the internet are outdated.
-            </p>
-            <p>
-                Our learning is that you should not underestimate the efforts for upskilling the domain teams to use Azure Synapse Analytics as a data platform.
-                Invest in an enabling team that guides and supports domain teams on their journey implementing data mesh.
-            </p>
-            <p>
-                We assume that many of our difficulties are due to a lack of extensive experience with the platform.
-                We are open to chat with Azure experts who might know more than we do - feel free <a href="/#authors">to reach out to us</a>.
-            </p>
-            <p>
-                If you're on Azure, we currently would recommend to consider <a href="/tech-stacks/dbt-snowflake.html">Snowflake deployed to Azure</a>,
-                or, if many of your domains do machine learning, have a look at <em>Azure Databricks</em>.
-            </p>
-
-            <h5>References</h5>
-            <ul>
-                <li><a href="https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/scenarios/cloud-scale-analytics/architectures/what-is-data-mesh">What is a Data Mesh</a></li>
-                <li><a href="https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/scenarios/cloud-scale-analytics/architectures/data-mesh-checklist">Data Mesh Checklist</a></li>
-                <li><a href="https://towardsdatascience.com/implementing-data-mesh-on-azure-c01ee94306cd">Implementing Data Mesh on Azure</a></li>
-                <li><a href="https://mrpaulandrew.com/2022/04/19/building-a-data-mesh-architecture-in-azure-part-7/">Article Series on Building a Data Mesh Architecture in Azure</a></li>
-            </ul>
-
+        <h3>Data Mesh Readiness Assessments from others</h3>
+          <ul>
+            <li><a href="https://www.starburst.io/info/data-mesh-readiness-assessment/readiness-assessment.html">Data Mesh Readiness Assessment by Starburst</a></li>
+            <li><a href="https://www.agilelab.it/data-mesh-readiness-assessment/readiness-assessment.html">Data Mesh Readiness Assessment by Agile Lab</a></li>
+          </ul>
         </div>
     </section>
 
@@ -198,19 +182,18 @@
     </div>
 </footer>
 
-<script src="/js/navigation.js"></script>
 
 <script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
 <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript>
 
-<link rel="stylesheet" href="/css/glightbox.css" />
-<script src="/js/glightbox.js"></script>
+<link rel="stylesheet" href="css/glightbox.css" />
+<script src="js/glightbox.js"></script>
 <script type="text/javascript">
-  const lightbox = GLightbox({});
+    const lightbox = GLightbox({});
 </script>
 
 
-<script src="/js/anchor.min.js"></script>
+<script src="js/anchor.min.js"></script>
 <script>anchors.add();</script>
 </body>
 
