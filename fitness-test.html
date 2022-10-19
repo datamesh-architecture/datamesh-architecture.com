@@ -132,12 +132,11 @@
       <h2 class="subtitle">Does Data Mesh fit to me? Am I fit for Data Mesh?</h2>
 
       <div class="content">
-      
         <p>
             Data Mesh is something new. That's why there are hardly any best practices and experience reports from the industry. Whether data mesh is really a sensible approach for your company can only be determined with a more detailed analysis. But with a few questions you can quickly get an indication in advance. That's why we present here a partial list of heuristics that can help you assess whether Data Mesh makes sense or is at least worth thinking about for your company. We have deliberately avoided a scoring approach, because such a thing always has its weaknesses, and instead worked on an unsorted list of topics with a rough classification of self-assessments into the three response categories "rather not", "worth thinking about" or "useful". This will give you a sense of how ready your company is for Data Mesh.
         </p>
-     
-        <table>
+          <p>Usage: Go through it row by row. Click on the statement that best represents your company.</p>
+        <table id="fitness-test-table">
             <thead>
                 <th><strong>Aspect</strong></th>
                 <th><em>Data Mesh might not be the right choice</em></th>
@@ -145,22 +144,70 @@
                 <th><em>Data Mesh seems useful</em></th>
             </thead>
             <tr>
-                <td>Domain-driven Design</td>
+                <td><strong>Domain-driven Design</strong></td>
                 <td>Is unknown or does not matter.</td>
                 <td>Partially known and understood.</td>
                 <td>Is understood by all. There are bounded contexts and context maps.</td>
             </tr>
             <tr>
-                <td>Verticalization of the software system based on domains</td>
+                <td><strong>Verticalization of the software system based on domains</strong></td>
                 <td>No. There is a monolith for the entire professionalism.</td>
                 <td>The transformation to microservices has begun.</td>
                 <td>The software system consists of domain-oriented microservices.</td>
             </tr>
             <tr>
-                <td>Number of software development teams</td>
+                <td><strong>Number of software development teams</strong></td>
                 <td><= 5</td>
                 <td>> 5</td>
                 <td>> 10</td>
+            </tr>
+            <tr>
+                <td><strong>Make-or-buy strategy for the core software</strong></td>.
+                <td>Standard software (SAP, SaaS, etc.)</td>
+                <td>Individual software</td>
+                <td>Individual software</td>
+            </tr>
+            <tr>
+                <td><strong>Cloud computing</strong></td>
+                <td>No issue, many concerns</td>.
+                <td>In the midst of cloud transformation / hybrid cloud</td>.
+                <td>We are cloud native. </td>
+            </tr>
+            <tr>
+                <td><strong>Team structure</strong></td>
+                <td>Separate front-end, back-end and operations teams.</td>
+                <td>Mixed teams consisting of specialists</td>.
+                <td>Small cross-functional teams, supported by a platform team. </td>
+            </tr>
+            <tr>
+                <td><strong>Trust<strong</td>
+                <td>Micromanagement by leaders</td>.
+                <td>Control through goals</td>
+                <td>Teams and employees are trusted to do the right thing</td>
+            </tr>
+            <tr>
+                <td><strong>DevOps culture</strong></td>
+                <td>What is CI/CD?</td>
+                <td>We are establishing a DevOps culture</td>.
+                <td>We are living the DevOps principles</td>
+            </tr>
+            <tr>
+                <td><strong>Product Thinking</strong></td>
+                <td>Thinking in terms of projects. Roadmaps dictate implementation</td>.
+                <td>Product development is attempted, but fails due to management.</td>
+                <td>Autonomous product teams that (further) develop their products themselves</td>.
+            </tr>
+            <tr>
+                <td><strong>Competitive advantage through ML and analytics<strong</td>.
+                <td>Not in focus</td>.
+                <td>Potential is recognized and first lighthouse projects have been launched.</td>
+                <td>Data-driven product development is strong. </td>
+            </tr>
+            <tr>
+                <td><strong>Central data team as a bottleneck</strong></td>.
+                <td>The data team handles all requests at a reasonable speed</td>.
+                <td>Analysis results often take several weeks or months</td>.
+                <td>Product owners don't ask analysis questions in the first place.</td>
             </tr>
         </table>
 
@@ -204,6 +251,31 @@
 
 <script src="js/anchor.min.js"></script>
 <script>anchors.add();</script>
+
+
+<script type="text/javascript">
+    const fitnessTestTable = document.getElementById('fitness-test-table');
+
+    let fitnessTestTableRows = fitnessTestTable.getElementsByTagName('tr');
+    for (var i = 0; i < fitnessTestTableRows.length; i++) {
+        let fitnessTestTableRow = fitnessTestTableRows[i];
+        let fitnessTestTableRowCells = fitnessTestTableRow.getElementsByTagName('td');
+
+        for (var j = 1; j < fitnessTestTableRowCells.length; j++) {
+            let fitnessTestTableRowCell = fitnessTestTableRowCells[j];
+            console.log("TD: ")
+            console.log(fitnessTestTableRowCell.innerHTML)
+
+            fitnessTestTableRowCell.addEventListener('click', function onClick(event) {
+                for (var k = 1; k < fitnessTestTableRowCells.length; k++) {
+                    fitnessTestTableRowCells[k].style.backgroundColor = '';
+                }
+                fitnessTestTableRowCell.style.backgroundColor = 'salmon';
+            });
+        }
+    }
+</script>
+
 </body>
 
 </html>
