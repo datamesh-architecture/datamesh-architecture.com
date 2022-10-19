@@ -266,11 +266,21 @@
 
         for (var j = 1; j < fitnessTestTableRowCells.length; j++) {
             let fitnessTestTableRowCell = fitnessTestTableRowCells[j];
+            let element = j;
             fitnessTestTableRowCell.addEventListener('click', function onClick(event) {
                 for (var k = 1; k < fitnessTestTableRowCells.length; k++) {
                     fitnessTestTableRowCells[k].style.backgroundColor = '';
                 }
-                fitnessTestTableRowCell.style.backgroundColor = 'salmon';
+
+                let color = '';
+                if (element === 1) {
+                    color = 'salmon';
+                } else if (element === 2) {
+                    color = 'orange'
+                } else if (element === 3) {
+                    color = '#9ac7b4'
+                }
+                fitnessTestTableRowCell.style.backgroundColor = color;
             });
         }
     }
