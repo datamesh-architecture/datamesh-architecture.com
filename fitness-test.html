@@ -135,6 +135,13 @@
         <p>
             Data Mesh is something new. That's why there are hardly any best practices and experience reports from the industry. Whether data mesh is really a sensible approach for your company can only be determined with a more detailed analysis. But with a few questions you can quickly get an indication in advance. That's why we present here a partial list of heuristics that can help you assess whether Data Mesh makes sense or is at least worth thinking about for your company. We have deliberately avoided a scoring approach, because such a thing always has its weaknesses, and instead worked on an unsorted list of topics with a rough classification of self-assessments into the three response categories "rather not", "worth thinking about" or "useful". This will give you a sense of how ready your company is for Data Mesh.
         </p><p>Usage: Go through it row by row. Click on the statement that best represents your company. Your selection is only stored in your local browser.</p>
+
+          <div id="fitness-test-div" class="card">
+              <header class="card-header">
+                  <p class="card-header-title is-centered" contenteditable="true" id="fitness-test-title">Data Mesh Fitness Test for INSERT_NAME_HERE</p>
+              </header>
+              <div class="card-content">
+                  <div class="content">
           <table id="fitness-test-table">
               <thead>
               <tr>
@@ -225,9 +232,17 @@
             </tr>
             </tbody>
         </table>
+                  </div></div>
+              <footer class="card-footer">
+                  <p class="card-footer-item">
+                    <span>
+                        Created on <a href="https://datamesh-architecture.com/fitness-test">datamesh-architecture.com/fitness-test</a>
+                    </span>
+                  </p>
+              </footer>
+          </div>
 
-
-          <button onclick="screenshot()" class="button is-primary">
+          <button onclick="screenshot()" class="button is-primary mt-3">
               <i class="fas fa-download"></i>&nbsp;Download as PNG file
           </button>
 
@@ -235,9 +250,11 @@
           <script src="js/FileSaver.min.js"></script>
           <script>
               function screenshot() {
-                  html2canvas(document.querySelector("#fitness-test-table")).then(canvas => {
+                  html2canvas(document.querySelector("#fitness-test-div")).then(canvas => {
                       canvas.toBlob(function(blob) {
-                          window.saveAs(blob, 'data-mesh-fitness-test.jpg');
+                          filename = document.querySelector("#fitness-test-title").textContent.toLowerCase().replaceAll(/ /g, '-').replaceAll(/[^a-z-]/g, '')
+
+                          window.saveAs(blob, filename + '.png');
                       });
                   });
               }
