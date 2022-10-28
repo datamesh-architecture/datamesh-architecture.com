@@ -302,6 +302,9 @@
         for (var j = 1; j < fitnessTestTableRowCells.length; j++) {
             let fitnessTestTableRowCell = fitnessTestTableRowCells[j];
             let element = j;
+
+            let colorDontKnow = 'lightblue';
+
             fitnessTestTableRowCell.addEventListener('click', function onClick(event) {
                 for (var k = 1; k < fitnessTestTableRowCells.length; k++) {
                     fitnessTestTableRowCells[k].style.backgroundColor = '';
@@ -315,10 +318,14 @@
                 } else if (element === startCellIndex + 2) {
                     color = '#9ac7b4'
                 } else if (element === startCellIndex + 3) {
-                    color = 'lightblue'
+                    color = colorDontKnow
                 }
                 fitnessTestTableRowCell.style.backgroundColor = color;
             });
+
+            if (j === startCellIndex + 3) {
+                fitnessTestTableRowCell.style.backgroundColor = colorDontKnow;
+            }
         }
     }
 </script>
