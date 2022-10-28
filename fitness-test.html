@@ -142,6 +142,7 @@
                 <th><em>Data Mesh might not be the right choice</em></th>
                 <th><em>Data Mesh is worth thinking about</em></th>
                 <th><em>Data Mesh seems useful</em></th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -150,66 +151,77 @@
                 <td>Is unknown or does not matter</td>
                 <td>Partially known and understood</td>
                 <td>Is understood by all. There are bounded contexts and context maps</td>
+                <td>Don't know</td>
             </tr>
             <tr>
                 <td><strong>Verticalization of the software system based on domains</strong></td>
                 <td>No. There is a monolith for the entire business</td>
                 <td>The transformation to microservices has begun</td>
                 <td>The software system consists of domain-oriented microservices</td>
+                <td>Don't know</td>
             </tr>
             <tr>
                 <td><strong>Number of software development teams</strong></td>
                 <td><= 5</td>
                 <td>> 5</td>
                 <td>> 10</td>
+                <td>Don't know</td>
             </tr>
             <tr>
-                <td><strong>Make-or-buy strategy for the core software</strong></td>
+                <td><strong>Make-or-buy strategy for the core domains</strong></td>
                 <td>Standard software (SAP, SaaS, etc.)</td>
-                <td>Individual software</td>
-                <td>Individual software</td>
+                <td>A mix of standard and individual software</td>
+                <td>Only individual software</td>
+                <td>Don't know</td>
             </tr>
             <tr>
                 <td><strong>Cloud computing</strong></td>
                 <td>No issue, many concerns</td>
                 <td>In the midst of cloud transformation / hybrid cloud</td>
                 <td>We are cloud native</td>
+                <td>Don't know</td>
             </tr>
             <tr>
                 <td><strong>Team structure</strong></td>
                 <td>Separate front-end, back-end and operations teams</td>
                 <td>Mixed teams consisting of specialists</td>
                 <td>Small cross-functional teams, supported by a platform team</td>
+                <td>Don't know</td>
             </tr>
             <tr>
                 <td><strong>Trust</strong></td>
                 <td>Micromanagement by leaders</td>
                 <td>Control through goals</td>
                 <td>Teams and employees are trusted to do the right thing</td>
+                <td>Don't know</td>
             </tr>
             <tr>
                 <td><strong>DevOps culture</strong></td>
                 <td>What is CI/CD?</td>
                 <td>We are establishing a DevOps culture</td>
                 <td>We are living the DevOps principles</td>
+                <td>Don't know</td>
             </tr>
             <tr>
                 <td><strong>Product Thinking</strong></td>
                 <td>Thinking in terms of projects. Roadmaps dictate implementation</td>
                 <td>Product development is attempted, but fails due to management</td>
                 <td>Autonomous product teams that (further) develop their products themselves</td>
+                <td>Don't know</td>
             </tr>
             <tr>
                 <td><strong>Competitive advantage through ML and analytics</strong></td>
                 <td>Not in focus</td>
                 <td>Potential is recognized and first lighthouse projects have been launched</td>
                 <td>Data-driven product development is strong</td>
+                <td>Don't know</td>
             </tr>
             <tr>
                 <td><strong>Central data team as a bottleneck</strong></td>
                 <td>The data team handles all requests at a reasonable speed</td>
                 <td>Analysis results often take several weeks or months</td>
                 <td>Product owners don't ask analysis questions in the first place</td>
+                <td>Don't know</td>
             </tr>
             </tbody>
         </table>
@@ -259,6 +271,8 @@
 <script type="text/javascript">
     const fitnessTestTable = document.getElementById('fitness-test-table');
 
+    const startCellIndex = 1;
+
     let fitnessTestTableRows = fitnessTestTable.getElementsByTagName('tr');
     for (var i = 0; i < fitnessTestTableRows.length; i++) {
         let fitnessTestTableRow = fitnessTestTableRows[i];
@@ -273,12 +287,14 @@
                 }
 
                 let color = '';
-                if (element === 1) {
+                if (element === startCellIndex) {
                     color = 'salmon';
-                } else if (element === 2) {
+                } else if (element === startCellIndex + 1) {
                     color = 'orange'
-                } else if (element === 3) {
+                } else if (element === startCellIndex + 2) {
                     color = '#9ac7b4'
+                } else if (element === startCellIndex + 3) {
+                    color = 'lightblue'
                 }
                 fitnessTestTableRowCell.style.backgroundColor = color;
             });
