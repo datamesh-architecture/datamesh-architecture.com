@@ -226,26 +226,23 @@
             </tbody>
         </table>
 
-          <!--
-          <button onclick="screenshot()">
-              Screenshot
+
+          <button onclick="screenshot()" class="button is-primary">
+              <i class="fas fa-download"></i>&nbsp;Download as PNG file
           </button>
 
           <script src="js/html2canvas.min.js"></script>
+          <script src="js/FileSaver.min.js"></script>
           <script>
               function screenshot() {
                   html2canvas(document.querySelector("#fitness-test-table")).then(canvas => {
                       canvas.toBlob(function(blob) {
-                          // Export the canvas to its data URI representation
-                          var base64image = canvas.toDataURL("image/png");
-
-                          // Open the image in a new window
-                          window.open(base64image , "_blank");
+                          window.saveAs(blob, 'data-mesh-fitness-test.jpg');
                       });
                   });
               }
           </script>
--->
+
 
           <h3>Other Data Mesh self-assessments</h3>
           <ul>
