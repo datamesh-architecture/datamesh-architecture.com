@@ -140,17 +140,20 @@
                 We believe, that this tech stack could also be used for production environments, where the offerings of vendors like Databricks or Snowflake are considered too costly.
                 This tech stack could easily be enhanced with tools like jupyter notebooks for data exploration and processing, dbt for automated data transformation, lakefs for data versioning or Marquez for data lineage support.
             </p>
+            <!--
             <p>
                 <a href="https://trino.io">Trino</a> is a fast and distributed query engine supporting <strong>SQL-based data processing</strong>.
-                <!--
+
                 With trino we have the ability to mix databases in single SQL-statements due to the support of using multiple databases.
-                -->
             </p>
+            -->
+            <!--
             <p>
                 <a href="https://min.io">MinIO</a> provides S3 compatible object storage.
-                MinIO allows for a large range of deployment options ed with the s3-compatibility, which
+                MinIO allows for a large range of deployment options with the s3-compatibility, which
                 allows using most of the large cloud providers like AWS, Azure and Google.
             </p>
+            -->
             <!--
             <p>
                 <a href="https://lakefs.io">LakeFS</a> is a git-like data versioning tool that recently has emerged high popularity.
@@ -201,6 +204,7 @@
                     -->
                     <p>
                         This tech stack is leightweight. We deployed it locally using docker-compose. Using kubernetes should also be quite straightforward but hasn't been done by us, yet.
+                        <!-- pandio, jupyterHub, elestio -->
                         <!--
                         This also means that at first it has to be configured in the docker configuration file, which is an initial configuration effort.
                         Once this setup is up and running, the transformation and cleaning of data can begin.
@@ -220,13 +224,12 @@
             <div class="columns">
                 <div class="column">
                     <p>
-                        MinIO provides simple and high-performance object storage with a full variety of deployment options. MinIO based object 
+                        <a href="https://min.io">MinIO</a> provides simple and high-performance object storage with a full variety of deployment options. MinIO based object 
                         storage can be replaced by any <strong>s3-compatible object storage</strong>. MinIO also provides the <strong>MinIO Azure Gateway</strong>, which allows to connect to the non-s3-compatible storage Azure Data Lake Gen 1.
                     </p>
                     <p>
-                        <a href="https://lakefs.io">LakeFS</a> provides a hierarchical file system on top of the underlying object storage.
-                        lakeFS also supports git-like data versioning, which we will describe
-                        in a later section.
+                        We typically use <a href="https://lakefs.io">LakeFS</a> as a hierarchical file system on top of the underlying object storage.
+                        The main reason is, that lakeFS supports git-like data versioning, which we will describe in a later section.
                     </p>
                 </div>
                 <div class="column">
@@ -242,7 +245,7 @@
             <div class="columns">
                 <div class="column">
                     <p>
-                        Trino is a distributed, highly scalable query engine, that allows to access and manipulate data from various storage systems. Trino (currently) relies on Hive metastore to support SQL based access to data files stored in object storage systems.
+                        <a href="https://trino.io">Trino</a> is a distributed, highly scalable query engine, that allows to access and manipulate data from various storage systems. Trino (currently) relies on Hive metastore to support SQL based access to data files stored in object storage systems.
                     </p>
                     <!--
                     <p>
@@ -261,6 +264,8 @@
                         deciding which database to use, as long as it is compatible with the trino connectors.
                     </p>
                     -->
+                    <!-- Ease of migration from existing SQL based data processing -->
+                    <!-- Ease of access to data from different source systems - hive -->
                 </div>
                 <div class="column">
                     <figure class="image">
@@ -277,7 +282,7 @@
                     <p>
                         Data exploration can be done directly by using the SQL based data access provided by trino.
                         </br>
-                        The combination of jupyter notebooks with trino results in a <strong>powerful and flexible IDE for exploratory analysis</strong> e.g. by using python ecosystem.
+                        The combination of jupyter notebooks with trino results in a <strong>powerful and flexible IDE for exploratory analysis</strong> e.g. by using python ecosystem together with SQL processing.
                     </p>
 
                 </div>
@@ -290,13 +295,13 @@
                 </div>
             </div>
 
-            <!-- Using trino tables as data products -->
+            <!-- Using trino tables/sets of tables as data products -->
             <div class="columns">
                 <div class="column">
                     <p>
                         In a data mesh, every domain team provides analytical access to their data by the use of <strong>data products</strong>. Using trino, we can define a data product as a single or a combined set of SQL tables.
                         <br/>
-                        One lakeFS repository is used for all data products of one domain team. All these data products are accessible through the same SQL schema.
+                        We typically use one lakeFS repository for all data products of one domain team. All these data products are accessible through the same SQL schema.
                         <br/>
                         All data files holding the data of a single data product are stored in a seperate directory tree in our lakeFS file system.
                         <!--
@@ -307,7 +312,7 @@
                     </p>
                     <p>
                         To <strong>design a data product</strong>, we suggest a workflow that starts with the data exploration in jupyter notebooks.
-                        When this data exploration delivers analytical data in a useful form, the necessary data processing can also be implemented and quality approved by using jupyter notebooks.
+                        When this data exploration results in a useful form of analytical data, the necessary data processing can also be implemented and quality approved by using jupyter notebooks.
                         <br/>
                         Alternatively, a tool like <a href="https://www.getdbt.com/">dbt</a> can be used to implement the data processing.
                         <!--
@@ -391,7 +396,7 @@
                         Branches make further data exploration or tests easier by reducing the risk of loosing or corrupting valuable production data.
                         If anything goes wrong, the affected branch can just be reverted to an older state.
                         <br/>
-                        Branches provide the ability to <strong>do time travelling</strong> between sukzessive versions of the data from a data product.
+                        Branches provide the ability to <strong>do time travelling</strong> between successive versions of the data from a data product.
                         <br/>
                         The lakeFS data versioning support can also be helpful to better cope with the eventual consistency of the underlying object storage.
                     </p>
@@ -511,13 +516,13 @@
             </div>
             -->
 
-            <!-- metadata tracking = entweder manuell über marquez oder mit dbt loggen lassen -->
+            <!-- metadata tracking - visualizing data dependencies -->
 
             <div class="columns">
                 <div class="column">
                     <p>
                         Data products retrieve data from source systems or from other data products, perform transformations and analytical processing and provide access to the results.
-                        Tools for metadata tracking support logging of the corresponding metadata and thus help to retrace and   visualize the data flow, e.g. by using a <strong>data lineage graph</strong>, implemented for the data product.
+                        Tools for metadata tracking support logging of the corresponding metadata and thus help to retrace and   visualize the data flow and the dependencies between incoming an outgoing data, e.g. by using a <strong>data lineage graph</strong>, implemented for the data product.
                         <br/>
                         We typically use <a href="https://marquezproject.github.io/marquez/">Marquez</a>, the reference implementation of the <a href="https://openlineage.io/">Openlineage Standard</a> for metadata tracking.
                     </p>
@@ -546,9 +551,9 @@
 
             <!-- dashboard = BYO was in JNBs funktioniert, über trino auch advanced bi tools -->
 
-            <!--
             <div class="columns">
                 <div class="column">
+                    <!--
                     <p>
                         Another benefit of this tech stack is the <strong>high customizablility</strong>. This benefit shows when it comes to visualizing the data, because
                         this stack does not come with a built-in dashboard for data analysis.
@@ -556,6 +561,12 @@
                         We consider this a benefit, because you can decide on our own to prepare your own dashboards in jupyter notebooks, with frameworks like
                         Apache Zeppelin and the matplotlib, or if you like to integrate another framework via the JDBC endpoint that, like Apache Superset.
                         Additionally trino gives various options, like PowerBI, Tableau, Looker, Sisense, by allowing JDBC access.
+                    </p>
+                    -->
+                    <p>
+                        The tech stack provides <strong>many options to integrate packages or frameworks</strong> for data visualization.
+                        Frameworks like Apache Zeppelin and matplotlib can be used within jupyter notebooks.
+                        Other tools for data visualization could access data products (or could be used within data products) through JDBC endpoints. Examples are Apache Superset, PowerBI, Tableau, Looker, or Sisense.
                     </p>
                 </div>
                 <div class="column">
@@ -566,13 +577,29 @@
                     </figure>
                 </div>
             </div>
-            -->
 
-            <!-- monitoring = trino overview evtl ergänzend MinIO Speicherplatz -->
+            <!-- ease of monitoring integration -->
 
-            <!--
             <div class="columns">
                 <div class="column">
+                    <p>
+                        The tech stack could easily be integrated with modern <strong>monitoring</strong> tools.
+                        <br/>
+                        lakeFS as well as MinIO are offering a Prometheus integration for monitoring purposes.
+                    </p>
+                    <p>
+                        Furthermore trino offers an interface that provides information about queries. In this cluster overview you can track which queries were ran, are still running, queued or blocked together with performance and workload measurements, like active workers, running drivers, reserved memory,
+                        rows and bytes/sec and worker parallelism.
+                        Additionally there is an list about every query, which can be inspected, sorted and searched through.
+                    </p>
+                    <!--
+                    <p>
+                        Jupyter / dbt ?
+                    </p>
+                    <p>
+                        In case of MinIO, the collected metrics from Prometheus can even be visualized back in the MinIO Homescreen.
+                        First of all the performance and managing costs are most likely provided by the individual cloud provider.
+                    </p>
                     <p>
                         When it comes to <strong>monitoring</strong> this stack has a variety of monitoring tools.
                         <br/>
@@ -580,12 +607,7 @@
                         Additionally lakeFS as well as MinIO are offering a Prometheus integration for monitoring purposes.
                         In case of MinIO, the collected metrics from Prometheus can even be visualized back in the MinIO Homescreen.
                     </p>
-                    <p>
-                        Furthermore trino offers an interface that provides information about queries. In this cluster overview you can track which queries were ran,
-                        are still running, queued or blocked together with performance and workload measurements, like active workers, running drivers, reserved memory,
-                        rows and bytes/sec and worker parallelism.
-                        Additionally there is an list about every query, which can be inspected, sorted and searched through.
-                    </p>
+                    -->
                 </div>
                 <div class="column">
                     <figure class="image">
@@ -595,7 +617,6 @@
                     </figure>
                 </div>
             </div>
-            -->
 
             <div>
                 This stack is a powerful and highly flexible tech stack with a wide variety of integration possibilities.
