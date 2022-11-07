@@ -86,6 +86,9 @@
                         <a href="/tech-stacks/databricks.html" class="navbar-item">
                             Databricks
                         </a>
+                        <a href="/tech-stacks/lakefs-trino.html" class="navbar-item">
+                            lakeFS and Trino
+                        </a>
                     </div>
                 </div>
                 <div class="navbar-item has-dropdown is-hoverable">
@@ -184,10 +187,10 @@
                     <p>
                         This stack is combines the tools lakeFS and Trino. This combination has the main benefit of providing
                         data versioning to this data mesh stack. Furthermore, this stack comes with a very high customizability,
-                        which, most likely, is both beneficial as well as a challenging factor.
+                        which, most likely, is both a beneficial and a challenging factor.
                     </p>
                     <p>
-                        Overall this stack is very leightweight and wrapped into a docker environment.
+                        Overall this stack is very lightweight and wrapped into a docker environment.
                         This also means that at first it has to be configured in the docker configuration file, which is an initial configuration effort.
                         Once this setup is up and running, the transformation and cleaning of data can begin.
                     </p>
@@ -208,14 +211,14 @@
                         The storage stack gets combined with <strong>Trino, a fast and distributed query engine,</strong> that provides
                         sql-based access to the data-based filesystem.
                         This is also the tool that uses the local or cloud computing resources. This variation between a local and cloud setup thereby
-                        supports a simple initial setup as well as beeing a viable production solution.
+                        supports a simple initial setup as well as being a viable production solution.
                     </p>
                     <p>
                         Trino comes with the ability to combine tables from multiple databases in one sql statement, which is useful in the data mesh context.
                         <br/>
                         One the one hand, this is useful during the setup process, when the database gets built or transfered, because, if the old database solution is
                         compatible with Trino, it can be simply transfered or fully kept if necessary.
-                        </br>
+                        <br/>
                         On the other hand, it is useful when publishing data products, because it gives the domain teams a freedom of choice when
                         deciding which database to use, as long as it is compatible with the Trino connectors.
                     </p>
@@ -234,14 +237,14 @@
                 <div class="column">
                     <p>
                         The Trino engine will be used for transformation and data cleaning, which will be done in <strong>jupyter notebooks</strong>.
-                        </br>
-                        The combination of jupyter notebooks with Trino results a <strong>powerful and flexible IDE for exploratory analysis</strong> with python toolings.
+                        <br/>
+                        The combination of jupyter notebooks with Trino results a <strong>powerful and flexible IDE for exploratory analysis</strong> with python tooling.
                         Additionally using a database tool can help with an extra exploratory view on the data, but we recommend jupyter notebooks as
                         they can be easily used for exploratory as well as production purposes.
                     </p>
                     <p>
                         To <strong>design a data product</strong>, we suggest a workflow that starts with an exploratory phase in jupyter notebooks or database tooling.
-                        When this exploratory phase leads to an accepted data product, they can be transfered into persistent jupyter notebooks or dbt models.
+                        When this exploratory phase leads to an accepted data product, they can be transferred into persistent jupyter notebooks or dbt models.
                         <br/>
                         As an expansion, dbt can be used as it allows an easy setup of a persistent production workflow.
                         Although the data build tool, short dbt, is an optional tool in this tech stack, with dbt it is easy to automate the ELT-processes,
@@ -435,7 +438,7 @@
                     <p>
                         The <strong>organization</strong> of this stack can also have a simple version or an advanced one for production.
                         <br/>
-                        The </strong>simple organization</strong> of this stack is to have a single lakeFS instance for all teams.
+                        The <strong>simple organization</strong> of this stack is to have a single lakeFS instance for all teams.
                         In this instance each team can work in its own repository, but all teams share one database.
                         The teams can set up their own schemas, but these can not be access controlled to the other teams.
                         <br/>
@@ -444,8 +447,8 @@
                         where the other teams can look for data if needed.
                         <br/><br/>
                         While this is a good starting point, it is likely that more access management will be needed in a production environment.
-                        Therefore this solution can be adjusted to an <strong>advanced version</strong>, where each team works in its own lakeFS instance.
-                        That way the isolation gets rised one level above and the data products can still be easily shared through Trino.
+                        Therefore, this solution can be adjusted to an <strong>advanced version</strong>, where each team works in its own lakeFS instance.
+                        That way the isolation increases one level and the data products can still be easily shared through Trino.
                         The access for other teams will then be regulated through Trino profiles with read only access.
                         More precisely, if a team needs access to a table from another team, the database can be added to Trino with a simple properties file,
                         which optimally would be provided by the owning domain team with predefined access rights.
@@ -495,7 +498,7 @@
                         As mentioned, we recommend a <strong>metadata tracking service</strong>, which can be used to discover
                         available data products as well as using the data lineage to debug unusual data behaviour.
                         With metadata tracking, the processing steps of a data product can be tracked. This allows to discover the processing history
-                        as well as metadata of each dataset in a visually way. This also can be used and regulated in the federated governance.
+                        as well as metadata of each dataset in a visual way. This also can be used and regulated in the federated governance.
                     </p>
                     <p>
                         As an example, the data processing can be integrated with Marquez, a metadata tracking service that implements the Openlineage standard.
@@ -522,7 +525,7 @@
                         It has <strong>many options to integrate packages or frameworks</strong>.
                         We consider this a benefit, because you can decide on our own to prepare your own dashboards in jupyter notebooks, with frameworks like
                         Apache Zeppelin and the matplotlib, or if you like to integrate another framework via the JDBC endpoint that, like Apache Superset.
-                        Additionally Trino gives various options, like PowerBI, Tableau, Looker, Sisense, by allowing JDBC access.
+                        Additionally, Trino gives various options, like PowerBI, Tableau, Looker, Sisense, by allowing JDBC access.
                     </p>
                 </div>
                 <div class="column">
@@ -542,14 +545,14 @@
                         When it comes to <strong>monitoring</strong> this stack has a variety of monitoring tools.
                         <br/>
                         First of all the performance and managing costs are most likely provided by the individual cloud provider.
-                        Additionally lakeFS as well as MinIO are offering a Prometheus integration for monitoring purposes.
+                        Additionally, lakeFS as well as MinIO are offering a Prometheus integration for monitoring purposes.
                         In case of MinIO, the collected metrics from Prometheus can even be visualized back in the MinIO Homescreen.
                     </p>
                     <p>
                         Furthermore Trino offers an interface that provides information about queries. In this cluster overview you can track which queries were ran,
                         are still running, queued or blocked together with performance and workload measurements, like active workers, running drivers, reserved memory,
                         rows and bytes/sec and worker parallelism.
-                        Additionally there is an list about every query, which can be inspected, sorted and searched through.
+                        Additionally, there is a list about every query, which can be inspected, sorted and searched through.
                     </p>
 
 
