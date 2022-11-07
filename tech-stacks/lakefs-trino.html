@@ -141,8 +141,8 @@
             </p>
             <p>
                 <a href="https://trino.io">Trino</a> is a fast and distributed query engine.
-                Thereby trino works with a hive metastore <strong>to support SQL-based data processing</strong>.
-                With trino we have the ability to mix databases in single SQL-statements due to the support of using multiple databases.
+                Thereby Trino works with a hive metastore <strong>to support SQL-based data processing</strong>.
+                With Trino we have the ability to mix databases in single SQL-statements due to the support of using multiple databases.
             </p>
             <p>
                 <a href="https://trino.io">MinIO</a> is the complementary object storage.
@@ -182,7 +182,7 @@
             <div class="columns">
                 <div class="column">
                     <p>
-                        This stack is combines the tools lakeFS and trino. This combination has the main benefit of providing
+                        This stack is combines the tools lakeFS and Trino. This combination has the main benefit of providing
                         data versioning to this data mesh stack. Furthermore, this stack comes with a very high customizability,
                         which, most likely, is both beneficial as well as a challenging factor.
                     </p>
@@ -205,7 +205,7 @@
             <div class="columns">
                 <div class="column">
                     <p>
-                        The storage stack gets combined with <strong>trino, a fast and distributed query engine,</strong> that provides
+                        The storage stack gets combined with <strong>Trino, a fast and distributed query engine,</strong> that provides
                         sql-based access to the data-based filesystem.
                         This is also the tool that uses the local or cloud computing resources. This variation between a local and cloud setup thereby
                         supports a simple initial setup as well as beeing a viable production solution.
@@ -214,10 +214,10 @@
                         Trino comes with the ability to combine tables from multiple databases in one sql statement, which is useful in the data mesh context.
                         <br/>
                         One the one hand, this is useful during the setup process, when the database gets built or transfered, because, if the old database solution is
-                        compatible with trino, it can be simply transfered or fully kept if necessary.
+                        compatible with Trino, it can be simply transfered or fully kept if necessary.
                         </br>
                         On the other hand, it is useful when publishing data products, because it gives the domain teams a freedom of choice when
-                        deciding which database to use, as long as it is compatible with the trino connectors.
+                        deciding which database to use, as long as it is compatible with the Trino connectors.
                     </p>
                 </div>
                 <div class="column">
@@ -233,9 +233,9 @@
             <div class="columns">
                 <div class="column">
                     <p>
-                        The trino engine will be used for transformation and data cleaning, which will be done in <strong>jupyter notebooks</strong>.
+                        The Trino engine will be used for transformation and data cleaning, which will be done in <strong>jupyter notebooks</strong>.
                         </br>
-                        The combination of jupyter notebooks with trino results a <strong>powerful and flexible IDE for exploratory analysis</strong> with python toolings.
+                        The combination of jupyter notebooks with Trino results a <strong>powerful and flexible IDE for exploratory analysis</strong> with python toolings.
                         Additionally using a database tool can help with an extra exploratory view on the data, but we recommend jupyter notebooks as
                         they can be easily used for exploratory as well as production purposes.
                     </p>
@@ -267,11 +267,11 @@
                         Also, when publishing a data product, usually a table or view, it gets marked as a final <em>data_product</em>. Thereby its beneficial
                         to put them into a dedicated schema like <code>data_products</code>, which can be saved in a separate folder in lakeFS.
                         <br/>
-                        To publish the data product that or any sub folder with the raw data can be published via lakeFS, but we recommend to use trino.
-                        With trino, <strong>using data products from other domains</strong> can be easily referred through the ability to combine tables
+                        To publish the data product that or any sub folder with the raw data can be published via lakeFS, but we recommend to use Trino.
+                        With Trino, <strong>using data products from other domains</strong> can be easily referred through the ability to combine tables
                         from multiple sources in the same sql statement.
                         <br/>
-                        With that, you can just configure the fitting trino connector and just use the data product in your next sql statement.
+                        With that, you can just configure the fitting Trino connector and just use the data product in your next sql statement.
                     </p>
                 </div>
                 <div class="column">
@@ -445,9 +445,9 @@
                         <br/><br/>
                         While this is a good starting point, it is likely that more access management will be needed in a production environment.
                         Therefore this solution can be adjusted to an <strong>advanced version</strong>, where each team works in its own lakeFS instance.
-                        That way the isolation gets rised one level above and the data products can still be easily shared through trino.
-                        The access for other teams will then be regulated through trino profiles with read only access.
-                        More precisely, if a team needs access to a table from another team, the database can be added to trino with a simple properties file,
+                        That way the isolation gets rised one level above and the data products can still be easily shared through Trino.
+                        The access for other teams will then be regulated through Trino profiles with read only access.
+                        More precisely, if a team needs access to a table from another team, the database can be added to Trino with a simple properties file,
                         which optimally would be provided by the owning domain team with predefined access rights.
                     </p>
                     <!--
@@ -522,7 +522,7 @@
                         It has <strong>many options to integrate packages or frameworks</strong>.
                         We consider this a benefit, because you can decide on our own to prepare your own dashboards in jupyter notebooks, with frameworks like
                         Apache Zeppelin and the matplotlib, or if you like to integrate another framework via the JDBC endpoint that, like Apache Superset.
-                        Additionally trino gives various options, like PowerBI, Tableau, Looker, Sisense, by allowing JDBC access.
+                        Additionally Trino gives various options, like PowerBI, Tableau, Looker, Sisense, by allowing JDBC access.
                     </p>
                 </div>
                 <div class="column">
@@ -546,7 +546,7 @@
                         In case of MinIO, the collected metrics from Prometheus can even be visualized back in the MinIO Homescreen.
                     </p>
                     <p>
-                        Furthermore trino offers an interface that provides information about queries. In this cluster overview you can track which queries were ran,
+                        Furthermore Trino offers an interface that provides information about queries. In this cluster overview you can track which queries were ran,
                         are still running, queued or blocked together with performance and workload measurements, like active workers, running drivers, reserved memory,
                         rows and bytes/sec and worker parallelism.
                         Additionally there is an list about every query, which can be inspected, sorted and searched through.
@@ -579,7 +579,7 @@
             <ul>
                 <li><a href="https://docs.min.io">Official MinIO documentation</a></li>
                 <li><a href="https://docs.lakefs.io">Official lakeFS documentation</a></li>
-                <li><a href="https://trino.io/docs/current/">Official trino documentation</a></li>
+                <li><a href="https://trino.io/docs/current/">Official Trino documentation</a></li>
                 <li><a href="https://lakefs.io/category/integrations/">Various lakeFS blogposts to integration of lakeFS with MinIO and Trino</a></li>
                 <br/>
                 <li><a href="https://prometheus.io">Prometheus website</a></li>
