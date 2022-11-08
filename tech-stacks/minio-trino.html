@@ -163,13 +163,13 @@
             <div class="columns">
                 <div class="column">
                     <p>
-                        <a href="https://min.io">MinIO</a> provides simple and high-performance object storage with a wide variety of deployment options. The MinIO based object
+                        <a href="https://min.io">MinIO</a> provides simple and high-performance object storage with a wide variety of deployment options. Thereby the MinIO object
                         storage can be backed up by any <strong>s3-compatible object storage</strong>.
                         <!-- MinIO provides a now community driven <strong>Azure Gateway</strong>, which allows to connect to the non-s3-compatible storage Azure Data Lake Gen 1. -->
                     </p>
                     <p>
                         We typically use <a href="https://lakefs.io">LakeFS</a> as an independent hierarchical file system on top of the underlying object storage.
-                        A benefit of lakeFS is the git-like data versioning support, which we will describe in a later section.
+                        A benefit of lakeFS is the git-like data versioning support, which we will come back to in a later section.
                     </p>
                 </div>
                 <!-- noch ein lakeFS filesystem bild dazu ? -->
@@ -187,14 +187,14 @@
                 <div class="column">
                     <p>
                         <a href="https://trino.io">Trino</a> is a distributed, highly scalable query engine, that allows to access and manipulate data from <strong>various storage systems</strong>.
-                        Trino thereby currently relies on a Hive metastore to support SQL based access to data files stored in object storage systems.
+                        Trino therefore currently relies on a Hive metastore to support SQL based access to data files stored in object storage systems.
                     </p>
                     <!-- Ease of migration from existing SQL based data processing -->
                     <p>
                         Trino comes with the ability to combine tables from multiple sources in one sql statement.
                         This gives an easy migration for already existing applications.
-                        For example, if the old database solution is compatible with trino, it can be simply transfered for the new solution or even be integrated into the data mesh.
-                        Additionally, this makes the connection to source systems very easy.
+                        For example, if the old database solution is compatible with trino, it can simply be transfered for the new solution or even be integrated into the data mesh.
+                        Additionally, this makes the connection to source systems much easier.
                     </p>
                 </div>
                 <div class="column">
@@ -212,7 +212,7 @@
                     <p>
                         The data exploration can be done directly using the SQL data access provided by trino.
                         </br>
-                        Combining jupyter notebooks with trino results in a <strong>powerful and flexible IDE for exploratory analysis</strong> using an ecosystem like python together with SQL processing.
+                        Therefore, combining jupyter notebooks with trino results in a <strong>powerful and flexible IDE for exploratory analysis</strong> using an ecosystem like python together with SQL processing.
                     </p>
 
                 </div>
@@ -234,7 +234,7 @@
                         We typically use one lakeFS repository for all data products of a domain team. All of these data products are accessible through the same SQL schema.
                         <br/>
                         All data files holding the data of a data product are stored in a separate directory tree in our lakeFS file system.
-                        With trino <strong>data products from different domains</strong> can be easily combined by using standard SQL joins.
+                        With trino, <strong>data products from different domains</strong> can be easily combined by using standard SQL joins.
                     </p>
                     <p>
                         To <strong>design a data product</strong>, we suggest a workflow that starts with the data exploration in jupyter notebooks.
@@ -260,10 +260,10 @@
                         Thereby <strong>lakeFS provides data versioning</strong> for the data in the underlying object store.
                         lakeFS branches support the creation of isolated snapshots of data. The data provided through a version of a data product could be stored on a specific branch.
                         <br/>
-                        The benefit is that in this process the underlying <strong>data files are not actually copied</strong> for the creation of a branch, which can save a lot of storage space.
+                        The benefit is that in this process the underlying <strong>data files are not actually copied</strong> for the creation of this branch, which can save a lot of storage space.
                     </p>
                     <p>
-                        Moreover branches make the data exploration or testing easier by reducing the risk of loosing or corrupting valuable production data.
+                        Moreover, branches make the data exploration or testing easier by reducing the risk of loosing or corrupting valuable production data.
                         If something goes wrong, the affected branch can just be deleted or reverted to an older state.
                         <br/>
                         <!-- formulierung ? -->
@@ -299,7 +299,7 @@
                         That way the access for other teams can be regulated through the lakeFS access control.
                     </p>
                     <p> <!-- ? -->
-                        Additionally there are more (minIO, cloud provider) instances of access management, that can be configured if more instances of isolation are needed.
+                        Additionally there are more instances of access management (MinIO, cloud provider), that can be configured if more levels of isolation are needed.
                     </p>
                 </div>
 
@@ -318,8 +318,8 @@
                 <div class="column">
                     <p>
                         Data products retrieve data from source systems or from other data products, perform transformations and analytical processing and provide access to the results.
-                        Tools for metadata tracking support logging the corresponding metadata for each step. Thus they help to retrace and visualize the data flow and the dependencies between incoming an outgoing data.
-                        Thereby they are using the visual <strong>data lineage graph</strong> to support inspecting the processed data.
+                        Tools for metadata tracking do support logging the corresponding metadata for each of these steps. Thus they help to retrace and visualize the data flow and the dependencies between incoming and outgoing data.
+                        Thereby they are using the visual <strong>data lineage graph</strong> to further support inspecting the processed data.
                         <br/>
                         We typically use <a href="https://marquezproject.github.io/marquez/">Marquez</a>, the reference implementation of the <a href="https://openlineage.io/">Openlineage Standard</a>, for metadata tracking.
                     </p>
@@ -338,11 +338,10 @@
             <div class="columns">
                 <div class="column">
                     <p>
-                        To create dashboards and visualisation graphs, this tech stack provides <strong>multiple options to integrate packages or frameworks</strong>.
-                        This allows using frameworks that are already used in a solution.
+                        To create dashboards and visualization graphs, this tech stack provides <strong>multiple options to integrate packages or frameworks</strong>, which also allows to use frameworks that are already used in a current solution.
                         <br/>
-                        Within jupyter notebooks, packages like Apache Zeppelin or matplotlib can be used to create data visualisation diagramms. Also through JDBC endpoints
-                        other tools can access the data products (or can be used within data products). Examples for those are Apache Superset, PowerBI, Tableau, Looker, or Sisense.
+                        In general, within jupyter notebooks, packages like Apache Zeppelin or matplotlib can be used to create data visualization diagrams. Also, through the JDBC endpoints
+                        other tools can access the data products (or can be used within data products). Examples of those are Apache Superset, PowerBI, Tableau, Looker, and Sisense.
                     </p>
                 </div>
                 <div class="column">
@@ -362,10 +361,10 @@
                         The tech stack can easily be integrated with modern <strong>monitoring</strong> tools.
                         <br/>
                         Therefore lakeFS as well as MinIO are offering a <a href="https://prometheus.io">Prometheus</a> integration for monitoring purposes.
-                        Jupyter notebooks also have a variety of monitoring options. As always in jupyter notebooks, there is the option of implementing a monitoring graph on your own, but there are also extensions like the <a href="https://github.com/jupyter-server/jupyter-resource-usage">jupyter resource usage</a>, which adds the current total memory usage of jupyter notebooks to the main toolbar.
+                        Jupyter notebooks also have a variety of monitoring options. As always with jupyter notebooks, there is the option of implementing a monitoring graph on your own. Still, there are extensions like the <a href="https://github.com/jupyter-server/jupyter-resource-usage">jupyter resource usage</a>, which adds the current total memory usage of jupyter notebooks to the main toolbar.
                         <br/>
-                        Additionally trino offers an interface that provides information about queries. In this cluster overview you can track, which queries were ran, are still running, queued or blocked together with performance and workload measurements, like active workers, running drivers, reserved memory,
-                        rows and bytes/sec, and worker parallelism. Additionally there is a list about every query, which can be inspected, sorted and searched through.
+                        Additionally, trino offers an interface that provides information about queries. In this cluster overview you can track, which queries were ran, are still running, queued or blocked together with performance and workload measurements, like active workers, running drivers, reserved memory,
+                        rows and bytes/sec, and worker parallelism. Furthermore, there is a list about every query, which can be inspected, sorted and searched through.
                     </p>
                 </div>
                 <div class="column">
