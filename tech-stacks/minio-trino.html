@@ -10,12 +10,12 @@
     <meta name="twitter:site" content="@innoq" />
     <meta name="twitter:title" content="Data Mesh Architecture: MinIO and Trino" />
     <meta name="twitter:description" content="How to build a data mesh architecture with MinIO and Trino" />
-    <!--meta name="twitter:image" content="https://www.datamesh-architecture.com/images/databricks_card.png" /-->
+    <meta name="twitter:image" content="https://www.datamesh-architecture.com/images/minio-trino_card.png" />
     <meta name="twitter:image:alt" content="Data Mesh Architecture: Domains are in the center and teams do analytics on their own. They build and interconnect with data products. A data platform team and a enablement team help. Global policies are agreed through federated governance." />
     <meta property="og:url" content="https://datamesh-architecture.com" />
     <meta property="og:title" content="Data Mesh Architecture: MinIO and Trino" />
     <meta property="og:description" content="How to build a data mesh architecture with MinIO and Trino" />
-    <!--meta property="og:image" content="https://www.datamesh-architecture.com/images/databricks_card.png" /-->
+    <meta property="og:image" content="https://www.datamesh-architecture.com/images/minio-trino_card.png" />
 
     <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Book.woff2?cachebuster=2" crossorigin="">
     <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Bold.woff2?cachebuster=2" crossorigin="">
@@ -134,7 +134,7 @@
             <p>
                 For local development and PoCs we often use a tech stack based on Trino for query processing and Minio for storage using columnar file formats like Parquet or open table formats like Iceberg.
                 We believe, that this tech stack can also be used for production environments, where the offerings of vendors like Databricks or Snowflake are considered too costly.
-                This tech stack can easily be enhanced with tools like jupyter notebooks for data exploration and processing, dbt for enhanced automated data transformation, lakefs for data versioning or Marquez for data lineage support.
+                This tech stack can easily be enhanced with tools like jupyter notebooks for data exploration and processing, dbt for enhanced automated data transformation, LakeFS for data versioning or Marquez for data lineage support.
                 <br/>
             </p>
             
@@ -145,7 +145,7 @@
                 <div class="column">
                     <p>
                         <!-- deployment options: kubernetes or pandio + jupyterHub + elestio -->
-                        This tech stack is leightweight, which we deployed locally using docker-compose.
+                        This tech stack is lightweight, which we deployed locally using docker-compose.
                         For production deployment that local setup could be transferred via kubernetes as a managed service. This should be quite straightforward, but it hasn't been done by us, yet.
                         Another deployment option would be using separate managed services like Pandio for Trino, Elestio for MinIO and JupyterHub for the notebooks.
                     </p>
@@ -193,7 +193,7 @@
                     <p>
                         Trino comes with the ability to combine tables from multiple sources in one sql statement.
                         This gives an easy migration for already existing applications.
-                        For example, if the old database solution is compatible with trino, it can simply be transfered for the new solution or even be integrated into the data mesh.
+                        For example, if the old database solution is compatible with trino, it can simply be transferred for the new solution or even be integrated into the data mesh.
                         Additionally, this makes the connection to source systems much easier.
                     </p>
                 </div>
@@ -211,7 +211,7 @@
                 <div class="column">
                     <p>
                         The data exploration can be done directly using the SQL data access provided by trino.
-                        </br>
+                        <br/>
                         Therefore, combining jupyter notebooks with trino results in a <strong>powerful and flexible IDE for exploratory analysis</strong> using an ecosystem like python together with SQL processing.
                     </p>
 
@@ -295,7 +295,7 @@
                         The teams can work in their own schemas, but these can not be access controlled to the other teams.
                         <br/><br/>
                         While this is a good starting point, it is likely that more access management will be needed in a production environment.
-                        Therefore this solution can be adjusted to an advanced approach, where each team works in its own lakeFS instance.
+                        Therefore, this solution can be adjusted to an advanced approach, where each team works in its own lakeFS instance.
                         That way the access for other teams can be regulated through the lakeFS access control.
                     </p>
                     <p> <!-- ? -->
@@ -318,7 +318,7 @@
                 <div class="column">
                     <p>
                         Data products retrieve data from source systems or from other data products, perform transformations and analytical processing and provide access to the results.
-                        Tools for metadata tracking do support logging the corresponding metadata for each of these steps. Thus they help to retrace and visualize the data flow and the dependencies between incoming and outgoing data.
+                        Tools for metadata tracking do support logging the corresponding metadata for each of these steps. Thus, they help to retrace and visualize the data flow and the dependencies between incoming and outgoing data.
                         Thereby they are using the visual <strong>data lineage graph</strong> to further support inspecting the processed data.
                         <br/>
                         We typically use <a href="https://marquezproject.github.io/marquez/">Marquez</a>, the reference implementation of the <a href="https://openlineage.io/">Openlineage Standard</a>, for metadata tracking.
@@ -402,9 +402,6 @@
                 <li><a href="https://matplotlib.org/stable/">Official matplotlib documentation</a></li>
                 <li><a href="https://superset.apache.org">Official Apache Superset documentation</a></li>
                 <li><a href="https://pandio.com">Official Pandio website</a></li>
-
-
-
             </ul>
 
         </div>
