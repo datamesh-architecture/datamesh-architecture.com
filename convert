@@ -18,6 +18,8 @@ convert images/dbt-snowflake.png -splice 350x0 -extent 3175x1709 images/dbt-snow
 convert images/dbt-snowflake_card.png -resize 1600 images/dbt-snowflake_card.1600px.png
 convert images/databricks.png -splice 350x0 -extent 3175x1709 images/databricks_card.png
 convert images/databricks_card.png -resize 1600 images/databricks_card.1600px.png
+convert images/minio-trino.png -splice 350x0 -extent 3175x1709 images/minio-trino_card.png
+convert images/minio-trino_card.png -resize 1600 images/minio-trino_card.1600px.png
 
 # requires installation
 #
