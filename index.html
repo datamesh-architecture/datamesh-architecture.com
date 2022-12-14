@@ -427,7 +427,7 @@
                             For analytical use cases, it is often required to have both the latest state and the history of states over time.
                             There are several approaches to ingest entities.
                             One way is to generate and publish an <strong>onCreate/onUpdate/onDelete event</strong> with the current state  every time an entity is changed, e.g. by adding an
-                            <a href="https://en.wikipedia.org/wiki/Aspect-oriented_programming">aspect&nbsp;<i class="fa-solid fa-arrow-up-right-from-square"></i></a> or <a href="https://docs.spring.io/spring-data/jpa/docs/current/api/index.html?org/springframework/data/jpa/domain/support/AuditingEntityListener.html">EntityListeners&nbsp;<i class="fa-solid fa-arrow-up-right-from-square"></i></a>.
+                            <a href="https://en.wikipedia.org/wiki/Aspect-oriented_programming">aspect&nbsp;<i class="fa-solid fa-arrow-up-right-from-square"></i></a> or <a href="https://docs.spring.io/spring-data/jpa/docs/current/api/org/springframework/data/jpa/domain/support/AuditingEntityListener.html">EntityListeners&nbsp;<i class="fa-solid fa-arrow-up-right-from-square"></i></a>.
                             Then streaming ingestion can be used to ingest the data as described above.
                             When it is not feasible to change the operational software, <strong>change
                             data capture (CDC)</strong> may be used to listen to database changes directly and stream them into the data platform.
