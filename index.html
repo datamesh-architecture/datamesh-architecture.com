@@ -268,8 +268,8 @@
             <p class="mt-5">
                 A data mesh architecture is a decentralized approach that enables domain teams to perform cross-domain data analysis on their own.
                 At its core is the domain with its responsible team and its operational and analytical data.
-                The domain team ingests operational data and builds analytical data models to perform their own analysis.
-                It uses analytical data to build data products based on other domains’ needs.
+                The domain team ingests operational data and builds analytical data models as data products to perform their own analysis.
+                It may also choose to publish data products with data contracts to serve other domains’ data needs.
             </p>
             <img src="images/datamesharchitecture.png.webp" alt="Data Mesh Architecture" style="width: 100%">
             <p>
@@ -282,27 +282,34 @@
             </p>
         </div>
 
+
         <div class="card mt-5">
             <div class="card-content">
                 <h4 class="title is-4">Data Product</h4>
                 <div class="columns reverse-columns">
                     <div class="column content">
                         <p>
-                            A data product usually is a published <strong>data set</strong> that can be accessed by other domains, similar to an API.
-                            For example, the history of inventory updates in a Google BigQuery table
-                            or a daily JSON file with purchase orders on an AWS S3 bucket.
-                            A data product can take other forms as well, including
-                            a sales report containing KPIs and charts as a PDF or even a
-                            machine learning model to predict shipping dates as an ONNX file.
+                            A data product is an autonomous technical component that contains all data, code, and interfaces to serve the domain team's or other teams' analytical data needs. You can think of a microservice, but for analytical data.
                         </p>
                         <p>
-                            To discover, access, and use the data product, it is described with <strong>metadata</strong>, including
-                            ownership and contact information, data location and access, update frequency,
-                            and a specification of the data model.
+                            Data products connect to sources, such as operational systems or other data products and perform data transformation. Data products can produce analytical data in different formats. Some examples:
+                        </p>
+                        <ul>
+                            <li>A BigQuery table</li>
+                            <li>Parquet files in a AWS S3 bucket</li>
+                            <li>Delta files in Azure Data Lake Storage Gen2</li>
+                            <li>Dashboards in Looker</li>
+                            <li>PDF reports sent as email</li>
+                            <li>A machine learning model as an ONNX file</li>
+                        </ul>
+                        <p>
+                            When data products provide data for other teams, a data contract defines the endpoint, syntax, semantics, and quality of provided data, similar to OpenAPI or AsyncAPI specifications.
+                            Data contracts are usually defined in a central data catalog, along with further metadata. Currently, there is no industry standard for data contracts.
                         </p>
                         <p>
-                            The domain team is responsible for the <strong>operations</strong> of the data product during its entire lifecycle.
-                            The team needs to continuously monitor and ensure data quality and availability.
+                            A data product is owned by a domain team.
+                            The team is responsible for the operations of the data product during its entire lifecycle.
+                            The team needs to continuously monitor and ensure data quality, availability, and costs.
                             For example, keep the data without duplicates or react to missing entries.
                         </p>
                         <p>
@@ -354,7 +361,6 @@
                         </figure>
                     </div>
                 </div>
-
 
             </div>
         </div>
