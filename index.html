@@ -254,7 +254,7 @@
                         With its platform, the data platform team enables domain teams to seamlessly consume and create data products.
                     </p>
                     <p>
-                        The <strong>federated governance</strong> principle achieves interoperability of all data products through standardization, which is promoted through the whole data mesh by the governance guild.
+                        The <strong>federated governance</strong> principle achieves interoperability of all data products through standardization, which is promoted through the whole data mesh by the governance group.
                         The main goal of federated governance is to create a data ecosystem with adherence to the organizational rules and industry regulations.
                     </p>
                 </div>
@@ -273,7 +273,7 @@
             </p>
             <img src="images/datamesharchitecture.png.webp" alt="Data Mesh Architecture" style="width: 100%">
             <p>
-                The domain team agrees with others on global policies, such as interoperability, security, and documentation standards in a federated governance guild, so that domain teams know how to discover, understand and use data products available in the data mesh.
+                The domain team agrees with others on global policies, such as interoperability, security, and documentation standards in a federated governance group, so that domain teams know how to discover, understand and use data products available in the data mesh.
                 The self-serve domain-agnostic data platform, provided by the data platform team, enables domain teams to easily build their own data products and do their own analysis effectively.
                 An enabling team guides domain teams on how to model analytical data, use the data platform, and build and maintain interoperable data products.
             </p>
@@ -319,7 +319,7 @@
                     <div class="column">
 
                         <p class="image">
-                            <img src="images/dataproduct.png.webp" alt="Data Product consists of Data, Metadata, and Operations">
+                            <img src="images/data-product-canvas-template.png.webp" alt="Data Product consists of Data, Metadata, and Operations">
                         </p>
                     </div>
                 </div>
@@ -332,7 +332,7 @@
                 <div class="columns reverse-columns">
                     <div class="column content">
                         <p>
-                            The federated governance body is typically organized as a guild consisting of representatives of all teams taking part in the data mesh.
+                            The federated governance group is typically organized as a guild consisting of representatives of all teams taking part in the data mesh.
                             They agree on global policies, which are the rules of play in the data mesh.
                             These rules define how the domain teams have to build their data products.
                         </p>
@@ -367,11 +367,11 @@
 
         <div class="card mt-5">
             <div class="card-content">
-                <h4 class="title is-4">Analytical Data</h4>
+                <h4 class="title is-4">Transformations</h4>
                 <div class="columns reverse-columns">
                     <div class="column content">
                         <p>
-                            Diving into the analytical data, we can see the data flows that lead toward the data products.
+                            Diving into the organization of data within a data product, we can see the different kind of data that flows through different stages.
                             Operational data is often ingested as some kind of <strong>raw</strong> and unstructured data.
                         </p>
                         <p>
@@ -385,11 +385,12 @@
                         </p>
                         <p>
                             Data from other teams are integrated as <strong>external</strong> data.
-                            When using data products from other teams that are well governed, this integration might be implemented in a very lightweight way.
+                            When using data products from other teams that are well-governed, this integration might be implemented in a very lightweight way.
                             In case of importing data from legacy systems, the external area acts as an <a href="https://www.domainlanguage.com/ddd/reference/">anti-corruption layer&nbsp;<i class="fa-solid fa-arrow-up-right-from-square"></i></a>.
                         </p>
                         <p>
-                            The published data product is derived by <strong>aggregating</strong> a subset of the events, entities, manual, and external data.
+                            <strong>Aggregations</strong> combine data to answer analytical questions.
+                            Domain data can be published to other teams by defining a data contract. The data contract is usually implemented by a view, that is stable, even when the underlying data models change.
                         </p>
                     </div>
 
@@ -893,9 +894,9 @@
                     mind, you try out the self-serve data platform that’s being promoted by the data
                     platform team.
                     For example, you now have access to Google BigQuery.
-                    On this platform, your team starts to build an analytical data model from your
-                    operational databases.
-                    This allows you to analyze data covering your own systems with maintainable and
+                    On this platform, your team starts to build an analytical data model by ingesting
+                    messages from Kafka. This is your first data product.
+                    The data platform allows you to analyze data covering your own systems with maintainable and
                     fast queries, while keeping the schemas of your operational databases untouched.
                     You learn how to structure, preprocess, clean, analyze, and visualize analytical
                     data&mdash;that’s a lot to learn even though most is SQL, which you are already
@@ -934,14 +935,14 @@
                     Examples are A/B tests of the effect of a UI change to the conversion rate or
                     building up machine learning models for fraud detection that include previous
                     purchasing history and current click stream behavior.
-                    This requires that other teams share their data in a way that your team can
+                    This requires that other teams share their data products in a way that your team can
                     discover, access, and use it.
                     This is when the mesh begins to form itself.
                 </p>
                 <p>
                     When a team becomes a consuming member of the data mesh, it starts to gain
                     interest in the interoperability and governance of the data mesh.
-                    Ideally, the team will send a representative to the data mesh governance body.
+                    Ideally, the team will send a representative to the data mesh governance group.
                 </p>
                 <p>
                     In case you are the first team, you may have to skip this step for now and move
@@ -961,35 +962,35 @@
 
         <div class="columns is-vcentered mt-6">
             <div class="column content">
-                <h3 class="title is-3"><span class="tag">Level 4</span> Publish Data as a Product
+                <h3 class="title is-3"><span class="tag">Level 4</span> Publish Data Contracts
                 </h3>
             </div>
         </div>
         <div class="columns reverse-columns is-vcentered">
             <div class="column content">
                 <p>
-                    Based on other teams' needs, you share your data with others as products.
+                    Based on other teams' needs, you share your data with others by publishing data contracts.
                     For example, you provide the confirmed, rejected, and aborted orders so others
                     can correlate their events to the conversion rate.
-                    Instead of just being a consumer of data products, you become a producer of data
+                    Instead of just being a consumer of data products, you become a  publisher of data
                     products.
                     You generate value for other teams.
                     But at the same time, it increases your responsibility and operational duties in
                     the long term.
                 </p>
                 <p>
-                    Data products must comply with the global policies defined by the federated
-                    governance body.
+                    Published data products must comply with the global policies defined by the federated
+                    governance group.
                     You have to know and understand the current global policies.
                     Now, at the latest, you need to participate in and contribute to the federated
-                    governance body.
+                    governance group.
                 </p>
             </div>
             <div class="column">
                 <figure class="image">
                     <a href="images/domainteamjourney_level4.png.webp" class="glightbox">
                         <img src="images/domainteamjourney_level4.png.webp"
-                             alt="Level 4: Publish Data as a Product">
+                             alt="Level 4: Publish Data Contracts">
                     </a>
                 </figure>
             </div>
@@ -1020,7 +1021,7 @@
             <p>
                 Data mesh is primarily an organizational construct and fits right into the <a href="https://teamtopologies.com/key-concepts">principles of team topologies&nbsp;<i class="fa-solid fa-arrow-up-right-from-square"></i></a>.
                 It shifts the responsibilities for data toward domain teams which are supported by a data platform team and a data enabling team.
-                Representatives of all teams come together in a federated governance guild to define the common standards.
+                Representatives of all teams come together in a federated governance group to define the common standards.
             </p>
             <p>
                 Today, in many organizations a central data team is responsible for a wide range of analytical tasks, from data engineering and managing data infrastructure to creating C-level reports.
@@ -1031,7 +1032,7 @@
                 Data mesh offers new perspectives for members of the central data team as their analytical and data engineering skills remain highly necessary.
                 For example, they are a perfect fit to establish the data platform for people that prefer to work on the infrastructure.
                 Some of them can form a data enabling team to act as internal consultants, <a href="#domain-teams-journey">helping domain teams on their journey</a>.
-                Regardless of their new roles, many of them will meet again in the data mesh federated governance guild to shape the future of the data mesh.</p>
+                Regardless of their new roles, many of them will meet again in the data mesh federated governance group to shape the future of the data mesh.</p>
             </div>
         </div>
         </div>
@@ -1349,30 +1350,6 @@ Aggregate domains and consumer-aligned domains can include all foreign data that
 
                 <div class="content">
                     Intro article to data mesh with examples in the Google Cloud.
-                </div>
-            </div>
-        </div>
-
-        <div class="card mb-3">
-            <div class="card-content">
-                <div class="media">
-                    <div class="media-left">
-                        <span class=" icon is-large has-text-info">
-                        <i class="fa-solid fa-file-lines fa-2x"></i>
-                        </span>
-                    </div>
-                    <div class="media-content">
-                        <p class="title is-4">
-                            <a href="https://www.innoq.com/en/blog/data-mesh-to-go-how-to-data-product/">Data Mesh to Go: How to Get the Data Product</a>
-                        </p>
-                        <p class="subtitle is-6">
-                            by Philipp Beyerlein
-                        </p>
-                    </div>
-                </div>
-
-                <div class="content">
-                    In this article, our colleague Philipp gives a nice introduction on how to identify data products using event-storming.
                 </div>
             </div>
         </div>
