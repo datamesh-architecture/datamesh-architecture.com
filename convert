@@ -21,6 +21,9 @@ convert images/databricks_card.png -resize 1600 images/databricks_card.1600px.pn
 convert images/minio-trino.png -splice 350x0 -extent 3175x1709 images/minio-trino_card.png
 convert images/minio-trino_card.png -resize 1600 images/minio-trino_card.1600px.png
 
+# optimize PNGs
+docker run --rm -it -v `pwd`/images:/data-volume labynocle/imagif-compressor:latest
+
 # requires installation
 #
 # brew install webp
@@ -29,10 +32,10 @@ for i in images/*.png; do
     cwebp -q 100 -quiet -lossless "$i" -o "$i.webp"
 done
 
-
-
 #convert -bordercolor white -border 50 data-product-canvas-template.png data-product-canvas-template_with-border.png
 #docker run --rm -it -v "`pwd`:/app" -w /app minidocks/img2pdf --pagesize A0^T -o data-product-canvas-template_v1.pdf data-product-canvas-template_with-border.png
 #rm data-product-canvas-template_with-border.png
 
+# create PDFs
 docker run --rm -it -v "`pwd`:/app" -w /app minidocks/img2pdf --pagesize A0^T --border 2cm -o images/data-product-canvas-template_v1.pdf images/data-product-canvas-template.png
+
