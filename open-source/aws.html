@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Data Mesh Architecture: Data Products with Terraform on AWS</title>
+    <title>Data Mesh Architecture: Open Source Terraform Modules for Data Products on AWS</title>
     <meta charset="utf-8">
     <meta name="description" content="How to build a data mesh architecture with Terraform on AWS" />
     <meta name="keywords" content="data mesh, data mesh architecture, domain-driven data analytics, data analytics, domain-driven design, domain ownership, data as a product, data product, federated governance, self-serve data platform, data platform">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@innoq" />
-    <meta name="twitter:title" content="Data Mesh Architecture: Data Products with Terraform on AWS" />
+    <meta name="twitter:title" content="Data Mesh Architecture: Open Source Terraform Modules for Data Products on AWS" />
     <meta name="twitter:description" content="How to build a data mesh architecture with Terraform on AWS" />
     <meta name="twitter:image" content="https://www.datamesh-architecture.com/images/aws-s3-athena_card.png" />
     <meta name="twitter:image:alt" content="Data Mesh Architecture: Domains are in the center and teams do analytics on their own. They build and interconnect with data products. A data platform team and a enablement team help. Global policies are agreed through federated governance." />
     <meta property="og:url" content="https://datamesh-architecture.com" />
-    <meta property="og:title" content="Data Mesh Architecture: Data Products with Terraform on AWS" />
+    <meta property="og:title" content="Data Mesh Architecture: Open Source Terraform Modules for Data Products on AWS" />
     <meta property="og:description" content="How to build a data mesh architecture with Terraform on AWS" />
     <meta property="og:image" content="https://www.datamesh-architecture.com/images/aws-s3-athena_card.png" />
 
@@ -133,7 +133,7 @@
             </ul>
         </nav>
 
-        <h1 class="title">Data Products with Terraform on AWS</h1>
+        <h1 class="title">Open Source Terraform Modules for Data Products on AWS</h1>
 
         <div class="notification is-info is-light">
             Data mesh is primarily an organizational approach, and that's why you can't buy a data mesh from a vendor. Technology, however, is important still as it acts as an enabler for data mesh, and only useful and easy to use solutions will lead to domain teams' acceptance. The available offerings of cloud providers already provide a sufficient set of good self-serve data services to let you form a data platform for your data mesh. We want to show which services can be used to get started.
@@ -143,49 +143,77 @@
             <p>
                 As stated in <a href="https://www.datamesh-architecture.com/tech-stacks/aws-s3-athena">Tech Stacks / AWS S3 and AWS Athena</a>, we often see Data Mesh implementations relying on <strong>AWS S3 and AWS Athena</strong> as the primary means to share and query data products.
             </p>
-            <img src="../images/aws-s3-athena.png.webp" alt="Data Mesh Architecture with AWS S3 and AWS Athena" style="width: 100%">
+            <img src="../images/terraform-datamesh-dataproduct.png.webp" alt="Terraform modules in action" style="width: 100%">
             <p>
                 What's still missing is an easy and reproducible way to provision the necessary services for data products and on the long run to create a Data Mesh out of these data products.
                 Thus, the following guide will give a brief overview of our work related to Terraform and showcase how everyone can create data products on AWS.
             </p>
 
             <h2 class="title">Terraform Module "Confluent Kafka to AWS S3"</h2>
-            <img src="../images/terraform-dataproduct-confluent-kafka-to-aws-s3.png.webp" alt="Terraform module for Confluent Kafka to AWS S3" style="width: 100%">
-            <p>
-                The module leverages Confluent Kafka Connect and AWS S3 to facilitate the transfer of data from Confluent Kafka to AWS S3.
-            </p>
-            <p>
-                The goal of this Terraform module is to enable users to easily transfer data from Confluent Kafka to AWS S3 for processing and analysis. The module achieves this by creating and configuring the necessary AWS resources, such as an S3 bucket and IAM roles, and deploying Confluent Kafka Connect to pull data from Kafka topics and write it to the S3 bucket.
-            </p>
-            <p>
-                To use this module, users must provide input parameters such as the name of the S3 bucket, the Kafka brokers and topics, and the credentials to access the resources. Once the module is deployed, it sets up a Kafka Connect cluster, configures the S3 sink connector, and creates the necessary IAM roles and policies to enable access to the S3 bucket.
-            </p>
-            <script src="https://gist.github.com/dean4711/bf7231f6f837826b2641a050e23b4ecc.js"></script>
-            <p>
-                Overall, this Terraform module provides a simple and efficient way to integrate data from Confluent Kafka to AWS S3, allowing users to easily collect and store data in a centralized location for further processing and analysis.
-            </p>
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        The module leverages Confluent Kafka Connect and AWS S3 to facilitate the transfer of data from Confluent Kafka to AWS S3.
+                    </p>
+                    <p>
+                        The goal of this Terraform module is to enable users to easily transfer data from Confluent Kafka to AWS S3 for processing and analysis. The module achieves this by creating and configuring the necessary AWS resources, such as an S3 bucket and IAM roles, and deploying Confluent Kafka Connect to pull data from Kafka topics and write it to the S3 bucket.
+                    </p>
+                    <p>
+                        To use this module, users must provide input parameters such as the name of the S3 bucket, the Kafka brokers and topics, and the credentials to access the resources. Once the module is deployed, it sets up a Kafka Connect cluster, configures the S3 sink connector, and creates the necessary IAM roles and policies to enable access to the S3 bucket.
+                    </p>
+                    <p>
+                        Overall, this Terraform module provides a simple and efficient way to integrate data from Confluent Kafka to AWS S3, allowing users to easily collect and store data in a centralized location for further processing and analysis.
+                    </p>
+                    <p>
+                        The module is open-source an can be found on <a href="https://github.com/datamesh-architecture/terraform-dataproduct-confluent-kafka-to-aws-s3/">GitHub</a>.
+                    </p>
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <img src="../images/terraform-dataproduct-confluent-kafka-to-aws-s3.png.webp" alt="Terraform module for Confluent Kafka to AWS S3">
+                        <script src="https://gist.github.com/dean4711/bf7231f6f837826b2641a050e23b4ecc.js"></script>
+                    </figure>
+                </div>
+            </div>
 
             <h2 class="title">Terraform Module "AWS Athena"</h2>
-            <img src="../images/terraform-dataproduct-aws-athena.png.webp" alt="Terraform module for AWS Athena" style="width: 100%">
-            <p>
-                The goal of the Terraform module is to facilitate the creation and configuration of Amazon Athena resources for efficient querying of data stored in Amazon S3. This module provides an easy way to set up and manage the infrastructure required to run SQL queries on data in S3 using Athena.
-            </p>
-            <p>
-                The module achieves this by creating and configuring several AWS resources, including an S3 bucket, Athena database, table, and IAM roles. The S3 bucket is the location where the data to be queried is stored. Athena is the serverless query service that allows users to run SQL queries on the data stored in Amazon S3. IAM roles are a set of AWS Identity and Access Management roles that provide the necessary permissions to access the resources required by Athena.
-            </p>
-            <p>
-                To use this module, users must provide input parameters such as the name of the S3 bucket where the data is stored and the name of the Athena database and table to be created. Once the module is deployed, it provisions and configures the required AWS resources, including the S3 bucket, Athena database and table, and IAM roles, allowing users to run SQL queries on the data stored in S3 using Athena.
-            </p>
-            <script src="https://gist.github.com/dean4711/a92cd04804b6e7617bf9b02fc861c490.js"></script>
-            <p>
-                The module's simple and efficient approach to setting up and managing Amazon Athena resources for querying data stored in S3 makes it an essential tool for data analytics and insights. With this Terraform module, users can easily create and configure the necessary resources to start querying data using Athena, without having to worry about managing the underlying infrastructure.
-            </p>
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        The goal of the Terraform module is to facilitate the creation and configuration of Amazon Athena resources for efficient querying of data stored in Amazon S3. This module provides an easy way to set up and manage the infrastructure required to run SQL queries on data in S3 using Athena.
+                    </p>
+                    <p>
+                        The module achieves this by creating and configuring several AWS resources, including an S3 bucket, Athena database, table, and IAM roles. The S3 bucket is the location where the data to be queried is stored. Athena is the serverless query service that allows users to run SQL queries on the data stored in Amazon S3. IAM roles are a set of AWS Identity and Access Management roles that provide the necessary permissions to access the resources required by Athena.
+                    </p>
+                    <p>
+                        To use this module, users must provide input parameters such as the name of the S3 bucket where the data is stored and the name of the Athena database and table to be created. Once the module is deployed, it provisions and configures the required AWS resources, including the S3 bucket, Athena database and table, and IAM roles, allowing users to run SQL queries on the data stored in S3 using Athena.
+                    </p>
+                    <p>
+                        The module's simple and efficient approach to setting up and managing Amazon Athena resources for querying data stored in S3 makes it an essential tool for data analytics and insights. With this Terraform module, users can easily create and configure the necessary resources to start querying data using Athena, without having to worry about managing the underlying infrastructure.
+                    </p>
+                    <p>
+                        The module is open-source an can be found on <a href="https://github.com/datamesh-architecture/terraform-dataproduct-aws-athena">GitHub</a>.
+                    </p>
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <img src="../images/terraform-dataproduct-aws-athena.png.webp" alt="Terraform module for AWS Athena">
+                        <script src="https://gist.github.com/dean4711/a92cd04804b6e7617bf9b02fc861c490.js"></script>
+                    </figure>
+                </div>
+            </div>
 
             <h2 class="title">Example usage</h2>
             <p>
                 A working example which shows both modules in action can be found in a <a href="https://github.com/datamesh-architecture/terraform-dataproduct-examples/">separate GitHub repository</a>.
             </p>
-            <img src="../images/terraform-datamesh-dataproduct.png.webp" alt="Terraform modules in action" style="width: 100%">
+            <div class="content has-text-centered">
+                <p>
+                    <a href="https://github.com/datamesh-architecture/terraform-dataproduct-examples/">
+                        <img src="../images/github-mark.png" alt="GitHub Logo" width="100">
+                    </a>
+                </p>
+            </div>
 
             <h2 class="title">Join us!</h2>
             <p>
