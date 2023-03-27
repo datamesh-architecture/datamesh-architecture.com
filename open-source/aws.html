@@ -10,12 +10,12 @@
     <meta name="twitter:site" content="@innoq" />
     <meta name="twitter:title" content="Data Mesh Architecture: Open Source Terraform Modules for Data Products on AWS" />
     <meta name="twitter:description" content="How to build a data mesh architecture with Terraform on AWS" />
-    <meta name="twitter:image" content="https://www.datamesh-architecture.com/images/aws-s3-athena_card.png" />
-    <meta name="twitter:image:alt" content="Data Mesh Architecture: Domains are in the center and teams do analytics on their own. They build and interconnect with data products. A data platform team and a enablement team help. Global policies are agreed through federated governance." />
+    <meta name="twitter:image" content="https://www.datamesh-architecture.com/images/terraform-datamesh-dataproduct_card.png" />
+    <meta name="twitter:image:alt" content="Open Source Terraform Modules for Data Products on AWS" />
     <meta property="og:url" content="https://datamesh-architecture.com" />
-    <meta property="og:title" content="Data Mesh Architecture: Open Source Terraform Modules for Data Products on AWS" />
+    <meta property="og:title" content="Open Source Terraform Modules for Data Products on AWS" />
     <meta property="og:description" content="How to build a data mesh architecture with Terraform on AWS" />
-    <meta property="og:image" content="https://www.datamesh-architecture.com/images/aws-s3-athena_card.png" />
+    <meta property="og:image" content="https://www.datamesh-architecture.com/images/terraform-datamesh-dataproduct_card.png" />
 
     <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Book.woff2?cachebuster=2" crossorigin="">
     <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Bold.woff2?cachebuster=2" crossorigin="">
@@ -68,11 +68,11 @@
                 </a>
                 <div class="navbar-item has-dropdown is-hoverable">
                     <div class="navbar-link is-arrowless">
-                        Tools
+                        Open Source
                     </div>
                     <div class="navbar-dropdown" id="navbarMenuArchitectureToolsDropdown">
                         <a href="/data-product-canvas.html" class="navbar-item">Data Product Canvas</a>
-                        <a href="/fitness-test.html" class="navbar-item">Fitness Test</a>
+                        <a href="/fitness-test.html" class="navbar-item">Fitness Test</a><a href="/open-source/aws.html" class="navbar-item">Terraform Modules</a>
                     </div>
                 </div>
                 <div class="navbar-item has-dropdown is-hoverable">
@@ -128,16 +128,12 @@
         <nav class="breadcrumb" aria-label="breadcrumbs">
             <ul>
                 <li><a href="/">Data Mesh Architecture</a></li>
-                <li><a href="/#tech-stacks">Tech Stacks</a></li>
-                <li class="is-active"><a href="#" aria-current="page">Data Products with Terraform on AWS</a></li>
+                <li><a href="#">Open Source</a></li>
+                <li class="is-active"><a href="#" aria-current="page">Terraform Modules for Data Products on AWS</a></li>
             </ul>
         </nav>
 
         <h1 class="title">Open Source Terraform Modules for Data Products on AWS</h1>
-
-        <div class="notification is-info is-light">
-            Data mesh is primarily an organizational approach, and that's why you can't buy a data mesh from a vendor. Technology, however, is important still as it acts as an enabler for data mesh, and only useful and easy to use solutions will lead to domain teams' acceptance. The available offerings of cloud providers already provide a sufficient set of good self-serve data services to let you form a data platform for your data mesh. We want to show which services can be used to get started.
-        </div>
 
         <div class="notification is-warning is-light">
             The following Terraform modules were contributed by <a href="https://www.innoq.com/en/staff/andre-deuerling/"><strong>André Deuerling</strong></a>.
@@ -145,13 +141,18 @@
 
         <div class="content">
             <p>
-                As stated in <a href="https://www.datamesh-architecture.com/tech-stacks/aws-s3-athena">Tech Stacks / AWS S3 and AWS Athena</a>, we often see Data Mesh implementations relying on <strong>AWS S3 and AWS Athena</strong> as the primary means to share and query data products.
+                We see Data Mesh implementations relying on <a href="https://www.datamesh-architecture.com/tech-stacks/aws-s3-athena">AWS S3 and AWS Athena</a> as the primary means to share and query data products.
+                What's currently missing is an easy and reproducible way to provision the necessary services for data products, and, on the long run, to create a Data Mesh out of these data products.
+                We've developed two open source Terraform Modules, <a href="https://github.com/datamesh-architecture/terraform-dataproduct-confluent-kafka-to-aws-s3/"><span class="icon is-small">
+                    <i class="fa-brands fa-github"></i>
+                </span> Confluent Kafka to AWS S3</a> and <a href="https://github.com/datamesh-architecture/terraform-dataproduct-aws-athena"><span class="icon is-small">
+                    <i class="fa-brands fa-github"></i>
+                </span> AWS Athena</a>, to make provisioning of data products on AWS easier.
+                The figure below shows a <a href="https://github.com/datamesh-architecture/terraform-dataproduct-examples/"><span class="icon is-small">
+                    <i class="fa-brands fa-github"></i>
+                </span> working example</a> of the two Terraform modules.
             </p>
             <img src="../images/terraform-datamesh-dataproduct.png.webp" alt="Terraform modules in action" style="width: 100%">
-            <p>
-                What's still missing is an easy and reproducible way to provision the necessary services for data products and on the long run to create a Data Mesh out of these data products.
-                Thus, the following guide will give a brief overview of our work related to Terraform and showcase how everyone can create data products on AWS.
-            </p>
 
             <h2 class="title">Terraform Module "Confluent Kafka to AWS S3"</h2>
             <div class="columns">
@@ -169,7 +170,7 @@
                         Overall, this Terraform module provides a simple and efficient way to integrate data from Confluent Kafka to AWS S3, allowing users to easily collect and store data in a centralized location for further processing and analysis.
                     </p>
                     <p>
-                        The module is open-source an can be found on <a href="https://github.com/datamesh-architecture/terraform-dataproduct-confluent-kafka-to-aws-s3/">GitHub</a>.
+                        The module is open-source and can be found on <a href="https://github.com/datamesh-architecture/terraform-dataproduct-confluent-kafka-to-aws-s3/">GitHub</a>.
                     </p>
                 </div>
                 <div class="column">
@@ -196,7 +197,7 @@
                         The module's simple and efficient approach to setting up and managing Amazon Athena resources for querying data stored in S3 makes it an essential tool for data analytics and insights. With this Terraform module, users can easily create and configure the necessary resources to start querying data using Athena, without having to worry about managing the underlying infrastructure.
                     </p>
                     <p>
-                        The module is open-source an can be found on <a href="https://github.com/datamesh-architecture/terraform-dataproduct-aws-athena">GitHub</a>.
+                        The module is open-source and can be found on <a href="https://github.com/datamesh-architecture/terraform-dataproduct-aws-athena">GitHub</a>.
                     </p>
                 </div>
                 <div class="column">
@@ -211,17 +212,10 @@
             <p>
                 A working example which shows both modules in action can be found in a <a href="https://github.com/datamesh-architecture/terraform-dataproduct-examples/">separate GitHub repository</a>.
             </p>
-            <div class="content has-text-centered">
-                <p>
-                    <a href="https://github.com/datamesh-architecture/terraform-dataproduct-examples/">
-                        <img src="../images/github-mark.png" alt="GitHub Logo" width="100">
-                    </a>
-                </p>
-            </div>
 
             <h2 class="title">Join us!</h2>
             <p>
-                The current state does not have all features mentioned by Zhamak Dehghani in her book Data Mesh. Instead, it’s a starting point for a collaborative, open-source development based on real customer needs within the industry.
+                Our Terraform modules don't have all features envisioned by Zhamak Dehghani in her Data Mesh book. Instead, our modules a just starting point for a collaborative, open-source development driven by the need of data product developers. Join us in making these modules even better or by providing even more modules.
             </p>
 
             <h5>References</h5>
