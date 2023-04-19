@@ -24,7 +24,7 @@ convert images/terraform-datamesh-dataproduct.png -splice 350x0 -extent 3175x170
 convert images/terraform-datamesh-dataproduct_card.png -resize 1600 images/terraform-datamesh-dataproduct_card.1600px.png
 
 # optimize PNGs
-docker run --rm -it -v `pwd`/images:/data-volume labynocle/imagif-compressor:latest
+#docker run --rm -it -v `pwd`/images:/data-volume labynocle/imagif-compressor:latest
 
 # requires installation
 #
