@@ -301,17 +301,16 @@
                 <div class="columns reverse-columns">
                     <div class="column content">
                         <p>
-                            A data product is an autonomous technical component that contains all data, code, and interfaces to serve the domain team's or other teams' analytical data needs. You can think of a microservice, but for analytical data.
+                            A data product is an autonomous logical component that contains all data, code, and interfaces to serve the domain team's or other teams' analytical data needs. You can think of a microservice, but for analytical data.
                         </p>
                         <p>
-                            Data products connect to sources, such as operational systems or other data products and perform data transformation. Data products can produce analytical data in different formats. Some examples:
+                            Data products connect to sources, such as operational systems or other data products and perform data transformation. Data products serve data sets in one or many output ports. Some examples:
                         </p>
                         <ul>
-                            <li>A BigQuery table</li>
-                            <li>Parquet files in a AWS S3 bucket</li>
+                            <li>A BigQuery dataset with multiple related tables</li>
+                            <li>Parquet files in an AWS S3 bucket</li>
                             <li>Delta files in Azure Data Lake Storage Gen2</li>
                             <li>Dashboards in Looker</li>
-                            <li>PDF reports sent as email</li>
                             <li>A machine learning model as an ONNX file</li>
                         </ul>
                         <p>
