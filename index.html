@@ -339,6 +339,52 @@
 
         <div class="card mt-5">
             <div class="card-content">
+                <h4 class="title is-4">Data Contract</h4>
+                <div class="columns reverse-columns">
+                    <div class="column content">
+                        <p>
+                            A data contract is a formal agreement between two parties to use a data product.
+                            It specifies the guarantees about a provided data set and expectations concerning data product usage. It covers:
+                        </p>
+                        <ul>
+                            <li>Data Product Provider, including team, owner, and the output port to access</li>
+                            <li>Data Product Consumer, including team, and responsible contact</li>
+                            <li>Purpose of data usage</li>
+                            <li>Schema and semantics of used data attributes</li>
+                            <li>Service-level objectives, such as latency, availability, availability</li>
+                            <li>Terms, such as query intervals and data processing volumes</li>
+                            <li>Costs</li>
+                            <li>Start date</li>
+                            <li>End date</li>
+                            <li>Notice period, to cancel the contract</li>
+                        </ul>
+                        <p>
+                            Data contracts are the links between data products.
+                            They typically refer to a specific version of an output port.
+                            They become active when a consumer requests data access and the provider accepts the request.
+                            Data contracts can be canceled by providers or consumers with a defined notice period, e.g., when the costs of usage become too high, or when the provider needs to implement a breaking change.
+                            Data contracts provide stability, trust, and quality within the data mesh.
+                            They can be used to visualize data flow across data products.
+                        </p>
+                        <p>
+                            Data contracts can also be used for automation: As soon as a data contract has been concluded, permissions for the output port can be set up automatically in the data platform on an event basis. When the contract is terminated, the permissions are automatically deleted again.
+                        </p>
+                        <p>
+                            As there is a lack of tooling support, we built <strong><a href="https://datamesh-manager.com/">Data Mesh Manager</a></strong> to manage data contracts.
+                        </p>
+                    </div>
+                    <div class="column">
+
+                        <p class="image">
+                            <img src="images/datacontract_details.webp" alt="Data contract">
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mt-5">
+            <div class="card-content">
                 <h4 class="title is-4">Federated Governance</h4>
                 <div class="columns reverse-columns">
                     <div class="column content">
