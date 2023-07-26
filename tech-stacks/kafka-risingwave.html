@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Data Mesh Architecture: AWS S3 and Athena</title>
+    <meta charset="utf-8">
+    <meta name="description" content="How to build a data mesh architecture with AWS S3 and Athena" />
+    <meta name="keywords" content="data mesh, data mesh architecture, domain-driven data analytics, data analytics, domain-driven design, domain ownership, data as a product, data product, federated governance, self-serve data platform, data platform">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@innoq" />
+    <meta name="twitter:title" content="Data Mesh Architecture: AWS S3 and Athena" />
+    <meta name="twitter:description" content="How to build a data mesh architecture with AWS S3 and Athena" />
+    <meta name="twitter:image" content="https://www.datamesh-architecture.com/images/aws-s3-athena_card.png" />
+    <meta name="twitter:image:alt" content="Data Mesh Architecture: Domains are in the center and teams do analytics on their own. They build and interconnect with data products. A data platform team and a enablement team help. Global policies are agreed through federated governance." />
+    <meta property="og:url" content="https://datamesh-architecture.com" />
+    <meta property="og:title" content="Data Mesh Architecture: AWS S3 and Athena" />
+    <meta property="og:description" content="How to build a data mesh architecture with AWS S3 and Athena" />
+    <meta property="og:image" content="https://www.datamesh-architecture.com/images/aws-s3-athena_card.png" />
+
+    <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Book.woff2?cachebuster=2" crossorigin="">
+    <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Bold.woff2?cachebuster=2" crossorigin="">
+    <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Heavy.woff2?cachebuster=2" crossorigin="">
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/0.9.3_css_bulma.css" />
+    <link rel="stylesheet" href="../css/font-awesome_6.0.0_css_all.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+</head>
+<body>
+<nav class="navbar is-dark" role="navigation" aria-label="dropdown navigation">
+    <div class="container">
+        <div class="navbar-brand">
+                    <span class="navbar-burger" data-target="navbarMenuHeroA">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </div>
+        <div id="navbarMenuHeroA" class="navbar-menu">
+
+            <div class="navbar-end">
+
+
+                <a href="/#why" class="navbar-item">
+                    Why
+                </a>
+                <a href="/#what-is-data-mesh" class="navbar-item">
+                    What
+                </a>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a href="/#how-to-design-a-data-mesh" class="navbar-link is-arrowless">
+                        How
+                    </a>
+                    <div class="navbar-dropdown" id="navbarMenuArchitectureDropdown">
+                        <a href="/#how-to-design-a-data-mesh" class="navbar-item">Data Mesh Architecture</a>
+                        <hr class="navbar-divider">
+                        <a href="/#data-product" class="navbar-item">Data Product</a>
+                        <a href="/#federated-governance" class="navbar-item">Federated Governance</a>
+                        <a href="/#analytical-data" class="navbar-item">Analytical Data</a>
+                        <a href="/#ingesting" class="navbar-item">Ingesting</a>
+                        <a href="/#clean-data" class="navbar-item">Clean Data</a>
+                        <a href="/#analytics" class="navbar-item">Analytics</a>
+                        <a href="/#data-platform" class="navbar-item">Data Platform</a>
+                        <a href="/#enabling-team" class="navbar-item">Enabling Team</a>
+                    </div>
+                </div>
+                <a href="/#mesh" class="navbar-item">
+                    Mesh
+                </a>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <div class="navbar-link is-arrowless">
+                        Specifications
+                    </div>
+                    <div class="navbar-dropdown" id="navbarMenuSpecificationsDropdown">
+                        <a href="https://www.dataproduct-specification.com" class="navbar-item">Data Product Specification</a>
+                        <a href="https://www.datacontract-specification.com" class="navbar-item">Data Contract Specification</a>
+                    </div>
+                </div>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <div class="navbar-link is-arrowless">
+                        Open Source
+                    </div>
+                    <div class="navbar-dropdown" id="navbarMenuArchitectureToolsDropdown">
+                        <a href="/data-product-canvas.html" class="navbar-item">Data Product Canvas</a>
+                        <a href="/fitness-test.html" class="navbar-item">Fitness Test</a><a href="/open-source/aws.html" class="navbar-item">Terraform Modules</a>
+                    </div>
+                </div>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a href="/#tech-stacks" class="navbar-link is-arrowless">
+                        Tech Stacks
+                    </a>
+                    <div class="navbar-dropdown" id="navbarMenuTechStackDropdown">
+                        <a href="/tech-stacks/google-cloud-bigquery.html" class="navbar-item">
+                            Google Cloud BigQuery
+                        </a>
+                        <a href="/tech-stacks/aws-s3-athena.html" class="navbar-item">
+                            AWS S3 and AWS Athena
+                        </a>
+                        <a href="/tech-stacks/azure-synapse-analytics.html" class="navbar-item">
+                            Azure Synapse Analytics
+                        </a>
+                        <a href="/tech-stacks/dbt-snowflake.html" class="navbar-item">
+                            dbt and Snowflake
+                        </a>
+                        <a href="/tech-stacks/databricks.html" class="navbar-item">
+                            Databricks
+                        </a>
+                        <a href="/tech-stacks/minio-trino.html" class="navbar-item">
+                            MinIO and Trino
+                        </a>
+                    </div>
+                </div>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a href="/#domain-teams-journey" class="navbar-link is-arrowless">
+                        Start the Journey
+                    </a>
+                    <div class="navbar-dropdown is-right" id="navbarMenuTransformationDropdown">
+                        <a href="/#domain-teams-journey" class="navbar-item">
+                            Domain Team’s Journey
+                        </a>
+                        <a href="/#data-teams-journey" class="navbar-item">
+                            Data Team’s Journey
+                        </a>
+                        <a href="/literature.html" class="navbar-item">
+                            Scientific Literature
+                        </a>
+                        <a href="/real-world-learnings.html" class="navbar-item">
+                            Real World Learnings
+                        </a>
+                    </div>
+                </div>
+                <a href="https://www.datamesh-manager.com" class="navbar-item" style="color: #FF9B66">
+                    Data Mesh Manager
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+
+    <section class="section">
+
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+            <ul>
+                <li><a href="/">Data Mesh Architecture</a></li>
+                <li><a href="/#tech-stacks">Tech Stacks</a></li>
+                <li class="is-active"><a href="#" aria-current="page">AWS S3 and Athena</a></li>
+            </ul>
+        </nav>
+
+        <h1 class="title">AWS S3 and AWS Athena</h1>
+
+        <div class="notification is-info is-light">
+            Data mesh is primarily an organizational approach, and that's why you can't buy a data mesh from a vendor. Technology, however, is important still as it acts as an enabler for data mesh, and only useful and easy to use solutions will lead to domain teams' acceptance. The available offerings of cloud providers already provide a sufficient set of good self-serve data services to let you form a data platform for your data mesh. We want to show which services can be used to get started.
+        </div>
+
+        <div class="content">
+            <p>
+                We often see Data Mesh implementations relying on <strong>AWS S3 and AWS Athena</strong> as the primary means to share and query data products.
+            </p>
+            <img src="../images/aws-s3-athena.png.webp" alt="Data Mesh Architecture with AWS S3 and AWS Athena" style="width: 100%">
+            <p>
+                Interestingly enough, most data mesh implementations on AWS are using S3 and Athena,
+                and not Redshift, which would be more the equivalent to <a
+                    href="google-cloud-bigquery.html">Google’s BigQuery approach</a>.
+                We assume this is mainly because S3 and Athena are more simple to use, serverless,
+                and billed on a pay-per-use basis, without the need to provision clusters
+                upfront.</p>
+
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        <strong>AWS S3</strong> is the central component for storing analytical data.
+                        S3 is a file based object store and data can be stored in many formats, such as CSV, JSON, Avro, or Parquet.
+                        S3 buckets are used for all stages: raw files, aggregated data, and even data products.
+                        All data relevant AWS services and most independent software product have an interface to S3, either as a sink or as a source.
+                    </p>
+                    <p>
+                        Every domain team typically has their <strong>own AWS S3 buckets</strong> to store their own data products, either on a shared AWS account or in a team AWS account.
+                    </p>
+
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <img src="../images/aws-athena-s3.png.webp" alt="Screenshot of S3 files">
+                    </figure>
+                </div>
+            </div>
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        Analytical queries are executed through <strong>AWS Athena</strong> that queries data stored in many locations, including files on S3, with standard SQL and performs cross-dataset join operations.
+                        Athena uses <em>Presto</em>, a distributed query engine.
+                        Although Athena works directly on S3 files without the need to import any data, it still needs to know the schema of the files.
+                        That's why metadata need to be defined first, either manually, or by using AWS Glue Data Catalog, which can crawl files to infer the structure.
+                        Typically, metadata and queries are often stored as files on S3, just as the data they describe.
+                    </p>
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <img src="../images/aws-athena.png.webp" alt="Screenshot of Athena">
+                    </figure>
+                </div>
+            </div>
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        AWS has a number of different solutions to build data pipelines for cleaning, pre-processing and transforming S3 files.
+                        A serverless approach is to use <strong>AWS Glue ETL</strong>, which executes Spark or Python scripts and schedules jobs.
+                        The AWS Glue Studio also provides a visual editor to build and manage ETL scripts.
+                    </p>
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <img src="../images/aws-glue-studio.png.webp" alt="Screenshot of Glue Studio Editor">
+                    </figure>
+                </div>
+            </div>
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        <strong>Amazon QuickSight</strong> is the data visualization tool provided by Amazon.
+                        It uses an in-memory cache, called <em>SPICE</em> that allows quick calculations and aggregations, once the data is imported.
+                    </p>
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <img src="../images/aws-quicksight.png.webp" alt="Screenshot of Quicksight">
+                    </figure>
+                </div>
+            </div>
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        Governance, Data Catalog, and even policy automation can be implemented through
+                        <strong>AWS Lake Formation</strong>.
+                        In Lake Formation, S3 locations from different AWS accounts can be linked.
+                        The data in S3 files can be documented in the Data Catalog, including the data schema.
+                        Data sets can be tagged with special <em>LF-Tags</em> to give table and columnar-level permissions.
+                        Data loss prevention can be automated by enabling <strong>Macie</strong> to continuously scan S3 buckets for sensitive data and potentially unwanted data exposures.
+                    </p>
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <img src="../images/aws-lakeformation.png.webp" alt="Screenshot of Lakeformation">
+                    </figure>
+                </div>
+            </div>
+
+            <h5>References</h5>
+            <ul>
+                <li><a href="https://aws.amazon.com/blogs/big-data/design-a-data-mesh-architecture-using-aws-lake-formation-and-aws-glue/">https://aws.amazon.com/blogs/big-data/design-a-data-mesh-architecture-using-aws-lake-formation-and-aws-glue/</a></li>
+            </ul>
+
+        </div>
+    </section>
+
+</div>
+
+<footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            <a href="https://www.innoq.com">
+                <img src="/images/supported-by-innoq--petrol-apricot.svg" alt="Supported by INNOQ" class="footer-logo" width="180" />
+            </a>
+        </p>
+        <p>
+            <a href="https://www.innoq.com/en/topics/data-mesh-workshop?ref=dma-footer">Workshop</a>&nbsp
+            <a href="https://www.socreatory.com/de/trainings/datamesh?ref=dma-footer">Training</a>&nbsp
+            <a href="https://www.innoq.com/en/impressum/">Legal Notice</a>&nbsp
+            <a href="https://www.innoq.com/en/datenschutz/">Privacy</a>
+        </p>
+    </div>
+</footer>
+
+
+<script src="/js/navigation.js"></script>
+
+<script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+<noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript>
+
+<link rel="stylesheet" href="/css/glightbox.css" />
+<script src="/js/glightbox.js"></script>
+<script type="text/javascript">
+  const lightbox = GLightbox({});
+</script>
+
+
+<script src="/js/anchor.min.js"></script>
+<script>anchors.add();</script>
+</body>
+
+</html>
