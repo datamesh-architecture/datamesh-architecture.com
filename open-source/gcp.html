@@ -174,6 +174,21 @@
             <h2 class="title">Terraform Module "Confluent Kafka to GCP BigQuery"</h2>
             <div class="columns">
                 <div class="column">
+                    <p>
+                        The module leverages Confluent Kafka Connect and GCP BigQuery to facilitate the transfer of data from and existing Confluent Kafka cluster to GCP BigQuery.
+                    </p>
+                    <p>
+                        To use this module, users must provide input parameters for the Kafka cluster and topics, and the credentials to access the resources.
+                        Once the module is deployed, it sets up a GCP BigQuery table for every topic provided.
+                    </p>
+                    <p>
+                        The module also creates an RESTful endpoint via Google Cloud Functions where meta information of the dataproduct are published: Name, domain and the BigQuery tables created.
+                        This endpoint can be used as an input for another data product or to retrieve information about this data product.
+                    </p>
+                    <p>
+                        Overall, this Terraform module provides a simple and efficient way to integrate data from Confluent Kafka to GCP BigQuery, allowing users
+                        to easily collect and store data in a centralized location for further processing and analysis.
+                    </p>
 
                 </div>
                 <div class="column">
@@ -204,11 +219,8 @@
                         domain and the name of the data product to be created.
                     </p>
                     <p>
-                        The module also creates an HTTP endpoint where the meta information of the dataproduct are published: Name, domain and a list of the
-                        BigQuery views.
-                    </p>
-                    <p>
-
+                        The module also creates an RESTful endpoint via Google Cloud Functions where meta information of the dataproduct are published: Name, domain and a list of the
+                        BigQuery views. This endpoint can be used as an input for another data product or to retrieve information about this data product.
                     </p>
 
                 </div>
