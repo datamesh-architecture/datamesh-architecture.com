@@ -194,6 +194,23 @@
             <div class="columns">
                 <div class="column">
 
+                    <p>
+                        The goal of the Terraform module is to facilitate the creation and configuration of a dataproduct based on GCP BigQuery views.
+                        These views contain aggregated data from a GCP BigQuery table.
+                    </p>
+                    <p>
+                        The module creates a BigQuery dataset named "aggregations" and one or multiple views based on a source table and SQL scripts provided by the user.
+                        The names of the views are derived from the names of the SQL scripts. Besides the SQL files and the source table, users must provide the
+                        domain and the name of the data product to be created.
+                    </p>
+                    <p>
+                        The module also creates an HTTP endpoint where the meta information of the dataproduct are published: Name, domain and a list of the
+                        BigQuery views.
+                    </p>
+                    <p>
+
+                    </p>
+
                 </div>
                 <div class="column">
                     <figure class="image">
@@ -220,7 +237,8 @@
 
             <h2 class="title">Join us!</h2>
             <p>
-                Our Terraform modules don't have all features envisioned by Zhamak Dehghani in her Data Mesh book. Instead, our modules are just starting point for a collaborative, open-source development driven by the need of data product developers. Join us in making these modules even better or by providing even more modules.
+                Our Terraform modules don't have all features envisioned by Zhamak Dehghani in her Data Mesh book. Instead, our modules are just starting point for a collaborative, open-source development driven by the need of data product developers.
+                Join us in making these modules even better or by providing even more modules.
             </p>
 
             <h5>References</h5>
