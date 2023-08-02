@@ -1,4 +1,4 @@
-<mxfile host="Electron" modified="2023-04-13T08:39:16.265Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.1.2 Chrome/106.0.5249.199 Electron/21.4.3 Safari/537.36" etag="99H5Ij24xacNriMYEQAj" version="21.1.2" type="device">
+<mxfile host="Electron" modified="2023-08-02T09:51:02.396Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.1 Chrome/112.0.5615.204 Electron/24.6.1 Safari/537.36" etag="FbvO5bdRPPwMORdOfU8x" version="21.6.1" type="device">
   <diagram id="DWjpSvbVxY2pOprUcE6g" name="Page-1">
     <mxGraphModel dx="1242" dy="1278" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -67,7 +67,7 @@
         </mxCell>
         <UserObject label="&lt;b&gt;stock.bigquery.json&lt;/b&gt;&lt;br&gt;[BigQuery Schema]" link="https://github.com/datamesh-architecture/terraform-dataproduct-examples/blob/main/shelf_warmers/dataproduct-confluent-kafka-to-gcp-bigquery/schema/stock.bigquery.json" linkTarget="_blank" id="279">
           <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;sketch=1;" parent="1" vertex="1">
-            <mxGeometry x="370.75" y="371" width="129" height="60" as="geometry" />
+            <mxGeometry x="849.62" y="358" width="129" height="60" as="geometry" />
           </mxCell>
         </UserObject>
         <mxCell id="297" value="&lt;b&gt;Discovery API&lt;br&gt;&lt;/b&gt;[GCP Cloud Functions Endpoint]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;sketch=1;" parent="1" vertex="1">
