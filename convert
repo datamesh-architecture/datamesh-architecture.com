@@ -20,6 +20,8 @@ convert images/databricks.png -splice 350x0 -extent 3175x1709 images/databricks_
 convert images/databricks_card.png -resize 1600 images/databricks_card.1600px.png
 convert images/minio-trino.png -splice 350x0 -extent 3175x1709 images/minio-trino_card.png
 convert images/minio-trino_card.png -resize 1600 images/minio-trino_card.1600px.png
+convert images/sap.png -splice 350x0 -extent 3175x1709 images/sap_card.png
+convert images/sap_card.png -resize 1600 images/sap_card.1600px.png
 convert images/terraform-datamesh-dataproduct.png -splice 350x0 -extent 3175x1709 images/terraform-datamesh-dataproduct_card.png
 convert images/terraform-datamesh-dataproduct_card.png -resize 1600 images/terraform-datamesh-dataproduct_card.1600px.png
 
