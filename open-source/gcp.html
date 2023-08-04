@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Data Mesh Architecture: Azure Synapse Analytics</title>
+    <title>Data Mesh Architecture: Open Source Terraform Modules for Data Products on GCP</title>
     <meta charset="utf-8">
-    <meta name="description" content="How to build a data mesh architecture with Azure Synapse Analytics" />
+    <meta name="description" content="How to build a data mesh architecture with Terraform on GCP" />
     <meta name="keywords" content="data mesh, data mesh architecture, domain-driven data analytics, data analytics, domain-driven design, domain ownership, data as a product, data product, federated governance, self-serve data platform, data platform">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@innoq" />
-    <meta name="twitter:title" content="Data Mesh Architecture: Azure Synapse Analytics" />
-    <meta name="twitter:description" content="How to build a data mesh architecture with Azure Synapse Analytics" />
-    <meta name="twitter:image" content="https://www.datamesh-architecture.com/images/azure-synapse-analytics_card.png" />
-    <meta name="twitter:image:alt" content="Data Mesh Architecture: Domains are in the center and teams do analytics on their own. They build and interconnect with data products. A data platform team and a enablement team help. Global policies are agreed through federated governance." />
+    <meta name="twitter:title" content="Data Mesh Architecture: Open Source Terraform Modules for Data Products on GCP" />
+    <meta name="twitter:description" content="How to build a data mesh architecture with Terraform on GCP" />
+    <meta name="twitter:image" content="https://www.datamesh-architecture.com/images/terraform-datamesh-dataproduct_card.png" />
+    <meta name="twitter:image:alt" content="Open Source Terraform Modules for Data Products on GCP" />
     <meta property="og:url" content="https://datamesh-architecture.com" />
-    <meta property="og:title" content="Data Mesh Architecture: Azure Synapse Analytics" />
-    <meta property="og:description" content="How to build a data mesh architecture with Azure Synapse Analytics" />
-    <meta property="og:image" content="https://www.datamesh-architecture.com/images/azure-synapse-analytics_card.png" />
+    <meta property="og:title" content="Open Source Terraform Modules for Data Products on GCP" />
+    <meta property="og:description" content="How to build a data mesh architecture with Terraform on GCP" />
+    <meta property="og:image" content="https://www.datamesh-architecture.com/images/terraform-datamesh-dataproduct_card.png" />
 
     <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Book.woff2?cachebuster=2" crossorigin="">
     <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Bold.woff2?cachebuster=2" crossorigin="">
@@ -145,56 +145,119 @@
         <nav class="breadcrumb" aria-label="breadcrumbs">
             <ul>
                 <li><a href="/">Data Mesh Architecture</a></li>
-                <li><a href="/#tech-stacks">Tech Stacks</a></li>
-                <li class="is-active"><a href="#" aria-current="page">Azure Synapse Analytics</a></li>
+                <li><a href="#">Open Source</a></li>
+                <li class="is-active"><a href="#" aria-current="page">Terraform Modules for Data Products on GCP</a></li>
             </ul>
         </nav>
 
-        <h1 class="title">Azure Synapse Analytics</h1>
-
-        <div class="notification is-info is-light">
-            Data mesh is primarily an organizational approach, and that's why you can't buy a data mesh from a vendor. Technology, however, is important still as it acts as an enabler for data mesh, and only useful and easy to use solutions will lead to domain teams' acceptance. The available offerings of cloud providers already provide a sufficient set of good self-serve data services to let you form a data platform for your data mesh. We want to show which services can be used to get started.
-        </div>
+        <h1 class="title">Open Source Terraform Modules for Data Products on the Google Cloud Platform</h1>
 
         <div class="content">
             <p>
-                Microsoft offers <strong>Azure Synapse Analytics</strong>, along with both Data Lake Storage Gen2 and SQL database, as the central components for implementing a data mesh architecture.
+                We've developed two open source Terraform Modules, <a href="https://github.com/datamesh-architecture/terraform-google-dataproduct-confluent-kafka-to-gcp-bigquery/"><span class="icon is-small">
+                    <i class="fa-brands fa-github"></i>
+                </span> Confluent Kafka to GCP BigQuery</a> and <a href="https://github.com/datamesh-architecture/terraform-google-dataproduct-gcp-bigquery-transform"><span class="icon is-small">
+                    <i class="fa-brands fa-github"></i>
+                </span> GCP Bigquery Transform</a>, to make provisioning of data products on GCP easier.
+                The figure below shows a <a href="https://github.com/datamesh-architecture/terraform-dataproduct-examples/"><span class="icon is-small">
+                    <i class="fa-brands fa-github"></i>
+                </span> working example</a> of the two Terraform modules.
             </p>
-            <img src="../images/azure-synapse-analytics.png.webp" alt="Data Mesh Architecture with Azure Synapse Analytics" style="width: 100%">
+            <a href="../images/terraform-datamesh-dataproduct-gcp.png.webp" class="glightbox">
+                <img src="../images/terraform-datamesh-dataproduct-gcp.png.webp" alt="Terraform modules in action" style="width: 100%">
+            </a>
+
+
+
+
+
+            <h2 class="title">Terraform Module "Confluent Kafka to GCP BigQuery"</h2>
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        The module leverages Confluent Kafka Connect and GCP BigQuery to facilitate the transfer of data from and existing Confluent Kafka cluster to GCP BigQuery.
+                    </p>
+                    <p>
+                        To use this module, users must provide input parameters for the Kafka cluster and topics, and the credentials to access the resources.
+                        Once the module is deployed, it sets up a GCP BigQuery table for every topic provided.
+                    </p>
+                    <p>
+                        The module also creates an RESTful endpoint via Google Cloud Functions where meta information of the dataproduct are published: Name, domain and the BigQuery tables created.
+                        This endpoint can be used as an input for another data product or to retrieve information about this data product.
+                    </p>
+                    <p>
+                        Overall, this Terraform module provides a simple and efficient way to integrate data from Confluent Kafka to GCP BigQuery, allowing users
+                        to easily collect and store data in a centralized location for further processing and analysis.
+                    </p>
+
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <a href="../images/terraform-dataproduct-confluent-kafka-to-gcp-bigquery.png.webp" class="glightbox">
+                            <img src="../images/terraform-dataproduct-confluent-kafka-to-gcp-bigquery.png.webp" alt="Terraform module for Confluent Kafka to GCP BigQuery">
+                        </a>
+                    </figure>
+                </div>
+            </div>
+
+
             <p>
-                We evaluated the Azure tech stack, especially the services around Azure Synapse Analytics.
-                We like the idea of an integrated environment to manage and analyze data and Microsoft even provides
-                <a href="https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/scenarios/cloud-scale-analytics/architectures/what-is-data-mesh">data mesh specific guidance</a> in their Cloud Adoption Framework.
+                The module is open-source and can be found on <a href="https://github.com/datamesh-architecture/terraform-google-dataproduct-confluent-kafka-to-gcp-bigquery">GitHub</a>.
             </p>
+
+            <h2 class="title">Terraform Module "GCP Bigquery Transform"</h2>
+            <div class="columns">
+                <div class="column">
+
+                    <p>
+                        The goal of the Terraform module is to facilitate the creation and configuration of a dataproduct based on GCP BigQuery views.
+                        These views contain aggregated data from a GCP BigQuery table.
+                    </p>
+                    <p>
+                        The module creates a BigQuery dataset named "aggregations" and one or multiple views based on a source table and SQL scripts provided by the user.
+                        The names of the views are derived from the names of the SQL scripts. Besides the SQL files and the source table, users must provide the
+                        domain and the name of the data product to be created.
+                    </p>
+                    <p>
+                        The module also creates an RESTful endpoint via Google Cloud Functions where meta information of the dataproduct are published: Name, domain and a list of the
+                        BigQuery views. This endpoint can be used as an input for another data product or to retrieve information about this data product.
+                    </p>
+
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <a href="../images/terraform-dataproduct-gcp-bigquery-transform.png.webp" class="glightbox">
+                            <img src="../images/terraform-dataproduct-gcp-bigquery-transform.png.webp" alt="Terraform module transforming data from GCP BigQuery">
+                        </a>
+                    </figure>
+                </div>
+            </div>
+
             <p>
-                To be honest, we struggled a bit during this evaluation, because we expected a more supportive developer experience.
-                The services are convoluted:
-                What storage or database should we use to store analytical data?
-                The SQL database or lake database that are integrated into the Synapse Workspace, or should we use an external object storage with Parquet files that we <em>link</em> into Synapse Analytics?
-                When to use Azure Blob Storage, when to use Azure Data Lake Storage Gen2?
-                Some features are supported by the built-in serverless SQL pool, some features require a dedicated SQL pool.
-                We had similar experiences with implementing transformations, data sharing, and visualization&mdash;there is no straightforward way to accomplish these tasks.
-                In addition, due to recent rebrandings on Azure services, many tutorials on the internet are outdated.
+                The module is open-source and can be found on <a href="https://github.com/datamesh-architecture/terraform-google-dataproduct-gcp-bigquery-transform">GitHub</a>.
             </p>
+
+
+
+
+
+
+            <h2 class="title">Example usage</h2>
             <p>
-                Our learning is that you should not underestimate the efforts for upskilling the domain teams to use Azure Synapse Analytics as a data platform.
-                Invest in an enabling team that guides and supports domain teams on their journey implementing data mesh.
+                A working example which shows both modules in action can be found in a <a href="https://github.com/datamesh-architecture/terraform-dataproduct-examples/">separate GitHub repository</a>.
             </p>
+
+            <h2 class="title">Join us!</h2>
             <p>
-                We assume that many of our difficulties are due to a lack of extensive experience with the platform.
-                We are open to chat with Azure experts who might know more than we do - feel free <a href="/#authors">to reach out to us</a>.
-            </p>
-            <p>
-                If you're on Azure, we currently would recommend to consider <a href="/tech-stacks/dbt-snowflake.html">Snowflake deployed to Azure</a>,
-                or, if many of your domains do machine learning, have a look at <em>Azure Databricks</em>.
+                Our Terraform modules don't have all features envisioned by Zhamak Dehghani in her Data Mesh book. Instead, our modules are just starting point for a collaborative, open-source development driven by the need of data product developers.
+                Join us in making these modules even better or by providing even more modules.
             </p>
 
             <h5>References</h5>
             <ul>
-                <li><a href="https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/scenarios/cloud-scale-analytics/architectures/what-is-data-mesh">What is a Data Mesh</a></li>
-                <li><a href="https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/scenarios/cloud-scale-analytics/architectures/data-mesh-checklist">Data Mesh Checklist</a></li>
-                <li><a href="https://towardsdatascience.com/implementing-data-mesh-on-azure-c01ee94306cd">Implementing Data Mesh on Azure</a></li>
-                <li><a href="https://mrpaulandrew.com/2022/04/19/building-a-data-mesh-architecture-in-azure-part-7/">Article Series on Building a Data Mesh Architecture in Azure</a></li>
+                <li><a href="https://github.com/datamesh-architecture/terraform-google-dataproduct-confluent-kafka-to-gcp-bigquery/">Data Mesh Terraform module "Confluent Kafka to GCP BigQuery"</a></li>
+                <li><a href="https://github.com/datamesh-architecture/terraform-google-dataproduct-gcp-bigquery-transform/">Data Mesh Terraform module "GCP BigQuery Transform"</a></li>
+                <li><a href="https://github.com/datamesh-architecture/terraform-dataproduct-examples/">Examples for Data Products using open source Terraform modules</a></li>
             </ul>
 
         </div>
@@ -217,6 +280,7 @@
         </p>
     </div>
 </footer>
+
 
 <script src="/js/navigation.js"></script>
 
