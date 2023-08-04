@@ -3,25 +3,30 @@
 <head>
     <title>Data Mesh Architecture: SAP</title>
     <meta charset="utf-8">
-    <meta name="description" content="How to build a data mesh architecture with SAP" />
-    <meta name="keywords" content="data mesh, data mesh architecture, domain-driven data analytics, data analytics, domain-driven design, domain ownership, data as a product, data product, federated governance, self-serve data platform, data platform">
+    <meta name="description" content="How to build a data mesh architecture with SAP"/>
+    <meta name="keywords"
+          content="data mesh, data mesh architecture, domain-driven data analytics, data analytics, domain-driven design, domain ownership, data as a product, data product, federated governance, self-serve data platform, data platform">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@innoq" />
-    <meta name="twitter:title" content="Data Mesh Architecture: SAP" />
-    <meta name="twitter:description" content="How to build a data mesh architecture with SAP" />
-    <meta name="twitter:image" content="https://www.datamesh-architecture.com/images/aws-s3-athena_card.png" />
-    <meta name="twitter:image:alt" content="Data Mesh Architecture: Domains are in the center and teams do analytics on their own. They build and interconnect with data products. A data platform team and a enablement team help. Global policies are agreed through federated governance." />
-    <meta property="og:url" content="https://datamesh-architecture.com" />
-    <meta property="og:title" content="Data Mesh Architecture: SAP" />
-    <meta property="og:description" content="How to build a data mesh architecture with SAP" />
-    <meta property="og:image" content="https://www.datamesh-architecture.com/images/aws-s3-athena_card.png" />
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:site" content="@innoq"/>
+    <meta name="twitter:title" content="Data Mesh Architecture: SAP"/>
+    <meta name="twitter:description" content="How to build a data mesh architecture with SAP"/>
+    <meta name="twitter:image" content="https://www.datamesh-architecture.com/images/aws-s3-athena_card.png"/>
+    <meta name="twitter:image:alt"
+          content="Data Mesh Architecture: Domains are in the center and teams do analytics on their own. They build and interconnect with data products. A data platform team and a enablement team help. Global policies are agreed through federated governance."/>
+    <meta property="og:url" content="https://datamesh-architecture.com"/>
+    <meta property="og:title" content="Data Mesh Architecture: SAP"/>
+    <meta property="og:description" content="How to build a data mesh architecture with SAP"/>
+    <meta property="og:image" content="https://www.datamesh-architecture.com/images/aws-s3-athena_card.png"/>
 
-    <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Book.woff2?cachebuster=2" crossorigin="">
-    <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Bold.woff2?cachebuster=2" crossorigin="">
-    <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Heavy.woff2?cachebuster=2" crossorigin="">
-    <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="../css/0.9.3_css_bulma.css" />
+    <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Book.woff2?cachebuster=2"
+          crossorigin="">
+    <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Bold.woff2?cachebuster=2"
+          crossorigin="">
+    <link rel="preload" as="font" type="font/woff2"
+          href="https://www.innoq.com/assets/MarkPro-Heavy.woff2?cachebuster=2" crossorigin="">
+    <link rel="stylesheet" href="../css/style.css"/>
+    <link rel="stylesheet" href="../css/0.9.3_css_bulma.css"/>
     <link rel="stylesheet" href="../css/font-awesome_6.0.0_css_all.css"/>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
 </head>
@@ -72,7 +77,9 @@
                     </div>
                     <div class="navbar-dropdown" id="navbarMenuArchitectureToolsDropdown">
                         <a href="/data-product-canvas.html" class="navbar-item">Data Product Canvas</a>
-                        <a href="/fitness-test.html" class="navbar-item">Fitness Test</a><a href="/open-source/aws.html" class="navbar-item">Terraform Modules</a>
+                        <a href="/fitness-test.html" class="navbar-item">Fitness Test</a><a href="/open-source/aws.html"
+                                                                                            class="navbar-item">Terraform
+                        Modules</a>
                     </div>
                 </div>
                 <div class="navbar-item has-dropdown is-hoverable">
@@ -139,120 +146,414 @@
             </ul>
         </nav>
 
-        <h1 class="title">AWS S3 and AWS Athena</h1>
+        <h1 class="title">SAP</h1>
 
         <div class="notification is-info is-light">
-            Data mesh is primarily an organizational approach, and that's why you can't buy a data mesh from a vendor. Technology, however, is important still as it acts as an enabler for data mesh, and only useful and easy to use solutions will lead to domain teams' acceptance. The available offerings of cloud providers already provide a sufficient set of good self-serve data services to let you form a data platform for your data mesh. We want to show which services can be used to get started.
+            Data mesh is primarily an organizational approach, and that's why you can't buy a data mesh from a vendor.
+            Technology, however, is important still as it acts as an enabler for data mesh, and only useful and easy to
+            use solutions will lead to domain teams' acceptance. The available offerings of cloud providers already
+            provide a sufficient set of good self-serve data services to let you form a data platform for your data
+            mesh. We want to show which services can be used to get started.
         </div>
 
         <div class="content">
+            <p>Sales orders, purchase orders, customer information, equipment data residing in SAP applications like SAP
+                S/4 HANA are a great source of information often leveraged for building data products or at least
+                contributing to them. It is a natural fit leveraging SAP Business Technology Platform to build data
+                products
+                sourced from SAP applications like SAP S/4HANA or SAP Business Warehouse systems. While SAP provides a
+                spree
+                of technology to be leveraged as foundation for a Data Mesh implementation with the SAP Business
+                Technology
+                Platform, <strong>SAP Datasphere</strong> enables a lean and cloud-based foundation for implementing a
+                data mesh.
+                Therefore,
+                the blog focuses on how to deliver a data mesh based on <strong>SAP Datasphere</strong>. The goal of SAP
+                Datasphere is to
+                enable a <strong>business data fabric</strong> which can be leveraged in data mesh projects.</p>
+            <p>(To note: <strong>SAP Datasphere</strong> is a
+                Service run on the SAP Business Technology Platform, which is fully cloud-based and offers the identity,
+                security, development, runtime, and many more services which can leveraged as part of the Self-serve
+                data
+                platform: see here for a detailed list of available services SAP Discovery Center link)</p>
+            <img src="../images-sap/sap.drawio.png" alt="Data Mesh Architecture with AWS S3 and AWS Athena"
+                 style="width: 100%">
             <p>
-                We often see Data Mesh implementations relying on <strong>AWS S3 and AWS Athena</strong> as the primary means to share and query data products.
+                <strong>SAP Datasphere</strong> comes with an exceptional integration into SAP applications,
+                allowing to re-use the rich business semantic and data entity models for building
+                data products. SAP Datasphere furthermore provides integration to many non-SAP
+                cloud and on-premises data stores.
             </p>
-            <img src="../images/aws-s3-athena.png.webp" alt="Data Mesh Architecture with AWS S3 and AWS Athena" style="width: 100%">
-            <p>
-                Interestingly enough, most data mesh implementations on AWS are using S3 and Athena,
-                and not Redshift, which would be more the equivalent to <a
-                    href="google-cloud-bigquery.html">Google’s BigQuery approach</a>.
-                We assume this is mainly because S3 and Athena are more simple to use, serverless,
-                and billed on a pay-per-use basis, without the need to provision clusters
-                upfront.</p>
 
             <div class="columns">
                 <div class="column">
                     <p>
-                        <strong>AWS S3</strong> is the central component for storing analytical data.
-                        S3 is a file based object store and data can be stored in many formats, such as CSV, JSON, Avro, or Parquet.
-                        S3 buckets are used for all stages: raw files, aggregated data, and even data products.
-                        All data relevant AWS services and most independent software product have an interface to S3, either as a sink or as a source.
-                    </p>
-                    <p>
-                        Every domain team typically has their <strong>own AWS S3 buckets</strong> to store their own data products, either on a shared AWS account or in a team AWS account.
+                        <strong>SAP Datasphere</strong> integrates out of the box with SAP S/4HANA tables and supports
+                        replication as well as federation.
                     </p>
 
                 </div>
                 <div class="column">
                     <figure class="image">
-                        <img src="../images/aws-athena-s3.png.webp" alt="Screenshot of S3 files">
+                        <img src="../images-sap/sap-01.png" alt="Screenshot of S3 files">
                     </figure>
                 </div>
             </div>
             <div class="columns">
                 <div class="column">
                     <p>
-                        Analytical queries are executed through <strong>AWS Athena</strong> that queries data stored in many locations, including files on S3, with standard SQL and performs cross-dataset join operations.
-                        Athena uses <em>Presto</em>, a distributed query engine.
-                        Although Athena works directly on S3 files without the need to import any data, it still needs to know the schema of the files.
-                        That's why metadata need to be defined first, either manually, or by using AWS Glue Data Catalog, which can crawl files to infer the structure.
-                        Typically, metadata and queries are often stored as files on S3, just as the data they describe.
+                        <strong>SAP Datasphere</strong> also supports out of the box integration to non-SAP data
+                        sources.
                     </p>
                 </div>
                 <div class="column">
                     <figure class="image">
-                        <img src="../images/aws-athena.png.webp" alt="Screenshot of Athena">
+                        <img src="../images-sap/sap-02.png" alt="Screenshot of Athena">
                     </figure>
                 </div>
             </div>
             <div class="columns">
                 <div class="column">
                     <p>
-                        AWS has a number of different solutions to build data pipelines for cleaning, pre-processing and transforming S3 files.
-                        A serverless approach is to use <strong>AWS Glue ETL</strong>, which executes Spark or Python scripts and schedules jobs.
-                        The AWS Glue Studio also provides a visual editor to build and manage ETL scripts.
+                        In the <strong>Analytical Model</strong> within <strong>SAP Datasphere</strong> data products
+                        can be build based on replicated or virtualized data.
                     </p>
                 </div>
                 <div class="column">
                     <figure class="image">
-                        <img src="../images/aws-glue-studio.png.webp" alt="Screenshot of Glue Studio Editor">
+                        <img src="../images-sap/sap-03.png" alt="Screenshot of Glue Studio Editor">
                     </figure>
                 </div>
             </div>
             <div class="columns">
                 <div class="column">
                     <p>
-                        <strong>Amazon QuickSight</strong> is the data visualization tool provided by Amazon.
-                        It uses an in-memory cache, called <em>SPICE</em> that allows quick calculations and aggregations, once the data is imported.
+                        <strong>Spaces</strong> within <strong>SAP Datasphere</strong> allow domain teams to work on
+                        their ‘own’ data and dedicated resources to build data products.
                     </p>
+                    <p>
+                        Spaces are secured virtual work environments which provides:
+                    </p>
+                    <ul>
+                        <li>isolation for metadata objects and Space resources</li>
+                        <li>defines storage quota, control resource usage and workload class settings per space</li>
+                        <li>maintains Space-specific source system</li>
+                        <li>connections and a common time dimension</li>
+                        <li>manages user access for space members</li>
+                        <li>enables sharing of data and currency</li>
+                        <li>conversion settings with other spaces</li>
+                    </ul>
                 </div>
                 <div class="column">
                     <figure class="image">
-                        <img src="../images/aws-quicksight.png.webp" alt="Screenshot of Quicksight">
+                        <img src="../images-sap/sap-04.png" alt="Screenshot of Quicksight">
                     </figure>
                 </div>
             </div>
             <div class="columns">
                 <div class="column">
                     <p>
-                        Governance, Data Catalog, and even policy automation can be implemented through
-                        <strong>AWS Lake Formation</strong>.
-                        In Lake Formation, S3 locations from different AWS accounts can be linked.
-                        The data in S3 files can be documented in the Data Catalog, including the data schema.
-                        Data sets can be tagged with special <em>LF-Tags</em> to give table and columnar-level permissions.
-                        Data loss prevention can be automated by enabling <strong>Macie</strong> to continuously scan S3 buckets for sensitive data and potentially unwanted data exposures.
+                        <strong>SAP Datasphere Replication Flows and Data Flows</strong> for realtime-read, replication,
+                        transformation,
+                        as well as creating of data snapshots in data stores fully managed by <strong>SAP
+                        Datasphere</strong>.<br/>
+                        SAP Replication Flows help to:
+                    </p>
+                    <ul>
+                        <li>Model data replication from a selected</li>
+                        <li>source to a selected
+                            target
+                        </li>
+                        <li>Focus on 1:1 replication with simple</li>
+                        <li>projections and filters</li>
+                        <li>Integrated user
+                            interface in Data Builder
+                        </li>
+                        <li>Integrated monitoring features in</li>
+                        <li>Data Integration Monitor -
+                            Support initial load as well as delta
+                        </li>
+                        <li>load capabilities</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <img src="../images-sap/sap-05.png" alt="Screenshot of Lakeformation">
+                    </figure>
+                </div>
+            </div>
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        <strong>SAP HANA Cloud</strong> and <strong>SAP HANA Cloud Data Lake</strong> can be fully
+                        leveraged for data stored within
+                        <strong>SAP Datasphere</strong>.
                     </p>
                 </div>
                 <div class="column">
                     <figure class="image">
-                        <img src="../images/aws-lakeformation.png.webp" alt="Screenshot of Lakeformation">
+                        <img src="../images-sap/sap-06.png" alt="Screenshot of Lakeformation">
+                    </figure>
+                </div>
+            </div>
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        The SAP Datasphere Data Catalog for Data Discovery & Consumption helps in facilitating
+                        self-service, data democratization and data governance programs.<br/>
+                        Browse Catalog assets, terms and KPIs for:
+                    </p>
+                    <ul>
+                        <li>Advanced Search and Filtering capabilities</li>
+                        <li>Asset Details screen for source metadata and enrichment</li>
+                        <li>Lineage & Impact Analysis across</li>
+                        <li>SAP Analytics Cloud and</li>
+                        <li>SAP Datasphere artifacts</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <img src="../images-sap/sap-07.png" alt="Screenshot of Lakeformation">
+                    </figure>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        The <strong>SAP Datasphere</strong> Marketplace supports end to end process consisting of
+                        searching data products, contacting the provider/owner, downloading the data, and track the data
+                        deliveries. Data from the marketplace can out-of-the box be leveraged in SAP Datasphere
+                    </p>
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <img src="../images-sap/sap-08.png" alt="Screenshot of Lakeformation">
+                    </figure>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        <strong>Find Data Products:</strong><br/>Explore data solutions from both commercial vendors and
+                        providers of open data, or encourage members of your network to become data providers
+                        themselves, thereby fostering data sharing within your ecosystem
+                    </p>
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <img src="../images-sap/sap-09.png" alt="Screenshot of Lakeformation">
+                    </figure>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        <strong>Contact Data Product Owner</strong> <br/>Get in touch with data product owner to request
+                        individualization of currently listed data products or setup bi-directional data exchange, e.g.,
+                        get weather-data for all facilities maintained in your view.
+                    </p>
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <img src="../images-sap/sap-10.png" alt="Screenshot of Lakeformation">
+                    </figure>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        <strong>Load Data Product</strong><br/> Bring your existing licenses with your data product
+                        owner – SAP takes no
+                        brokerage. Select your target space and the Marketplace delivers the data by creating the
+                        artifacts and populates the data – initially and every time the data product owner releases a
+                        new version.
+                    </p>
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <img src="../images-sap/sap-11.png" alt="Screenshot of Lakeformation">
+                    </figure>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        <strong>Track Data Products</strong><br/> Manage all your subscribed data products centrally
+                        with delivery and usage tracking and update management.
+                    </p>
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <img src="../images-sap/sap-12.png" alt="Screenshot of Lakeformation">
+                    </figure>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        <strong>Use Data Products</strong> <br/>Use data products with your other data models to create
+                        additional data products or leverage them for insight to action.
+                    </p>
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <img src="../images-sap/sap-13.png" alt="Screenshot of Lakeformation">
+                    </figure>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        There is a wide range of software solutions offered in the ecosystem of SAP Datasphere</p>
+                    <p>Enrich
+                        all data projects with a powerful <strong>open data ecosystem</strong>.<br/>Bring SAP and
+                        non-SAP data together
+                        leveraging tailored integration with solutions from open data ecosystem partners and reduce
+                        integration complexity. Get an integrated view of information
+                        regardless of where it is stored or how it was designed.</p>
+
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <img src="../images-sap/sap-14.png" alt="Screenshot of Lakeformation">
+                    </figure>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        With the
+                        <a href="https://www.sap.com/products/technology-platform/cloud-analytics.html">
+                            <strong>SAP Analytics Cloud</strong>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                        solution, you can bring together analytics and planning with unique
+                        integration to SAP applications and smooth access to heterogeneous data sources.
+                    </p>
+
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <img src="../images-sap/sap-15.png" alt="Screenshot of Lakeformation">
+                    </figure>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        <a href="https://www.sap.com/products/artificial-intelligence/business-technology-platform.html">
+                            <strong>SAP AI Core</strong>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                        is a service in the SAP Business Technology Platform which is designed to handle the
+                        execution and operations of your AI assets in a standardized, scalable, and Hyperscaler-agnostic
+                        way. It provides seamless integration with your SAP solutions. Any AI function can be easily
+                        realized using open-source frameworks. SAP AI Core supports full lifecycle management of AI
+                        scenarios.
+                    </p>
+
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <img src="../images-sap/sap-16.png" alt="Screenshot of Lakeformation">
+                    </figure>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        The
+                        <a href="https://www.sap.com/products/technology-platform.html">
+                            <strong>SAP Business Technology Platform</strong>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                        (BTP) provides a range of capabilities that enable intelligent and sustainable enterprises
+                        to derive tangible business value from data. With SAP BTP, you can establish a solid foundation
+                        for the Self-Serve Data Platform and effectively leverage its numerous capabilities to support
+                        your Data Mesh approach.
+                    </p>
+
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <img src="../images-sap/sap-17.png" alt="Screenshot of Lakeformation">
                     </figure>
                 </div>
             </div>
 
             <h5>References</h5>
             <ul>
-                <li><a href="https://aws.amazon.com/blogs/big-data/design-a-data-mesh-architecture-using-aws-lake-formation-and-aws-glue/">https://aws.amazon.com/blogs/big-data/design-a-data-mesh-architecture-using-aws-lake-formation-and-aws-glue/</a></li>
+                <li>
+                    <a href="https://blogs.sap.com/2022/06/04/more-than-just-a-hype-data-mesh-as-a-new-approach-to-increase-agility-in-value-creation-from-data/">
+                        More than just a hype: Data Mesh as a new approach to increase agility in value creation from
+                        data
+                    </a>
+                </li>
+                <li>
+                    <a href="https://blogs.sap.com/2022/06/04/more-than-just-a-hype-data-mesh-as-a-new-approach-to-increase-agility-in-value-creation-from-data/">
+                        Data Mesh with SAP Datasphere
+                    </a>
+                </li>
+                <li>
+                    <a href="https://blogs.sap.com/2022/09/27/data-mesh-with-sap-business-technology-platform-part-1-sap-data-warehouse-cloud/">
+                        Data Mesh with SAP Business Technology Platform Part 1 – SAP Data Warehouse Cloud
+                    </a>
+                </li>
+                <li>
+                    <a href="https://blogs.sap.com/2022/11/09/data-mesh-with-sap-business-technology-platform-part-2-sap-hana-cloud/">
+                        Data Mesh with SAP Business Technology Platform Part 2 – SAP HANA Cloud
+                    </a>
+                </li>
+                <li>
+                    <a href="https://blogs.sap.com/2022/12/09/data-mesh-with-sap-business-technology-platform-part-3-sap-master-data-governance/">
+                        Data Mesh with SAP Business Technology Platform Part 3 – SAP Master Data
+                        Governance
+                    </a>
+                </li>
+                <li>
+                    <a href="https://blogs.sap.com/2022/12/09/data-mesh-with-sap-business-technology-platform-part-3-sap-master-data-governance/">
+                        Data Mesh with SAP Business Technology Platform Part 4 – SAP Data Intelligence Cloud
+                    </a>
+                </li>
+                <li>
+                    <a href="https://blogs.sap.com/2023/01/23/data-mesh-with-sap-business-technology-platform-part-5-sap-analytics-cloud/">
+                        Data Mesh with SAP Business Technology Platform Part 5 – SAP Analytics Cloud
+                    </a>
+                </li>
+                <li>
+                    <a href="https://blogs.sap.com/2022/12/15/sap-business-technology-platform-as-part-of-a-platform-supporting-a-data-mesh/">
+                        SAP Business Technology Platform as part of a platform supporting a Data
+                        Mesh
+                    </a>
+                </li>
+                <li>
+                    <a href="https://pages.pwc.de/data-mesh-and-sap">
+                        Data Mesh and SAP – How and why you should mesh your data using the SAP Business Technology
+                        Platform
+                    </a>
+                </li>
             </ul>
 
         </div>
     </section>
-
 </div>
 
 <footer class="footer">
     <div class="content has-text-centered">
         <p>
             <a href="https://www.innoq.com">
-                <img src="/images/supported-by-innoq--petrol-apricot.svg" alt="Supported by INNOQ" class="footer-logo" width="180" />
+                <img src="/images/supported-by-innoq--petrol-apricot.svg" alt="Supported by INNOQ" class="footer-logo"
+                     width="180"/>
             </a>
         </p>
         <p>
@@ -268,12 +569,13 @@
 <script src="/js/navigation.js"></script>
 
 <script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
-<noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript>
+<noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt=""
+               referrerpolicy="no-referrer-when-downgrade"/></noscript>
 
-<link rel="stylesheet" href="/css/glightbox.css" />
+<link rel="stylesheet" href="/css/glightbox.css"/>
 <script src="/js/glightbox.js"></script>
 <script type="text/javascript">
-  const lightbox = GLightbox({});
+    const lightbox = GLightbox({});
 </script>
 
 
