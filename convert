@@ -31,7 +31,7 @@ convert images/terraform-datamesh-dataproduct_card.png -resize 1600 images/terra
 # brew install webp
 for i in images/*.png; do
     [ -f "$i" ] || break
-    cwebp -q 100 -quiet -lossless "$i" -o "$i.webp"
+    cwebp -q 75 -quiet "$i" -o "$i.webp"
 done
 
 #convert -bordercolor white -border 50 data-product-canvas-template.png data-product-canvas-template_with-border.png
