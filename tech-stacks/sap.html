@@ -160,8 +160,21 @@
         </div>
 
         <div class="notification is-warning is-light">
-            This tech stack was contributed by <strong>Wolfgang Epting</strong>, <strong>Andreas Engel</strong> and
-            <strong>Gordon Witzel</strong>, all from SAP.
+            This tech stack was contributed by
+            <a href="https://www.linkedin.com/in/gordon-witzel-5838a33/">
+                <strong>Wolfgang Epting</strong>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>,
+            <a href="https://www.linkedin.com/in/drandreasengel/">
+                <strong>Andreas Engel</strong>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+            and
+            <a href="https://www.linkedin.com/in/wolfgang-epting-60640088/">
+                <strong>Gordon Witzel</strong>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>,
+            all from SAP.
         </div>
 
         <div class="content">
@@ -178,7 +191,11 @@
             <p>(To note: <strong>SAP Datasphere</strong> is a
                 Service run on the SAP Business Technology Platform, which is fully cloud-based and offers the identity,
                 security, development, runtime, and many more services which can leveraged as part of the Self-serve
-                data platform: see the <a href="https://discovery-center.cloud.sap/index.html">SAP Discovery Center</a>
+                data platform: see the
+                <a href="https://discovery-center.cloud.sap/index.html">
+                    SAP Discovery Center
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
                 for a detailed list of available services)
             </p>
             <img src="../images/sap.drawio.png" alt="Data Mesh Architecture with AWS S3 and AWS Athena"
@@ -194,7 +211,11 @@
                 <div class="column">
                     <p>
                         <strong>SAP Datasphere</strong> integrates out of the box with SAP S/4HANA tables and supports
-                        replication as well as federation.
+                        replication as well as federation. The integration is based on the VDM (virtual data model)
+                        which forms the basis for data access in SAP S/4HANA in, for example, analytical applications
+                        and APIs. The VDM of SAP S/4HANA Cloud and SAP S/4HANA is represented by CDS views. They expose
+                        business data - stored in database tables - in a format that is based on business semantics and
+                        therefore easy to consume.
                     </p>
 
                 </div>
@@ -210,6 +231,13 @@
                         <strong>SAP Datasphere</strong> also supports out of the box integration to non-SAP data
                         sources.
                     </p>
+                    <p>
+                        SAP Datasphere provide access to data from a wide range of sources, cloud as well as on-premise
+                        sources, SAP as well as Non-SAP sources, and partner tools. SAP Datasphere allow space members
+                        to use objects from the connected source to acquire, prepare and access data from those sources
+                        in SAP Datasphere. To connect to different sources, SAP Datasphere provides different connection
+                        types.
+                    </p>
                 </div>
                 <div class="column">
                     <figure class="image">
@@ -222,6 +250,14 @@
                     <p>
                         In the <strong>Analytical Model</strong> within <strong>SAP Datasphere</strong> data products
                         can be build based on replicated or virtualized data.
+                    </p>
+                    <p>
+                        In the <strong>Analytical Model</strong> within <strong>SAP Datasphere</strong> data products
+                        can be build based on replicated orvirtualized data. Analytic models are the foundation for
+                        making data ready for consumption in SAP Analytics Cloud. They allow you to create and define
+                        multi-dimensional models to provide data for analytical purposes to answer different business
+                        questions. Pre-defined measures, hierarchies, filters, parameters, and associations provide
+                        flexible and simple navigation through the underlying data.
                     </p>
                 </div>
                 <div class="column">
@@ -283,6 +319,23 @@
                         leveraged for data stored within
                         <strong>SAP Datasphere</strong>.
                     </p>
+                    <p>
+                        SAP HANA Cloud is an in-memory database which provides a single place to access, store, and
+                        process all enterprise data in real time. SAP HANA Native Storage Extension (NSE) is a
+                        general-purpose, built-in warm data store in SAP HANA Cloud that lets you manage less-frequently
+                        accessed data without fully loading it into memory. It integrates disk-based or flash-drive
+                        based database technology with the SAP HANA in-memory database for an improved price-performance
+                        ratio.
+                    </p>
+                    <p>
+                        The Data Lake Relational Engine is an SAP HANA Cloud component which provides high-performance
+                        analysis for petabyte volumes of relational data. Data Lake Files provides managed access to
+                        structured, semi-structured, and unstructured data stored as files.
+                    </p>
+                    <p>
+                        SAP HANA Cloud, Data Lake Relational Engine and Data Lakes Files are fully integrated, sharing
+                        common security and tooling with all HANA Cloud components.
+                    </p>
                 </div>
                 <div class="column">
                     <figure class="image">
@@ -313,9 +366,16 @@
             <div class="columns">
                 <div class="column">
                     <p>
-                        The <strong>SAP Datasphere</strong> Marketplace supports end to end processes consisting of
-                        searching data products, contacting the provider/owner, downloading the data, and track the data
-                        deliveries. Data from the marketplace can out-of-the box be leveraged in SAP Datasphere
+                        The <strong>SAP Datasphere</strong> Marketplace is the go-to destination for consumers and
+                        producers to interact with data products. It provides convenient and adaptable solutions for the
+                        purchase and consumption of these products. The Data Marketplace is fully integrated into the
+                        SAP Datasphere, presenting structured documents known as data products to be used in one or more
+                        SAP Datasphere Spaces. Data providers can oversee the complete lifespan of their data products,
+                        including how widely they are used - especially when it comes to removal. By controlling
+                        context, it's possible to differentiate between public, private and internal data products,
+                        meaning providers can set visibility rules from the start to decide who data products can be
+                        shared with, and why - for instance, to introduce an internal data marketplace or to allow for
+                        data exchange between different organizations.
                     </p>
                 </div>
                 <div class="column">
@@ -328,9 +388,13 @@
             <div class="columns">
                 <div class="column">
                     <p>
-                        <strong>Find Data Products:</strong><br/>Explore data solutions from both commercial vendors and
-                        providers of open data, or encourage members of your network to become data providers
-                        themselves, thereby fostering data sharing within your ecosystem
+                        <strong>Find Data Products:</strong><br /> Explore data solutions from both commercial vendors
+                        and providers of open data, or encourage members of your network to become data providers
+                        themselves, thereby fostering data sharing within your ecosystem Data Products are fully
+                        integrated into the Marketplace of SAP Datasphere. Data products can be used in one or several
+                        spaces within the SAP Datasphere tenant. It is possible to search and browse for data products
+                        and data providers and the results will be displayed in a list and are sorted by best match by
+                        default.
                     </p>
                 </div>
                 <div class="column">
@@ -347,6 +411,17 @@
                         request
                         individualization of currently listed data products or setup bi-directional data exchange, e.g.,
                         get weather data for all facilities maintained in your view.
+                    </p>
+                    <p>
+                        <strong>Contact Data Product Owner</strong><br/>
+                        Get in touch with data product owner to request individualization of currently listed data
+                        products or setup bidirectional data exchange, e.g., get weather-data for all facilities
+                        maintained in your view. To interact, the Data Consumer can request pricing and delivery for
+                        products that are listed with pricing “On Request” or with Delivery Type “External Delivery”.
+                        This generates a mail in the data consumers mail client with a template and the data product
+                        information prefilled to facilitate the interaction between data provider & data consumer. In
+                        addition, the user can contact the data provider with the “Mail” button in the top right corner
+                        of the data product page.
                     </p>
                 </div>
                 <div class="column">
@@ -376,8 +451,13 @@
             <div class="columns">
                 <div class="column">
                     <p>
-                        <strong>Track Data Products</strong><br/> Manage all your subscribed data products centrally
-                        with delivery and usage tracking and update management.
+                        <strong>Track Data Products</strong><br/>
+                        Manage all your subscribed data products centrally with delivery and usage tracking and update
+                        management.<br />
+                        Check whether data products are up-to-date or if updates are running or if they failed.<br />
+                        It helps to track the progress of the installation and to determine information regarding older
+                        installations. Likewise, this menu item provides maintenance and de-installation of all loaded
+                        resources from the SAP Data Marketplace.
                     </p>
                 </div>
                 <div class="column">
@@ -390,8 +470,12 @@
             <div class="columns">
                 <div class="column">
                     <p>
-                        <strong>Use Data Products</strong> <br/>Use data products with your other data models to create
-                        additional data products or leverage them for insight to action.
+                        <strong>Use Data Products</strong><br/>
+                        Use data products with your other data models to create additional data products or leverage
+                        them for insight to action. Consumers of data products can correlate data across domains and
+                        stitch them together in wonderful, insightful ways; join, filter, aggregate, etc. This is
+                        achieved across domains by following standards and harmonization rules with data governance in
+                        place.
                     </p>
                 </div>
                 <div class="column">
@@ -430,7 +514,26 @@
                         solution, you can bring together analytics and planning with unique
                         integration to SAP applications and smooth access to heterogeneous data sources.
                     </p>
-
+                    <p>
+                        <span>With SAP Analytics Cloud customers can</span>
+                        <ul>
+                            <li>Increase agility with analytics and planning in one solution</li>
+                            <li>Utilize the full context of real-time SAP data</li>
+                            <li>Deliver high-performance analytics at scale</li>
+                            <li>Automate insights with machine learning</li>
+                            <li>Quickly compose specialized analytic apps</li>
+                            <li>Deliver analytics closer to the point of decision</li>
+                            <li>Increase agility with analytics and planning in one solution</li>
+                            <li>Utilize the full context of real-time SAP data</li>
+                            <li>Deliver high-performance analytics at scale</li>
+                            <li>Automate insights with machine learning</li>
+                            <li>Quickly compose specialized analytic apps</li>
+                            <li>Deliver analytics closer to the point of decision</li>
+                            <li>Connect financial and operational plans seamlessly integrated with SAP application</li>
+                            <li>Connect financial and operational plans</li>
+                            <li>Seamlessly integrated with SAP application</li>
+                        </ul>
+                    </p>
                 </div>
                 <div class="column">
                     <figure class="image">
@@ -489,49 +592,58 @@
                     <a href="https://blogs.sap.com/2022/06/04/more-than-just-a-hype-data-mesh-as-a-new-approach-to-increase-agility-in-value-creation-from-data/">
                         More than just a hype: Data Mesh as a new approach to increase agility in value creation from
                         data
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
                     </a>
                 </li>
                 <li>
                     <a href="https://blogs.sap.com/2022/06/04/more-than-just-a-hype-data-mesh-as-a-new-approach-to-increase-agility-in-value-creation-from-data/">
                         Data Mesh with SAP Datasphere
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
                     </a>
                 </li>
                 <li>
                     <a href="https://blogs.sap.com/2022/09/27/data-mesh-with-sap-business-technology-platform-part-1-sap-data-warehouse-cloud/">
                         Data Mesh with SAP Business Technology Platform Part 1 – SAP Data Warehouse Cloud
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
                     </a>
                 </li>
                 <li>
                     <a href="https://blogs.sap.com/2022/11/09/data-mesh-with-sap-business-technology-platform-part-2-sap-hana-cloud/">
                         Data Mesh with SAP Business Technology Platform Part 2 – SAP HANA Cloud
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
                     </a>
                 </li>
                 <li>
                     <a href="https://blogs.sap.com/2022/12/09/data-mesh-with-sap-business-technology-platform-part-3-sap-master-data-governance/">
                         Data Mesh with SAP Business Technology Platform Part 3 – SAP Master Data
                         Governance
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
                     </a>
                 </li>
                 <li>
                     <a href="https://blogs.sap.com/2022/12/09/data-mesh-with-sap-business-technology-platform-part-3-sap-master-data-governance/">
                         Data Mesh with SAP Business Technology Platform Part 4 – SAP Data Intelligence Cloud
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
                     </a>
                 </li>
                 <li>
                     <a href="https://blogs.sap.com/2023/01/23/data-mesh-with-sap-business-technology-platform-part-5-sap-analytics-cloud/">
                         Data Mesh with SAP Business Technology Platform Part 5 – SAP Analytics Cloud
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
                     </a>
                 </li>
                 <li>
                     <a href="https://blogs.sap.com/2022/12/15/sap-business-technology-platform-as-part-of-a-platform-supporting-a-data-mesh/">
                         SAP Business Technology Platform as part of a platform supporting a Data
                         Mesh
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
                     </a>
                 </li>
                 <li>
                     <a href="https://pages.pwc.de/data-mesh-and-sap">
                         Data Mesh and SAP – How and why you should mesh your data using the SAP Business Technology
                         Platform
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
                     </a>
                 </li>
             </ul>
