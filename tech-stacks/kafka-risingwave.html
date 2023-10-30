@@ -159,7 +159,7 @@
 
         <div class="content">
             <p>
-                "Classical" data mesh implementations firmly put their <strong>data products on the analytical plane</strong>, either in data warehouses (such as Snowflake or BigQuery), data lakes (S3, MinIO) or lakehouses (Databricks). New technological advances from the streaming world driven firstly by <strong>Kafka</strong>, i.e., <strong>streaming databases</strong> such as <strong>RisingWave</strong>, enable us, for the first time, to depart from this pattern and <strong>keep the data products on the operational plane</strong>, and pave the way for <strong>bi-directional interactions between the operational systems and the data products</strong>. This tech stack is, at its heart, based purely on <strong>Open Source</strong>, but it can of course be enriched with proprietary software if needed.
+                "Classical" data mesh implementations firmly put their <strong>data products on the analytical plane</strong>, either in data warehouses (such as Snowflake or BigQuery), data lakes (S3, MinIO) or lakehouses (Databricks). New technological advances from the streaming world driven firstly by <strong>Kafka</strong>, i.e., <strong>streaming databases</strong> such as <strong>Materialize</strong> and <strong>RisingWave</strong> enable us, for the first time, to depart from this pattern and <strong>keep the data products on the operational plane</strong>, and pave the way for <strong>bi-directional interactions between the operational systems and the data products</strong>.
             </p>
             <img src="../images/kafka-risingwave.webp" alt="Data Mesh Architecture with Kafka and RisingWave" style="width: 100%">
             <p>
@@ -176,10 +176,13 @@
                 Thankfully, especially one of the many new technological developments in the streaming field has brought these previously insurmountable hurdles to a fall. <strong>Streaming databases</strong>. This is why:
                 <ol>
                     <li>Streaming databases support <strong>complex SQL-based stream processing</strong> like a normal database, with nested deeply JOINs, self-JOINs etc.</li>
-                    <li>Streaming databases deliver a <strong>database-like experience</strong> with <strong>consistency guarantees</strong> such as snapshot isolation and atomicity, which are not (yet?) available in older stream processing systems. RisingWave even has a <strong>PostgreSQL wire-compatible interface</strong> which not only makes it easy to adopt by database experts with some PostgreSQL experience, but also allows it to be used in conjunction with tools such as <strong>dbt</strong>.</li>
+                    <li>Streaming databases deliver a <strong>database-like experience</strong> with <strong>consistency guarantees</strong> such as snapshot isolation and atomicity, which are not (yet?) available in older stream processing systems. Materialize and RisingWave even has a <strong>PostgreSQL wire-compatible interface</strong> which not only makes it easy to adopt by database experts with some PostgreSQL experience, but also allows it to be used in conjunction with tools such as <strong>dbt</strong>.</li>
                     <li>Streaming databases provide incrementally maintained <strong>Materialized Views</strong> which <strong>can be queried like in a normal database</strong>. This enables the seamless <strong>use of real-time streaming data in a batch/non-real-time setting</strong>, i.e., if the latest data only has to be read once a day or even once a week.</li>
                 </ol>
-                Let us dive into the individual components of this tech stack/architectural blueprint. Grafana/ArgoCD... (Platform Operations), OpenIAM/Keyclock (Access management)
+                This tech stack is, at its heart, based purely on <strong>Open Source</strong>: We included only Open Source software. This is also why we chose <strong>RisingWave</strong> instead of <strong>Materialize</strong> as our streaming database. Materialize was the first streaming database of this kind (2020), whereas RisingWave came out later (2022).
+            </p>
+            <p>
+                Before we dive into the individual components of this tech stack/architectural blueprint, let us first have a glance at the <strong>Self-serve Data Platform</strong> at the bottom. Here, we suggest to use e.g. popular Open Source tools like <strong>OpenIAM</strong> and <strong>Keycloak</strong> for <strong>Access Management</strong> (second from left in the diagram), and <strong>Grafana</strong> and <strong>ArgoCD</strong> for <strong>Platform Operations</strong> (right-hand side), where ArgoCD is a Continuous Deployment (CD) tool on top of Kubernetes.
             </p>
 
             <div class="columns">
@@ -237,7 +240,7 @@
             <div class="columns">
                 <div class="column">
                     <p>
-                        Pinot, Druid, Clickhouse for RT analytics, Jupyter (Machine Learning) - can also connect to RW directly if no columnar store required
+                        analytical layer: Pinot, Druid, Clickhouse for RT analytics, Jupyter (Machine Learning) - can also connect to RW directly if no columnar store required
                     </p>
 
                 </div>
@@ -250,7 +253,7 @@
             <div class="columns">
                 <div class="column">
                     <p>
-                        DuckDB, Hive for non-RT analytics, Jupyter (Machine Learning) - can also connect to RW directly if no columnar store required
+                        analytical layer: DuckDB, Hive for non-RT analytics, Jupyter (Machine Learning) - can also connect to RW directly if no columnar store required
 
                     </p>
 
@@ -264,7 +267,10 @@
 
             <h5>References</h5>
             <ul>
-                <li><a href="https://aws.amazon.com/blogs/big-data/design-a-data-mesh-architecture-using-aws-lake-formation-and-aws-glue/">https://aws.amazon.com/blogs/big-data/design-a-data-mesh-architecture-using-aws-lake-formation-and-aws-glue/</a></li>
+                <li><a href="https://kafka.apache.org/">Apache Kafka</a></li>
+                <li><a href="https:/risingwave.dev/">RisingWave</a></li>
+                <li><a href="https://risingwave.com/blog/why-kafka-is-the-new-data-lake/">Why Kafka Is the New Data Lake</a></li>
+                <li><a href="https://materialize.com/blog/operational-data-warehouse/">Materialize: An Operational Data Warehouse</a></li>
             </ul>
 
         </div>
