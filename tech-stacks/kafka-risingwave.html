@@ -161,7 +161,7 @@
             <p>
                 We often see Data Mesh implementations relying on <strong>AWS S3 and AWS Athena</strong> as the primary means to share and query data products.
             </p>
-            <img src="../images/aws-s3-athena.png.webp" alt="Data Mesh Architecture with AWS S3 and AWS Athena" style="width: 100%">
+            <img src="../images/kafka-risingwave.png.webp" alt="Data Mesh Architecture with Kafka and RisingWave" style="width: 100%">
             <p>
                 Interestingly enough, most data mesh implementations on AWS are using S3 and Athena,
                 and not Redshift, which would be more the equivalent to <a
@@ -185,7 +185,7 @@
                 </div>
                 <div class="column">
                     <figure class="image">
-                        <img src="../images/aws-athena-s3.png.webp" alt="Screenshot of S3 files">
+                        <img src="../images/kafka.webp" alt="Screenshot of Apache Kafka">
                     </figure>
                 </div>
             </div>
@@ -201,7 +201,7 @@
                 </div>
                 <div class="column">
                     <figure class="image">
-                        <img src="../images/aws-athena.png.webp" alt="Screenshot of Athena">
+                        <img src="../images/risingwave.webp" alt="Screenshot of RisingWave">
                     </figure>
                 </div>
             </div>
@@ -215,7 +215,21 @@
                 </div>
                 <div class="column">
                     <figure class="image">
-                        <img src="../images/aws-glue-studio.png.webp" alt="Screenshot of Glue Studio Editor">
+                        <img src="../images/datahub.webp" alt="Screenshot of Apache Superset">
+                    </figure>
+                </div>
+            </div>
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        AWS has a number of different solutions to build data pipelines for cleaning, pre-processing and transforming S3 files.
+                        A serverless approach is to use <strong>AWS Glue ETL</strong>, which executes Spark or Python scripts and schedules jobs.
+                        The AWS Glue Studio also provides a visual editor to build and manage ETL scripts.
+                    </p>
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <img src="../images/superset.webp" alt="Screenshot of Apache Superset">
                     </figure>
                 </div>
             </div>
@@ -228,7 +242,7 @@
                 </div>
                 <div class="column">
                     <figure class="image">
-                        <img src="../images/aws-quicksight.png.webp" alt="Screenshot of Quicksight">
+                        <img src="../images/pinot.webp" alt="Screenshot of Apache Pinot">
                     </figure>
                 </div>
             </div>
@@ -245,7 +259,7 @@
                 </div>
                 <div class="column">
                     <figure class="image">
-                        <img src="../images/aws-lakeformation.png.webp" alt="Screenshot of Lakeformation">
+                        <img src="../images/duckdb.webp" alt="Screenshot of DuckDB">
                     </figure>
                 </div>
             </div>

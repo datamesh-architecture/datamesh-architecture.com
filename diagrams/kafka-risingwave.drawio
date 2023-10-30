@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-10-30T07:22:06.628Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36" etag="OoqkwyyxWer0P9D9ynSL" version="22.0.8" type="device">
+<mxfile host="app.diagrams.net" modified="2023-10-30T20:00:11.682Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36" etag="LB66kfQ9qS2HKvglkb9T" version="22.0.8" type="device">
   <diagram id="DWjpSvbVxY2pOprUcE6g" name="Page-1">
     <mxGraphModel dx="1434" dy="1176" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -24,7 +24,7 @@
         <mxCell id="24" value="Data Contract" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1;sketch=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;align=left;spacingLeft=42;verticalAlign=top;spacing=10;" parent="1" vertex="1">
           <mxGeometry x="944" y="253" width="191" height="272" as="geometry" />
         </mxCell>
-        <mxCell id="45" value="Data Mesh Architecture with Kafka, RisingWave and dbt" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;sketch=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=21;fontStyle=1" parent="1" vertex="1">
+        <mxCell id="45" value="Data Mesh Architecture with Kafka and RisingWave" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;sketch=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=21;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="166" y="-40" width="1020" height="30" as="geometry" />
         </mxCell>
         <mxCell id="73" value="publish" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;sketch=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=11;" parent="1" vertex="1">
@@ -152,7 +152,7 @@
         <mxCell id="aWsz8sipuqxrDQOZK4sH-305" value="&lt;font style=&quot;font-size: 12px&quot;&gt;Jupyter&lt;br&gt;&lt;/font&gt;&lt;font color=&quot;#b3b3b3&quot;&gt;Machine Learning&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1;sketch=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;align=left;spacingLeft=42;" parent="1" vertex="1">
           <mxGeometry x="515" y="155" width="156" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="aWsz8sipuqxrDQOZK4sH-307" value="&lt;font style=&quot;font-size: 12px&quot;&gt;DuckDB, Postgres, ...&lt;br&gt;&lt;/font&gt;&lt;font color=&quot;#b3b3b3&quot;&gt;Analytics&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1;sketch=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;align=left;spacingLeft=42;" parent="1" vertex="1">
+        <mxCell id="aWsz8sipuqxrDQOZK4sH-307" value="&lt;font style=&quot;font-size: 12px&quot;&gt;DuckDB, Hive, ...&lt;br&gt;&lt;/font&gt;&lt;font color=&quot;#b3b3b3&quot;&gt;Analytics&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1;sketch=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;align=left;spacingLeft=42;" parent="1" vertex="1">
           <mxGeometry x="688" y="81" width="156" height="60" as="geometry" />
         </mxCell>
         <mxCell id="aWsz8sipuqxrDQOZK4sH-308" value="BYO" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;fontSize=15;" parent="1" vertex="1">
@@ -161,7 +161,7 @@
         <mxCell id="aWsz8sipuqxrDQOZK4sH-309" value="BYO" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;fontSize=15;" parent="1" vertex="1">
           <mxGeometry x="682" y="164.5" width="60" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="aWsz8sipuqxrDQOZK4sH-310" value="&lt;font style=&quot;font-size: 12px&quot;&gt;Clickhouse, Druid, Pinot, ...&lt;br&gt;&lt;/font&gt;&lt;font color=&quot;#b3b3b3&quot;&gt;Real-time Analytics&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1;sketch=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;align=left;spacingLeft=42;" parent="1" vertex="1">
+        <mxCell id="aWsz8sipuqxrDQOZK4sH-310" value="&lt;font style=&quot;font-size: 12px&quot;&gt;Pinot, Druid, Clickhouse, ...&lt;br&gt;&lt;/font&gt;&lt;font color=&quot;#b3b3b3&quot;&gt;Real-time Analytics&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1;sketch=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;align=left;spacingLeft=42;" parent="1" vertex="1">
           <mxGeometry x="515" y="81" width="156" height="60" as="geometry" />
         </mxCell>
         <mxCell id="aWsz8sipuqxrDQOZK4sH-311" value="BYO" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;fontSize=15;" parent="1" vertex="1">
