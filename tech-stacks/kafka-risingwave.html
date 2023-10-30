@@ -10,12 +10,12 @@
     <meta name="twitter:site" content="@innoq" />
     <meta name="twitter:title" content="Data Mesh Architecture: Kafka and RisingWave" />
     <meta name="twitter:description" content="How to build a data mesh architecture with Kafka and RisingWave" />
-    <meta name="twitter:image" content="https://www.datamesh-architecture.com/images/kafka-risingwave_card.png" />
+    <meta name="twitter:image" content="https://www.datamesh-architecture.com/images/kafka-risingwave_card.webp" />
     <meta name="twitter:image:alt" content="Data Mesh Architecture: Domains are in the center and teams do analytics on their own. They build and interconnect with data products. A data platform team and a enablement team help. Global policies are agreed through federated governance." />
     <meta property="og:url" content="https://datamesh-architecture.com" />
     <meta property="og:title" content="Data Mesh Architecture: Kafka and RisingWave" />
     <meta property="og:description" content="How to build a data mesh architecture with Kafka and RisingWave" />
-    <meta property="og:image" content="https://www.datamesh-architecture.com/images/kafka-risingwave_card.png" />
+    <meta property="og:image" content="https://www.datamesh-architecture.com/images/kafka-risingwave_card.webp" />
 
     <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Book.woff2?cachebuster=2" crossorigin="">
     <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Bold.woff2?cachebuster=2" crossorigin="">
@@ -161,7 +161,7 @@
             <p>
                 "Classical" data mesh implementations firmly put their <strong>data products on the analytical plane</strong>, either in data warehouses (such as Snowflake or BigQuery), data lakes (S3, MinIO) or lakehouses (Databricks). New technological advances from the streaming world driven firstly by <strong>Kafka</strong>, i.e., <strong>streaming databases</strong> such as <strong>RisingWave</strong>, enable us, for the first time, to depart from this pattern and <strong>keep the data products on the operational plane</strong>, and pave the way for <strong>bi-directional interactions between the operational systems and the data products</strong>. This tech stack is, at its heart, based purely on <strong>Open Source</strong>, but it can of course be enriched with proprietary software if needed.
             </p>
-            <img src="../images/kafka-risingwave.png.webp" alt="Data Mesh Architecture with Kafka and RisingWave" style="width: 100%">
+            <img src="../images/kafka-risingwave.webp" alt="Data Mesh Architecture with Kafka and RisingWave" style="width: 100%">
             <p>
                 <strong>Kafka</strong> already has its place in many "classical" implementations of data mesh, viz. as an ingestion layer for streaming data into data products. In this tech stack, we extend the scope of Kafka far beyond just serving as an ingestion layer. Here, data products are not just ingested from Kafka but <strong>data products live on Kafka</strong>. The huge advantage of this approach is that it allows for <strong>bi-directional interactions between the operational systems and data products</strong>, i.e., data products can not only be accessed from the analytical plane, but, for the first time, also from the operational plane, in real-time. This ushers in a whole new category of use cases built on such a data mesh, including customer facing mobile apps, web apps etc., without having to built a new specialized real-time ETL pipeline, bypassing the data mesh, for each and every data source.
             </p>
@@ -179,13 +179,13 @@
                     <li>Streaming databases deliver a <strong>database-like experience</strong> with <strong>consistency guarantees</strong> such as snapshot isolation and atomicity, which are not (yet?) available in older stream processing systems. RisingWave even has a <strong>PostgreSQL wire-compatible interface</strong> which not only makes it easy to adopt by database experts with some PostgreSQL experience, but also allows it to be used in conjunction with tools such as <strong>dbt</strong>.</li>
                     <li>Streaming databases provide incrementally maintained <strong>Materialized Views</strong> which <strong>can be queried like in a normal database</strong>. This enables the seamless <strong>use of real-time streaming data in a batch/non-real-time setting</strong>, i.e., if the latest data only has to be read once a day or even once a week.</li>
                 </ol>
-                Let us dive into the individual components of this tech stack/architectural blueprint.
+                Let us dive into the individual components of this tech stack/architectural blueprint. Grafana/ArgoCD... (Platform Operations), OpenIAM/Keyclock (Access management)
             </p>
 
             <div class="columns">
                 <div class="column">
                     <p>
-                        Kafka, Databases
+                        operational data: Kafka (messages), Databases (entities)
                     </p>
 
                 </div>
@@ -198,7 +198,7 @@
             <div class="columns">
                 <div class="column">
                     <p>
-                        RisingWave, dbt
+                        data products: RisingWave (Stream Processing, Materialized Views), RW+dbt (Transformation)
                     </p>
 
                 </div>
@@ -211,7 +211,7 @@
             <div class="columns">
                 <div class="column">
                     <p>
-                        Schema Registry, DataHub, dbt-docs, dbt-tests
+                        data contract: Kafka (datasets), Schema Registry (definition), dbt-docs, DataHub (data catalog), dbt-tests (Tests), dbt-expectations (Data Quality Monitoring)
                     </p>
 
                 </div>
@@ -224,7 +224,7 @@
             <div class="columns">
                 <div class="column">
                     <p>
-                        Superset, Redash, Jupyter
+                        analytical layer: Superset, Redash (data visualization)
                     </p>
 
                 </div>
@@ -237,7 +237,7 @@
             <div class="columns">
                 <div class="column">
                     <p>
-                        Pinot, Druid, Clickhouse
+                        Pinot, Druid, Clickhouse for RT analytics, Jupyter (Machine Learning) - can also connect to RW directly if no columnar store required
                     </p>
 
                 </div>
@@ -250,7 +250,8 @@
             <div class="columns">
                 <div class="column">
                     <p>
-                        DuckDB, Hive
+                        DuckDB, Hive for non-RT analytics, Jupyter (Machine Learning) - can also connect to RW directly if no columnar store required
+
                     </p>
 
                 </div>
