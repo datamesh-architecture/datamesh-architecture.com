@@ -159,27 +159,27 @@
 
         <div class="content">
             <p>
-                "Classical" data mesh implementations firmly put their <strong>data products on the analytical plane</strong>, either in data warehouses (such as Snowflake or BigQuery), data lakes (S3, MinIO) or lakehouses (Databricks). New technological advances from the streaming world driven firstly by <strong>Kafka</strong>, i.e., <strong>streaming databases</strong> such as <strong>Materialize</strong> and <strong>RisingWave</strong> enable us, for the first time, to depart from this pattern and <strong>keep the data products on the operational plane</strong>, and pave the way for <strong>bi-directional interactions between the operational systems and the data products</strong>.
+                "Classical" data mesh implementations firmly put their <strong>data products on the analytical plane</strong>, either in data warehouses (such as Snowflake or BigQuery), data lakes (S3, MinIO) or lakehouses (Databricks). New technological advances from the streaming world driven firstly by <strong>Kafka</strong>, i.e., <strong>streaming databases</strong> such as <strong>Materialize</strong> and <strong>RisingWave</strong> enable us, for the first time, to depart from this pattern to <strong>keep the data products on the operational plane</strong>, and to pave the way for <strong>bi-directional interactions between the operational systems and the data products</strong>.
             </p>
             <img src="../images/kafka-risingwave.webp" alt="Data Mesh Architecture with Kafka and RisingWave" style="width: 100%">
             <p>
-                <strong>Kafka</strong> already has its place in many "classical" implementations of data mesh, viz. as an ingestion layer for streaming data into data products. In this tech stack, we extend the scope of Kafka far beyond just serving as an ingestion layer. Here, data products are not just ingested from Kafka but <strong>data products live on Kafka</strong>. The huge advantage of this approach is that it allows for <strong>bi-directional interactions between the operational systems and data products</strong>, i.e., data products can not only be accessed from the analytical plane, but, for the first time, also from the operational plane, in real-time. This ushers in a whole new category of use cases built on such a data mesh, including customer facing mobile apps, web apps etc., without having to built a new specialized real-time ETL pipeline, bypassing the data mesh, for each and every data source.
+                <strong>Kafka</strong> already has its place in many "classical" implementations of data mesh, viz. as an ingestion layer for streaming data into data products. In this tech stack, we extend the scope of Kafka far beyond just serving as an ingestion layer. Here, data products are not just ingested from Kafka but <strong>data products live on Kafka</strong>. The huge advantage of this approach is that it allows for <strong>bi-directional interactions between the operational systems and data products</strong>, i.e., data products can not only be accessed from the analytical plane, but, for the first time, also from the operational plane, in real-time. This ushers in a whole new world of real-time use cases built on such a data mesh, including real-time analytics, real-time machine learning, customer-facing mobile apps and web apps etc., without having to built a new specialized real-time ETL pipeline, bypassing the data mesh and strongly violating the tenets of it, for each and every data source.
             </p>
 
             <p>
-                The implementation of such a <strong>Streaming Data Mesh</strong> architecture has so far been out of reach. Especially the following three challenges posed almost insurmountable hurdles for such an implementation pattern:
+                So far, in practice, implementations of such a <strong>Streaming Data Mesh</strong> have been far out of reach. Especially the following three challenges posed almost insurmountable hurdles for such an implementation pattern:
                 <ol>
-                    <li>The complexity of stream processing systems such as Flink and Kafka Streams for data processing "on the stream". It was hardly possible to do non-trivial stream processing without having to do in-depth JVM coding (e.g. Java, Kotlin, Scala).</li>
-                    <li>The inability of these stream processing systems to deliver a database-like experience. Database experts were forced to re-think a lot of what they knew when they would switch over from "data-at-rest" (databases) to "data-in-motion" (streaming) - so much that few of them ever did.</li>
-                    <li>Even though Kafka is, in principle, able to serve both streaming and batch, or, real-time and non-real-time users, reading from Kafka in a batch/non-real-time setting required complex and cost-intensive coding or setting up additional infrastructure.</li>
+                    <li>The complexity of stream processing systems such as Flink and Kafka Streams for data processing "on the stream". It was hardly possible to do non-trivial stream processing without having to do in-depth JVM coding (e.g. Java, Kotlin, Scala) and in-depth streaming expertise.</li>
+                    <li>The inability of these stream processing systems to deliver a database-like experience. Database experts would be forced to re-think a lot of what they knew when they would switch over from "data-at-rest" (databases) to "data-in-motion" (streaming) - so much that few of them ever did.</li>
+                    <li>Even though Kafka is, in principle, able to serve both streaming/real-time and batch/non-realtime users, reading from Kafka in a batch/non-real-time setting required complex and cost-intensive coding or setting up additional infrastructure.</li>
                 </ol>
                 Thankfully, especially one of the many new technological developments in the streaming field has brought these previously insurmountable hurdles to a fall. <strong>Streaming databases</strong>. This is why:
                 <ol>
                     <li>Streaming databases support <strong>complex SQL-based stream processing</strong> like a normal database, with nested deeply JOINs, self-JOINs etc.</li>
-                    <li>Streaming databases deliver a <strong>database-like experience</strong> with <strong>consistency guarantees</strong> such as snapshot isolation and atomicity, which are not (yet?) available in older stream processing systems. Materialize and RisingWave even has a <strong>PostgreSQL wire-compatible interface</strong> which not only makes it easy to adopt by database experts with some PostgreSQL experience, but also allows it to be used in conjunction with tools such as <strong>dbt</strong>.</li>
+                    <li>Streaming databases deliver a <strong>database-like experience</strong> with <strong>consistency guarantees</strong> such as snapshot isolation and atomicity, which are not (yet?) available in older stream processing systems. Materialize and RisingWave even have a <strong>PostgreSQL wire-compatible interface</strong>, which not only makes them easy to adopt by anybody with database expertise, but also allows them to be used in conjunction with tools such as <strong>dbt</strong>.</li>
                     <li>Streaming databases provide incrementally maintained <strong>Materialized Views</strong> which <strong>can be queried like in a normal database</strong>. This enables the seamless <strong>use of real-time streaming data in a batch/non-real-time setting</strong>, i.e., if the latest data only has to be read once a day or even once a week.</li>
                 </ol>
-                This tech stack is, at its heart, based purely on <strong>Open Source</strong>: We included only Open Source software. This is also why we chose <strong>RisingWave</strong> instead of <strong>Materialize</strong> as our streaming database. Materialize was the first streaming database of this kind (2020), whereas RisingWave came out later (2022).
+                This tech stack is, at its heart, based purely on <strong>Open Source</strong>: We included only Open Source software. This is also why we chose <strong>RisingWave</strong> instead of <strong>Materialize</strong> as our streaming database - it is Open Source whereas Materialize is not. It should be noted that Materialize was the first streaming database of this kind (2020), whereas RisingWave came out later (2022).
             </p>
             <p>
                 Before we dive into the individual components of this tech stack/architectural blueprint, let us first have a glance at the <strong>Self-serve Data Platform</strong> at the bottom. Here, we suggest to use e.g. popular Open Source tools like <strong>OpenIAM</strong> and <strong>Keycloak</strong> for <strong>Access Management</strong> (second from left in the diagram), and <strong>Grafana</strong> and <strong>ArgoCD</strong> for <strong>Platform Operations</strong> (right-hand side), where ArgoCD is a Continuous Deployment (CD) tool on top of Kubernetes.
@@ -267,10 +267,13 @@
 
             <h5>References</h5>
             <ul>
-                <li><a href="https://kafka.apache.org/">Apache Kafka</a></li>
-                <li><a href="https:/risingwave.dev/">RisingWave</a></li>
-                <li><a href="https://risingwave.com/blog/why-kafka-is-the-new-data-lake/">Why Kafka Is the New Data Lake</a></li>
-                <li><a href="https://materialize.com/blog/operational-data-warehouse/">Materialize: An Operational Data Warehouse</a></li>
+                <li><a href="https://kafka.apache.org/">Apache Kafka (homepage)</a></li>
+                <li><a href="https:/risingwave.dev/">RisingWave (homepage)</a></li>
+                <li><a href="https://risingwave.com/blog/why-kafka-is-the-new-data-lake/">Why Kafka Is the New Data Lake (Blog/RisingWave)</a></li>
+                <li><a href="https://materialize.com/blog/operational-data-warehouse/">Materialize: An Operational Data Warehouse (Blog/Materialize)</a></li>
+                <li><a href="https://www.oreilly.com/library/view/streaming-data-mesh/9781098130718/">Streaming Data Mesh (book by Hubert Dulay and Stephen Mooney)</a></li>
+                <li><a href="https://www.confluent.io/resources/ebook/data-mesh-architectures-with-event-streams-v2/">Build a Data Mesh with Event Streams (book by Adam Bellemare)</a></li>
+                <li><a href="https://www.oreilly.com/library/view/streaming-databases/9781098154820/">Streaming Databases (upcoming book by Hubert Dulay and Ralph Debusmann)</a></li>
             </ul>
 
         </div>
