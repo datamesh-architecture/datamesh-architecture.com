@@ -312,36 +312,40 @@
                 <div class="columns reverse-columns">
                     <div class="column content">
                         <p>
-                            A data product is a logical unit that contains all components to process and store domain data for analytical or data-intensive use cases and makes them available to other teams via output ports. You can think of a microservice, but for analytical data.
+                            A data product is a logical unit that contains all components to process and store domain data for analytical or data-intensive use cases and makes them available to other teams via output ports. You can think of a module or microservice, but for analytical data.
                         </p>
                         <p>
-                            Data products connect to sources, such as operational systems or other data products and perform data transformation. Data products serve data sets in one or many output ports. Some examples:
+                            Data products connect to sources, such as operational systems or other data products and perform data transformation.
+                            Data products serve data sets in one or many output ports.
+                            Output ports are typically structured data sets, as defined by a <a href="#data-contract">data contract</a>.
+                            Some examples:
                         </p>
                         <ul>
                             <li>A BigQuery dataset with multiple related tables</li>
                             <li>Parquet files in an AWS S3 bucket</li>
                             <li>Delta files in Azure Data Lake Storage Gen2</li>
-                            <li>Dashboards in Looker</li>
-                            <li>A machine learning model as an ONNX file</li>
+                            <li>Messages in a Kafka topic</li>
                         </ul>
-                        <p>
-                            When data products provide data for other teams, a data contract defines the endpoint, syntax, semantics, and quality of provided data, similar to OpenAPI or AsyncAPI specifications. A data contract is implemented by an output port.
-                        </p>
                         <p>
                             A data product is owned by a domain team.
                             The team is responsible for the operations of the data product during its entire lifecycle.
                             The team needs to continuously monitor and ensure data quality, availability, and costs.
-                            For example, keep the data without duplicates or react to missing entries.
                         </p>
                         <p>
                             To design data products, we recommend to use the <strong><a href="/data-product-canvas.html">Data Product Canvas</a></strong>.
                         </p>
+                        <p>
+                            To manage data products and track costs and compliance, consider using <strong><a href="https://www.datamesh-manager.com?ref=dma-dp">Data Mesh Manager</a></strong>.
+                        </p>
                     </div>
                     <div class="column">
-
-                        <p class="image">
-                            <img src="images/data-product-canvas-template.png.webp" alt="Data Product consists of Data, Metadata, and Operations">
-                        </p>
+                        <figure class="media-right">
+                            <p class="image">
+                                <a href="images/dataproduct_components.png.webp" class="glightbox">
+                                    <img src="images/dataproduct_components.png.webp" alt="Data Product Components">
+                                </a>
+                            </p>
+                        </figure>
                     </div>
                 </div>
             </div>
