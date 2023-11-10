@@ -166,25 +166,25 @@
 
             <h3 class="title">Data Products Living on Kafka - Out of Reach?</h3>
             <p>
-                <strong>Kafka</strong> already has its place in many "classical" implementations of data mesh, viz. as an ingestion layer for streaming data into data products. This tech stack extends the scope of Kafka far beyond merely serving as an ingestion layer. Here, data products are not just ingested from Kafka but <strong>data products live on Kafka</strong>. The huge advantage of this approach is that it allows for <strong>bi-directional interactions between the operational systems and data products</strong>, i.e., data products can not only be accessed from the analytical plane, but, for the first time, also from the operational plane, in real-time. This ushers in a whole <strong>new world of real-time use cases</strong> built on such a <strong>streaming data mesh</strong>, including <strong>real-time analytics</strong>, <strong>online machine learning</strong>, <strong>customer-facing mobile apps and web apps</strong> etc., without having to built a new specialized real-time ETL pipeline for each and every data source, as would have to be done in a "classical" non-streaming data mesh implementation. Each an every of these specialized real-time ETL pipelines would, by the way, have to bypass the data mesh and would thus strongly violate the very tenets of its underlying principles. 
+                <strong>Kafka</strong> already has its place in many "classical" implementations of data mesh, namely as an ingestion layer for streaming data into data products. This tech stack extends the scope of Kafka far beyond merely serving as an ingestion layer. Here, data products are not just ingested from Kafka but <strong>data products live on Kafka</strong>. The huge advantage of this approach is that it allows for <strong>bi-directional interactions between the operational systems and data products</strong>, i.e., data products can not only be accessed from the analytical plane, but, for the first time, also from the operational plane, in real-time. This ushers in a whole <strong>new world of real-time use cases</strong> built on such a <strong>streaming data mesh</strong>, including <strong>real-time analytics</strong>, <strong>online machine learning</strong>, <strong>customer-facing mobile apps and web apps</strong> etc., without having to built a new specialized real-time ETL pipeline for each and every data source, as would have to be done in a "classical" non-streaming data mesh implementation. Each and every of these specialized real-time ETL pipelines would, by the way, have to bypass the data mesh and would thus strongly violate the very tenets of its underlying principles. 
             </p>
 
             <p>
-                So far, practical implementations of a <strong>streaming data mesh</strong> have been far out of reach. Especially the following three challenges posed insurmountable hurdles for such an implementation pattern:
+                So far, practical implementations of a <strong>streaming data mesh</strong> have been <strong>out of reach</strong>. Especially the following three challenges posed insurmountable hurdles for such an implementation pattern:
                 <ol>
                     <li>The complexity of stream processing systems such as Flink and Kafka Streams for data processing "on the stream". It was hardly possible to do non-trivial stream processing without having to do in-depth JVM coding (e.g. Java, Kotlin, Scala) and possessing in-depth streaming expertise.</li>
                     <li>The inability of these stream processing systems to deliver a database-like experience. Database experts would be forced to re-think a lot of what they knew when they would switch over from "data-at-rest" (databases) to "data-in-motion" (streaming) - so much that few of them have ever considered it.</li>
-                    <li>Even though Kafka is, in principle, able to serve both streaming/real-time and batch/non-realtime users, reading from Kafka in a batch/non-real-time setting required complex and cost-intensive coding or the set up of additional infrastructure.</li>
+                    <li>Even though Kafka is able to serve both streaming/real-time and batch/non-realtime use cases, reading from Kafka in a batch/non-real-time setting required complex and cost-intensive coding or the set up of additional infrastructure.</li>
                 </ol>
             </p>
 
             <h3 class="title">Streaming Databases - A Game Changer</h3>
             <p>
-                Thankfully, one of the many new technological developments in the streaming field has brought these previously insurmountable hurdles to a fall and acts as a <strong>game changer</strong> for the implementation of a <strong>streaming data mesh</strong>: <strong>Streaming databases</strong>. This is why:
+                Thankfully, a new technological development in the streaming field has brought these previously insurmountable hurdles to a fall and acts as a <strong>game changer</strong>: <strong>Streaming databases</strong>. This is why:
                 <ol>
                     <li>Streaming databases support <strong>complex SQL-based stream processing</strong> like a normal database, with nested deeply JOINs, self-JOINs etc.</li>
-                    <li>Streaming databases deliver a <strong>database-like experience</strong> with <strong>consistency guarantees</strong> such as snapshot isolation and atomicity, which are not (yet?) available in older stream processing systems. Materialize and RisingWave even have a <strong>PostgreSQL wire-compatible interface</strong>, which not only makes them easy to adopt by anybody with database expertise, but also allows them to be used in conjunction with tools such as <strong>dbt</strong>.</li>
-                    <li>Streaming databases provide incrementally maintained <strong>Materialized Views</strong> which <strong>can be queried like in a normal database</strong>. This enables the seamless <strong>use of real-time streaming data in a batch/non-real-time setting</strong>, i.e., if the latest data only has to be read once a day or even once a week.</li>
+                    <li>Streaming databases deliver a <strong>database-like experience</strong> with <strong>consistency guarantees</strong> such as snapshot isolation and atomicity, which are not (yet?) fully available in older stream processing systems. Materialize and RisingWave even have a <strong>PostgreSQL wire-compatible interface</strong>, which not only makes them easy to adopt by anybody with database expertise, but also allows them to be used in conjunction with tools such as <strong>dbt</strong>.</li>
+                    <li>Streaming databases provide incrementally maintained <strong>Materialized Views</strong> which can be <strong>queried like in a normal database</strong>. This enables the seamless <strong>use of real-time streaming data in a batch/non-real-time setting</strong>, i.e., if the latest data only has to be read once a day or even once a week.</li>
                 </ol>
             </p>
             
@@ -194,7 +194,7 @@
             </p>
 
             <p>
-                Notable <strong>commercial</strong> vendors for Kafka are: Confluent (founded by the main developers of Apache Kafka), AWS MSK, Aiven, Instaclustr and Redpanda - all of them offer (cloud-)hosted Kafka plus a plethora of additional features on top the Open Source Apache Kafka. Materialize and RisingWave also offer cloud-hosted products - so for both central architectural parts of this tech stack, you can easily switch away from self-hosting.
+                Notable <strong>commercial</strong> vendors for <strong>Kafka</strong> are: Confluent (founded by the original developers of Apache Kafka), AWS MSK, Aiven, Instaclustr and Redpanda. All of them offer (cloud-)hosted Kafka plus a plethora of additional features on top the Open Source Apache Kafka. Materialize and RisingWave also offer cloud-hosted products - so for both central architectural parts of this tech stack, you can easily switch away from self-hosting.
             </p>
 
             <h2 class="title">Individual Components of this Tech Stack</h2>
@@ -242,6 +242,10 @@
                         In the <strong>Data Contract</strong> box (right of the middle circle of the main diagram), you can see that all the datasets are held in Kafka. This tech stack uses a <strong>Schema Registry</strong> (e.g. the Open Source tool "Karapace") to define data products (in particular, their schemas) in conjunction with a <strong>Data Catalog</strong> tool (first left in <strong>Self-serve Data Platform</strong>) such as <strong>DataHub</strong> (see screenshot to the right) or <strong>dbt-docs</strong>.
                     </p>
 
+                    <p>
+                        This tech stack uses Kafka on three layers: Operational Data, Data Product and Data Contract. Does this mean we have to <strong>duplicate</strong> our data three times? <strong>No</strong>. On the contrary it is best practice to use <strong>organization-wide central Kafka clusters spanning all three layers</strong>. These Kafka clusters hold operational data, data products (e.g. combined from various other data products) and datasets at same time, making use of the <strong>extreme scalability and high availability of Kafka</strong>. NB: Not all data on Kafka automatically qualifies as a data product. Data products on Kafka are distinguished from non-data product data by <strong>namespacing</strong> and <strong>Access Control Lists (ACLs)</strong>.
+                    </p>
+
                 </div>
                 <div class="column">
                     <figure class="image">
@@ -253,7 +257,7 @@
                 <div class="column">
                     <h3 class="title">Analytics</h3>
                     <p>
-                        In the <strong>Analytics</strong> box (at the top of the main diagram), this tech stack first proposes the use of a <strong>real-time analytics database</strong> (sometimes called "real-time OLAP database" or "RTOLAP") for use cases with low-latency requirements. This enables real-time analytics on fresh data products directly from Kafka. Among the most popular Open Source real-time analytics databases are <strong>Apache Pinot</strong> (vendor: StarTree; see screenshot to the right), <strong>Apache Druid</strong> (vendor: Imply) and <strong>Clickhouse</strong> (vendors: Clickhouse, Aiven...). For some use cases (non-user-facing, little concurrency, no long-range scans), an alternative to using a real-time analytics database is to query directly from <strong>RisingWave</strong> (not shown in the diagram). Python tooling and <strong>Jupyter</strong> notebooks can be combined with real-time analytics databases for code-based analytics and <strong>online machine learning</strong>.
+                        In the <strong>Analytics</strong> box (at the top of the main diagram), this tech stack first proposes the use of a <strong>real-time analytics database</strong> (sometimes called "real-time OLAP database" or "RTOLAP") for use cases with low-latency requirements. This enables real-time analytics on fresh data products directly from Kafka. Among the most popular Open Source real-time analytics databases are <strong>Apache Pinot</strong> (vendor: StarTree; see screenshot to the right), <strong>Apache Druid</strong> (vendor: Imply) and <strong>Clickhouse</strong> (vendors: Clickhouse, Aiven...). In addition, Python tooling and <strong>Jupyter</strong> notebooks can be combined with real-time analytics databases for code-based analytics and <strong>online machine learning</strong>.
                     </p>
 
                 </div>
@@ -266,7 +270,7 @@
             <div class="columns">
                 <div class="column">
                     <p>
-                        For the <strong>Analytics</strong> box, this tech stack proposes the use of Open Source data warehouses such as <strong>DuckDB</strong> (vendor: Motherduck; see screenshot on the right) or <strong>Apache Hive</strong>. Of course, commercial solutions like <strong>Snowflake</strong>, <strong>Databricks</strong> etc. could also be employed here. The role of these tools is to do serve and complex non-real-time analytics requirements which cannot be fully addressed by the real-time analytics databases above. Real-time analytics databases are primarily optimized for performance, concurrency (thousands of queries per second) and data freshness, but have to compromise on their support for ad-hoc and/or arbitrarily complex queries. As for the real-time analytics above, this architecture blueprint proposes <strong>Jupyter</strong> notebooks for code-based (non-real-time) analytics and <strong>batch machine learning</strong>.
+                        As for the data warehouse in the <strong>Analytics</strong> box, this tech stack proposes the use of an Open Source data warehouse such as <strong>DuckDB</strong> (vendor: Motherduck; see screenshot on the right) or <strong>Apache Hive</strong>. Of course, commercial solutions like <strong>Snowflake</strong>, <strong>Databricks</strong> etc. could also be employed here. The role of these tools is to do serve and complex non-real-time analytics requirements which cannot be fully addressed by the real-time analytics databases above. Real-time analytics databases are primarily optimized for performance, concurrency (thousands of queries per second) and data freshness, but have to compromise on their support for ad-hoc and/or arbitrarily complex queries. As for the real-time analytics above, this architecture blueprint proposes <strong>Jupyter</strong> notebooks for code-based (non-real-time) analytics and <strong>batch machine learning</strong>.
                     </p>
 
                 </div>
