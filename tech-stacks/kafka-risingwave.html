@@ -107,6 +107,9 @@
                         <a href="/tech-stacks/minio-trino.html" class="navbar-item">
                             MinIO and Trino
                         </a>
+                        <a href="/tech-stacks/sap.html" class="navbar-item">
+                            SAP
+                        </a>
                         <a href="/tech-stacks/kafka-risingwave.html" class="navbar-item">
                             Kafka and RisingWave
                         </a>
@@ -179,7 +182,7 @@
 
             <h3 class="title">Data Products Living on Kafka - Out of Reach?</h3>
             <p>
-                <strong>Kafka</strong> already has its place in many "classical" implementations of data mesh, namely as an ingestion layer for streaming data into data products. This tech stack extends the scope of Kafka far beyond merely serving as an ingestion layer. Here, data products are not just ingested from Kafka but <strong>data products live on Kafka</strong>. The huge advantage of this approach is that it allows for <strong>bi-directional interactions between the operational systems and data products</strong>, i.e., data products can not only be accessed from the analytical plane, but, for the first time, also from the operational plane, in real-time. This ushers in a whole <strong>new world of real-time use cases</strong> built on such a <strong>streaming data mesh</strong>, including <strong>real-time analytics</strong>, <strong>online machine learning</strong>, <strong>customer-facing mobile apps and web apps</strong> etc., without having to built a new specialized real-time ETL pipeline for each and every data source, as would have to be done in a "classical" non-streaming data mesh implementation. Each and every of these specialized real-time ETL pipelines would, by the way, have to bypass the data mesh and would thus strongly violate the very tenets of its underlying principles. 
+                <strong>Kafka</strong> already has its place in many "classical" implementations of data mesh, namely as an ingestion layer for streaming data into data products. This tech stack extends the scope of Kafka far beyond merely serving as an ingestion layer. Here, data products are not just ingested from Kafka but <strong>data products live on Kafka</strong>. The huge advantage of this approach is that it allows for <strong>bi-directional interactions between the operational systems and data products</strong>, i.e., data products can not only be accessed from the analytical plane, but, for the first time, also from the operational plane, in real-time. This ushers in a whole <strong>new world of real-time use cases</strong> built on such a <strong>streaming data mesh</strong>, including <strong>real-time analytics</strong>, <strong>online machine learning</strong>, <strong>customer-facing mobile apps and web apps</strong> etc., without having to built a new specialized real-time ETL pipeline for each and every data source, as would have to be done in a "classical" non-streaming data mesh implementation. Each and every of these specialized real-time ETL pipelines would, by the way, have to bypass the data mesh and would thus strongly violate the very tenets of its underlying principles.
             </p>
 
             <p>
@@ -200,7 +203,7 @@
                     <li>Streaming databases provide incrementally maintained <strong>Materialized Views</strong> which can be <strong>queried like in a normal database</strong>. This enables the seamless <strong>use of real-time streaming data in a batch/non-real-time setting</strong>, i.e., if the latest data only has to be read once a day or even once a week.</li>
                 </ol>
             </p>
-            
+
             <h3 class="title">Vendors - Open Source and Commercial</h3>
             <p>
                 This tech stack is, at its heart, based purely on <strong>Open Source</strong>: It includes only Open Source software. This is also why it choses <strong>RisingWave</strong> instead of <strong>Materialize</strong> as the streaming database - it is Open Source whereas Materialize is not. It should be noted that Materialize was the first streaming database of this kind (2020), whereas RisingWave came out later (2022).
@@ -236,7 +239,7 @@
                     <p>
                         In the <strong>Data Product</strong> box (in the middle of the middle circle in the main diagram), you can see the most drastic change in comparison to most other existing data mesh implementations. Here, this tech stack employs two streaming systems, <strong>Kafka</strong> and <strong>RisingWave</strong> (see RisingWave screenshot to the right), instead of using a data warehouse such as Snowflake or a data lake such as S3. The purpose of this is to keep all the data "in-motion", rather than putting them "at rest", <strong>enabling data products to flow back to the operational plane</strong>. For instance, customer transactions from the operational ERP system can be combined with customer information from the CRM system to create a "streaming data product" which can directly be read, in real-time, from a customer-facing mobile app.
                     </p>
-                        
+
                     <p>
                         Using RisingWave combined with <strong>dbt</strong>, you can built CI/CD pipelines around SQL-based stream processing pipelines to create new, filtered, transformed and/or joined streams on Kafka. It is best practice to write all data to Kafka first to have a unified, single source of truth for the data, and use RisingWave for stream processing and for serving Materialized Views.
                     </p>
