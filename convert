@@ -43,5 +43,5 @@ done
 #rm data-product-canvas-template_with-border.png
 
 # create PDFs
-docker run --rm -it -v "`pwd`:/app" -w /app minidocks/img2pdf --pagesize A0^T --border 2cm -o images/data-product-canvas-template_v1.pdf images/data-product-canvas-template.png
+docker run --rm -it -v "`pwd`:/app" -w /app minidocks/img2pdf --pagesize A0^T --border 2cm -o images/data-product-canvas-template_v2.pdf images/data-product-canvas-template.png
 
