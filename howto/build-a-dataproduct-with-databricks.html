@@ -442,7 +442,7 @@ pip install -r requirements-dev.txt</code></pre>
         the SQL DDL code for the CREATE TABLE statement.
       </p>
 
-      <pre><code>$ datacontract export --format sql datacontract.yaml
+      <pre><code>datacontract export --format sql datacontract.yaml
 
 -- Data Contract: urn:datacontract:fulfillment:stock-last-sales
 -- SQL Dialect: databricks
@@ -585,9 +585,9 @@ resources:
         For that, we can use the Data Contract CLI tool to make this check:
       </p>
 
-      <pre><code>$ export DATACONTRACT_DATABRICKS_HTTP_PATH=/sql/1.0/warehouses/b053xxxxxxx
-$ export DATACONTRACT_DATABRICKS_TOKEN=dapia1926f7c64b7595880909xxxxxxxxxx
-$ datacontract test datacontract.yaml</code></pre>
+      <pre><code>export DATACONTRACT_DATABRICKS_HTTP_PATH=/sql/1.0/warehouses/b053xxxxxxx
+export DATACONTRACT_DATABRICKS_TOKEN=dapia1926f7c64b7595880909xxxxxxxxxx
+datacontract test datacontract.yaml</code></pre>
 
       <p>
         The <code>datacontract</code> tool takes all the schema and format information from the <em>model</em>,
@@ -705,8 +705,8 @@ jobs:
         We can use <a href="https://docs.databricks.com/en/security/secrets/index.html">Databricks Secrets</a> to make the API Key available in Databricks.
       </p>
 
-      <pre><code>$ databricks secrets create-scope datamesh_manager
-$ databricks secrets put-secret datamesh_manager api_key</code></pre>
+      <pre><code>databricks secrets create-scope datamesh_manager
+databricks secrets put-secret datamesh_manager api_key</code></pre>
 
       <figure>
         <img src="../images/databricks-dataproduct-notebookpublish.png" alt="Publish Metadata" class="ml-1 mt-1 mb-1" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
