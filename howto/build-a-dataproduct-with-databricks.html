@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Data Mesh Architecture: Databricks</title>
+  <title>Build a Data Product with Databricks</title>
   <meta charset="utf-8">
-  <meta name="description" content="How to build a data mesh architecture with Databricks"/>
+  <meta name="description" content="Build a Data Product with Databricks"/>
   <meta name="keywords"
         content="data mesh, data mesh architecture, domain-driven data analytics, data analytics, domain-driven design, domain ownership, data as a product, data product, federated governance, self-serve data platform, data platform">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:site" content="@innoq"/>
-  <meta name="twitter:title" content="Data Mesh Architecture: Databricks"/>
-  <meta name="twitter:description" content="How to build a data mesh architecture with Databricks"/>
+  <meta name="twitter:title" content="Build a Data Product with Databricks"/>
+  <meta name="twitter:description" content="In this article, we will use Data Contracts and the new Databricks Asset Bundles that are a great fit to implement data products."/>
   <meta name="twitter:image"
         content="https://www.datamesh-architecture.com/images/databricks-dataproduct-code.png"/>
-  <meta name="twitter:image:alt"
-        content="Data Mesh Architecture: Domains are in the center and teams do analytics on their own. They build and interconnect with data products. A data platform team and a enablement team help. Global policies are agreed through federated governance."/>
   <meta property="og:url" content="https://datamesh-architecture.com"/>
-  <meta property="og:title" content="Data Mesh Architecture: Databricks"/>
-  <meta property="og:description" content="How to build a data mesh architecture with Databricks"/>
+  <meta property="og:title" content="Build a Data Product with Databricks"/>
+  <meta property="og:description" content="In this article, we will use Data Contracts and the new Databricks Asset Bundles that are a great fit to implement data products."/>
   <meta property="og:image"
         content="https://www.datamesh-architecture.com/images/databricks-dataproduct-code.png"/>
 
@@ -197,7 +195,7 @@
 
       </figure>
 
-      <p>A data product is the deliverable that contains everything around a business concept to
+      <p>A <a href="https://www.datamesh-architecture.com/#data-product">data product</a> is the deliverable that contains everything around a business concept to
         fulfill a data consumer&#39;s need:</p>
       <ul>
         <li>tables to actually store data</li>
@@ -224,7 +222,8 @@
 
       <p>
         In this article, we will use Data Contracts and the new Databricks Asset Bundles that are a
-        great fit to implement data products.
+        great fit to implement data products. All source code of this example project is available
+        on <a href="https://github.com/datamesh-architecture/databricks-dataproduct-example">GitHub</a>.
       </p>
 
 
@@ -374,6 +373,11 @@ quality:
         version control of all code and pipeline configuration.
       </p>
 
+      <p>
+        Bundles are extremely useful, when you have multiple environments, such as dev, staging, and production.
+        You can deploy the same bundle to multiple targets with different configurations.
+      </p>
+
       <p>To create a bundle, let&#39;s init in a new bundle:</p>
 
       <pre><code>databricks bundle init</code></pre>
@@ -421,6 +425,12 @@ pip install -r requirements-dev.txt</code></pre>
 
 
       <h2 id="generate-unity-catalog-table">Generate Unity Catalog Table</h2>
+
+      <p>
+        How do we organize the data for our data product?
+        In this example, we use Unity Catalog to manage storage as managed tables.
+        On an isolation level, we decide that one data product should represent one <em>schema</em> in Unity Catalog.
+      </p>
 
       <p>
         We can leverage the data contract YAML to generate infrastructure code:
@@ -593,41 +603,144 @@ $ datacontract test datacontract.yaml</code></pre>
 
       <p>We want to execute this test with every pipeline run, so once again, let's make a Notebook task for the test:</p>
 
-      <p>TODO Screenshot Notebook task</p>
+      <figure>
+        <img src="../images/databricks-dataproduct-notebooktest.png" alt="Data Contract Test as Notebook" class="ml-1 mt-1 mb-1" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+        <figcaption>Data Contract Test as Notebook</figcaption>
+      </figure>
+
 
       <h2 id="deploy-with-cicd">Deploy with CI/CD</h2>
 
+      <p>
+        To automatically test, deploy the Asset Bundle to Databricks, and finally run the job once,
+        we set up a CI/CD pipeline in GitHub, using a <a href="https://docs.databricks.com/en/dev-tools/bundles/ci-cd.html">GitHub Action</a>.
+      </p>
+
+      <pre><code>name: "Deploy Databricks Assets Bundle"
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  test:
+    name: "Run unit tests"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python ${{matrix.python-version}}
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-dev.txt
+      - name: Test with pytest
+        run: pytest
+        env:
+          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+          DATABRICKS_TOKEN: ${{ secrets.SP_TOKEN }}
+          DATABRICKS_CLUSTER_ID: ${{ secrets.DATABRICKS_CLUSTER_ID }}
+
+  deploy:
+    name: "Deploy bundle to DEV"
+    runs-on: ubuntu-latest
+
+    needs:
+      - test
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: databricks/setup-cli@main
+      - run: databricks bundle deploy
+        working-directory: .
+        env:
+          DATABRICKS_TOKEN: ${{ secrets.SP_TOKEN }}
+          DATABRICKS_BUNDLE_ENV: dev
+  run_pipieline:
+    name: "Run pipeline"
+    runs-on: ubuntu-latest
+
+    needs:
+      - deploy
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: databricks/setup-cli@main
+      - run: databricks bundle run stock_last_sales_job --refresh-all
+        working-directory: .
+        env:
+          DATABRICKS_TOKEN: ${{ secrets.SP_TOKEN }}
+          DATABRICKS_BUNDLE_ENV: dev
+      </code></pre>
+
+      <div class="has-text-centered mb-4 is-italic">.github/workflows/deploy.yml</div>
+
+      Now, every time we update the code, the Asset Bundle is automatically deployed to Databricks.
+
+      <figure>
+        <img src="../images/databricks-dataproduct-githubaction.png" alt="CI/CD workflow in GitHub" class="ml-1 mt-1 mb-1" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+        <figcaption>CI/CD workflow in GitHub</figcaption>
+      </figure>
 
       <h2 id="publish-metadata">Publish Metadata</h2>
 
       <p>
-        For others to find, understand, and trust data products, we need to register them in a data product registry.
-        In this example, we use <a href="https://www.datamesh-manager.com/?ref=dma-databricks-dataproduct">Data Mesh Manager</a>,
-        a platform to register data products, data contracts, and global policies.
-        We can also push the test results to Data Mesh Manager to give data product owners and data
-        consumers an indication on the data product's quality.
+        For others to find, understand, and trust data products, we want to register them in a data product registry.
       </p>
 
-      <p>TODO Screenshot Notebook task</p>
+      <p>
+        In this example, we use <a href="https://www.datamesh-manager.com/?ref=dma-databricks-dataproduct">Data Mesh Manager</a>,
+        a platform to register, manage, and discover data products, data contracts, and global policies.
+      </p>
 
+      <figure>
+        <img src="../images/databricks-dataproduct-datameshmanager.png" alt="Metadata in Data Mesh Manager" class="ml-1 mt-1 mb-1" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+        <figcaption>Metadata in Data Mesh Manager</figcaption>
+      </figure>
 
       <p>
-        Again, let's create a notebook task to publish the metadata to Data Mesh Manager.
-        We can use <a href="">Databricks Secrets</a> to make the API Key available in Databricks.
+        Again, let's create a notebook task (or Python code task) to publish the metadata to Data Mesh Manager and add the task to our workflow.
+        We can use <a href="https://docs.databricks.com/en/security/secrets/index.html">Databricks Secrets</a> to make the API Key available in Databricks.
       </p>
 
       <pre><code>$ databricks secrets create-scope datamesh_manager
 $ databricks secrets put-secret datamesh_manager api_key</code></pre>
 
-      <p>TODO Screenshot Notebook task</p>
-
-
+      <figure>
+        <img src="../images/databricks-dataproduct-notebookpublish.png" alt="Publish Metadata" class="ml-1 mt-1 mb-1" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+        <figcaption>Publish Metadata</figcaption>
+      </figure>
 
 
       <h2 id="summary">Summary</h2>
 
+      <p>
+        Databricks Asset Bundles are a great fit to develop professional data products on Databricks.
+        Leverage Data Contracts to define the requirements and use the Data Contract CLI integration
+        to automate acceptance tests.
+      </p>
+
+      <p>
+        Find the source code for the example project on <a href="https://github.com/datamesh-architecture/databricks-dataproduct-example">GitHub</a>.
+      </p>
+
 
       <h2 id="learn-more">Learn More</h2>
+
+      <ul>
+        <li><a href="https://github.com/datamesh-architecture/databricks-dataproduct-example">Source Code for the examples project</a></li>
+        <li><a href="https://docs.databricks.com/en/dev-tools/bundles/index.html/">Official databricks documentation on Databricks Asset Bundles</a></li>
+        <li><a href="https://www.datamesh-architecture.com/tech-stacks/databricks">Databricks Tech Stack</a></li>
+        <li><a href="http://datacontract.com">Data Contract Specification</a></li>
+        <li><a href="http://cli.datacontract.com">Data Contract CLI</a></li>
+        <li><a href="http://www.datamesh-manager.com.com">Data Mesh Manager</a></li>
+      </ul>
+
+      <h2 id="need-help">Need Help?</h2>
+        INNOQ offers <a href="https://data-ai.innoq.com/en/services/data-mesh?ref=dma-databricks-dataproduct">Data Product Engineering Consulting</a> (Ad).
+
 
     </div>
 
