@@ -566,20 +566,33 @@ resources:
 
       <pre><code>databricks bundle run stock_last_sales_job</code></pre>
 
-      In Databricks, we can see that the workflow run was successful:
+      <p>
+        In Databricks, we can see that the workflow run was successful:
+      </p>
 
       <figure>
         <img src="../images/databricks-dataproduct-jobrun.png" alt="Job Run in Databricks">
         <figcaption>A job in Databricks</figcaption>
       </figure>
 
+      <p>
+        And we have data in our table that we created earlier.
+      </p>
+
+
+      <figure>
+        <img src="../images/databricks-dataproduct-data.png" alt="The result of our data pipeline">
+        <figcaption>The result of our data pipeline</figcaption>
+      </figure>
+
+
 
       <h2 id="test-the-data-product">Test the Data Contract</h2>
 
       <p>
-        We are not quite finished with our task. While we have unit tests that give us confidence
-        on the transformation code, we also need an acceptance test to verify, that we implemented
-        the agreed data contract correctly.
+        We are not quite finished with our task. How do we know, that the data is correct?
+        While we have unit tests that give us confidence on the transformation code, we also need an
+        acceptance test to verify, that we implemented the agreed data contract correctly.
       </p>
 
       <p>
@@ -716,6 +729,15 @@ databricks secrets put-secret datamesh_manager api_key</code></pre>
 
 
       <h2 id="summary">Summary</h2>
+
+      <p>
+        Now, the COO can connect to this table with a BI tool (such as PowerBI, Tableau, Redash, or withing Databricks) to answer their business question.
+      </p>
+
+      <figure>
+        <img src="../images/databricks-dataproduct-analytics.png" alt="Analytics within Databricks" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+        <figcaption>Analytics within Databricks</figcaption>
+      </figure>
 
       <p>
         Databricks Asset Bundles are a great fit to develop professional data products on Databricks,
