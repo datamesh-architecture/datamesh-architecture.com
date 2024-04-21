@@ -165,6 +165,14 @@
             Data mesh is primarily an organizational approach, and that's why you can't buy a data mesh from a vendor. Technology, however, is important still as it acts as an enabler for data mesh, and only useful and easy to use solutions will lead to domain teams' acceptance. The available offerings of cloud providers already provide a sufficient set of good self-serve data services to let you form a data platform for your data mesh. We want to show which services can be used to get started.
         </div>
 
+        <div class="notification is-warning is-light">
+            This tech stack is maintained by
+            <a href="https://www.linkedin.com/in/lukas-grubwieser-a409a3110/" target="_blank">
+                <strong>Lukas Grubwieser</strong>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a> from Databricks.
+        </div>
+
         <div class="content">
             <p>
                 The Databricks Lakehouse Platform is a popular data platform.
@@ -192,7 +200,7 @@
                         The starting point in Databricks is the <strong>workspace</strong>.
                         Each team typically creates their own workspace,
                         and in their workspace their own <strong>clusters</strong> for their computing needs.
-                        These clusters come with a configured <em>Spark Runtime</em> as query engine.
+                        These clusters come with a configured <em>Spark and Photon Runtime</em> as query engine.
                         The clusters are mapped to cloud provider's compute instances and
                         can be scaled elastically with the workloads to execute code and queries.
                     </p>
@@ -228,7 +236,7 @@
             <div class="columns">
                 <div class="column">
                     <p>
-                        With Spark, most of the data engineering is typically coded in Jupyter-like <strong>notebooks</strong> using <em>Python</em>, <em>Scala</em>, or <em>Spark SQL</em> code.
+                        With Spark, most of the data engineering is typically coded in Jupyter-like <strong>notebooks</strong> using <em>Python</em>, <em>Scala</em>, <em>R</em>, or <em>Spark SQL</em> code.
                         The notebooks are interactive, meaning that cells can be executed directly and iteratively.
                         With Databricks, data import, cleaning, transformation, explorative analytics, and machine learning is coded in notebooks.
                         The code can usually be managed in a connected Git repository.
@@ -277,7 +285,14 @@
                         All tables and columns are registered in the metastore.
                         This makes the metastore a candidate for a <strong>data catalog</strong> to publish, manage and discover data products.
                         A frequent challenge with a metastore as a data catalog is that it quickly becomes clattered and convoluted with internal and irrelevant data structures, important data products may perish.
-                        Unity Catalog is quite new, but certainly will become the default data catalog solution for a Databricks-only data platform concept.
+                        Unity Catalog is the default standard on Databricks to overcome those challenges.
+                    </p>
+                    <p>
+                        Unity Catalog on the Databricks platform is a unified data governance solution designed to enhance data security, compliance, and discoverability across an organization. 
+                        It centralizes data governance, allowing for consistent policy application and management of data access at scale. 
+                        Key features include fine-grained access control, unified metadata management, and comprehensive auditing capabilities. 
+                        This integration ensures that data products are managed in accordance with organizational policies, promotes efficient data operations, and supports a culture of data-driven innovation. 
+                        By streamlining data governance and data product management within Databricks, Unity Catalog facilitates a secure, compliant, and collaborative data ecosystem.
                     </p>
                 </div>
                 <div class="column">
@@ -292,12 +307,13 @@
             <div class="columns">
                 <div class="column">
                     <p>
-                        Databricks Premium comes with special view for data analysts that prefer to work with SQL.
+                        Databricks comes with special view for data analysts that prefer to work with SQL.
                         Historically, it was just an SQL endpoint to access data on Databricks, but additional services were added, providing a more data-warehouse-like experience.
                         SQL features can be used for data mesh capabilities:
                         Software engineers can use SQL for simple analytics, without the need to work with notebooks, and they can leverage <em>SQL dashboards</em> and visualizations to gain <strong>insights</strong>.
                         <em>SQL alerts</em> can be used for basic <strong>data quality monitoring</strong>, as they run queries regularly and send notifications to a when the queries trigger.
-                        The SQL warehouse provides an HTTP or JDBC <em>connection endpoint</em> to publish data products for external applications, such as Tableau or PowerBI.
+                        Databricks provides build-in dashboards for visualization. Additionally <em>Lakeview</em> was introduced to give business user a way to wrangle and visualize data based on natural language.
+                        The SQL warehouse provides an HTTP or JDBC <em>connection endpoint</em> to publish data products for external applications as well, such as Tableau or PowerBI.
                     </p>
                 </div>
                 <div class="column">
@@ -314,9 +330,8 @@
                 It is optimized for data scientists that work a lot with notebooks, but it also
                 invested in further experiences.
                 As it tightly interacts with the cloud provider for data storage and access management, organization and administration will take a while to master for the data platform team, and it must be set up appropriately from the beginning.
-                Databricks is a great platform for data analysts and machine learning, but the entry barrier is pretty high for occasional users.
-                Domain team's software engineers who use data analytics from time to time and build just a few data products,
-                may need a lot of guidance by an enabling team to work efficiently and to gain a positive developer experience.<br>
+                With its unified data platform Databricks provides access to data and AI to different personas. It is great for data ingestion and complex ETL pipelines for Data Engineers, SQL warehousing capabilities for Business Analysts, Datascience and ML workoads for Datascientists. 
+                All of those components are supported by an assistant, to give users access based on natural language.<br>
             </p>
 
             <h5>References</h5>
