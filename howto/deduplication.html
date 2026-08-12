@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Data Mesh Architecture</title>
+    <title>Deduplication in SQL | Data Mesh Architecture</title>
     <meta charset="utf-8">
-    <meta name="description" content="A Data Mesh Architecture is a decentralized approach that enables domain teams to perform cross-domain data analysis on their own." />
+    <meta name="description" content="How to deduplicate rows in SQL in append-only data products: in a query, in a scheduled job, or in a view. Needed because at-least-once delivery produces duplicates." />
     <meta name="keywords" content="data mesh, data mesh architecture, domain-driven data analytics, data analytics, domain-driven design, domain ownership, data as a product, data product, federated governance, self-serve data platform, data platform">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="twitter:card" content="summary_large_image" />
@@ -27,12 +27,13 @@
     <link rel="stylesheet" href="../css/glightbox.css" />
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
     <link rel="canonical" href="https://www.datamesh-architecture.com/howto/deduplication" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://www.datamesh-architecture.com/howto/deduplication#article","headline":"Deduplication in SQL","description":"How to deduplicate rows in SQL in append-only data products: in a query, in a scheduled job, or in a view. Needed because at-least-once delivery produces duplicates.","inLanguage":"en","url":"https://www.datamesh-architecture.com/howto/deduplication","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.datamesh-architecture.com/howto/deduplication"},"isPartOf":{"@type":"WebSite","@id":"https://www.datamesh-architecture.com/#website"},"publisher":{"@type":"Organization","@id":"https://www.datamesh-architecture.com/#publisher","name":"INNOQ","url":"https://www.innoq.com"},"author":[{"@type":"Person","name":"Jochen Christ","url":"https://www.innoq.com/en/staff/jochen-christ/"},{"@type":"Person","name":"Larysa Visengeriyeva","url":"https://www.innoq.com/en/staff/larysa-visengeriyeva/"},{"@type":"Person","name":"Simon Harrer","url":"https://www.innoq.com/en/staff/dr-simon-harrer/"}],"about":{"@type":"DefinedTerm","@id":"https://www.datamesh-architecture.com/#data-mesh","name":"Data Mesh","url":"https://www.datamesh-architecture.com/"}}]}</script>
 </head>
 <body>
 <div class="container">
 
     <section class="section">
-        <h2 class="title">Deduplication in SQL</h2>
+        <h1 class="title">Deduplication in SQL</h1>
 
         <div class="content">
             <p>
