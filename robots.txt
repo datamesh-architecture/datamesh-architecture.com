@@ -1,3 +1,7 @@
 User-Agent: *
 Allow: /
 
+Sitemap: https://www.datamesh-architecture.com/sitemap.xml
+
+# LLM-targeted summary (https://llmstxt.org/):
+#   https://www.datamesh-architecture.com/llms.txt

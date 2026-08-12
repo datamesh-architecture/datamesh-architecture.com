@@ -1,0 +1,55 @@
+# Data Mesh Architecture
+
+> Data mesh from an engineering perspective: a decentralized approach in which domain
+> teams own their analytical data and publish it as data products, so other teams can
+> perform cross-domain analysis without a central data team in the critical path. Written
+> and maintained by Jochen Christ, Larysa Visengeriyeva, and Simon Harrer at INNOQ.
+
+Data mesh rests on four principles, all four of which have to be present:
+
+- **Domain ownership** — the team that produces the data is responsible for it analytically, not just operationally.
+- **Data as a product** — analytical data is published deliberately, with an owner, documentation, and quality guarantees, for consumers outside the team.
+- **Self-serve data platform** — a platform team provides the infrastructure so domain teams can publish and consume data without bespoke work.
+- **Federated governance** — global rules are agreed jointly by the domains rather than imposed centrally, and automated where possible.
+
+Data mesh is primarily an organizational change, not a technology choice. It targets
+analytical use cases; it is not an approach for low-latency operational data serving.
+It is not a product that can be purchased, and it is not implemented by a single team.
+
+## Core concepts
+
+- [Data Mesh Architecture](https://www.datamesh-architecture.com/): The full explainer — why you may need a data mesh, what it is, how to design one, the domain team and data team journeys, and a detailed FAQ.
+- [Data Mesh Canvas](https://www.datamesh-architecture.com/data-mesh-canvas): A canvas for designing a data mesh across an organization.
+- [Data Product Canvas](https://www.datamesh-architecture.com/data-product-canvas): A canvas for designing an individual data product, covering consumers, output ports, and ownership.
+- [Fitness Test](https://www.datamesh-architecture.com/fitness-test): Questions to establish whether data mesh suits your organization right now.
+
+## Evidence and experience
+
+- [Real World Learnings](https://www.datamesh-architecture.com/real-world-learnings): What teams found when implementing data mesh in practice.
+- [Scientific Literature](https://www.datamesh-architecture.com/literature): Peer-reviewed research on data mesh.
+
+## Tech stacks
+
+Concrete reference implementations. Each shows how the four principles map onto a
+specific stack, including how data products are built and interconnected.
+
+- [Snowflake and dbt](https://www.datamesh-architecture.com/tech-stacks/dbt-snowflake)
+- [Databricks](https://www.datamesh-architecture.com/tech-stacks/databricks)
+- [Google Cloud BigQuery](https://www.datamesh-architecture.com/tech-stacks/google-cloud-bigquery)
+- [AWS S3 and Athena](https://www.datamesh-architecture.com/tech-stacks/aws-s3-athena)
+- [Azure Synapse Analytics](https://www.datamesh-architecture.com/tech-stacks/azure-synapse-analytics)
+- [Kafka and RisingWave](https://www.datamesh-architecture.com/tech-stacks/kafka-risingwave)
+- [MinIO and Trino](https://www.datamesh-architecture.com/tech-stacks/minio-trino)
+- [SAP](https://www.datamesh-architecture.com/tech-stacks/sap)
+
+## How-to guides
+
+- [Build a Data Product with Databricks](https://www.datamesh-architecture.com/howto/build-a-dataproduct-with-databricks)
+- [Deduplication](https://www.datamesh-architecture.com/howto/deduplication)
+- [Terraform module for AWS](https://www.datamesh-architecture.com/open-source/aws)
+- [Terraform module for GCP](https://www.datamesh-architecture.com/open-source/gcp)
+
+## Optional
+
+- [Data Mesh Manager, now Entropy Data](https://www.entropy-data.com/): The commercial product the authors build for managing data products and data contracts.
+- [Open Data Contract Standard](https://datacontract.com/): The open standard for the data contracts that define a data product's output ports.
