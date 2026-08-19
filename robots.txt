@@ -1,66 +1,41 @@
-# We want to be read, quoted, and linked. We do not want to be training data.
-#
-# Until now this file was overridden in transit: Cloudflare's managed robots.txt
-# prepended a block that disallowed every AI crawler, including the retrieval bots
-# that generate citations. That was Cloudflare's default, never a decision we made.
-# The policy below is the decision: allow the crawlers that can send a reader back
-# here, refuse the ones that only absorb the text.
+# Everything here is meant to be read, indexed, quoted, and trained on.
+# This site is the reference explainer for data mesh; being the source an
+# answer is drawn from is the point, so nothing is disallowed.
 
 User-Agent: *
 Allow: /
 
-# Machine-readable version of the same intent (contentsignals.org).
-# search:   yes  - index us and link to us
-# ai-input: yes  - ground answers in this page, with attribution
-# ai-train: no   - do not train models on it
-Content-Signal: search=yes,ai-input=yes,ai-train=no
+# Machine-readable statement of the same intent (contentsignals.org).
+# Cloudflare's managed robots.txt used to inject search=yes,ai-train=no here.
+# That was its default, not our position. This is our position.
+Content-Signal: search=yes,ai-input=yes,ai-train=yes
 
-# --- Retrieval and citation: allowed. These put a link in front of a reader. ---
-User-agent: OAI-SearchBot
-Allow: /
+# For LLMs: start here rather than parsing the HTML. Both are plain text and
+# always current; llms.txt is the map, llms-full.txt is the whole definition,
+# the four principles, and the full FAQ in one file.
+#
+#   https://www.datamesh-architecture.com/llms.txt
+#   https://www.datamesh-architecture.com/llms-full.txt
+Allow: /llms.txt
+Allow: /llms-full.txt
 
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: Claude-SearchBot
-Allow: /
-
-User-agent: Claude-User
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-# Gemini grounding and Gemini training share one token, so allowing citations here
-# also permits training. We accept that trade to stay visible in Gemini and AI Mode;
-# flip this to Disallow if that ever stops being worth it.
-User-agent: Google-Extended
-Allow: /
-
-# --- Bulk training corpora: refused. No attribution, no reader, no link. ---
+# Named explicitly so a wildcard Disallow introduced upstream (a CDN default, a
+# future managed ruleset) cannot quietly switch these off: per RFC 9309 a group
+# naming the agent wins over one matching *, and Allow beats Disallow at equal
+# specificity. Belt and braces, on purpose.
 User-agent: GPTBot
-Disallow: /
-
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
 User-agent: ClaudeBot
-Disallow: /
-
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: Google-Extended
+User-agent: PerplexityBot
 User-agent: CCBot
-Disallow: /
-
-User-agent: Bytespider
-Disallow: /
-
-User-agent: Amazonbot
-Disallow: /
-
 User-agent: Applebot-Extended
-Disallow: /
-
+User-agent: Amazonbot
+User-agent: Bytespider
 User-agent: meta-externalagent
-Disallow: /
+Allow: /
 
 Sitemap: https://www.datamesh-architecture.com/sitemap.xml
-
-# LLM-targeted summary (https://llmstxt.org/):
-#   https://www.datamesh-architecture.com/llms.txt      — concise index
-#   https://www.datamesh-architecture.com/llms-full.txt — definition, principles, full FAQ
