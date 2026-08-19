@@ -1,5 +1,63 @@
+# We want to be read, quoted, and linked. We do not want to be training data.
+#
+# Until now this file was overridden in transit: Cloudflare's managed robots.txt
+# prepended a block that disallowed every AI crawler, including the retrieval bots
+# that generate citations. That was Cloudflare's default, never a decision we made.
+# The policy below is the decision: allow the crawlers that can send a reader back
+# here, refuse the ones that only absorb the text.
+
 User-Agent: *
 Allow: /
+
+# Machine-readable version of the same intent (contentsignals.org).
+# search:   yes  - index us and link to us
+# ai-input: yes  - ground answers in this page, with attribution
+# ai-train: no   - do not train models on it
+Content-Signal: search=yes,ai-input=yes,ai-train=no
+
+# --- Retrieval and citation: allowed. These put a link in front of a reader. ---
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# Gemini grounding and Gemini training share one token, so allowing citations here
+# also permits training. We accept that trade to stay visible in Gemini and AI Mode;
+# flip this to Disallow if that ever stops being worth it.
+User-agent: Google-Extended
+Allow: /
+
+# --- Bulk training corpora: refused. No attribution, no reader, no link. ---
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: Amazonbot
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+User-agent: meta-externalagent
+Disallow: /
 
 Sitemap: https://www.datamesh-architecture.com/sitemap.xml
 

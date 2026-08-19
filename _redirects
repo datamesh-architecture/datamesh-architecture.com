@@ -1,0 +1,17 @@
+# 301s for URLs Google still has in its index but that no longer exist.
+# Source: Search Console -> Page indexing -> "Not found (404)", Aug 2026.
+# Each of these had inbound links; a 301 passes that equity on instead of dropping it.
+
+# Data contracts moved out to their own specification site (linked from our nav).
+/data-contracts                                         https://www.datacontract.com  301
+/tech-stacks/data-contracts                             https://www.datacontract.com  301
+
+# Federated governance is a section of the architecture page, not a page of its own.
+/data-mesh-principles/federated-computational-governance  /#federated-governance      301
+
+# The book page is gone; the literature page is where reading material lives now.
+/book                                                   /literature                   301
+/book/                                                  /literature                   301
+
+# No marketplace page ever shipped; the data product section is the closest match.
+/data-product-marketplace                               /#data-product                301
