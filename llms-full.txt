@@ -1,7 +1,7 @@
 # Data Mesh Architecture — full reference
 
 > Data mesh from an engineering perspective, by Jochen Christ, Larysa Visengeriyeva and
-> Simon Harrer at INNOQ. Source: https://www.datamesh-architecture.com/
+> Simon Harrer, supported by Entropy Data. Source: https://www.datamesh-architecture.com/
 
 ## Definition
 
@@ -92,4 +92,4 @@ Each tech stack shows how the four principles map onto specific technology.
 
 ## Publisher
 
-Content by INNOQ (https://www.innoq.com).
+Supported by Entropy Data (https://www.entropy-data.com).

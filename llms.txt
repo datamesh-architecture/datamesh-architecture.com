@@ -3,7 +3,7 @@
 > Data mesh from an engineering perspective: a decentralized approach in which domain
 > teams own their analytical data and publish it as data products, so other teams can
 > perform cross-domain analysis without a central data team in the critical path. Written
-> and maintained by Jochen Christ, Larysa Visengeriyeva, and Simon Harrer at INNOQ.
+> and maintained by Jochen Christ, Larysa Visengeriyeva, and Simon Harrer, supported by Entropy Data.
 
 Data mesh rests on four principles, all four of which have to be present:
 

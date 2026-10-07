@@ -7,7 +7,6 @@
     <meta name="keywords" content="data mesh, data mesh architecture, domain-driven data analytics, data analytics, domain-driven design, domain ownership, data as a product, data product, federated governance, self-serve data platform, data platform">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@innoq" />
     <meta name="twitter:title" content="Data Mesh Architecture" />
     <meta name="twitter:description" content="Data Mesh from an Engineering Perspective" />
     <meta name="twitter:image" content="https://www.datamesh-architecture.com/images/datamesharchitecture_card.png" />
@@ -17,9 +16,7 @@
     <meta property="og:description" content="Data Mesh from an Engineering Perspective" />
     <meta property="og:image" content="https://www.datamesh-architecture.com/images/datamesharchitecture_card.png" />
 
-    <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Book.woff2?cachebuster=2" crossorigin="">
-    <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Bold.woff2?cachebuster=2" crossorigin="">
-    <link rel="preload" as="font" type="font/woff2" href="https://www.innoq.com/assets/MarkPro-Heavy.woff2?cachebuster=2" crossorigin="">
+    <link rel="preload" as="font" type="font/woff2" href="/webfonts/inter-v12-latin-800.woff2" crossorigin="">
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/0.9.3_css_bulma.css" />
     <link rel="stylesheet" href="../css/font-awesome_6.0.0_css_all.css"/>
@@ -31,7 +28,7 @@
     <!-- Site-wide plain-text summary for LLMs (https://llmstxt.org/): llms.txt is the map,
          llms-full.txt the whole reference. Site-level, not an alternate of this page. -->
     <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
-    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://www.datamesh-architecture.com/howto/deduplication#article","headline":"Deduplication in SQL","description":"How to deduplicate rows in SQL in append-only data products: in a query, in a scheduled job, or in a view. Needed because at-least-once delivery produces duplicates.","inLanguage":"en","url":"https://www.datamesh-architecture.com/howto/deduplication","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.datamesh-architecture.com/howto/deduplication"},"isPartOf":{"@type":"WebSite","@id":"https://www.datamesh-architecture.com/#website"},"publisher":{"@type":"Organization","@id":"https://www.datamesh-architecture.com/#publisher","name":"INNOQ","url":"https://www.innoq.com"},"author":[{"@type":"Person","name":"Jochen Christ","url":"https://www.innoq.com/en/staff/jochen-christ/"},{"@type":"Person","name":"Larysa Visengeriyeva","url":"https://www.innoq.com/en/staff/larysa-visengeriyeva/"},{"@type":"Person","name":"Simon Harrer","url":"https://www.innoq.com/en/staff/dr-simon-harrer/"}],"about":{"@type":"DefinedTerm","@id":"https://www.datamesh-architecture.com/#data-mesh","name":"Data Mesh","url":"https://www.datamesh-architecture.com/"}}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://www.datamesh-architecture.com/howto/deduplication#article","headline":"Deduplication in SQL","description":"How to deduplicate rows in SQL in append-only data products: in a query, in a scheduled job, or in a view. Needed because at-least-once delivery produces duplicates.","inLanguage":"en","url":"https://www.datamesh-architecture.com/howto/deduplication","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.datamesh-architecture.com/howto/deduplication"},"isPartOf":{"@type":"WebSite","@id":"https://www.datamesh-architecture.com/#website"},"publisher":{"@type":"Organization","@id":"https://www.datamesh-architecture.com/#publisher","name":"Entropy Data","url":"https://www.entropy-data.com"},"author":[{"@type":"Person","name":"Jochen Christ","url":"https://www.innoq.com/en/staff/jochen-christ/"},{"@type":"Person","name":"Larysa Visengeriyeva","url":"https://www.innoq.com/en/staff/larysa-visengeriyeva/"},{"@type":"Person","name":"Simon Harrer","url":"https://www.innoq.com/en/staff/dr-simon-harrer/"}],"about":{"@type":"DefinedTerm","@id":"https://www.datamesh-architecture.com/#data-mesh","name":"Data Mesh","url":"https://www.datamesh-architecture.com/"}}]}</script>
 </head>
 <body>
 <div class="container">
@@ -128,10 +125,9 @@ WHEN NOT MATCHED BY TARGET AND time < TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVA
             </a>
         </p>
         <p>
-            <a href="https://www.innoq.com/en/topics/data-mesh-workshop?ref=dma-footer">Workshop</a>&nbsp
             <a href="https://www.socreatory.com/de/trainings/datamesh?ref=dma-footer">Training</a>&nbsp
-            <a href="https://www.innoq.com/en/impressum/">Legal Notice</a>&nbsp
-            <a href="https://www.innoq.com/en/datenschutz/">Privacy</a>
+            <a href="https://www.entropy-data.com/legal-notice">Legal Notice</a>&nbsp
+            <a href="https://www.entropy-data.com/privacy-policy">Privacy</a>
         </p>
     </div>
 </footer>
