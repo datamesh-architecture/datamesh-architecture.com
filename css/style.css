@@ -58,3 +58,9 @@ strong {
     display: flex;
   }
 }
+.footer-supported-by {
+  display: inline-block;
+  margin-bottom: 0.25rem;
+  font-size: 0.75rem;
+  color: #4a4a4a;
+}
