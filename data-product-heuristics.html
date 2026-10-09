@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Data Mesh Architecture: Data Product Heuristics</title>
+    <meta charset="utf-8">
+    <meta name="description" content="15 heuristics to decompose data into source-aligned, aggregate, and consumer-aligned data products of the right size, explained with an online shop example." />
+    <meta name="keywords" content="data mesh, data mesh architecture, data product, data product size, data product heuristics, data decomposition, source-aligned, aggregate, consumer-aligned, data contract, domain-driven design">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Data Mesh Architecture: Data Product Heuristics" />
+    <meta name="twitter:description" content="15 heuristics to decompose data into data products of the right size, explained with an online shop example." />
+    <meta name="twitter:image" content="https://www.datamesh-architecture.com/images/data-product-heuristics-landscape.png" />
+    <meta name="twitter:image:alt" content="Nine data products for an online shop in three layers: source-aligned, aggregate, and consumer-aligned" />
+    <meta property="og:url" content="https://datamesh-architecture.com" />
+    <meta property="og:title" content="Data Mesh Architecture: Data Product Heuristics" />
+    <meta property="og:description" content="15 heuristics to decompose data into data products of the right size, explained with an online shop example." />
+    <meta property="og:image" content="https://www.datamesh-architecture.com/images/data-product-heuristics-landscape.png" />
+
+    <link rel="preload" as="font" type="font/woff2" href="/webfonts/inter-v12-latin-800.woff2" crossorigin="">
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/0.9.3_css_bulma.css" />
+    <link rel="stylesheet" href="/css/font-awesome_6.0.0_css_all.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="canonical" href="https://www.datamesh-architecture.com/data-product-heuristics" />
+
+    <!-- Site-wide plain-text summary for LLMs (https://llmstxt.org/): llms.txt is the map,
+         llms-full.txt the whole reference. Site-level, not an alternate of this page. -->
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://www.datamesh-architecture.com/data-product-heuristics#article","headline":"Data Product Heuristics","description":"15 heuristics to decompose data into data products of the right size, explained with an online shop example.","inLanguage":"en","url":"https://www.datamesh-architecture.com/data-product-heuristics","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.datamesh-architecture.com/data-product-heuristics"},"isPartOf":{"@type":"WebSite","@id":"https://www.datamesh-architecture.com/#website"},"publisher":{"@type":"Organization","@id":"https://www.datamesh-architecture.com/#publisher","name":"Entropy Data","url":"https://www.entropy-data.com"},"author":[{"@type":"Person","name":"Stefan Negele","url":"https://www.innoq.com/en/staff/stefan-negele/"}],"about":{"@type":"DefinedTerm","@id":"https://www.datamesh-architecture.com/#data-mesh","name":"Data Mesh","url":"https://www.datamesh-architecture.com/"}}]}</script>
+    <style>
+        .guiding-questions { margin-top: 1.5rem; }
+        .column > .guiding-questions:first-child { margin-top: 0; }
+        .guiding-questions .title { margin-bottom: 0.5rem; }
+        hr.heuristic-separator { background-color: #ededed; height: 1px; margin: 2.5rem 0; }
+    </style>
+</head>
+<body>
+<nav class="navbar is-dark" role="navigation" aria-label="dropdown navigation">
+    <div class="container">
+        <div class="navbar-brand">
+                    <span class="navbar-burger" data-target="navbarMenuHeroA">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </div>
+        <div id="navbarMenuHeroA" class="navbar-menu">
+
+            <div class="navbar-end">
+
+
+                <a href="/#why" class="navbar-item">
+                    Why
+                </a>
+                <a href="/#what-is-data-mesh" class="navbar-item">
+                    What
+                </a>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a href="/#how-to-design-a-data-mesh" class="navbar-link is-arrowless">
+                        How
+                    </a>
+                    <div class="navbar-dropdown" id="navbarMenuArchitectureDropdown">
+                        <a href="/#how-to-design-a-data-mesh" class="navbar-item">Data Mesh Architecture</a>
+                        <hr class="navbar-divider">
+                        <a href="/#data-product" class="navbar-item">Data Product</a>
+                        <a href="/#federated-governance" class="navbar-item">Federated Governance</a>
+                        <a href="/#analytical-data" class="navbar-item">Analytical Data</a>
+                        <a href="/#ingesting" class="navbar-item">Ingesting</a>
+                        <a href="/#clean-data" class="navbar-item">Clean Data</a>
+                        <a href="/#analytics" class="navbar-item">Analytics</a>
+                        <a href="/#data-platform" class="navbar-item">Data Platform</a>
+                        <a href="/#enabling-team" class="navbar-item">Enabling Team</a>
+                    </div>
+                </div>
+                <a href="/#mesh" class="navbar-item">
+                    Mesh
+                </a>
+<div class="navbar-item has-dropdown is-hoverable">
+                    <div class="navbar-link is-arrowless">
+                        Open Standards
+                    </div>
+                    <div class="navbar-dropdown" id="navbarMenuOpenStandardsDropdown">
+                        <a href="https://www.entropy-data.com/learn/open-data-contract-standard" class="navbar-item">Open Data Contract Standard</a>
+                        <a href="https://www.entropy-data.com/learn/open-data-product-standard" class="navbar-item">Open Data Product Standard</a>
+                        <a href="https://www.entropy-data.com/learn/what-is-apache-ossie" class="navbar-item">Apache Ossie</a>
+                    </div>
+                </div>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <div class="navbar-link is-arrowless">
+                        Open Source
+                    </div>
+                    <div class="navbar-dropdown" id="navbarMenuArchitectureToolsDropdown">
+                        <a href="/data-product-canvas.html" class="navbar-item">Data Product Canvas</a><a href="/data-mesh-canvas.html" class="navbar-item">Data Mesh Canvas</a>
+                        <a href="/fitness-test.html" class="navbar-item">Fitness Test</a><a href="/data-product-heuristics-checklist.html" class="navbar-item">Heuristics Checklist</a><a href="https://cli.datacontract.com" class="navbar-item">Data Contract CLI</a>
+                        <a href="https://github.com/datacontract/dataproduct-cli" class="navbar-item">Data Product CLI</a>
+                    </div>
+                </div>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a href="/#tech-stacks" class="navbar-link is-arrowless">
+                        Tech Stacks
+                    </a>
+                    <div class="navbar-dropdown" id="navbarMenuTechStackDropdown">
+                        <a href="/tech-stacks/google-cloud-bigquery" class="navbar-item">
+                            Google Cloud BigQuery
+                        </a>
+                        <a href="/tech-stacks/aws-s3-athena" class="navbar-item">
+                            AWS S3 and AWS Athena
+                        </a>
+                        <a href="/tech-stacks/azure-synapse-analytics.html" class="navbar-item">
+                            Azure Synapse Analytics
+                        </a>
+                        <a href="/tech-stacks/dbt-snowflake.html" class="navbar-item">
+                            dbt and Snowflake
+                        </a>
+                        <a href="/tech-stacks/databricks.html" class="navbar-item">
+                            Databricks
+                        </a>
+                        <a href="/tech-stacks/minio-trino.html" class="navbar-item">
+                            MinIO and Trino
+                        </a>
+                        <a href="/tech-stacks/sap.html" class="navbar-item">
+                            SAP
+                        </a>
+                        <a href="/tech-stacks/kafka-risingwave.html" class="navbar-item">
+                            Kafka and RisingWave
+                        </a>
+                    </div>
+                </div>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a href="/#domain-teams-journey" class="navbar-link is-arrowless">
+                        Start the Journey
+                    </a>
+                    <div class="navbar-dropdown is-right" id="navbarMenuTransformationDropdown">
+                        <a href="/#domain-teams-journey" class="navbar-item">
+                            Domain Team’s Journey
+                        </a>
+                        <a href="/#data-teams-journey" class="navbar-item">
+                            Data Team’s Journey
+                        </a>
+                        <a href="/literature.html" class="navbar-item">
+                            Scientific Literature
+                        </a>
+                        <a href="/real-world-learnings.html" class="navbar-item">
+                            Real World Learnings
+                        </a>
+                        <a href="/data-product-heuristics.html" class="navbar-item">
+                            Data Product Heuristics
+                        </a>
+                        <a href="https://www.innoq.com/en/services/data-and-ai/?ref=dma-nav" class="navbar-item">
+                            Get Help
+                        </a>
+                    </div>
+                </div>
+                <a href="https://www.entropy-data.com/?ref=dma-nav" class="navbar-item" style="color: #FF9B66">
+                    Entropy Data
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+
+    <section class="section">
+
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+            <ul>
+                <li><a href="/">Data Mesh Architecture</a></li>
+                <li class="is-active"><a href="#" aria-current="page">Data Product Heuristics</a></li>
+            </ul>
+        </nav>
+        <h1 class="title">Data Product Heuristics</h1>
+        <h2 class="subtitle">How to decompose data into data products of the right size</h2>
+
+        <div class="content">
+            <p>
+                How big should a data product be? There is no single right answer.
+                However, there are good questions that can help you find good boundaries.
+                This page presents 15 heuristics for sizing data products:
+                Five fundamentals that apply to every data product, and specific heuristics for each of the three
+                <a href="/#mesh">archetypes</a> &ndash; source-aligned, aggregate, and consumer-aligned.
+            </p>
+            <p>
+                Heuristics are guiding questions, not rigid rules.
+                Use them to start the right conversation.
+            </p>
+            <p>
+                The heuristics are based on the article
+                <a href="https://www.innoq.com/en/blog/2026/03/autonomous-data-product-size-heuristics/">The right size of a Data Product <i class="fa-solid fa-arrow-up-right-from-square"></i></a>.
+                We also provide a <a href="/data-product-heuristics-checklist.html">one-page checklist</a> with all the guiding questions.
+            </p>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="section content">
+        <h2 class="title" id="why-boundaries-matter">Why boundaries matter</h2>
+        <p>When data products have the wrong boundaries, the same problems show up again and again.</p>
+        <div class="columns is-multiline mt-4">
+            <div class="column is-one-fifth-desktop is-half-tablet has-text-centered">
+                <p class="is-size-3 mb-2"><i class="fa-solid fa-link"></i></p>
+                <p><strong>Stitching</strong><br>Consumers combine several data products to answer simple questions.</p>
+            </div>
+            <div class="column is-one-fifth-desktop is-half-tablet has-text-centered">
+                <p class="is-size-3 mb-2"><i class="fa-solid fa-user-slash"></i></p>
+                <p><strong>Ownership vacuum</strong><br>Nobody is responsible for meaning, quality, or changes.</p>
+            </div>
+            <div class="column is-one-fifth-desktop is-half-tablet has-text-centered">
+                <p class="is-size-3 mb-2"><i class="fa-solid fa-copy"></i></p>
+                <p><strong>Duplicate logic</strong><br>Teams rebuild the same logic, which is costly and inconsistent.</p>
+            </div>
+            <div class="column is-one-fifth-desktop is-half-tablet has-text-centered">
+                <p class="is-size-3 mb-2"><i class="fa-solid fa-weight-scale"></i></p>
+                <p><strong>Bloated data products</strong><br>Data products become overly complex and difficult to understand and maintain.</p>
+            </div>
+            <div class="column is-one-fifth-desktop is-half-tablet has-text-centered">
+                <p class="is-size-3 mb-2"><i class="fa-solid fa-bell"></i></p>
+                <p><strong>Incidents as routine</strong><br>Failures become normal instead of rare.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="section content">
+        <h2 class="title" id="example">Example: an online shop</h2>
+        <p>
+	    We use the same example, an online shop, to explain each heuristic.
+            Throughout the customer journey, there are four domains, each with its own operational system.
+            On the other hand, the business functions of Finance, Operations and Purchasing want to use the data.
+        </p>
+        <figure class="image">
+            <a href="/images/data-product-heuristics-online-shop.png.webp" class="glightbox">
+                <img src="/images/data-product-heuristics-online-shop.png.webp" alt="The online shop. Four domains along the customer journey, each with its own system: Order with the Order Management System, Catalog with the Catalog Service, Fulfillment with the Warehouse Management System, and Shipping with the Shipping Service. Below them, three business functions that use the data: Finance, Operations, and Purchasing.">
+            </a>
+        </figure>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- FUNDAMENTALS                                                  -->
+    <!-- ============================================================ -->
+    <section class="section content">
+        <h2 class="title" id="fundamentals">Fundamentals</h2>
+        <p>The five fundamentals apply to all data products, regardless of their archetype.</p>
+
+        <!-- F1: text left, figure right -->
+        <h3 id="clearly-defined-consumer-and-use-cases">#1 Clearly defined consumer &amp; use cases</h3>
+        <div class="columns is-vcentered">
+            <div class="column">
+                <p><strong>Describe its main purpose in one sentence.</strong></p>
+                <p>
+		    A data product requires real consumers with genuine requirements. Without a use case, there can be no data product. 
+                    A <a href="/#data-contract">data contract</a> can make the expectations explicit;
+                    the <a href="/data-product-canvas.html">Data Product Canvas</a> helps plan these from the early stages.
+                </p>
+                <p>
+                    <em>Example:</em> "The purchasing team needs replenishment signals from inventory and product data."
+                    This sentence leads to <code>restock_alerts</code>.
+                    The source-aligned data products it uses have their own purpose:
+                    <code>stock_movements</code> "shows every stock change per product and warehouse" and
+                    <code>product_catalog</code> "provides current product information such as names, categories, and prices".
+                    Purchasing is one of their consumers.
+                </p>
+                <div class="box guiding-questions">
+                    <p class="title is-6">Guiding questions</p>
+                    <ul>
+                    <li>Can you describe the main purpose in one sentence?</li>
+                    <li>Are there any specific teams or roles that want to use this data product right now?</li>
+                </ul>
+                </div>
+            </div>
+            <div class="column">
+                <figure class="image">
+                    <a href="/images/data-product-heuristics-fundamentals-1.png.webp" class="glightbox">
+                        <img src="/images/data-product-heuristics-fundamentals-1.png.webp" alt="The restock alerts data product in the Purchasing domain combines stock movements from the Fulfillment domain and the product catalog from the Catalog domain. It feeds the replenishment dashboard of the purchasing team. Its purpose in one sentence: the purchasing team needs replenishment signals from inventory and product data.">
+                    </a>
+                </figure>
+            </div>
+        </div>
+
+        <hr class="heuristic-separator">
+
+        <!-- F2: figure left (narrow), text right -->
+        <h3 id="stable-ownership">#2 Stable ownership</h3>
+        <div class="columns is-vcentered reverse-columns">
+            <div class="column is-one-third">
+                <figure class="image">
+                    <a href="/images/data-product-heuristics-fundamentals-2.png.webp" class="glightbox">
+                        <img src="/images/data-product-heuristics-fundamentals-2.png.webp" alt="The Order Management System triggers shipments. The shipments data product lives in the Shipping domain and is owned by the shipping team.">
+                    </a>
+                </figure>
+            </div>
+            <div class="column">
+                <p><strong>One business domain, one team.</strong></p>
+                <p>
+		    One team is responsible for meaning, quality and operation. Without a stable owner, there can be no data product. 
+		    The team that triggers a process is not necessarily its owner.
+                </p>
+                <p>
+                    <em>Example:</em> The Order Management System triggers shipments,
+                    but the shipping team owns <code>shipments</code>, including the business logic and the software systems behind it.
+                </p>
+                <div class="box guiding-questions">
+                    <p class="title is-6">Guiding questions</p>
+                    <ul>
+                    <li>Is one specific domain or team accountable for semantics, quality, and operations?</li>
+                    <li>Would the owner credibly handle future changes?</li>
+                </ul>
+                </div>
+            </div>
+        </div>
+
+        <hr class="heuristic-separator">
+
+        <!-- F3: text left, figure right -->
+        <h3 id="consistent-data-quality">#3 Consistent data quality</h3>
+        <div class="columns is-vcentered">
+            <div class="column is-5">
+                <p><strong>Quality attributes consistent across all output ports.</strong></p>
+                <p>
+		    All output ports of a data product must share the data quality characteristics, 
+		    except for technical reasons caused by the technical characteristics of the underlying technologies. 
+		    Inconsistent semantics between output ports are never acceptable.
+                </p>
+                <p>
+                    <em>Example:</em> <code>stock_movements</code> is offered as both Kafka stream and a daily batch export.
+                    Only the freshness differs. Both ports have the same <em>accuracy</em> (the quantities are correct),
+                    the same <em>completeness</em> (every stock movement is included),
+                    and the same <em>conformity</em> (same schema, units, and product identifiers).
+                </p>
+                <div class="box guiding-questions">
+                    <p class="title is-6">Guiding question</p>
+                    <ul>
+                    <li>Are data quality attributes consistent across output ports?</li>
+                </ul>
+                </div>
+            </div>
+            <div class="column">
+                <figure class="image">
+                    <a href="/images/data-product-heuristics-fundamentals-3.png.webp" class="glightbox">
+                        <img src="/images/data-product-heuristics-fundamentals-3.png.webp" alt="The stock movements data product from the Fulfillment domain has two output ports: a Kafka stream with a freshness of less than one minute, and a daily batch export. Both ports have the same accuracy, completeness, and conformity. Only freshness differs.">
+                    </a>
+                </figure>
+            </div>
+        </div>
+
+        <hr class="heuristic-separator">
+
+        <!-- F4&5: full-width figure, then two columns -->
+        <h3 id="low-integration-burden-vs-bounded-scope">#4 Low integration burden vs. #5 Bounded scope</h3>
+        <p><strong>Smallest useful standalone unit.</strong></p>
+        <figure class="image">
+            <a href="/images/data-product-heuristics-fundamentals-4-5.png.webp" class="glightbox">
+                <img src="/images/data-product-heuristics-fundamentals-4-5.png.webp" alt="A scale from high integration burden on the left to bloated scope on the right. On the left, order line items alone are too granular. In the middle, orders, product catalog, and stock movements are each the smallest useful standalone unit. On the right, orders and shipments combined in one data product are too broad.">
+            </a>
+        </figure>
+        <div class="columns">
+            <div class="column">
+                <p>
+		    Aiming for low integration and staying within a bounded scope are two opposing heuristics. 
+		    If it's too small, consumers have to stitch data products together. 
+		    If it's too big, the scope becomes bloated. 
+		    Aim for the sweet spot: the data product must be valuable on its own.
+                </p>
+                <p>
+                    <em>Example:</em> 
+		    <code>order_line_items</code> would be too specific to provide value without the order context.
+		    <code>orders</code> captures the state at time of purchase, so no join with live data is needed.
+                    <code>product_catalog</code> and <code>stock_movements</code> share <code>product_id</code>, but stay separate on purpose.
+		    <code>orders_and_shipments</code> is too broad because it is too generic to be of direct use to end users, while spanning two business domains.
+                </p>
+            </div>
+            <div class="column">
+                <div class="box guiding-questions">
+                    <p class="title is-6">Guiding questions</p>
+                    <ul>
+                    <li>Is this the smallest useful standalone unit that does not force consumers to stitch data products together?</li>
+                    <li>Can a typical consumer immediately start using this data product meaningfully on their own?</li>
+                    <li>Does the data product include only what is needed for its purpose?</li>
+                    <li>Is it limited to only including things that are useful in the present?</li>
+                </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SOURCE-ALIGNED                                                -->
+    <!-- ============================================================ -->
+    <section class="section content">
+        <h2 class="title" id="source-aligned">Source-aligned data products</h2>
+        <p>
+	    Source-aligned data products form the basis of all our data use cases. 
+	    They provide domain-specific data that is close to the operational truth, remaining within a single business domain.
+        </p>
+
+        <!-- S1: full-width figure, text below -->
+        <h3 id="semantic-coherence">#1 Semantic coherence</h3>
+        <p><strong>All data required for interpretation.</strong></p>
+        <figure class="image">
+            <a href="/images/data-product-heuristics-source-aligned-1.png.webp" class="glightbox">
+                <img src="/images/data-product-heuristics-source-aligned-1.png.webp" alt="Three options compared. Too fragmented: dates, states, and totals as separate data products. Coherent: one orders data product with order lines, status, and currency and tax. Mixed meanings: one shop data product that contains orders, returns, and reviews.">
+            </a>
+        </figure>
+        <div class="columns">
+            <div class="column">
+                <p>
+		    The data product must be self-explanatory, with each concept having exactly one meaning. 
+		    This does not imply that it supports every analysis, merely that the data itself can be interpreted. 
+		    This emphasises the importance of fundamental #4. 
+                </p>
+                <p>
+                    <em>Example:</em> <code>orders</code> with order lines, status, and currency &amp; tax is coherent.
+                    However, splitting off dates, states, and totals renders it unusable. Merging returns and reviews into
+                    <code>shop_data</code> makes fields such as <code>date</code> or <code>status</code> ambiguous.
+                </p>
+            </div>
+            <div class="column">
+                <div class="box guiding-questions">
+                    <p class="title is-6">Guiding questions</p>
+                    <ul>
+                    <li>Does the data product make sense on its own, or does it require the other parts of the source data?</li>
+                    <li>Does it feel like a cohesive, integrated whole rather than a random collection of related items?</li>
+                </ul>
+                </div>
+            </div>
+        </div>
+
+        <hr class="heuristic-separator">
+
+        <!-- S2: figure left, text right -->
+        <h3 id="single-business-domain">#2 Single business domain</h3>
+        <div class="columns is-vcentered reverse-columns">
+            <div class="column is-5">
+                <figure class="image">
+                    <a href="/images/data-product-heuristics-source-aligned-2.png.webp" class="glightbox">
+                        <img src="/images/data-product-heuristics-source-aligned-2.png.webp" alt="SAP feeds two separate data products: the product catalog in the Catalog domain and customers in the Customer domain. A single data product with all SAP data is marked as wrong, because it is one data product for a whole system.">
+                    </a>
+                </figure>
+            </div>
+            <div class="column">
+                <p><strong>One module. Not all data.</strong></p>
+                <p>
+		    Create boundaries between business domains rather than entire systems. 
+		    Different topics require different areas of expertise, and people may not want access to all the information available in one piece of software. 
+		    The decomposition should not be technology-driven.
+                </p>
+                <p>
+                    <em>Example:</em> <code>product_catalog</code> and <code>customers</code> contain distinct data, with both coming from SAP.
+                    Creating an <code>all_sap_data</code> data product would result in a messy, hard-to-maintain data set with unclear responsibilities.
+                </p>
+                <div class="box guiding-questions">
+                    <p class="title is-6">Guiding questions</p>
+                    <ul>
+                    <li>Does the decomposition follow meaningful domain modules rather than whole systems?</li>
+                    <li>Does the data contain only internal or also cross-domain context?</li>
+                </ul>
+                </div>
+            </div>
+        </div>
+
+        <hr class="heuristic-separator">
+
+        <!-- S3: text left, figure right -->
+        <h3 id="source-data-blast-radius">#3 Source data blast radius</h3>
+        <div class="columns is-vcentered">
+            <div class="column">
+                <p><strong>Different source, different data product.</strong></p>
+                <p>
+                    The counterpart to #2: limit the blast radius.
+		    Changes to a source dataset or a software application's business logic should not affect multiple source-aligned data products. 
+		    Otherwise, maintenance can become significantly more time-consuming.
+                </p>
+                <p>
+                    <em>Example:</em> A change to <code>stock_movements</code> from the warehouse system
+                    has no effect on <code>product_catalog</code> from SAP.
+                </p>
+                <div class="box guiding-questions">
+                    <p class="title is-6">Guiding question</p>
+                    <ul>
+                    <li>Do changes on the data source impact only this data product directly?</li>
+                </ul>
+                </div>
+            </div>
+            <div class="column is-5">
+                <figure class="image">
+                    <a href="/images/data-product-heuristics-source-aligned-3.png.webp" class="glightbox">
+                        <img src="/images/data-product-heuristics-source-aligned-3.png.webp" alt="Two separate areas. On the left, the warehouse system feeds the stock movements data product. On the right, SAP feeds the product catalog data product. A change on the left has no effect on the right.">
+                    </a>
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- AGGREGATE                                                     -->
+    <!-- ============================================================ -->
+    <section class="section content">
+        <h2 class="title" id="aggregate">Aggregate data products</h2>
+        <p>
+	    Aggregates combine data from several aligned data products and require strict governance. 
+	    The first question should be "Do we need it at all?", not "How big should it be?" 
+	    Keep the number of aggregate data products to a minimum.
+        </p>
+
+        <!-- A1&2: text left, figure right -->
+        <h3 id="value-and-reuse-vs-cost-and-complexity">#1 Value &amp; reuse vs. #2 Cost &amp; complexity</h3>
+        <div class="columns is-vcentered">
+            <div class="column">
+                <p><strong>Build it when 3+ teams need it.</strong></p>
+                <p>
+		    Using an aggregate avoids duplicate work and ensures consistent terminology. However, it also incurs costs, requires governance and an owner must be appointed. A good rule of thumb is to have three or more teams. 
+		    What if there is only one consumer? Build a data product aligned to the needs of the consumer. Do consumers have completely different needs? Shift the effort towards consumer- or source-aligned data products.
+                </p>
+                <p>
+                    <em>Example:</em> <code>order_lifecycle</code> combines <code>orders</code>, <code>returns</code>, and <code>shipments</code>
+		    into a single, comprehensive view of an order, from purchase to delivery and return. 
+		    The finance, operations and customer service departments all need this view to have the same meaning.
+                </p>
+                <div class="box guiding-questions">
+                    <p class="title is-6">Guiding questions</p>
+                    <ul>
+                    <li>Are there more than two teams that need the same derived view with identical meaning?</li>
+                    <li>Would teams repeatedly build the same integration or calculation without the aggregate?</li>
+                    <li>Does value emerge only after combining sources?</li>
+                    <li>Is the derivation expensive (feature engineering, entity matching, deduplication, cross-source joins)?</li>
+                    <li>Is there someone in the company willing to bear the costs of this data product?</li>
+                </ul>
+                </div>
+            </div>
+            <div class="column">
+                <figure class="image">
+                    <a href="/images/data-product-heuristics-aggregate-1-2.png.webp" class="glightbox">
+                        <img src="/images/data-product-heuristics-aggregate-1-2.png.webp" alt="The order lifecycle aggregate combines the source-aligned data products orders, returns, and shipments. Three teams use it with the same meaning: Finance, Operations, and Customer Service.">
+                    </a>
+                </figure>
+            </div>
+        </div>
+
+        <hr class="heuristic-separator">
+
+        <!-- A3: figure left, text right -->
+        <h3 id="scope-and-governance-discipline">#3 Scope &amp; governance discipline</h3>
+        <div class="columns is-vcentered reverse-columns">
+            <div class="column">
+                <figure class="image">
+                    <a href="/images/data-product-heuristics-aggregate-3.png.webp" class="glightbox">
+                        <img src="/images/data-product-heuristics-aggregate-3.png.webp" alt="The order lifecycle aggregate contains general-purpose content: combined order events, linked returns, and shipment dates. Consumer-specific logic stays out and is built by the consumers who use the aggregate: net revenue calculation, late-delivery rules, and customer segments.">
+                    </a>
+                </figure>
+            </div>
+            <div class="column">
+                <p><strong>General-purpose. Strictly scoped.</strong></p>
+                <p>
+		    Keep the scope tight to avoid it turning into a mini data warehouse. 
+		    Logic specific to consumers should stay in data products aligned to consumers, and every addition increases the effort required for governance. 
+		    Avoid feature creep, otherwise the data product will become expensive and unmaintainable.
+                </p>
+                <p>
+                    <em>Example:</em> <code>order_lifecycle</code> contains only general-purpose, coherent content that is required by all its consumers consumers:
+                    combined order events, linked returns, and shipment dates.
+		    Logic specific to consumers is excluded. Only the finance department needs the net revenue calculation, and they can build it themselves. 
+		    Late-delivery rules belong to the operations team, who may not even be familiar with them. 
+		    Customer segments are specific to marketing and customer service. 
+                </p>
+                <div class="box guiding-questions">
+                    <p class="title is-6">Guiding questions</p>
+                    <ul>
+                    <li>Is the scope tight enough so the data product is not drifting toward a mini data warehouse?</li>
+                    <li>Is the outcome valuable enough to justify the required strong governance?</li>
+                    <li>Can the owning team maintain the integrated semantics, despite spanning multiple sources?</li>
+                </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- CONSUMER-ALIGNED                                              -->
+    <!-- ============================================================ -->
+    <section class="section content">
+        <h2 class="title" id="consumer-aligned">Consumer-aligned data products</h2>
+        <p>
+            Consumer-aligned data products are designed for specific users and serve a specific purpose. 
+	    They are most effective when consumers can use them without having to build their own integration layer. 
+        </p>
+
+        <!-- C1: full-width figure -->
+        <h3 id="clear-purpose">#1 Clear purpose</h3>
+        <p><strong>One sentence. Verb plus object.</strong></p>
+        <figure class="image">
+            <a href="/images/data-product-heuristics-consumer-aligned-1.png.webp" class="glightbox">
+                <img src="/images/data-product-heuristics-consumer-aligned-1.png.webp" alt="Three consumer-aligned data products, each with its purpose as verb plus object. Net revenue report: report monthly net revenue. Delivery performance: monitor delivery SLA. Restock alerts: trigger replenishment.">
+            </a>
+        </figure>
+        <p>
+	    The data product should have a clear purpose and be intended for a specific audience. Additional details for further examination or interpretation are welcome. 
+        </p>
+        <div class="box guiding-questions">
+            <p class="title is-6">Guiding question</p>
+            <ul>
+            <li>Can this purpose be expressed as a verb + object sentence?</li>
+        </ul>
+        </div>
+
+        <hr class="heuristic-separator">
+
+        <!-- C2: text left, figure right -->
+        <h3 id="natural-focused-size">#2 Natural, focused size</h3>
+        <div class="columns is-vcentered">
+            <div class="column">
+                <p><strong>Sized by the job &ndash; not the artifact.</strong></p>
+                <p>
+		    One data product can generate several related outputs. 
+		    If a data product is used in many different decision contexts, it should be split. 
+                </p>
+                <p>
+                    <em>Example:</em> <code>delivery_performance</code> feeds an SLA dashboard, a carrier report, and a reverse-ETL feed.
+                </p>
+                <div class="box guiding-questions">
+                    <p class="title is-6">Guiding question</p>
+                    <ul>
+                    <li>Does the data product support a single decision context that results in one or more related dashboards, reports, or outputs?</li>
+                </ul>
+                </div>
+            </div>
+            <div class="column">
+                <figure class="image">
+                    <a href="/images/data-product-heuristics-consumer-aligned-2.png.webp" class="glightbox">
+                        <img src="/images/data-product-heuristics-consumer-aligned-2.png.webp" alt="The delivery performance data product supports one decision context. It feeds three outputs: an SLA dashboard, a carrier report, and a reverse ETL feed.">
+                    </a>
+                </figure>
+            </div>
+        </div>
+
+        <hr class="heuristic-separator">
+
+        <!-- C3: figure left, text right -->
+        <h3 id="meaningful-boundaries">#3 Meaningful boundaries</h3>
+        <div class="columns is-vcentered reverse-columns">
+            <div class="column">
+                <figure class="image">
+                    <a href="/images/data-product-heuristics-consumer-aligned-3.png.webp" class="glightbox">
+                        <img src="/images/data-product-heuristics-consumer-aligned-3.png.webp" alt="On the left, along the process line: the order to cash data product gets data from the shop, the ERP, and the payment system. On the right, along the system line and marked as wrong: a payment gateway data product that only gets data from the payment system.">
+                    </a>
+                </figure>
+            </div>
+            <div class="column">
+                <p><strong>Process lines, not system lines.</strong></p>
+                <p>
+                    Don't define boundaries based on where the data comes from. The data product reflects consumer behaviour and decision-making.
+                </p>
+                <p>
+                    <em>Example:</em> <code>order_to_cash</code> can be used right away because it follows the process across the shop, ERP, 
+		    and payment systems, whereas <code>payment_gateway_data</code> would only reflect information from one system. 
+		    While this is not a problem in itself, on its own it is probably not useful for consumers. First, they would need to combine it with shop and ERP data. 
+                </p>
+                <div class="box guiding-questions">
+                    <p class="title is-6">Guiding questions</p>
+                    <ul>
+                    <li>Does the boundary follow a process and not a system boundary?</li>
+                    <li>Does the decomposition reflect how a consumer acts or decides, not how data happens to be stored?</li>
+                </ul>
+                </div>
+            </div>
+        </div>
+
+        <hr class="heuristic-separator">
+
+        <!-- C4: text left, figure right -->
+        <h3 id="business-consumers">#4 Business consumers</h3>
+        <div class="columns is-vcentered">
+            <div class="column">
+                <p><strong>Name the team. Then the data product.</strong></p>
+                <p>
+		    You have to specify who will use it, and then include only what they need for their job, not everything that might be useful someday. 
+                </p>
+                <p>
+                    <em>Example:</em> Finance uses <code>net_revenue_report</code> for the monthly close.
+                    <code>analytics_data</code> for "Finance, Marketing, ad hoc, and future ML" is an untargeted catch-all that is almost certainly bloated 
+		    while also containing unused data, which has a negative effect on documentation and maintenance. 
+                </p>
+                <div class="box guiding-questions">
+                    <p class="title is-6">Guiding question</p>
+                    <ul>
+                    <li>Will your data product be used by business users, data analysts, data scientists, or applications? Who exactly, and for what?</li>
+                </ul>
+                </div>
+            </div>
+            <div class="column">
+                <figure class="image">
+                    <a href="/images/data-product-heuristics-consumer-aligned-4.png.webp" class="glightbox">
+                        <img src="/images/data-product-heuristics-consumer-aligned-4.png.webp" alt="Good: the net revenue report is used by the finance team for the monthly close. Wrong: an analytics data product meant for Finance, Marketing, ad hoc queries, and maybe machine learning, with use cases like monthly close, campaign ROI, ad hoc queries, and a churn model.">
+                    </a>
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="section content">
+        <h2 class="title" id="the-whole-picture">The whole picture</h2>
+        <p>
+            When applied to the online shop, the heuristics result in nine data products. However, not every data product aligned with consumers needs an intermediate aggregate: <code>restock_alerts</code> builds directly on source-aligned data products.
+        </p>
+	<p><i>We acknowledge that we disregarded our own three-consumer rule of thumb for the sake of the example's simplicity.</i></p>
+        <figure class="image">
+            <a href="/images/data-product-heuristics-landscape.png.webp" class="glightbox">
+                <img src="/images/data-product-heuristics-landscape.png.webp" alt="Nine data products for the online shop in three layers. Source-aligned: orders, returns, shipments, product catalog, and stock movements. Aggregate: order lifecycle, built from orders, returns, and shipments. Consumer-aligned: net revenue report and delivery performance, both built on order lifecycle, and restock alerts, built directly on product catalog and stock movements. On top, the consumers: Finance uses the revenue report, Operations the SLA dashboard, and Purchasing the reorder feed.">
+            </a>
+        </figure>
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="section">
+        <h2 class="title" id="author">Author</h2>
+
+        <div class="columns">
+            <div class="column is-half">
+                <div class="card" style="box-shadow: none;">
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-left">
+                                <figure class="image is-64x64">
+                                    <img class="is-rounded" src="/images/stefan.webp" alt="Stefan Negele">
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <p class="title is-4"><a href="https://www.innoq.com/en/staff/stefan-negele/">Stefan</a></p>
+                            </div>
+                        </div>
+
+                        <div class="content">
+                            Stefan Negele works as a senior consultant at INNOQ. He has worked as a software developer and architect since 2012.
+                            His focus is on data architectures, data governance, and distributed systems.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            <a href="https://www.entropy-data.com/?ref=dma-footer">
+                <span class="footer-supported-by">Supported by</span><br />
+                <img src="/images/entropy-data-logo.svg" alt="Entropy Data" class="footer-logo" width="180" height="44" />
+            </a>
+        </p>
+        <p>
+            <a href="https://www.socreatory.com/de/trainings/datamesh?ref=dma-footer">Training</a>&nbsp
+            <a href="https://www.entropy-data.com/legal-notice">Legal Notice</a>&nbsp
+            <a href="https://www.entropy-data.com/privacy-policy">Privacy</a>
+        </p>
+    </div>
+</footer>
+
+
+<script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+<noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript>
+
+<link rel="stylesheet" href="/css/glightbox.css" />
+<script src="/js/glightbox.js"></script>
+<script type="text/javascript">
+  const lightbox = GLightbox({});
+</script>
+
+
+<script src="/js/anchor.min.js"></script>
+<script>anchors.add();</script>
+</body>
+
+</html>

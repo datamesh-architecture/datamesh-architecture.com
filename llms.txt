@@ -22,6 +22,8 @@ It is not a product that can be purchased, and it is not implemented by a single
 - [Data Mesh Canvas](https://www.datamesh-architecture.com/data-mesh-canvas): A canvas for designing a data mesh across an organization.
 - [Data Product Canvas](https://www.datamesh-architecture.com/data-product-canvas): A canvas for designing an individual data product, covering consumers, output ports, and ownership.
 - [Fitness Test](https://www.datamesh-architecture.com/fitness-test): Questions to establish whether data mesh suits your organization right now.
+- [Data Product Heuristics](https://www.datamesh-architecture.com/data-product-heuristics): 15 heuristics to decompose data into source-aligned, aggregate, and consumer-aligned data products of the right size, explained with an online shop example.
+- [Data Product Heuristics Checklist](https://www.datamesh-architecture.com/data-product-heuristics-checklist): All heuristics and guiding questions on one printable page, for designing or reviewing data products, alone or in a workshop.
 
 ## Evidence and experience
 

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Data Mesh Architecture: Data Product Heuristics Checklist</title>
+    <meta charset="utf-8">
+    <meta name="description" content="One-page checklist with 15 heuristics and guiding questions to decompose data into data products of the right size." />
+    <meta name="keywords" content="data mesh, data mesh architecture, data product, data product size, data product heuristics, data decomposition, source-aligned, aggregate, consumer-aligned, data contract, domain-driven design">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Data Mesh Architecture: Data Product Heuristics Checklist" />
+    <meta name="twitter:description" content="One-page checklist with 15 heuristics and guiding questions to decompose data into data products of the right size." />
+    <meta name="twitter:image" content="https://www.datamesh-architecture.com/images/data-product-heuristics-landscape.png" />
+    <meta name="twitter:image:alt" content="Nine data products for an online shop in three layers: source-aligned, aggregate, and consumer-aligned" />
+    <meta property="og:url" content="https://datamesh-architecture.com" />
+    <meta property="og:title" content="Data Mesh Architecture: Data Product Heuristics Checklist" />
+    <meta property="og:description" content="One-page checklist with 15 heuristics and guiding questions to decompose data into data products of the right size." />
+    <meta property="og:image" content="https://www.datamesh-architecture.com/images/data-product-heuristics-landscape.png" />
+
+    <link rel="preload" as="font" type="font/woff2" href="/webfonts/inter-v12-latin-800.woff2" crossorigin="">
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/0.9.3_css_bulma.css" />
+    <link rel="stylesheet" href="/css/font-awesome_6.0.0_css_all.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="canonical" href="https://www.datamesh-architecture.com/data-product-heuristics-checklist" />
+
+    <!-- Site-wide plain-text summary for LLMs (https://llmstxt.org/): llms.txt is the map,
+         llms-full.txt the whole reference. Site-level, not an alternate of this page. -->
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://www.datamesh-architecture.com/data-product-heuristics-checklist#article","headline":"Data Product Heuristics Checklist","description":"One-page checklist with 15 heuristics and guiding questions to decompose data into data products of the right size.","inLanguage":"en","url":"https://www.datamesh-architecture.com/data-product-heuristics-checklist","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.datamesh-architecture.com/data-product-heuristics-checklist"},"isPartOf":{"@type":"WebSite","@id":"https://www.datamesh-architecture.com/#website"},"publisher":{"@type":"Organization","@id":"https://www.datamesh-architecture.com/#publisher","name":"Entropy Data","url":"https://www.entropy-data.com"},"author":[{"@type":"Person","name":"Stefan Negele","url":"https://www.innoq.com/en/staff/stefan-negele/"}],"about":{"@type":"DefinedTerm","@id":"https://www.datamesh-architecture.com/#data-mesh","name":"Data Mesh","url":"https://www.datamesh-architecture.com/"}}]}</script>
+    <style>
+        .section.checklist { padding-top: 0; }
+        .checklist .checklist-group:first-child h2 { margin-top: 0; }
+        .checklist h2 { margin-top: 1.5em; margin-bottom: 0.4em; border-bottom: 2px solid #FF9B66; padding-bottom: 0.2em; }
+        .checklist h2 small, .checklist h3 small { font-weight: normal; font-size: 0.85em; color: #4a4a4a; }
+        .checklist h3 { font-size: 1.05em; margin-top: 0.9em; margin-bottom: 0.3em; }
+        .checklist ul { list-style: none; margin-left: 0; margin-top: 0; }
+        .checklist li { margin: 0.15em 0; }
+        .checklist li label { display: flex; align-items: baseline; gap: 0.4em; }
+        .checklist label, .checklist-meta label { cursor: pointer; }
+        .checklist input[type=checkbox], .checklist-meta input[type=checkbox] { margin-right: 0.4em; }
+        .checklist-meta { display: flex; flex-wrap: wrap; gap: 0.75em 2em; margin: 1em 0; }
+        .checklist-meta label { margin-right: 1em; }
+        .checklist-meta .blank { display: inline-block; width: 16em; border-bottom: 1px solid #4a4a4a; }
+        .checklist-meta .blank.short { width: 8em; }
+        .checklist-hint { font-style: italic; }
+        .checklist-source { margin-top: 2em; font-size: 0.85em; }
+        @media print {
+            @page { size: A4; margin: 12mm; }
+            .navbar, .footer, .no-print, .anchorjs-link { display: none !important; }
+            body { font-size: 8.5pt; }
+            .section { padding: 0 !important; }
+            h1.title { font-size: 15pt; margin-bottom: 0.3em; }
+            .checklist { column-count: 2; column-gap: 8mm; }
+            .checklist h2 { font-size: 11pt; margin-top: 0.6em; }
+            .checklist h3 { font-size: 9pt; margin-top: 0.5em; break-after: avoid; }
+            .checklist ul { break-inside: avoid; margin-bottom: 0.2em; }
+            .checklist-hint, .checklist-meta { margin: 0.4em 0; }
+            .checklist-source { column-span: all; margin-top: 0.8em; font-size: 7.5pt; }
+            a { color: inherit; text-decoration: none; }
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar is-dark" role="navigation" aria-label="dropdown navigation">
+    <div class="container">
+        <div class="navbar-brand">
+                    <span class="navbar-burger" data-target="navbarMenuHeroA">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </div>
+        <div id="navbarMenuHeroA" class="navbar-menu">
+
+            <div class="navbar-end">
+
+
+                <a href="/#why" class="navbar-item">
+                    Why
+                </a>
+                <a href="/#what-is-data-mesh" class="navbar-item">
+                    What
+                </a>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a href="/#how-to-design-a-data-mesh" class="navbar-link is-arrowless">
+                        How
+                    </a>
+                    <div class="navbar-dropdown" id="navbarMenuArchitectureDropdown">
+                        <a href="/#how-to-design-a-data-mesh" class="navbar-item">Data Mesh Architecture</a>
+                        <hr class="navbar-divider">
+                        <a href="/#data-product" class="navbar-item">Data Product</a>
+                        <a href="/#federated-governance" class="navbar-item">Federated Governance</a>
+                        <a href="/#analytical-data" class="navbar-item">Analytical Data</a>
+                        <a href="/#ingesting" class="navbar-item">Ingesting</a>
+                        <a href="/#clean-data" class="navbar-item">Clean Data</a>
+                        <a href="/#analytics" class="navbar-item">Analytics</a>
+                        <a href="/#data-platform" class="navbar-item">Data Platform</a>
+                        <a href="/#enabling-team" class="navbar-item">Enabling Team</a>
+                    </div>
+                </div>
+                <a href="/#mesh" class="navbar-item">
+                    Mesh
+                </a>
+<div class="navbar-item has-dropdown is-hoverable">
+                    <div class="navbar-link is-arrowless">
+                        Open Standards
+                    </div>
+                    <div class="navbar-dropdown" id="navbarMenuOpenStandardsDropdown">
+                        <a href="https://www.entropy-data.com/learn/open-data-contract-standard" class="navbar-item">Open Data Contract Standard</a>
+                        <a href="https://www.entropy-data.com/learn/open-data-product-standard" class="navbar-item">Open Data Product Standard</a>
+                        <a href="https://www.entropy-data.com/learn/what-is-apache-ossie" class="navbar-item">Apache Ossie</a>
+                    </div>
+                </div>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <div class="navbar-link is-arrowless">
+                        Open Source
+                    </div>
+                    <div class="navbar-dropdown" id="navbarMenuArchitectureToolsDropdown">
+                        <a href="/data-product-canvas.html" class="navbar-item">Data Product Canvas</a><a href="/data-mesh-canvas.html" class="navbar-item">Data Mesh Canvas</a>
+                        <a href="/fitness-test.html" class="navbar-item">Fitness Test</a><a href="/data-product-heuristics-checklist.html" class="navbar-item">Heuristics Checklist</a><a href="https://cli.datacontract.com" class="navbar-item">Data Contract CLI</a>
+                        <a href="https://github.com/datacontract/dataproduct-cli" class="navbar-item">Data Product CLI</a>
+                    </div>
+                </div>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a href="/#tech-stacks" class="navbar-link is-arrowless">
+                        Tech Stacks
+                    </a>
+                    <div class="navbar-dropdown" id="navbarMenuTechStackDropdown">
+                        <a href="/tech-stacks/google-cloud-bigquery" class="navbar-item">
+                            Google Cloud BigQuery
+                        </a>
+                        <a href="/tech-stacks/aws-s3-athena" class="navbar-item">
+                            AWS S3 and AWS Athena
+                        </a>
+                        <a href="/tech-stacks/azure-synapse-analytics.html" class="navbar-item">
+                            Azure Synapse Analytics
+                        </a>
+                        <a href="/tech-stacks/dbt-snowflake.html" class="navbar-item">
+                            dbt and Snowflake
+                        </a>
+                        <a href="/tech-stacks/databricks.html" class="navbar-item">
+                            Databricks
+                        </a>
+                        <a href="/tech-stacks/minio-trino.html" class="navbar-item">
+                            MinIO and Trino
+                        </a>
+                        <a href="/tech-stacks/sap.html" class="navbar-item">
+                            SAP
+                        </a>
+                        <a href="/tech-stacks/kafka-risingwave.html" class="navbar-item">
+                            Kafka and RisingWave
+                        </a>
+                    </div>
+                </div>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a href="/#domain-teams-journey" class="navbar-link is-arrowless">
+                        Start the Journey
+                    </a>
+                    <div class="navbar-dropdown is-right" id="navbarMenuTransformationDropdown">
+                        <a href="/#domain-teams-journey" class="navbar-item">
+                            Domain Team’s Journey
+                        </a>
+                        <a href="/#data-teams-journey" class="navbar-item">
+                            Data Team’s Journey
+                        </a>
+                        <a href="/literature.html" class="navbar-item">
+                            Scientific Literature
+                        </a>
+                        <a href="/real-world-learnings.html" class="navbar-item">
+                            Real World Learnings
+                        </a>
+                        <a href="/data-product-heuristics.html" class="navbar-item">
+                            Data Product Heuristics
+                        </a>
+                        <a href="https://www.innoq.com/en/services/data-and-ai/?ref=dma-nav" class="navbar-item">
+                            Get Help
+                        </a>
+                    </div>
+                </div>
+                <a href="https://www.entropy-data.com/?ref=dma-nav" class="navbar-item" style="color: #FF9B66">
+                    Entropy Data
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container">
+
+    <section class="section">
+        <nav class="breadcrumb no-print" aria-label="breadcrumbs">
+            <ul>
+                <li><a href="/">Data Mesh Architecture</a></li>
+                <li><a href="/data-product-heuristics.html">Data Product Heuristics</a></li>
+                <li class="is-active"><a href="#" aria-current="page">Checklist</a></li>
+            </ul>
+        </nav>
+        <h1 class="title">Data Product Heuristics &ndash; Checklist</h1>
+        <div class="content">
+            <p class="no-print">
+	        All the heuristics and guiding questions you need for designing or reviewing data products, whether you're working alone or in a workshop.
+		You can find explanations and examples on the <a href="/data-product-heuristics.html">Data Product Heuristics</a> page.
+            </p>
+            <div class="checklist-meta">
+                <span>Data product: <span class="blank"></span></span>
+                <span>Archetype:
+                    <label><input type="checkbox"> source-aligned</label>
+                    <label><input type="checkbox"> aggregate</label>
+                    <label><input type="checkbox"> consumer-aligned</label>
+                </span>
+                <span>Date: <span class="blank short"></span></span>
+            </div>
+            <p class="checklist-hint">Start with the fundamentals, then add the heuristics for the archetype. Heuristics are guiding questions, not rigid rules.</p>
+        </div>
+    </section>
+
+    <section class="section content checklist">
+
+        <div class="checklist-group">
+            <h2>Fundamentals</h2>
+
+            <h3>1. Clearly defined consumer &amp; use cases <small>&ndash; Describe its main purpose in one sentence.</small></h3>
+            <ul>
+                <li><label><input type="checkbox"> Can you describe the main purpose in one sentence?</label></li>
+                <li><label><input type="checkbox"> Are there any specific teams or roles that want to use this data product right now?</label></li>
+            </ul>
+
+            <h3>2. Stable ownership <small>&ndash; One domain, one team.</small></h3>
+            <ul>
+                <li><label><input type="checkbox"> Is one specific domain or team accountable for semantics, quality, and operations?</label></li>
+                <li><label><input type="checkbox"> Would the owner credibly handle future changes?</label></li>
+            </ul>
+
+            <h3>3. Consistent data quality <small>&ndash; Quality attributes consistent across all output ports.</small></h3>
+            <ul>
+                <li><label><input type="checkbox"> Are data quality attributes consistent across output ports?</label></li>
+            </ul>
+
+            <h3>4. Low integration burden <small>&ndash; Smallest useful standalone unit.</small></h3>
+            <ul>
+                <li><label><input type="checkbox"> Is this the smallest useful standalone unit that does not force consumers to stitch data products together?</label></li>
+                <li><label><input type="checkbox"> Can a typical consumer immediately start using this data product meaningfully on their own?</label></li>
+            </ul>
+
+            <h3>5. Bounded scope <small>&ndash; Only what is needed, not what might be useful someday.</small></h3>
+            <ul>
+                <li><label><input type="checkbox"> Does the data product include only what is needed for its purpose?</label></li>
+                <li><label><input type="checkbox"> Is it limited to only including things that are useful in the present?</label></li>
+            </ul>
+        </div>
+
+        <div class="checklist-group">
+            <h2>Source-aligned</h2>
+
+            <h3>1. Semantic coherence <small>&ndash; All data required for interpretation.</small></h3>
+            <ul>
+                <li><label><input type="checkbox"> Does the data product make sense on its own, or does it require the other parts of the source data?</label></li>
+                <li><label><input type="checkbox"> Does it feel like a cohesive, integrated whole rather than a random collection of related items?</label></li>
+            </ul>
+
+            <h3>2. Single business domain <small>&ndash; One module. Not all data.</small></h3>
+            <ul>
+                <li><label><input type="checkbox"> Does the decomposition follow meaningful domain modules rather than whole systems?</label></li>
+                <li><label><input type="checkbox"> Does the data contain only internal or also cross-domain context?</label></li>
+            </ul>
+
+            <h3>3. Source data blast radius <small>&ndash; Different source, different data product.</small></h3>
+            <ul>
+                <li><label><input type="checkbox"> Do changes on the data source impact only this data product directly?</label></li>
+            </ul>
+        </div>
+
+        <div class="checklist-group">
+            <h2>Aggregate</h2>
+
+            <h3>1. Value &amp; reuse <small>&ndash; Build it when 3+ teams need it.</small></h3>
+            <ul>
+                <li><label><input type="checkbox"> Are there more than two teams that need the same derived view with identical meaning?</label></li>
+                <li><label><input type="checkbox"> Would teams repeatedly build the same integration or calculation without the aggregate?</label></li>
+                <li><label><input type="checkbox"> Does value emerge only after combining sources?</label></li>
+            </ul>
+
+            <h3>2. Cost &amp; complexity</h3>
+            <ul>
+                <li><label><input type="checkbox"> Is the derivation expensive (feature engineering, entity matching, deduplication, cross-source joins)?</label></li>
+                <li><label><input type="checkbox"> Is there someone in the company willing to bear the costs of this data product?</label></li>
+            </ul>
+
+            <h3>3. Scope &amp; governance discipline <small>&ndash; General-purpose. Strictly scoped.</small></h3>
+            <ul>
+                <li><label><input type="checkbox"> Is the scope tight enough so the data product is not drifting toward a mini data warehouse?</label></li>
+                <li><label><input type="checkbox"> Is the outcome valuable enough to justify the required strong governance?</label></li>
+                <li><label><input type="checkbox"> Can the owning team maintain the integrated semantics, despite spanning multiple sources?</label></li>
+            </ul>
+        </div>
+
+        <div class="checklist-group">
+            <h2>Consumer-aligned</h2>
+
+            <h3>1. Clear purpose <small>&ndash; One sentence. Verb plus object.</small></h3>
+            <ul>
+                <li><label><input type="checkbox"> Can this purpose be expressed as a verb + object sentence?</label></li>
+            </ul>
+
+            <h3>2. Natural, focused size <small>&ndash; Sized by the job, not the artifact.</small></h3>
+            <ul>
+                <li><label><input type="checkbox"> Does the data product support a single decision context that results in one or more related dashboards, reports, or outputs?</label></li>
+            </ul>
+
+            <h3>3. Meaningful boundaries <small>&ndash; Process lines, not system lines.</small></h3>
+            <ul>
+                <li><label><input type="checkbox"> Does the boundary follow a process and not a system boundary?</label></li>
+                <li><label><input type="checkbox"> Does the decomposition reflect how a consumer acts or decides, not how data happens to be stored?</label></li>
+            </ul>
+
+            <h3>4. Business consumers <small>&ndash; Name the team. Then the data product.</small></h3>
+            <ul>
+                <li><label><input type="checkbox"> Will your data product be used by business users, data analysts, data scientists, or applications? Who exactly, and for what?</label></li>
+            </ul>
+        </div>
+
+        <p class="checklist-source">
+            Source: <a href="https://www.datamesh-architecture.com/data-product-heuristics">datamesh-architecture.com/data-product-heuristics</a>
+            &middot; based on <a href="https://www.innoq.com/en/blog/2026/03/autonomous-data-product-size-heuristics/">The right size of a Data Product</a>
+        </p>
+    </section>
+
+</div>
+
+<footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            <a href="https://www.entropy-data.com/?ref=dma-footer">
+                <span class="footer-supported-by">Supported by</span><br />
+                <img src="/images/entropy-data-logo.svg" alt="Entropy Data" class="footer-logo" width="180" height="44" />
+            </a>
+        </p>
+        <p>
+            <a href="https://www.socreatory.com/de/trainings/datamesh?ref=dma-footer">Training</a>&nbsp
+            <a href="https://www.entropy-data.com/legal-notice">Legal Notice</a>&nbsp
+            <a href="https://www.entropy-data.com/privacy-policy">Privacy</a>
+        </p>
+    </div>
+</footer>
+
+
+<script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+<noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript>
+
+<link rel="stylesheet" href="/css/glightbox.css" />
+<script src="/js/glightbox.js"></script>
+<script type="text/javascript">
+  const lightbox = GLightbox({});
+</script>
+
+
+<script src="/js/anchor.min.js"></script>
+<script>anchors.add();</script>
+</body>
+
+</html>

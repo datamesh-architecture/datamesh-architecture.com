@@ -89,6 +89,8 @@ Each tech stack shows how the four principles map onto specific technology.
 - Data Mesh Canvas: https://www.datamesh-architecture.com/data-mesh-canvas
 - Data Product Canvas: https://www.datamesh-architecture.com/data-product-canvas
 - Fitness Test: https://www.datamesh-architecture.com/fitness-test
+- Data Product Heuristics: https://www.datamesh-architecture.com/data-product-heuristics
+- Data Product Heuristics Checklist: https://www.datamesh-architecture.com/data-product-heuristics-checklist
 
 ## Publisher
 
