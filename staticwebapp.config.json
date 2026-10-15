@@ -1,0 +1,14 @@
+{
+  "trailingSlash": "never",
+  "routes": [
+    { "route": "/data-contracts", "redirect": "https://www.datacontract.com", "statusCode": 301 },
+    { "route": "/tech-stacks/data-contracts", "redirect": "https://www.datacontract.com", "statusCode": 301 },
+    { "route": "/data-mesh-principles/federated-computational-governance", "redirect": "/#federated-governance", "statusCode": 301 },
+    { "route": "/book", "redirect": "/literature", "statusCode": 301 },
+    { "route": "/book/", "redirect": "/literature", "statusCode": 301 },
+    { "route": "/data-product-marketplace", "redirect": "/#data-product", "statusCode": 301 },
+    { "route": "/images/*", "headers": { "Cache-Control": "public, max-age=86400" } },
+    { "route": "/webfonts/*", "headers": { "Cache-Control": "public, max-age=86400" } },
+    { "route": "/pdfs/*", "headers": { "Cache-Control": "public, max-age=86400" } }
+  ]
+}
