@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://www.datamesh-architecture.com/</loc><lastmod>2026-10-18</lastmod></url>
+  <url><loc>https://www.datamesh-architecture.com/data-mesh-canvas</loc><lastmod>2026-10-18</lastmod></url>
+  <url><loc>https://www.datamesh-architecture.com/data-product-canvas</loc><lastmod>2026-10-18</lastmod></url>
+  <url><loc>https://www.datamesh-architecture.com/data-product-heuristics</loc><lastmod>2026-10-18</lastmod></url>
+  <url><loc>https://www.datamesh-architecture.com/data-product-heuristics-checklist</loc><lastmod>2026-10-18</lastmod></url>
+  <url><loc>https://www.datamesh-architecture.com/fitness-test</loc><lastmod>2026-10-18</lastmod></url>
+  <url><loc>https://www.datamesh-architecture.com/howto/build-a-dataproduct-with-databricks</loc><lastmod>2026-10-18</lastmod></url>
+  <url><loc>https://www.datamesh-architecture.com/howto/deduplication</loc><lastmod>2026-10-18</lastmod></url>
+  <url><loc>https://www.datamesh-architecture.com/literature</loc><lastmod>2026-10-18</lastmod></url>
+  <url><loc>https://www.datamesh-architecture.com/open-source/aws</loc><lastmod>2026-10-18</lastmod></url>
+  <url><loc>https://www.datamesh-architecture.com/open-source/gcp</loc><lastmod>2026-10-18</lastmod></url>
+  <url><loc>https://www.datamesh-architecture.com/real-world-learnings</loc><lastmod>2026-10-18</lastmod></url>
+  <url><loc>https://www.datamesh-architecture.com/tech-stacks/aws-s3-athena</loc><lastmod>2026-10-18</lastmod></url>
+  <url><loc>https://www.datamesh-architecture.com/tech-stacks/azure-synapse-analytics</loc><lastmod>2026-10-18</lastmod></url>
+  <url><loc>https://www.datamesh-architecture.com/tech-stacks/databricks</loc><lastmod>2026-10-18</lastmod></url>
+  <url><loc>https://www.datamesh-architecture.com/tech-stacks/dbt-snowflake</loc><lastmod>2026-10-18</lastmod></url>
+  <url><loc>https://www.datamesh-architecture.com/tech-stacks/google-cloud-bigquery</loc><lastmod>2026-10-18</lastmod></url>
+  <url><loc>https://www.datamesh-architecture.com/tech-stacks/kafka-risingwave</loc><lastmod>2026-10-18</lastmod></url>
+  <url><loc>https://www.datamesh-architecture.com/tech-stacks/minio-trino</loc><lastmod>2026-10-18</lastmod></url>
+  <url><loc>https://www.datamesh-architecture.com/tech-stacks/sap</loc><lastmod>2026-10-18</lastmod></url>
+</urlset>
