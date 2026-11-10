@@ -1,5 +1,8 @@
 {
   "trailingSlash": "never",
+  "globalHeaders": {
+    "Referrer-Policy": "strict-origin-when-cross-origin"
+  },
   "routes": [
     { "route": "/data-contracts", "redirect": "https://www.datacontract.com", "statusCode": 301 },
     { "route": "/tech-stacks/data-contracts", "redirect": "https://www.datacontract.com", "statusCode": 301 },
